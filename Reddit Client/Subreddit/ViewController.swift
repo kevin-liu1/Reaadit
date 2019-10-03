@@ -9,6 +9,9 @@
 import UIKit
 import Just
 import OAuth2
+import SafariServices
+import AuthenticationServices
+
 
 struct Wraps: Codable {
     let kind: String
@@ -46,9 +49,17 @@ struct AccessToken: Codable {
 }
 
 
-class ViewController: UITableViewController {
+
+
+class ViewController: UITableViewController, ASWebAuthenticationPresentationContextProviding {
     var topsubreddit = [String]()
     var subredditnames = [String]()
+    var webAuthSession: ASWebAuthenticationSession?
+    var accessToken: String?
+    
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        return self.view.window ?? ASPresentationAnchor()
+    }
     
 
     
@@ -61,36 +72,53 @@ class ViewController: UITableViewController {
         subredditnames += ["Mac", "Apple", "Android", "NBA", "Toronto", "NYC", "ApolloApp", "AskTO"]
         topsubreddit += ["Popular", "All"]
         
-        
-        /*
-        let r = Just.post("https://www.reddit.com/api/v1/access_token", data:["grant_type":"authorization_code","code":"Oje313pQvwcCsT7VzxovlrGHvas", "redirect_uri": "https://www.google.com"], auth: ("b57UXmtz0XCo0A", ""))
-        
-         if let data = r.content {
-             
-         } else {
-             print("invalid JSON request")
-         }
-        
-        
-
-        let decoder = JSONDecoder()
-        //let data = try? Data(contentsOf: r.json)
-        if let jsonPost =  try? decoder.decode(AccessToken.self, from: r.content!) {
-            print(jsonPost.access_token)
-        } else {
-            print("invalid json")
-        }
-        print(r.json)
- 
-        */
+        getAuthTokenWithWebLogin(context: self)
         
         
         
         
-        
-
         
     }
+    
+    func getAuthTokenWithWebLogin(context: ASWebAuthenticationPresentationContextProviding) {
+
+        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits")
+        let callbackUrlScheme = "myreddit://kevin"
+
+        self.webAuthSession = ASWebAuthenticationSession.init(url: authURL!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
+
+            // handle auth response
+            guard error == nil, let successURL = callBack else {
+                print(error)
+                return
+                
+            }
+            print("no error so far" )
+            let oauthToken = NSURLComponents(string: (successURL.absoluteString))?.queryItems?.filter({$0.name == "code"}).first
+
+            // Do what you now that you've got the token, or use the callBack URL
+            print(oauthToken?.value ?? "No OAuth Token")
+            self.accessToken = oauthToken?.value
+        })
+        self.webAuthSession?.presentationContextProvider = context
+        // Kick it off
+        self.webAuthSession?.start()
+    }
+    
+    
+    func showTutorial(_ which: Int) {
+        if let url = URL(string: "https://www.reddit.com/api/v1/authorize") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
+    }
+    
+    
+    
+    
     
     @objc func addSubreddit() {
         let ac = UIAlertController(title: "Add Subreddit", message: nil, preferredStyle: .alert)

@@ -93,7 +93,7 @@
                                             <rect key="frame" x="328" y="6" width="66" height="66.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="66" id="eqS-SV-5Q9"/>
-                                                <constraint firstAttribute="height" constant="66" id="rRN-uD-OeJ"/>
+                                                <constraint firstAttribute="height" constant="60" id="rRN-uD-OeJ"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzZ-ux-eAo">
@@ -147,8 +147,8 @@
                                         <constraint firstItem="301-cK-02S" firstAttribute="leading" secondItem="Oij-U3-5Qv" secondAttribute="trailing" constant="8" id="NZO-5N-pKM"/>
                                         <constraint firstItem="ZUf-xa-wWv" firstAttribute="leading" secondItem="rU4-ol-Uhh" secondAttribute="trailing" constant="7.5" id="SJv-ii-ddl"/>
                                         <constraint firstAttribute="bottom" secondItem="ZUf-xa-wWv" secondAttribute="bottom" constant="7.5" id="URy-f3-VTN"/>
-                                        <constraint firstItem="ZUf-xa-wWv" firstAttribute="top" secondItem="lUL-db-ndw" secondAttribute="top" constant="55" id="UZR-BI-2lY"/>
-                                        <constraint firstItem="KR3-yd-VCC" firstAttribute="top" secondItem="lUL-db-ndw" secondAttribute="top" constant="55" id="XwL-DG-4F5"/>
+                                        <constraint firstItem="ZUf-xa-wWv" firstAttribute="top" relation="lessThanOrEqual" secondItem="lUL-db-ndw" secondAttribute="top" constant="55" id="UZR-BI-2lY"/>
+                                        <constraint firstItem="KR3-yd-VCC" firstAttribute="top" relation="lessThanOrEqual" secondItem="lUL-db-ndw" secondAttribute="top" constant="55" id="XwL-DG-4F5"/>
                                         <constraint firstAttribute="bottom" secondItem="KR3-yd-VCC" secondAttribute="bottom" constant="7.5" id="YJU-Yk-Vk9"/>
                                         <constraint firstItem="rU4-ol-Uhh" firstAttribute="top" secondItem="lUL-db-ndw" secondAttribute="top" constant="55" id="dJM-yQ-HBX"/>
                                         <constraint firstItem="87z-dF-Oiv" firstAttribute="leading" secondItem="ZUf-xa-wWv" secondAttribute="trailing" constant="3" id="fZK-3P-dht"/>

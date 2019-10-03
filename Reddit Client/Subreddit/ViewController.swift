@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Just
+import OAuth2
 
 struct Wraps: Codable {
     let kind: String
@@ -38,6 +40,12 @@ struct Post: Codable {
 }
 
 
+struct AccessToken: Codable {
+    let access_token: String
+    let token_type: String
+}
+
+
 class ViewController: UITableViewController {
     var topsubreddit = [String]()
     var subredditnames = [String]()
@@ -52,6 +60,33 @@ class ViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         subredditnames += ["Mac", "Apple", "Android", "NBA", "Toronto", "NYC", "ApolloApp", "AskTO"]
         topsubreddit += ["Popular", "All"]
+        
+        
+        /*
+        let r = Just.post("https://www.reddit.com/api/v1/access_token", data:["grant_type":"authorization_code","code":"Oje313pQvwcCsT7VzxovlrGHvas", "redirect_uri": "https://www.google.com"], auth: ("b57UXmtz0XCo0A", ""))
+        
+         if let data = r.content {
+             
+         } else {
+             print("invalid JSON request")
+         }
+        
+        
+
+        let decoder = JSONDecoder()
+        //let data = try? Data(contentsOf: r.json)
+        if let jsonPost =  try? decoder.decode(AccessToken.self, from: r.content!) {
+            print(jsonPost.access_token)
+        } else {
+            print("invalid json")
+        }
+        print(r.json)
+ 
+        */
+        
+        
+        
+        
         
 
         

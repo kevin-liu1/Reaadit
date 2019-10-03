@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE3089A52345DE0F00E3A2BC /* Just in Frameworks */ = {isa = PBXBuildFile; productRef = BE3089A42345DE0F00E3A2BC /* Just */; };
+		BE3089AA2346510400E3A2BC /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = BE3089A92346510400E3A2BC /* OAuth2 */; };
 		BE612C1523452C8700FD87D4 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = BE612C1423452C8700FD87D4 /* icons */; };
 		BE612C1723457C5000FD87D4 /* SubredditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE612C1623457C5000FD87D4 /* SubredditCell.swift */; };
 		BE7A817B2343A8DB00C9D490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A817A2343A8DB00C9D490 /* AppDelegate.swift */; };
@@ -41,12 +43,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE3089A52345DE0F00E3A2BC /* Just in Frameworks */,
+				BE3089AA2346510400E3A2BC /* OAuth2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE3089A62345E6CE00E3A2BC /* Subreddit */ = {
+			isa = PBXGroup;
+			children = (
+				BE7A817C2343A8DB00C9D490 /* ViewController.swift */,
+				BE612C1623457C5000FD87D4 /* SubredditCell.swift */,
+			);
+			path = Subreddit;
+			sourceTree = "<group>";
+		};
+		BE3089A72345E6E700E3A2BC /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				BE7A818C2343C6DD00C9D490 /* PostsView.swift */,
+				BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */,
+				BE7A81902343DEC900C9D490 /* DetailViewController.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
 		BE612C182345843700FD87D4 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,11 +100,8 @@
 		BE7A81792343A8DB00C9D490 /* Reddit Client */ = {
 			isa = PBXGroup;
 			children = (
-				BE7A817C2343A8DB00C9D490 /* ViewController.swift */,
-				BE612C1623457C5000FD87D4 /* SubredditCell.swift */,
-				BE7A818C2343C6DD00C9D490 /* PostsView.swift */,
-				BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */,
-				BE7A81902343DEC900C9D490 /* DetailViewController.swift */,
+				BE3089A62345E6CE00E3A2BC /* Subreddit */,
+				BE3089A72345E6E700E3A2BC /* Posts */,
 				BE7A818E2343DE9A00C9D490 /* SearchViewController.swift */,
 				BE7A817E2343A8DB00C9D490 /* Main.storyboard */,
 				BE612C182345843700FD87D4 /* Supporting */,
@@ -106,6 +126,10 @@
 			dependencies = (
 			);
 			name = "Reddit Client";
+			packageProductDependencies = (
+				BE3089A42345DE0F00E3A2BC /* Just */,
+				BE3089A92346510400E3A2BC /* OAuth2 */,
+			);
 			productName = "Reddit Client";
 			productReference = BE7A81772343A8DB00C9D490 /* Reddit Client.app */;
 			productType = "com.apple.product-type.application";
@@ -126,7 +150,7 @@
 				};
 			};
 			buildConfigurationList = BE7A81722343A8DB00C9D490 /* Build configuration list for PBXProject "Reddit Client" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -134,6 +158,10 @@
 				Base,
 			);
 			mainGroup = BE7A816E2343A8DB00C9D490;
+			packageReferences = (
+				BE3089A32345DE0F00E3A2BC /* XCRemoteSwiftPackageReference "Just" */,
+				BE3089A82346510400E3A2BC /* XCRemoteSwiftPackageReference "OAuth2" */,
+			);
 			productRefGroup = BE7A81782343A8DB00C9D490 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -317,6 +345,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VDUMPYJ7FG;
 				INFOPLIST_FILE = "Reddit Client/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,6 +364,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VDUMPYJ7FG;
 				INFOPLIST_FILE = "Reddit Client/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,6 +398,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BE3089A32345DE0F00E3A2BC /* XCRemoteSwiftPackageReference "Just" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dduan/Just.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
+		BE3089A82346510400E3A2BC /* XCRemoteSwiftPackageReference "OAuth2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/p2/OAuth2.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BE3089A42345DE0F00E3A2BC /* Just */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE3089A32345DE0F00E3A2BC /* XCRemoteSwiftPackageReference "Just" */;
+			productName = Just;
+		};
+		BE3089A92346510400E3A2BC /* OAuth2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE3089A82346510400E3A2BC /* XCRemoteSwiftPackageReference "OAuth2" */;
+			productName = OAuth2;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BE7A816F2343A8DB00C9D490 /* Project object */;
 }

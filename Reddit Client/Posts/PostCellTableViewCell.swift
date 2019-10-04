@@ -20,4 +20,18 @@ class PostCellTableViewCell: UITableViewCell {
     @IBOutlet var commentsIcon: UIImageView!
     @IBOutlet weak var comments: UILabel!
     
+    func setPost(postObject: PostObject) {
+        
+        postTitle.text = postObject.postTitle
+        postSubtitle.text = postObject.postSubtitle
+        
+        upVotes.text = String(postObject.upVotes)
+        comments.text = String(postObject.comments)
+        
+        upVoteIcon.image = UIImage(named: "icons8-up-100-2.png")
+        commentsIcon.image = UIImage(named: "icons8-topic-100-2.png")
+        
+        thumbnailImage?.contentMode = .scaleAspectFill
+        thumbnailImage.layer.cornerRadius = 10
+    }
 }

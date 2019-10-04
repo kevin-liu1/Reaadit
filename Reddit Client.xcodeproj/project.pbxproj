@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		BE3089A52345DE0F00E3A2BC /* Just in Frameworks */ = {isa = PBXBuildFile; productRef = BE3089A42345DE0F00E3A2BC /* Just */; };
 		BE612C1523452C8700FD87D4 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = BE612C1423452C8700FD87D4 /* icons */; };
-		BE72BF05234679D00091B5E7 /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = BE72BF04234679D00091B5E7 /* OAuth2 */; };
 		BE72BF092346F2DC0091B5E7 /* PostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72BF082346F2DC0091B5E7 /* PostType.swift */; };
 		BE72BF0B2346F65D0091B5E7 /* UserDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72BF0A2346F65D0091B5E7 /* UserDataType.swift */; };
+		BE72BF0D2346FF530091B5E7 /* SubredditDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72BF0C2346FF530091B5E7 /* SubredditDataType.swift */; };
+		BE72BF0F23471D5A0091B5E7 /* PostObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72BF0E23471D5A0091B5E7 /* PostObject.swift */; };
+		BE72BF1223473F740091B5E7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BE72BF1123473F740091B5E7 /* SDWebImage */; };
+		BE72BF1423473F740091B5E7 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE72BF1323473F740091B5E7 /* SDWebImageMapKit */; };
 		BE7A817B2343A8DB00C9D490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A817A2343A8DB00C9D490 /* AppDelegate.swift */; };
 		BE7A817D2343A8DB00C9D490 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A817C2343A8DB00C9D490 /* ViewController.swift */; };
 		BE7A81802343A8DB00C9D490 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7A817E2343A8DB00C9D490 /* Main.storyboard */; };
@@ -27,6 +30,8 @@
 		BE612C1423452C8700FD87D4 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
 		BE72BF082346F2DC0091B5E7 /* PostType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostType.swift; sourceTree = "<group>"; };
 		BE72BF0A2346F65D0091B5E7 /* UserDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataType.swift; sourceTree = "<group>"; };
+		BE72BF0C2346FF530091B5E7 /* SubredditDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubredditDataType.swift; sourceTree = "<group>"; };
+		BE72BF0E23471D5A0091B5E7 /* PostObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostObject.swift; sourceTree = "<group>"; };
 		BE7A81772343A8DB00C9D490 /* Reddit Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7A817A2343A8DB00C9D490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE7A817C2343A8DB00C9D490 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,8 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE72BF1223473F740091B5E7 /* SDWebImage in Frameworks */,
+				BE72BF1423473F740091B5E7 /* SDWebImageMapKit in Frameworks */,
 				BE3089A52345DE0F00E3A2BC /* Just in Frameworks */,
-				BE72BF05234679D00091B5E7 /* OAuth2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				BE72BF0A2346F65D0091B5E7 /* UserDataType.swift */,
+				BE72BF0C2346FF530091B5E7 /* SubredditDataType.swift */,
 				BE7A817C2343A8DB00C9D490 /* ViewController.swift */,
 			);
 			path = Subreddit;
@@ -66,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				BE72BF082346F2DC0091B5E7 /* PostType.swift */,
+				BE72BF0E23471D5A0091B5E7 /* PostObject.swift */,
 				BE7A818C2343C6DD00C9D490 /* PostsView.swift */,
 				BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */,
 				BE7A81902343DEC900C9D490 /* DetailViewController.swift */,
@@ -131,7 +139,8 @@
 			name = "Reddit Client";
 			packageProductDependencies = (
 				BE3089A42345DE0F00E3A2BC /* Just */,
-				BE72BF04234679D00091B5E7 /* OAuth2 */,
+				BE72BF1123473F740091B5E7 /* SDWebImage */,
+				BE72BF1323473F740091B5E7 /* SDWebImageMapKit */,
 			);
 			productName = "Reddit Client";
 			productReference = BE7A81772343A8DB00C9D490 /* Reddit Client.app */;
@@ -163,7 +172,7 @@
 			mainGroup = BE7A816E2343A8DB00C9D490;
 			packageReferences = (
 				BE3089A32345DE0F00E3A2BC /* XCRemoteSwiftPackageReference "Just" */,
-				BE72BF03234679D00091B5E7 /* XCRemoteSwiftPackageReference "OAuth2" */,
+				BE72BF1023473F740091B5E7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = BE7A81782343A8DB00C9D490 /* Products */;
 			projectDirPath = "";
@@ -199,8 +208,10 @@
 				BE7A817B2343A8DB00C9D490 /* AppDelegate.swift in Sources */,
 				BE7A81912343DEC900C9D490 /* DetailViewController.swift in Sources */,
 				BE7A819323441F4700C9D490 /* PostCellTableViewCell.swift in Sources */,
+				BE72BF0D2346FF530091B5E7 /* SubredditDataType.swift in Sources */,
 				BE7A818F2343DE9A00C9D490 /* SearchViewController.swift in Sources */,
 				BE7A818D2343C6DD00C9D490 /* PostsView.swift in Sources */,
+				BE72BF0F23471D5A0091B5E7 /* PostObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,12 +423,12 @@
 				minimumVersion = 0.8.0;
 			};
 		};
-		BE72BF03234679D00091B5E7 /* XCRemoteSwiftPackageReference "OAuth2" */ = {
+		BE72BF1023473F740091B5E7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/p2/OAuth2.git";
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				minimumVersion = 5.2.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -428,10 +439,15 @@
 			package = BE3089A32345DE0F00E3A2BC /* XCRemoteSwiftPackageReference "Just" */;
 			productName = Just;
 		};
-		BE72BF04234679D00091B5E7 /* OAuth2 */ = {
+		BE72BF1123473F740091B5E7 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE72BF03234679D00091B5E7 /* XCRemoteSwiftPackageReference "OAuth2" */;
-			productName = OAuth2;
+			package = BE72BF1023473F740091B5E7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		BE72BF1323473F740091B5E7 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE72BF1023473F740091B5E7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

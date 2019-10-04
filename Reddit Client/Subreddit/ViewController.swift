@@ -13,36 +13,6 @@ import SafariServices
 import AuthenticationServices
 
 
-struct Wraps: Codable {
-    let kind: String
-    let data: Wrap
-}
-
-struct Wrap: Codable {
-    let dist: Int
-    let children: [Posts]
-}
-
-struct Posts: Codable {
-    let kind: String
-    let data: Post
-}
-
-struct Post: Codable {
-    let title: String
-    let subreddit: String
-    let author: String
-    let selftext: String
-    let url: String
-    let thumbnail: String
-    let ups: Int
-    let permalink: String
-    let num_comments: Int
-    
-    
-}
-
-
 struct AccessToken: Codable {
     let access_token: String
     let token_type: String
@@ -54,7 +24,9 @@ struct AccessToken: Codable {
 class ViewController: UITableViewController, ASWebAuthenticationPresentationContextProviding {
     var topsubreddit = [String]()
     var subredditnames = [String]()
+    var username: String?
     var webAuthSession: ASWebAuthenticationSession?
+    var accessCode: String?
     var accessToken: String?
     
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
@@ -66,27 +38,70 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Subreddits"
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSubreddit))
         navigationController?.navigationBar.prefersLargeTitles = false
         subredditnames += ["Mac", "Apple", "Android", "NBA", "Toronto", "NYC", "ApolloApp", "AskTO"]
         topsubreddit += ["Popular", "All"]
         
+        
         getAuthTokenWithWebLogin(context: self)
+        title = "\(self.username) Subreddits"
+        
+    
+    }
+    
+    func userInfoSetup(ForUser user: RedditUser) {
+        self.title = "\(user.name) Subreddits"
         
         
+    }
+    
+    func parseUserJson(accesstoken: String) {
         
+        let userJson = Just.get("https://oauth.reddit.com/api/v1/me", headers:["Authorization": "bearer \(accesstoken)"])
+        let decoder = JSONDecoder()
+        if let user = try? decoder.decode(RedditUser.self, from: userJson.content!) {
+            
+            self.username = user.name
+            //self.title = "\(self.username ?? "noname") Subreddits"
+            userInfoSetup(ForUser: user)
+            print(user.name)
+            
+            
+        } else {
+            print("Error with getting json")
+            
+        }
+        
+    }
+    
+    func getAccessToken(_ code: String) {
+        let r = Just.post("https://www.reddit.com/api/v1/access_token", data:["grant_type":"authorization_code","code": "\(code)", "redirect_uri": "myreddit://kevin"], auth: ("AOZZ5Fc3a1V3Rg", ""))
+        
+        
+        let decoder = JSONDecoder()
+        if let jsonPosts = try? decoder.decode(AccessToken.self, from: r.content!) {
+            self.accessToken = jsonPosts.access_token
+            parseUserJson(accesstoken: jsonPosts.access_token)
+            tableView.reloadData()
+        } else {
+            print("Error with getting json")
+            
+        }
+        
+        print(self.accessToken!)
         
         
     }
     
     func getAuthTokenWithWebLogin(context: ASWebAuthenticationPresentationContextProviding) {
 
-        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits")
+        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=temporary&scope=identity")
         let callbackUrlScheme = "myreddit://kevin"
+        
 
         self.webAuthSession = ASWebAuthenticationSession.init(url: authURL!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
-
             // handle auth response
             guard error == nil, let successURL = callBack else {
                 print(error)
@@ -98,28 +113,19 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
 
             // Do what you now that you've got the token, or use the callBack URL
             print(oauthToken?.value ?? "No OAuth Token")
-            self.accessToken = oauthToken?.value
+            self.accessCode = oauthToken?.value
+            self.getAccessToken(oauthToken?.value ?? "error")
+            
+            
+            
         })
         self.webAuthSession?.presentationContextProvider = context
         // Kick it off
         self.webAuthSession?.start()
+        
+        
     }
-    
-    
-    func showTutorial(_ which: Int) {
-        if let url = URL(string: "https://www.reddit.com/api/v1/authorize") {
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = true
 
-            let vc = SFSafariViewController(url: url, configuration: config)
-            present(vc, animated: true)
-        }
-    }
-    
-    
-    
-    
-    
     @objc func addSubreddit() {
         let ac = UIAlertController(title: "Add Subreddit", message: nil, preferredStyle: .alert)
         ac.addTextField()

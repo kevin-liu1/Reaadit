@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 
-class PostsView: UITableViewController {
+class PostsViewController: UITableViewController {
 
     
     var postsresult = [Posts]()

@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="1971" y="980"/>
         </scene>
-        <!--Posts View-->
+        <!--Posts View Controller-->
         <scene sceneID="4Gy-yO-s8T">
             <objects>
-                <tableViewController storyboardIdentifier="DisplayPosts" id="r7x-fE-nkt" customClass="PostsView" customModule="Reddit_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DisplayPosts" id="r7x-fE-nkt" customClass="PostsViewController" customModule="Reddit_Client" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g1d-OE-WWZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

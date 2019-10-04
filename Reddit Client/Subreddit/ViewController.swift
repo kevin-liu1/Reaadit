@@ -5,20 +5,10 @@
 //  Created by Kevin Liu on 2019-10-01.
 //  Copyright © 2019 kevinliu. All rights reserved.
 //
-
 import UIKit
 import Just
-import OAuth2
 import SafariServices
 import AuthenticationServices
-
-
-struct AccessToken: Codable {
-    let access_token: String
-    let token_type: String
-}
-
-
 
 
 class ViewController: UITableViewController, ASWebAuthenticationPresentationContextProviding {
@@ -32,6 +22,8 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     var webAuthSession: ASWebAuthenticationSession?
     var accessCode: String?
     var accessToken: String?
+    
+    
     
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return self.view.window ?? ASPresentationAnchor()
@@ -165,7 +157,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
                 self?.subredditnames.insert(answer, at: (self?.subredditnames.count)!)
                 let indexPath = IndexPath(row: (self?.subredditnames.count)! - 1, section: 1)
                 self?.tableView.insertRows(at: [indexPath], with: .automatic)
-            } 
+            }
             
         }
         ac.addAction(submitAction)
@@ -229,7 +221,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
 //        if indexPath.section == 0 {
 //            cell.textLabel?.font = cell.textLabel?.font.withSize(20)
 //            cell.detailTextLabel?.text = "Interesting"
-//            
+//
 //        }
         
         
@@ -247,7 +239,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayPosts") as? PostsView {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayPosts") as? PostsViewController {
             if indexPath.section == 0 {
                 vc.subreddit = topsubreddit[indexPath.row]
                 
@@ -263,4 +255,3 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         
     }
 }
-

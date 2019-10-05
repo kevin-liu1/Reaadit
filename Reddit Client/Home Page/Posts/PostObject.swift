@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 class PostObject {
     var postTitle: String
     var postSubtitle: String

@@ -13,8 +13,10 @@ import AuthenticationServices
 
 class ViewController: UITableViewController, ASWebAuthenticationPresentationContextProviding {
     var topsubreddit = [String]()
-    var subredditresults = [SubbedSubs]()
-    var subredditnames = [String]()
+    var subredditnames = [String]() //default subreddit list
+    var subredditresults = [SubbedSubs]() //list of subreddit objects
+    var subredditResultsStr = [String]() //names of subreddit objects
+    
     
     
     var loggedstatus = false
@@ -22,6 +24,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     var webAuthSession: ASWebAuthenticationSession?
     var accessCode: String?
     var accessToken: String?
+    var refreshToken: String?
     
     
     
@@ -49,8 +52,25 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         
         title = "Subreddits"
         
+
+        
     
     }
+    
+    func saveData(UserData userdata: UserData) {
+        let encoder = PropertyListEncoder()
+        encoder.outputFormat = .xml
+
+        let paths = Bundle.main.url(forResource: "UserData", withExtension: "plist")
+        
+        do {
+            let data = try encoder.encode(userdata)
+            try data.write(to: paths!)
+        } catch {
+            print(error)
+        }
+    }
+    
     @objc func logIn(){
         getAuthTokenWithWebLogin(context: self)
     }
@@ -61,7 +81,76 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         
     }
     
+    @objc func addSubreddit() {
+        let ac = UIAlertController(title: "Add Subreddit", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        let submitAction = UIAlertAction(title: "Add", style: .default) { [weak self, weak ac] _ in
+            guard let answer = ac?.textFields?[0].text else { return }
+            if answer != ""{
+                self?.subredditnames.insert(answer, at: (self?.subredditnames.count)!)
+                let indexPath = IndexPath(row: (self?.subredditnames.count)! - 1, section: 1)
+                self?.tableView.insertRows(at: [indexPath], with: .automatic)
+            }
+            
+        }
+        ac.addAction(submitAction)
+        
+        present(ac, animated: true)
+    }
     
+    func getAuthTokenWithWebLogin(context: ASWebAuthenticationPresentationContextProviding) {
+
+        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits,read,save,subscribe,vote,edit")
+        let callbackUrlScheme = "myreddit://kevin"
+        
+
+        self.webAuthSession = ASWebAuthenticationSession.init(url: authURL!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
+            // handle auth response
+            guard error == nil, let successURL = callBack else {
+                
+                return
+                
+            }
+            print("no error so far" )
+            let oauthToken = NSURLComponents(string: (successURL.absoluteString))?.queryItems?.filter({$0.name == "code"}).first
+
+            // Do what you now that you've got the token, or use the callBack URL
+            print(oauthToken?.value ?? "No OAuth Token")
+            self.accessCode = oauthToken?.value
+            self.getAccessToken(oauthToken?.value ?? "error")
+            
+            
+            
+        })
+        self.webAuthSession?.presentationContextProvider = context
+        // Kick it off
+        self.webAuthSession?.start()
+        
+        
+    }
+    
+    func getAccessToken(_ code: String) {
+        let r = Just.post("https://www.reddit.com/api/v1/access_token", data:["grant_type":"authorization_code","code": "\(code)", "redirect_uri": "myreddit://kevin"], auth: ("AOZZ5Fc3a1V3Rg", ""))
+        
+        
+        let decoder = JSONDecoder()
+        if let jsonPosts = try? decoder.decode(AccessToken.self, from: r.content!) {
+            self.accessToken = jsonPosts.access_token
+            self.refreshToken = jsonPosts.refresh_token
+            
+            parseUserJson(accesstoken: jsonPosts.access_token)
+            tableView.reloadData()
+        } else {
+            print("Error with getting json")
+            
+        }
+        
+        print("This is refresh token:" + (self.refreshToken ?? "no r Token"))
+        print("This is access token" + (self.accessToken ?? "no access Token"))
+        
+        
+    }
     
     
     func parseUserJson(accesstoken: String) {
@@ -85,85 +174,30 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         if let subs = try? decoder.decode(Listing.self, from: userSubs.content!) {
             
             self.subredditresults = subs.data.children
-            //self.title = "\(self.username ?? "noname") Subreddits"
+            
+            //filling up SubredditResultsStr
+            for i in 1...subs.data.children.count {
+                subredditResultsStr.append(subs.data.children[i-1].data.display_name)
+                
+            }
+            
             
             
         } else {
             print("Error with getting json")
             
         }
+        
+        let userdata = UserData(userName: self.username ?? "", accessToken: self.accessToken ?? "", subredditList: subredditResultsStr)
+        saveData(UserData: userdata)
+        
+        
         
         self.loggedstatus = true
         
     }
     
-    func getAccessToken(_ code: String) {
-        let r = Just.post("https://www.reddit.com/api/v1/access_token", data:["grant_type":"authorization_code","code": "\(code)", "redirect_uri": "myreddit://kevin"], auth: ("AOZZ5Fc3a1V3Rg", ""))
-        
-        
-        let decoder = JSONDecoder()
-        if let jsonPosts = try? decoder.decode(AccessToken.self, from: r.content!) {
-            self.accessToken = jsonPosts.access_token
-            parseUserJson(accesstoken: jsonPosts.access_token)
-            tableView.reloadData()
-        } else {
-            print("Error with getting json")
-            
-        }
-        
-        print(self.accessToken!)
-        
-        
-    }
-    
-    func getAuthTokenWithWebLogin(context: ASWebAuthenticationPresentationContextProviding) {
 
-        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=temporary&scope=identity,mysubreddits")
-        let callbackUrlScheme = "myreddit://kevin"
-        
-
-        self.webAuthSession = ASWebAuthenticationSession.init(url: authURL!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
-            // handle auth response
-            guard error == nil, let successURL = callBack else {
-                print(error)
-                return
-                
-            }
-            print("no error so far" )
-            let oauthToken = NSURLComponents(string: (successURL.absoluteString))?.queryItems?.filter({$0.name == "code"}).first
-
-            // Do what you now that you've got the token, or use the callBack URL
-            print(oauthToken?.value ?? "No OAuth Token")
-            self.accessCode = oauthToken?.value
-            self.getAccessToken(oauthToken?.value ?? "error")
-            
-            
-            
-        })
-        self.webAuthSession?.presentationContextProvider = context
-        // Kick it off
-        self.webAuthSession?.start()
-        
-        
-    }
-
-    @objc func addSubreddit() {
-        let ac = UIAlertController(title: "Add Subreddit", message: nil, preferredStyle: .alert)
-        ac.addTextField()
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        let submitAction = UIAlertAction(title: "Add", style: .default) { [weak self, weak ac] _ in
-            guard let answer = ac?.textFields?[0].text else { return }
-            if answer != ""{
-                self?.subredditnames.insert(answer, at: (self?.subredditnames.count)!)
-                let indexPath = IndexPath(row: (self?.subredditnames.count)! - 1, section: 1)
-                self?.tableView.insertRows(at: [indexPath], with: .automatic)
-            }
-            
-        }
-        ac.addAction(submitAction)
-        
-        present(ac, animated: true)
-    }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
@@ -211,18 +245,14 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         if loggedstatus == false {
             name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditnames[indexPath.row]
         } else {
-            name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditresults[indexPath.row].data.display_name
+            name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditResultsStr[indexPath.row] //subredditresults[indexPath.row].data.display_name
         }
         
         
         
         cell.textLabel?.text = name
         cell.selectionStyle = .default
-//        if indexPath.section == 0 {
-//            cell.textLabel?.font = cell.textLabel?.font.withSize(20)
-//            cell.detailTextLabel?.text = "Interesting"
-//
-//        }
+
         
         
         return cell
@@ -236,7 +266,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             return 44
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayPosts") as? PostsViewController {
@@ -246,7 +276,8 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             } else if loggedstatus == false {
                 vc.subreddit = subredditnames[indexPath.row]
             } else {
-                vc.subreddit = subredditresults[indexPath.row].data.display_name
+                //vc.subreddit = subredditresults[indexPath.row].data.display_name
+                vc.subreddit = subredditResultsStr[indexPath.row]
             }
             
             navigationController?.pushViewController(vc, animated: true)

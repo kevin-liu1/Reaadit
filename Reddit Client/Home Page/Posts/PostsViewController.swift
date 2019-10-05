@@ -34,8 +34,6 @@ class PostsViewController: UITableViewController {
         
         self.finishedposts = createCells()
         
-        // Do any additional setup after loading the view.
-        
         //tableView.register(PostCellTableViewCell.self, forCellReuseIdentifier: "Posts")
         
     }
@@ -46,7 +44,6 @@ class PostsViewController: UITableViewController {
        
         if let jsonPosts = try? decoder.decode(Wraps.self, from: json) {
             postsresult = jsonPosts.data.children
-            
         } else {
             print("Error with getting json")
             return
@@ -56,8 +53,8 @@ class PostsViewController: UITableViewController {
     func createCells() -> [PostObject] {
         let cellnumber = self.postsresult.count
         var createdcells = [PostObject]()
+        
         for i in 1...cellnumber {
-            
             let singlepost = postsresult[i-1]
             let post = singlepost.data
             
@@ -83,10 +80,7 @@ class PostsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = finishedposts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Posts", for: indexPath) as! PostCellTableViewCell
-        //let finalcell = setPost(cell: cell, indexPath: indexPath)
-        
         cell.setPost(postObject: post)
-        //.sd_setImageWithURL(imageUrl, placeholderImage:placeholderImage)
         cell.thumbnailImage.sd_setImage(with: URL(string: postsresult[indexPath.row].data.thumbnail), placeholderImage: UIImage(named: "icons8-align-center-100"))
         return cell
     }
@@ -94,9 +88,14 @@ class PostsViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailViewController()
-        vc.detailItem = postsresult[indexPath.row].data
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = DetailViewController()
+//        vc.detailItem = postsresult[indexPath.row].data
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayContent") as? ContentViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     

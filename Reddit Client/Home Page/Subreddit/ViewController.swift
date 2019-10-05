@@ -101,6 +101,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     
     func getAuthTokenWithWebLogin(context: ASWebAuthenticationPresentationContextProviding) {
 
+        
         let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits,read,save,subscribe,vote,edit")
         let callbackUrlScheme = "myreddit://kevin"
         

@@ -74,8 +74,8 @@
 		BE3089A62345E6CE00E3A2BC /* Subreddit */ = {
 			isa = PBXGroup;
 			children = (
-				BE72BF0A2346F65D0091B5E7 /* UserDataType.swift */,
 				BE7A817C2343A8DB00C9D490 /* ViewController.swift */,
+				BE72BF0A2346F65D0091B5E7 /* UserDataType.swift */,
 				BE72BF0C2346FF530091B5E7 /* SubredditDataType.swift */,
 			);
 			path = Subreddit;
@@ -84,8 +84,8 @@
 		BE3089A72345E6E700E3A2BC /* Posts */ = {
 			isa = PBXGroup;
 			children = (
-				BE72BF0E23471D5A0091B5E7 /* PostObject.swift */,
 				BE7A818C2343C6DD00C9D490 /* PostsViewController.swift */,
+				BE72BF0E23471D5A0091B5E7 /* PostObject.swift */,
 				BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */,
 				BE72BF082346F2DC0091B5E7 /* PostType.swift */,
 			);
@@ -106,10 +106,10 @@
 		BE72BF152347D1310091B5E7 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				BE5E9D1323486E2600C78A80 /* ContentViewController.swift */,
 				BE7A81902343DEC900C9D490 /* DetailViewController.swift */,
 				BED9165F23487343002AAE0A /* ContentCell.swift */,
 				BED9166123487450002AAE0A /* Content.swift */,
-				BE5E9D1323486E2600C78A80 /* ContentViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";

@@ -11,17 +11,21 @@ import Just
 
 class ContentViewController: UITableViewController {
     
+    var currentSub: String?
+    var currentTitle: String?
+    var upVotes: Int?
+    
     var contentCell = [Content]()
     var contentID: String?
     var accessToken: String?
-    var currentSub: String?
+    
     
     
     var commentList = [CommentKind]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = currentSub
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,7 +36,8 @@ class ContentViewController: UITableViewController {
         print("THis is current sub from view controller" + (currentSub ?? "non"))
         print("This is content view controller" + (contentID ?? "No Content String"))
         print("This is access token from conteview" + (accessToken ?? "No Access Token"))
-        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?count=60", headers:["Authorization": "bearer \(accessToken ?? "")"])
+        
+        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=60", headers:["Authorization": "bearer \(accessToken ?? "")"])
         
         //print(userJson.json)
         //we need to implement enum in struct
@@ -42,6 +47,7 @@ class ContentViewController: UITableViewController {
             
             
         } else {
+            
             print("Error with getting json") 
             
         }
@@ -53,7 +59,7 @@ class ContentViewController: UITableViewController {
 
     func createContent() {
         
-        self.contentCell = [Content(postTitle: "Sample Title", upVoteCount: 5, time: "10 Minutes")]
+        self.contentCell = [Content(postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? -1, time: "10 Minutes")]
 
     }
     
@@ -101,6 +107,7 @@ class ContentViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCell
+            cell.setContent(Content: contentCell[0])
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) 

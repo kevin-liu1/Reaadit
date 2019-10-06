@@ -24,20 +24,21 @@ class PostsViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         title = subreddit
-        let urlString = "https://www.reddit.com/r/" + subreddit!.lowercased() + ".json?limit=500"
+        let urlString = "https://www.reddit.com/r/" + subreddit!.lowercased() + ".json?limit=50"
+        getPostJson(urlString: urlString)
+
         
+        self.finishedposts = createCells()
+        
+    }
+    
+    func getPostJson(urlString: String){
         if let url = URL(string: urlString) {
             if let data = try? Data(contentsOf: url) {
                 parse(json: data)
             }
         }
-        
-        self.finishedposts = createCells()
-        
-        //tableView.register(PostCellTableViewCell.self, forCellReuseIdentifier: "Posts")
-        
     }
-    
     
     func parse(json: Data){
         let decoder = JSONDecoder()
@@ -66,12 +67,14 @@ class PostsViewController: UITableViewController {
                 subtitle = post.subreddit
             }
             
-            createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id))
+            createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.thumbnail))
         }
         return createdcells
     }
     
-
+    
+    
+    // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postsresult.count
@@ -81,21 +84,19 @@ class PostsViewController: UITableViewController {
         let post = finishedposts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Posts", for: indexPath) as! PostCellTableViewCell
         cell.setPost(postObject: post)
-        cell.thumbnailImage.sd_setImage(with: URL(string: postsresult[indexPath.row].data.thumbnail), placeholderImage: UIImage(named: "icons8-align-center-100"))
+        
         return cell
     }
     
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = DetailViewController()
-//        vc.detailItem = postsresult[indexPath.row].data
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-        
+
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayContent") as? ContentViewController {
             vc.contentID = finishedposts[indexPath.row].id
             vc.currentSub = self.subreddit
+            vc.currentTitle = finishedposts[indexPath.row].postTitle
+            vc.upVotes = finishedposts[indexPath.row].upVotes
             navigationController?.pushViewController(vc, animated: true)
         }
     }

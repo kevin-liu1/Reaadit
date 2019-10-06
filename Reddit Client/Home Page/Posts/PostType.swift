@@ -33,6 +33,7 @@ struct Post: Codable {
     let ups: Int
     let permalink: String
     let num_comments: Int
+    let id: String
     
     
 }

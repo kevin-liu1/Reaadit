@@ -29,6 +29,7 @@
 		BE7A819323441F4700C9D490 /* PostCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */; };
 		BED9166023487343002AAE0A /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9165F23487343002AAE0A /* ContentCell.swift */; };
 		BED9166223487450002AAE0A /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9166123487450002AAE0A /* Content.swift */; };
+		BED916642349C5D9002AAE0A /* UserDataExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED916632349C5D9002AAE0A /* UserDataExtract.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellTableViewCell.swift; sourceTree = "<group>"; };
 		BED9165F23487343002AAE0A /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		BED9166123487450002AAE0A /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		BED916632349C5D9002AAE0A /* UserDataExtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataExtract.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				BE3089A62345E6CE00E3A2BC /* Subreddit */,
 				BE3089A72345E6E700E3A2BC /* Posts */,
 				BE72BF152347D1310091B5E7 /* Detail */,
+				BED916632349C5D9002AAE0A /* UserDataExtract.swift */,
 			);
 			path = "Home Page";
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				BE72BF092346F2DC0091B5E7 /* PostType.swift in Sources */,
 				BE72BF0B2346F65D0091B5E7 /* UserDataType.swift in Sources */,
 				BE7A817B2343A8DB00C9D490 /* AppDelegate.swift in Sources */,
+				BED916642349C5D9002AAE0A /* UserDataExtract.swift in Sources */,
 				BE5E9D1423486E2600C78A80 /* ContentViewController.swift in Sources */,
 				BE7A81912343DEC900C9D490 /* DetailViewController.swift in Sources */,
 				BED9166023487343002AAE0A /* ContentCell.swift in Sources */,

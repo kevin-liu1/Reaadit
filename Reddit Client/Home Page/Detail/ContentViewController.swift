@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import Just
 
 class ContentViewController: UITableViewController {
     
     var contentCell = [Content]()
+    var contentID: String?
+    var accessToken: String?
+    var currentSub: String?
+    
+    
+    var commentList = [CommentKind]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +27,51 @@ class ContentViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        contentCell = [Content(postTitle: "Sample Title", upVoteCount: 5, time: "10 Minutes")]
         
+        accessToken = getAccessToken()
+        print("THis is current sub from view controller" + (currentSub ?? "non"))
+        print("This is content view controller" + (contentID ?? "No Content String"))
+        print("This is access token from conteview" + (accessToken ?? "No Access Token"))
+        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?count=60", headers:["Authorization": "bearer \(accessToken ?? "")"])
+        
+        //print(userJson.json)
+        //we need to implement enum in struct
+        let decoder = JSONDecoder()
+        if let comments = try? decoder.decode([PostKind].self, from: userJson.content!) {
+            commentList = comments[1].data.children
+            
+            
+        } else {
+            print("Error with getting json") 
+            
+        }
+        
+        createContent()
+        
+
     }
+
+    func createContent() {
+        
+        self.contentCell = [Content(postTitle: "Sample Title", upVoteCount: 5, time: "10 Minutes")]
+
+    }
+    
+    func getAccessToken() -> String {
+        if  let path        = Bundle.main.path(forResource: "UserData", ofType: "plist"),
+            let xml         = FileManager.default.contents(atPath: path),
+            let userdata = try? PropertyListDecoder().decode(UserData.self, from: xml)
+        {
+            print("This is user data from another view:" + userdata.userName)
+            self.title = userdata.userName
+            return userdata.accessToken
+        } else {
+            return "extraction didn't work"
+        }
+
+
+    }
+    
 
     // MARK: - Table view data source
 
@@ -38,7 +87,7 @@ class ContentViewController: UITableViewController {
         case 0:
             return 1
         case 1:
-            return 10
+            return commentList.count
         default:
             return 1
         }
@@ -48,23 +97,14 @@ class ContentViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //var cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCell
-        
-//        if indexPath.section == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCell
-//            let post = contentCell[0]
-//            cell.setContent(Content: post)
-//        } else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath)
-//            cell.textLabel?.text = "hello"
-//        }
         
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCell
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) 
+            cell.textLabel?.text = commentList[indexPath.row].data.body
             return cell
             
         default:

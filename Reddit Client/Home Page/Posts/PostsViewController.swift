@@ -66,7 +66,7 @@ class PostsViewController: UITableViewController {
                 subtitle = post.subreddit
             }
             
-            createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments))
+            createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id))
         }
         return createdcells
     }
@@ -94,6 +94,8 @@ class PostsViewController: UITableViewController {
 //    }
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayContent") as? ContentViewController {
+            vc.contentID = finishedposts[indexPath.row].id
+            vc.currentSub = self.subreddit
             navigationController?.pushViewController(vc, animated: true)
         }
     }

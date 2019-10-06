@@ -13,3 +13,35 @@ struct Content {
     var upVoteCount: Int
     var time: String
 }
+
+
+
+struct PostKind: Codable {
+    var kind: String
+    var data: CommentData
+}
+
+struct CommentData: Codable{
+    //var modhash: String
+    //var dist: Int
+    var children = [CommentKind]()
+    
+}
+
+struct CommentKind: Codable {
+    var kind: String
+    var data: Comment
+    
+//    enum CodingKeys: String, CodingKey {
+//    case kind = "t1"
+//    case data
+//    }
+}
+
+struct Comment: Codable {
+    var ups: Int?
+    var author: String?
+    var body: String?
+}
+
+

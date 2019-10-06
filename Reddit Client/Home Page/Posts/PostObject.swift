@@ -15,13 +15,15 @@ class PostObject {
 
     var upVotes: Int
     var comments: Int
+    var id: String
 
     
-    init(postTitle: String, postSubtitle: String, upVotes: Int, comments: Int) {
+    init(postTitle: String, postSubtitle: String, upVotes: Int, comments: Int, id: String) {
         self.postTitle = postTitle
         self.postSubtitle = postSubtitle
 
         self.comments = comments
         self.upVotes = upVotes
+        self.id = id
     }
 }

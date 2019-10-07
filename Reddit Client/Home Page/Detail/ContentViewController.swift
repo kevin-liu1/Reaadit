@@ -21,42 +21,37 @@ class ContentViewController: UITableViewController {
     
     var commentListFinal = [CommentType]()
     
-    
+    let defaults = UserDefaults.standard
     
     
     var commentList = [CommentKind]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = currentSub
         
-        
-
-        
-//        print("THis is current sub from view controller" + (currentSub ?? "non"))
-//        print("This is content view controller" + (contentID ?? "No Content String"))
-//        print("This is access token from conteview" + (accessToken ?? "No Access Token"))
-        
-        accessToken = UserDataExtract().getAccessToken()
-        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=60", headers:["Authorization": "bearer \(accessToken ?? "")"])
-        
-        //print(userJson.json)
-        //we need to implement enum in struct
-        let decoder = JSONDecoder()
-        if let comments = try? decoder.decode([PostKind].self, from: userJson.content!) {
-            self.commentList = comments[1].data.children
-            
-            
-        } else {
-            
-            print("Error with getting comment json") 
-            
-        }
-        
+        getJson()
         createContent()
         createComments()
         
 
+    }
+    
+    func getJson() {
+        accessToken = defaults.string(forKey: "accessToken")
+        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=60", headers:["Authorization": "bearer \(accessToken ?? "")"])
+        
+        let decoder = JSONDecoder()
+        if let comments = try? decoder.decode([PostKind].self, from: userJson.content!) {
+            print(comments[0].data.children)
+            self.commentList = comments[1].data.children
+            
+        } else {
+            
+            print("Error with getting comment json")
+            
+        }
     }
 
     func createContent() {
@@ -74,34 +69,6 @@ class ContentViewController: UITableViewController {
         }
     }
     
-    func getAccessToken() -> String {
-        if  let path        = Bundle.main.path(forResource: "UserData", ofType: "plist"),
-            let xml         = FileManager.default.contents(atPath: path),
-            let userdata = try? PropertyListDecoder().decode(UserData.self, from: xml)
-        {
-            print("This is user data from another view:" + userdata.userName)
-            self.title = userdata.userName
-            return userdata.accessToken 
-        } else {
-            return "extraction didn't work"
-        }
-
-
-    }
-    func getSubList() -> [String] {
-        if  let path        = Bundle.main.path(forResource: "UserData", ofType: "plist"),
-            let xml         = FileManager.default.contents(atPath: path),
-            let userdata = try? PropertyListDecoder().decode(UserData.self, from: xml)
-        {
-            print("This is user data from another view:" + userdata.userName)
-            //self.testArray = userdata.subredditList
-            return userdata.subredditList
-        } else {
-            return [""]
-        }
-
-
-    }
     
 
     // MARK: - Table view data source

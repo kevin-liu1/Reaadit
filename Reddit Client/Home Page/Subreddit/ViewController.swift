@@ -17,8 +17,6 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     var subredditResultsStr = [String]() //names of subreddit objects logged in 
     
     
-    
-    var loggedstatus = false
     var username: String?
     var webAuthSession: ASWebAuthenticationSession?
     var accessCode: String?
@@ -26,6 +24,8 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     var refreshToken: String?
     
     let dispatchGroup = DispatchGroup()
+    
+    let defaults = UserDefaults.standard
     
     
     
@@ -43,32 +43,31 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
 //        }
 //
         
-        loggedstatus = UserDataExtract().loggedInStatus()
+        //loggedstatus = UserDataExtract().loggedInStatus()
         
-        print(UserDataExtract().loggedInStatus())
+        //loggedstatus = defaults.bool(forKey: "logStatus")
+        
+        
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSubreddit))
         navigationController?.navigationBar.prefersLargeTitles = false
         subredditnames += ["Mac", "Apple", "Android", "NBA", "Toronto", "NYC", "ApolloApp", "AskTO"]
         topsubreddit += ["Popular", "All"]
         
-        if self.loggedstatus == false {
+        if defaults.bool(forKey: "logStatus") == false {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(logIn))
 
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
-            subredditResultsStr = UserDataExtract().getSubList()
+            subredditResultsStr = defaults.object(forKey: "subredditList") as? [String] ?? [String]()
         }
         
         title = "Subreddits"
         
     }
     @objc func logOut(){
-        let accessToken = UserDataExtract().getAccessToken()
-        let refreshToken = UserDataExtract().getRefreshToken()
-        let userdata = UserData(logStatus: false, userName: username ?? "No UserName", accessToken: accessToken, refreshToken: refreshToken, subredditList: subredditnames)
-        UserDataUpdate().saveData(UserData: userdata)
-        loggedstatus = UserDataExtract().loggedInStatus()
+        defaults.set(false, forKey: "logStatus")
+    
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(self.logIn))
         tableView.reloadData()
     }
@@ -79,9 +78,9 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         dispatchGroup.notify(queue: .main){
             print("Dispatch Group Reached")
             
-            self.loggedstatus = true
+            self.defaults.set(true, forKey: "logStatus")
+            self.subredditResultsStr = self.defaults.object(forKey: "subredditList") as? [String] ?? [String]()
             
-            self.subredditResultsStr = UserDataExtract().getSubList()
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
             self.tableView.reloadData()
             
@@ -128,7 +127,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             // Do what you now that you've got the token, or use the callBack URL
             print(oauthToken?.value ?? "No OAuth Token")
             self.accessCode = oauthToken?.value
-            //self.getAccessToken(oauthToken?.value ?? "error")
+            
             LogIn().getAccessToken(oauthToken?.value ?? "Error")
             
             self.dispatchGroup.leave()
@@ -175,11 +174,11 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         if section == 0 {
             return topsubreddit.count
         }
-        else if loggedstatus == false {
-            return subredditnames.count
+        else if defaults.bool(forKey: "logStatus") {
+            return subredditResultsStr.count
         }
         else {
-            return subredditResultsStr.count
+             return subredditnames.count
         }
         
     }
@@ -188,10 +187,12 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         var name: String
         //let name = subredditnames[indexPath.row]
-        if loggedstatus == false {
-            name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditnames[indexPath.row]
+        if defaults.bool(forKey: "logStatus") {
+            name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditResultsStr[indexPath.row]
+           
         } else {
-            name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditResultsStr[indexPath.row] //subredditresults[indexPath.row].data.display_name
+            name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditnames[indexPath.row]
+            
         }
         
         
@@ -219,11 +220,12 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             if indexPath.section == 0 {
                 vc.subreddit = topsubreddit[indexPath.row]
                 
-            } else if loggedstatus == false {
-                vc.subreddit = subredditnames[indexPath.row]
+            } else if defaults.bool(forKey: "logStatus") {
+                
+                vc.subreddit = subredditResultsStr[indexPath.row]
             } else {
                 //vc.subreddit = subredditresults[indexPath.row].data.display_name
-                vc.subreddit = subredditResultsStr[indexPath.row]
+                vc.subreddit = subredditnames[indexPath.row]
             }
             
             navigationController?.pushViewController(vc, animated: true)

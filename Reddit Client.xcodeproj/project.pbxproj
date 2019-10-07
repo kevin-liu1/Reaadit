@@ -167,13 +167,13 @@
 		BE7A81792343A8DB00C9D490 /* Reddit Client */ = {
 			isa = PBXGroup;
 			children = (
+				BE72BF1A2347ECA30091B5E7 /* UserData.swift */,
+				BE72BF182347EB800091B5E7 /* UserData.plist */,
 				BE72BF162347E5450091B5E7 /* Home Page */,
 				BE72BF172347E5690091B5E7 /* Profile Page */,
 				BE7A817E2343A8DB00C9D490 /* Main.storyboard */,
 				BE612C182345843700FD87D4 /* Supporting */,
 				BE7A81862343A8DD00C9D490 /* Info.plist */,
-				BE72BF182347EB800091B5E7 /* UserData.plist */,
-				BE72BF1A2347ECA30091B5E7 /* UserData.swift */,
 			);
 			path = "Reddit Client";
 			sourceTree = "<group>";

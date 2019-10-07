@@ -16,6 +16,7 @@ class LogIn{
     var webAuthSession: ASWebAuthenticationSession?
     var subredditresults = [SubbedSubs]() //list of subreddit objects
     var subredditResultsStr = [String]() //names of subreddit objects
+    let defaults = UserDefaults.standard
     
     
     func getAccessToken(_ code: String) {
@@ -76,25 +77,31 @@ class LogIn{
             
         }
         
-        let userdata = UserData(logStatus: true, userName: username ?? "No UserName", accessToken: accesstoken, refreshToken: refreshtoken, subredditList: subredditResultsStr)
-        saveData(UserData: userdata)
+        defaults.set(username, forKey: "userName")
+        defaults.set(accesstoken, forKey: "accessToken")
+        defaults.set(refreshtoken, forKey: "refreshToken")
+        defaults.set(subredditResultsStr, forKey: "subredditList")
+        
+        print("Log in Data Retrieved")
+//        let userdata = UserData(logStatus: true, userName: username ?? "No UserName", accessToken: accesstoken, refreshToken: refreshtoken, subredditList: subredditResultsStr)
+//        saveData(UserData: userdata)
 
         
     }
     
     
-    func saveData(UserData userdata: UserData) {
-        let encoder = PropertyListEncoder()
-        encoder.outputFormat = .xml
-
-        let paths = Bundle.main.url(forResource: "UserData", withExtension: "plist")
-        
-        do {
-            let data = try encoder.encode(userdata)
-            try data.write(to: paths!)
-        } catch {
-            print(error)
-        }
-    }
+//    func saveData(UserData userdata: UserData) {
+//        let encoder = PropertyListEncoder()
+//        encoder.outputFormat = .xml
+//
+//        let paths = Bundle.main.url(forResource: "UserData", withExtension: "plist")
+//
+//        do {
+//            let data = try encoder.encode(userdata)
+//            try data.write(to: paths!)
+//        } catch {
+//            print(error)
+//        }
+//    }
     
 }

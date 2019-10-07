@@ -15,7 +15,7 @@ class ContentViewController: UITableViewController {
     var currentTitle: String?
     var upVotes: Int?
     
-    var contentCell = [Content]()
+    var contentCell: Content?
     var contentID: String? //passed by previous VC
     var accessToken: String?
     
@@ -25,6 +25,7 @@ class ContentViewController: UITableViewController {
     
     
     var commentList = [CommentKind]()
+    var content = [CommentKind]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +50,13 @@ class ContentViewController: UITableViewController {
         
         let decoder = JSONDecoder()
         if let comments = try? decoder.decode([PostKind].self, from: userJson.content!) {
+            print("decoded comment json")
             print(comments[0].data.children)
             self.commentList = comments[1].data.children
+            self.content = comments[0].data.children
             
         } else {
-            accessToken = RefreshLogin().getAccessToken()
+            RefreshLogin().getAccessToken()
             getJson()
             print("Error with getting comment json")
             
@@ -61,8 +64,8 @@ class ContentViewController: UITableViewController {
     }
 
     func createContent() {
-        
-        self.contentCell = [Content(postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes")]
+        let contentthings = self.content[0].data
+        self.contentCell = Content(postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none")
 
     }
     
@@ -100,16 +103,23 @@ class ContentViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCell
-            cell.setContent(Content: contentCell[0])
-            return cell
+            if self.content[0].data.is_self ?? false {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
+                cell.setContent(Content: contentCell!)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellRich
+                cell.setContent(content: self.contentCell!)
+                return cell
+            }
+
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) as! CommentCell
             let comment = commentListFinal[indexPath.row]
             cell.setCommentCell(comment: comment)
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
             return cell
         }
         

@@ -12,6 +12,8 @@ struct Content {
     var postTitle: String
     var upVoteCount: Int
     var time: String
+    var selftext: String
+    var thumbnail: String
 }
 
 
@@ -47,6 +49,7 @@ struct ContentorComment: Codable {
     var is_self: Bool?
     var post_hint: String? // This tells you what kind of post it is.
     var selftext: String? //If this is not empty then Content is a Title + Body Type
+    var thumbnail: String?
     
     
     //for both

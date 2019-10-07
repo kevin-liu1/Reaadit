@@ -83,8 +83,6 @@ class LogIn{
         defaults.set(subredditResultsStr, forKey: "subredditList")
         
         print("Log in Data Retrieved")
-//        let userdata = UserData(logStatus: true, userName: username ?? "No UserName", accessToken: accesstoken, refreshToken: refreshtoken, subredditList: subredditResultsStr)
-//        saveData(UserData: userdata)
 
         
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE110740234B9D9000CDDD5E /* RefreshLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE11073F234B9D9000CDDD5E /* RefreshLogin.swift */; };
 		BE3089A52345DE0F00E3A2BC /* Just in Frameworks */ = {isa = PBXBuildFile; productRef = BE3089A42345DE0F00E3A2BC /* Just */; };
 		BE5E9D1423486E2600C78A80 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5E9D1323486E2600C78A80 /* ContentViewController.swift */; };
 		BE612C1523452C8700FD87D4 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = BE612C1423452C8700FD87D4 /* icons */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE11073F234B9D9000CDDD5E /* RefreshLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshLogin.swift; sourceTree = "<group>"; };
 		BE5E9D1323486E2600C78A80 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		BE612C1423452C8700FD87D4 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
 		BE72BF082346F2DC0091B5E7 /* PostType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostType.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				BE72BF152347D1310091B5E7 /* Detail */,
 				BED916632349C5D9002AAE0A /* UserDataExtract.swift */,
 				BED91667234AC48F002AAE0A /* LogIn.swift */,
+				BE11073F234B9D9000CDDD5E /* RefreshLogin.swift */,
 				BED91669234AD328002AAE0A /* UserDataUpdate.swift */,
 			);
 			path = "Home Page";
@@ -281,6 +284,7 @@
 				BED9166023487343002AAE0A /* ContentCell.swift in Sources */,
 				BED91670234B0293002AAE0A /* CommentType.swift in Sources */,
 				BE72BF1B2347ECA30091B5E7 /* UserData.swift in Sources */,
+				BE110740234B9D9000CDDD5E /* RefreshLogin.swift in Sources */,
 				BE7A819323441F4700C9D490 /* PostCellTableViewCell.swift in Sources */,
 				BED9166E234AFC24002AAE0A /* CommentCell.swift in Sources */,
 				BED9166223487450002AAE0A /* Content.swift in Sources */,

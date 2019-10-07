@@ -31,7 +31,12 @@ class ContentViewController: UITableViewController {
         
         title = currentSub
         
-        getJson()
+        if defaults.bool(forKey: "logStatus"){
+            getJson()
+        } else {
+            print("Not Logged In")
+        }
+        
         createContent()
         createComments()
         
@@ -48,7 +53,8 @@ class ContentViewController: UITableViewController {
             self.commentList = comments[1].data.children
             
         } else {
-            
+            accessToken = RefreshLogin().getAccessToken()
+            getJson()
             print("Error with getting comment json")
             
         }

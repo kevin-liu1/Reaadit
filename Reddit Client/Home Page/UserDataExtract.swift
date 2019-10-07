@@ -28,7 +28,7 @@ class UserDataExtract {
             let xml         = FileManager.default.contents(atPath: path),
             let userdata = try? PropertyListDecoder().decode(UserData.self, from: xml)
         {
-            print("This is user data from another view:" + userdata.refreshToken)
+
             return userdata.refreshToken
         } else {
             return "extraction didn't work"
@@ -42,8 +42,7 @@ class UserDataExtract {
             let xml         = FileManager.default.contents(atPath: path),
             let userdata = try? PropertyListDecoder().decode(UserData.self, from: xml)
         {
-            print("This is user data from another view:" + userdata.subredditList[0])
-            //self.testArray = userdata.subredditList
+
             return userdata.subredditList
         } else {
             return [""]
@@ -57,9 +56,7 @@ class UserDataExtract {
             let xml         = FileManager.default.contents(atPath: path),
             let userdata = try? PropertyListDecoder().decode(UserData.self, from: xml)
         {
-            
-            //print("This is user data from another view:" + userdata.logStatus)
-            //self.testArray = userdata.subredditList
+
             return userdata.logStatus
         } else {
             return false

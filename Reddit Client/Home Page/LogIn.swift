@@ -26,11 +26,11 @@ class LogIn{
         if let jsonPosts = try? decoder.decode(AccessToken.self, from: r.content!) {
             //self.accessToken = jsonPosts.access_token
             //self.refreshToken = jsonPosts.refresh_token
-            
+            print(jsonPosts.access_token)
             parseUserJson(accesstoken: jsonPosts.access_token, refreshtoken: jsonPosts.refresh_token)
             //tableView.reloadData()
         } else {
-            print("Error with getting json")
+            print("Error with getting accesstoken json")
             
         }
         
@@ -54,7 +54,7 @@ class LogIn{
             
             
         } else {
-            print("Error with getting json")
+            print("Error with getting subreddit list json")
             
         }
         
@@ -78,10 +78,7 @@ class LogIn{
         
         let userdata = UserData(logStatus: true, userName: username ?? "No UserName", accessToken: accesstoken, refreshToken: refreshtoken, subredditList: subredditResultsStr)
         saveData(UserData: userdata)
-        
-        
-        
-        //self.loggedstatus = true
+
         
     }
     

@@ -21,12 +21,9 @@ class PostsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
         title = subreddit
         let urlString = "https://www.reddit.com/r/" + subreddit!.lowercased() + ".json?limit=50"
         getPostJson(urlString: urlString)
-
         
         self.finishedposts = createCells()
         

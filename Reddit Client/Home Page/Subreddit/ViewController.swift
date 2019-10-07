@@ -45,6 +45,8 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         
         loggedstatus = UserDataExtract().loggedInStatus()
         
+        print(UserDataExtract().loggedInStatus())
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSubreddit))
         navigationController?.navigationBar.prefersLargeTitles = false
         subredditnames += ["Mac", "Apple", "Android", "NBA", "Toronto", "NYC", "ApolloApp", "AskTO"]
@@ -81,7 +83,6 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             
             self.subredditResultsStr = UserDataExtract().getSubList()
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
-            
             self.tableView.reloadData()
             
          }

@@ -30,15 +30,30 @@ struct CommentData: Codable{
 
 struct CommentKind: Codable {
     var kind: String
-    var data: Comment
+    var data: ContentorComment
     
 }
 
-struct Comment: Codable {
-    var ups: Int?
+
+struct ContentorComment: Codable {
+    //
+    
+    //for Comment
     var author: String?
     var body: String?
+    
+    //for Content
+    var title: String?
+    var is_self: Bool?
+    var post_hint: String? // This tells you what kind of post it is.
+    var selftext: String? //If this is not empty then Content is a Title + Body Type
+    
+    
+    //for both
+    var ups: Int?
+    
     //var replies: PostKind?
 }
+
 
 

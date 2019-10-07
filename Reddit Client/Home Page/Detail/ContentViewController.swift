@@ -11,15 +11,16 @@ import Just
 
 class ContentViewController: UITableViewController {
     
-    var currentSub: String?
+    var currentSub: String? //passed by prev VC
     var currentTitle: String?
     var upVotes: Int?
     
     var contentCell = [Content]()
-    var contentID: String?
+    var contentID: String? //passed by previous VC
     var accessToken: String?
     
-    var testArray: [String]?
+    var commentListFinal = [CommentType]()
+    
     
     
     
@@ -29,41 +30,48 @@ class ContentViewController: UITableViewController {
         super.viewDidLoad()
         title = currentSub
         
+        
+
+        
+//        print("THis is current sub from view controller" + (currentSub ?? "non"))
+//        print("This is content view controller" + (contentID ?? "No Content String"))
+//        print("This is access token from conteview" + (accessToken ?? "No Access Token"))
+        
         accessToken = UserDataExtract().getAccessToken()
-        testArray = getSubList()
-        
-        for i in testArray ?? [""] {
-            print(i)
-        }
-        
-        print("THis is current sub from view controller" + (currentSub ?? "non"))
-        print("This is content view controller" + (contentID ?? "No Content String"))
-        print("This is access token from conteview" + (accessToken ?? "No Access Token"))
-        
         let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=60", headers:["Authorization": "bearer \(accessToken ?? "")"])
         
         //print(userJson.json)
         //we need to implement enum in struct
         let decoder = JSONDecoder()
         if let comments = try? decoder.decode([PostKind].self, from: userJson.content!) {
-            commentList = comments[1].data.children
+            self.commentList = comments[1].data.children
             
             
         } else {
             
-            print("Error with getting json") 
+            print("Error with getting comment json") 
             
         }
         
         createContent()
+        createComments()
         
 
     }
 
     func createContent() {
         
-        self.contentCell = [Content(postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? -1, time: "10 Minutes")]
+        self.contentCell = [Content(postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes")]
 
+    }
+    
+    func createComments() {
+        for comment in self.commentList {
+            let com = comment.data
+            let commentcell = CommentType(author: com.author ?? "No Author", upvotes: com.ups ?? -1, time: "10 Minutes", textbody: com.body ?? "Empty Body")
+            commentListFinal.append(commentcell)
+            
+        }
     }
     
     func getAccessToken() -> String {
@@ -73,7 +81,7 @@ class ContentViewController: UITableViewController {
         {
             print("This is user data from another view:" + userdata.userName)
             self.title = userdata.userName
-            return userdata.accessToken ?? "No Token"
+            return userdata.accessToken 
         } else {
             return "extraction didn't work"
         }
@@ -99,91 +107,41 @@ class ContentViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
         switch section {
         case 0:
             return 1
         case 1:
-            return commentList.count
+            return commentListFinal.count
         default:
             return 1
         }
-        
         
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCell
             cell.setContent(Content: contentCell[0])
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) 
-            cell.textLabel?.text = commentList[indexPath.row].data.body
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) as! CommentCell
+            let comment = commentListFinal[indexPath.row]
+            cell.setCommentCell(comment: comment)
             return cell
-            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCell
             return cell
         }
         
-
-
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -30,7 +30,7 @@ class PostCellTableViewCell: UITableViewCell {
         comments.text = String(postObject.comments)
         
         
-        thumbnailImage.sd_setImage(with: URL(string: postObject.thumbnailURL), placeholderImage: UIImage(named: "icons8-align-center-100"))
+        thumbnailImage.sd_setImage(with: URL(string: postObject.thumbnailURL), placeholderImage: UIImage(named: "icons8-reddit-100"))
         
         thumbnailImage?.contentMode = .scaleAspectFill
         thumbnailImage.layer.cornerRadius = 10

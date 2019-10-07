@@ -9,10 +9,13 @@
 import UIKit
 
 class ContentCell: UITableViewCell {
+
+    @IBOutlet weak var postTitleLabel: UILabel!
     
     @IBOutlet weak var upvoteLabel: UILabel!
+    
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var postTitleLabel: UILabel!
+    
     
     func setContent(Content: Content) {
         upvoteLabel.text = String(Content.upVoteCount)
@@ -30,5 +33,5 @@ class ContentCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

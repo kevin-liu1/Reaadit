@@ -19,6 +19,8 @@ class ContentViewController: UITableViewController {
     var contentID: String?
     var accessToken: String?
     
+    var testArray: [String]?
+    
     
     
     var commentList = [CommentKind]()
@@ -26,13 +28,14 @@ class ContentViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = currentSub
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        accessToken = getAccessToken()
+        accessToken = UserDataExtract().getAccessToken()
+        testArray = getSubList()
+        
+        for i in testArray ?? [""] {
+            print(i)
+        }
+        
         print("THis is current sub from view controller" + (currentSub ?? "non"))
         print("This is content view controller" + (contentID ?? "No Content String"))
         print("This is access token from conteview" + (accessToken ?? "No Access Token"))
@@ -70,9 +73,23 @@ class ContentViewController: UITableViewController {
         {
             print("This is user data from another view:" + userdata.userName)
             self.title = userdata.userName
-            return userdata.accessToken
+            return userdata.accessToken ?? "No Token"
         } else {
             return "extraction didn't work"
+        }
+
+
+    }
+    func getSubList() -> [String] {
+        if  let path        = Bundle.main.path(forResource: "UserData", ofType: "plist"),
+            let xml         = FileManager.default.contents(atPath: path),
+            let userdata = try? PropertyListDecoder().decode(UserData.self, from: xml)
+        {
+            print("This is user data from another view:" + userdata.userName)
+            //self.testArray = userdata.subredditList
+            return userdata.subredditList
+        } else {
+            return [""]
         }
 
 

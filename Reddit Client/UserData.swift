@@ -9,7 +9,9 @@
 import Foundation
 
 struct UserData: Codable {
+    var logStatus: Bool
     var userName: String
     var accessToken: String
+    var refreshToken: String
     var subredditList: [String]
 }

@@ -39,7 +39,7 @@ class SearchViewController: UITableViewController {
     }
     
     @objc func pullData(){
-
+        tableView.reloadData()
     }
 
     /*

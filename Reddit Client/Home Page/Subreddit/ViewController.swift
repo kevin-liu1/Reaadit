@@ -14,8 +14,7 @@ import AuthenticationServices
 class ViewController: UITableViewController, ASWebAuthenticationPresentationContextProviding {
     var topsubreddit = [String]()
     var subredditnames = [String]() //default subreddit list
-    var subredditresults = [SubbedSubs]() //list of subreddit objects
-    var subredditResultsStr = [String]() //names of subreddit objects
+    var subredditResultsStr = [String]() //names of subreddit objects logged in 
     
     
     
@@ -25,6 +24,8 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     var accessCode: String?
     var accessToken: String?
     var refreshToken: String?
+    
+    let dispatchGroup = DispatchGroup()
     
     
     
@@ -37,42 +38,53 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        if UserDataExtract().loggedInStatus() == true {
+//            self.loggedstatus = true
+//        }
+//
+        
+        loggedstatus = UserDataExtract().loggedInStatus()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSubreddit))
         navigationController?.navigationBar.prefersLargeTitles = false
         subredditnames += ["Mac", "Apple", "Android", "NBA", "Toronto", "NYC", "ApolloApp", "AskTO"]
         topsubreddit += ["Popular", "All"]
         
-        
-        
-        
         if self.loggedstatus == false {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(logIn))
+
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
+            subredditResultsStr = UserDataExtract().getSubList()
         }
         
         title = "Subreddits"
         
-
-        
-    
     }
-    
-    func saveData(UserData userdata: UserData) {
-        let encoder = PropertyListEncoder()
-        encoder.outputFormat = .xml
-
-        let paths = Bundle.main.url(forResource: "UserData", withExtension: "plist")
-        
-        do {
-            let data = try encoder.encode(userdata)
-            try data.write(to: paths!)
-        } catch {
-            print(error)
-        }
+    @objc func logOut(){
+        let accessToken = UserDataExtract().getAccessToken()
+        let refreshToken = UserDataExtract().getRefreshToken()
+        let userdata = UserData(logStatus: false, userName: username ?? "No UserName", accessToken: accessToken, refreshToken: refreshToken, subredditList: subredditnames)
+        UserDataUpdate().saveData(UserData: userdata)
+        loggedstatus = UserDataExtract().loggedInStatus()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(self.logIn))
+        tableView.reloadData()
     }
     
     @objc func logIn(){
         getAuthTokenWithWebLogin(context: self)
+        
+        dispatchGroup.notify(queue: .main){
+            print("Dispatch Group Reached")
+            
+            self.loggedstatus = true
+            
+            self.subredditResultsStr = UserDataExtract().getSubList()
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
+            
+            self.tableView.reloadData()
+            
+         }
     }
     
     func userInfoSetup(ForUser user: RedditUser) {
@@ -100,18 +112,14 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     }
     
     func getAuthTokenWithWebLogin(context: ASWebAuthenticationPresentationContextProviding) {
-
+        dispatchGroup.enter()
         
         let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits,read,save,subscribe,vote,edit")
         let callbackUrlScheme = "myreddit://kevin"
-        
-
         self.webAuthSession = ASWebAuthenticationSession.init(url: authURL!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
             // handle auth response
             guard error == nil, let successURL = callBack else {
-                
                 return
-                
             }
             print("no error so far" )
             let oauthToken = NSURLComponents(string: (successURL.absoluteString))?.queryItems?.filter({$0.name == "code"}).first
@@ -119,85 +127,21 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             // Do what you now that you've got the token, or use the callBack URL
             print(oauthToken?.value ?? "No OAuth Token")
             self.accessCode = oauthToken?.value
-            self.getAccessToken(oauthToken?.value ?? "error")
+            //self.getAccessToken(oauthToken?.value ?? "error")
+            LogIn().getAccessToken(oauthToken?.value ?? "Error")
             
-            
+            self.dispatchGroup.leave()
             
         })
         self.webAuthSession?.presentationContextProvider = context
         // Kick it off
         self.webAuthSession?.start()
         
-        
-    }
-    
-    func getAccessToken(_ code: String) {
-        let r = Just.post("https://www.reddit.com/api/v1/access_token", data:["grant_type":"authorization_code","code": "\(code)", "redirect_uri": "myreddit://kevin"], auth: ("AOZZ5Fc3a1V3Rg", ""))
-        
-        
-        let decoder = JSONDecoder()
-        if let jsonPosts = try? decoder.decode(AccessToken.self, from: r.content!) {
-            self.accessToken = jsonPosts.access_token
-            self.refreshToken = jsonPosts.refresh_token
-            
-            parseUserJson(accesstoken: jsonPosts.access_token)
-            tableView.reloadData()
-        } else {
-            print("Error with getting json")
-            
-        }
-        
-        print("This is refresh token:" + (self.refreshToken ?? "no r Token"))
-        print("This is access token" + (self.accessToken ?? "no access Token"))
-        
-        
     }
     
     
-    func parseUserJson(accesstoken: String) {
-        
-        let userJson = Just.get("https://oauth.reddit.com/api/v1/me", headers:["Authorization": "bearer \(accesstoken)"])
-        let decoder = JSONDecoder()
-        if let user = try? decoder.decode(RedditUser.self, from: userJson.content!) {
-            
-            self.username = user.name
-            //self.title = "\(self.username ?? "noname") Subreddits"
-            userInfoSetup(ForUser: user)
-            print(user.name)
-            
-            
-        } else {
-            print("Error with getting json")
-            
-        }
-        
-        let userSubs = Just.get("https://oauth.reddit.com/subreddits/mine/subscriber?limit=100", headers:["Authorization": "bearer \(accesstoken)"])
-        if let subs = try? decoder.decode(Listing.self, from: userSubs.content!) {
-            
-            self.subredditresults = subs.data.children
-            
-            //filling up SubredditResultsStr
-            for i in 1...subs.data.children.count {
-                subredditResultsStr.append(subs.data.children[i-1].data.display_name)
-                
-            }
-            
-            
-            
-        } else {
-            print("Error with getting json")
-            
-        }
-        
-        let userdata = UserData(userName: self.username ?? "", accessToken: self.accessToken ?? "", subredditList: subredditResultsStr)
-        saveData(UserData: userdata)
-        
-        
-        
-        self.loggedstatus = true
-        
-    }
     
+    // MARK: - Table view data source
 
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -234,7 +178,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             return subredditnames.count
         }
         else {
-            return subredditresults.count
+            return subredditResultsStr.count
         }
         
     }

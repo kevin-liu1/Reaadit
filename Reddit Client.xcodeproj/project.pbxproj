@@ -30,6 +30,8 @@
 		BED9166023487343002AAE0A /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9165F23487343002AAE0A /* ContentCell.swift */; };
 		BED9166223487450002AAE0A /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9166123487450002AAE0A /* Content.swift */; };
 		BED916642349C5D9002AAE0A /* UserDataExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED916632349C5D9002AAE0A /* UserDataExtract.swift */; };
+		BED91668234AC48F002AAE0A /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED91667234AC48F002AAE0A /* LogIn.swift */; };
+		BED9166A234AD328002AAE0A /* UserDataUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED91669234AD328002AAE0A /* UserDataUpdate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		BED9165F23487343002AAE0A /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		BED9166123487450002AAE0A /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		BED916632349C5D9002AAE0A /* UserDataExtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataExtract.swift; sourceTree = "<group>"; };
+		BED91667234AC48F002AAE0A /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
+		BED91669234AD328002AAE0A /* UserDataUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataUpdate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 				BE3089A72345E6E700E3A2BC /* Posts */,
 				BE72BF152347D1310091B5E7 /* Detail */,
 				BED916632349C5D9002AAE0A /* UserDataExtract.swift */,
+				BED91667234AC48F002AAE0A /* LogIn.swift */,
+				BED91669234AD328002AAE0A /* UserDataUpdate.swift */,
 			);
 			path = "Home Page";
 			sourceTree = "<group>";
@@ -259,7 +265,9 @@
 				BE72BF0D2346FF530091B5E7 /* SubredditDataType.swift in Sources */,
 				BE7A818F2343DE9A00C9D490 /* SearchViewController.swift in Sources */,
 				BE7A818D2343C6DD00C9D490 /* PostsViewController.swift in Sources */,
+				BED9166A234AD328002AAE0A /* UserDataUpdate.swift in Sources */,
 				BE72BF0F23471D5A0091B5E7 /* PostObject.swift in Sources */,
+				BED91668234AC48F002AAE0A /* LogIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

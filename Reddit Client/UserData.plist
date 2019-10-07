@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>refreshToken</key>
+	<string>default</string>
 	<key>userName</key>
-	<string>Kevin Liu</string>
+	<string>Not Logged In</string>
 	<key>accessToken</key>
-	<string></string>
+	<string>default</string>
 	<key>subredditList</key>
 	<array>
 		<string>test subreddit</string>

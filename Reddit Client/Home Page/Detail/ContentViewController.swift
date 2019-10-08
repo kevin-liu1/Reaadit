@@ -16,6 +16,10 @@ class ContentViewController: UITableViewController {
     var upVotes: Int?
     
     var contentCell: Content?
+    var contentCellImage: ContentImage?
+    var contentCellLink: ContentLink?
+    var contentCellVideo: ContentVideo?
+    
     var contentID: String? //passed by previous VC
     var accessToken: String?
     
@@ -40,6 +44,7 @@ class ContentViewController: UITableViewController {
         
         createContent()
         createComments()
+        print("This is access Token: " + (self.accessToken ?? "none") )
         
 
     }
@@ -65,6 +70,23 @@ class ContentViewController: UITableViewController {
 
     func createContent() {
         let contentthings = self.content[0].data
+        if contentthings.is_self! {
+            self.contentCell = Content(postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none")
+        } else {
+            switch contentthings.post_hint {
+            case "image":
+                print(contentthings.preview?.images?[0].source?.url ?? "No URL")
+                self.contentCellImage = ContentImage(postTitle: contentthings.title ?? "No title", upVotecount: contentthings.ups ?? 0, time: "NA", image: (contentthings.url ?? "No URL"))
+            case "link":
+                self.contentCellLink = ContentLink(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!)
+            case "rich:video":
+                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail ?? "none")
+            case "hosted:video":
+                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail!)
+            default:
+                self.contentCellLink = ContentLink(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!)
+            }
+        }
         self.contentCell = Content(postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none")
 
     }
@@ -101,6 +123,7 @@ class ContentViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("Arrived at cellforrowat")
         switch indexPath.section {
         case 0:
             if self.content[0].data.is_self ?? false {
@@ -108,9 +131,38 @@ class ContentViewController: UITableViewController {
                 cell.setContent(Content: contentCell!)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellRich
-                cell.setContent(content: self.contentCell!)
-                return cell
+                switch self.content[0].data.post_hint {
+                case "image":
+                    print("Match Image")
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellImage
+                    cell.setContent(content: contentCellImage!)
+                    return cell
+                case "link":
+                    print("match Link")
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath) as! LinkContentCell
+                    
+                    cell.setContent(contentLink: contentCellLink!)
+                    return cell
+                case "rich:video":
+                    print("Match Video")
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
+                    cell.setContent(contentVideo: contentCellVideo!)
+                    return cell
+                case "hosted:video":
+                    print("Match Video")
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
+                    cell.setContent(contentVideo: contentCellVideo!)
+                    return cell
+                default:
+                    print("didn't match any case")
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
+                    cell.postTitleLabel.text = "No Case"
+                    return cell
+                }
+                
+                //let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellRich
+                //cell.setContent(content: self.contentCell!)
+                
             }
 
         case 1:

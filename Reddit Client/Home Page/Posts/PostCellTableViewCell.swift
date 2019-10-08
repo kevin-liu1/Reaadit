@@ -35,4 +35,5 @@ class PostCellTableViewCell: UITableViewCell {
         thumbnailImage?.contentMode = .scaleAspectFill
         thumbnailImage.layer.cornerRadius = 10
     }
+    
 }

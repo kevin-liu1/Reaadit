@@ -7,18 +7,45 @@
 //
 
 import UIKit
+import AVKit
+import SDWebImage
 
 class RichVideoContentCell: UITableViewCell {
+    
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet var titleLabel: UILabel!
+    
+    @IBOutlet var upVoteLabel: UILabel!
+    
+    @IBOutlet var timeLabel: UILabel!
+    
+    @IBOutlet var thumbnailImageTemp: UIButton?
+    
+    var tempImage: UIImageView?
+    
+    var videoURL: URL?
+    
+    func setContent(contentVideo: ContentVideo) {
+        titleLabel.text = contentVideo.postTitle
+        upVoteLabel.text = String(contentVideo.upVotecount)
+        timeLabel.text = "NA"
+        tempImage?.sd_setImage(with: URL(string: contentVideo.link), placeholderImage: UIImage(named: "icons8-reddit-100"))
+        thumbnailImageTemp?.setImage(tempImage?.image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+//        self.thumbnailImageTemp.imageView?.sd_setImage(with: URL(string: contentVideo.link), placeholderImage: UIImage(named: "icons8-reddit-100"))
+        
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
+//    @IBAction func playVideo(_sender: UIButton) {
+//        videoURL = URL(string: "String")
+//        let player = AVPlayer(url: videoURL!)
+//        let vc = AVPlayerViewController()
+//        vc.player = player
+//        vc.present(vc, animated: true) {
+//            vc.player?.play()
+//        }
+//    }
+    
 }

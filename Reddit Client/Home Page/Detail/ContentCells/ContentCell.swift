@@ -28,7 +28,7 @@ class ContentCellSelf: UITableViewCell {
     
 }
 
-class ContentCellRich: UITableViewCell {
+class ContentCellImage: UITableViewCell {
     
     @IBOutlet var contentImage: UIImageView!
     
@@ -38,10 +38,11 @@ class ContentCellRich: UITableViewCell {
     
     @IBOutlet var timeLabel: UILabel!
     
-    func setContent(content: Content) {
-        contentImage.sd_setImage(with: URL(string: content.thumbnail), placeholderImage: UIImage(named: "icons8-reddit-100"))
+    func setContent(content: ContentImage) {
+        contentImage.sd_setImage(with: URL(string: content.image), placeholderImage: UIImage(named: "icons8-reddit-100"))
+        
         postTitleLabel.text = content.postTitle
-        upvoteLabel.text = String(content.upVoteCount)
+        upvoteLabel.text = String(content.upVotecount)
         timeLabel.text = "10"
     }
 }

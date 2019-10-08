@@ -11,29 +11,14 @@ import UIKit
 class SearchViewController: UITableViewController {
     
     //@IBOutlet var refreshview: UIView!
-    
+    let defaults = UserDefaults.standard
+    //let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Username"
-        // Do any additional setup after loading the view.
+        self.title = defaults.string(forKey: "userName")
+    
         
-
-        
-        
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(pullData), for: .valueChanged)
-        //self.refreshview.addSubview(refreshControl)
-        
-        if  let path        = Bundle.main.path(forResource: "UserData", ofType: "plist"),
-            let xml         = FileManager.default.contents(atPath: path),
-            let userdata = try? PropertyListDecoder().decode(UserData.self, from: xml)
-        {
-            print("This is user data from another view:" + userdata.userName)
-            self.title = userdata.userName
-        } else {
-            print("extraction didn't work")
-        }
         
         
     }
@@ -42,6 +27,12 @@ class SearchViewController: UITableViewController {
         tableView.reloadData()
     }
 
+        
+    @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
+        tableView.reloadData()
+        sender.endRefreshing()
+    }
+    
     /*
     // MARK: - Navigation
 

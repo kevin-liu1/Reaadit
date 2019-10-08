@@ -224,7 +224,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
                 
                 vc.subreddit = subredditResultsStr[indexPath.row]
             } else {
-                //vc.subreddit = subredditresults[indexPath.row].data.display_name
+                
                 vc.subreddit = subredditnames[indexPath.row]
             }
             
@@ -233,4 +233,9 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         
         
     }
+    
+    
+
 }
+
+

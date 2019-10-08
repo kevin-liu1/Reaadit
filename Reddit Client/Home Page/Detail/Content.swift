@@ -8,7 +8,9 @@
 
 import Foundation
 
+// Models for Content
 struct Content {
+    
     var postTitle: String
     var upVoteCount: Int
     var time: String
@@ -16,8 +18,32 @@ struct Content {
     var thumbnail: String
 }
 
+struct ContentImage {
+
+    var postTitle: String
+    var upVotecount: Int
+    var time: String
+    var image: String
+    
+}
+
+struct ContentLink {
+    var postTitle: String
+    var upVotecount: Int
+    var time: String
+    var link: String
+}
+
+struct ContentVideo {
+    var postTitle: String
+    var upVotecount: Int
+    var time: String
+    var link: String
+}
 
 
+
+//Json Codables
 struct PostKind: Codable {
     var kind: String
     var data: CommentData
@@ -50,6 +76,8 @@ struct ContentorComment: Codable {
     var post_hint: String? // This tells you what kind of post it is.
     var selftext: String? //If this is not empty then Content is a Title + Body Type
     var thumbnail: String?
+    var preview: Preview?
+    var url: String?
     
     
     //for both
@@ -58,5 +86,16 @@ struct ContentorComment: Codable {
     //var replies: PostKind?
 }
 
+
+struct Preview: Codable {
+    var images: [ContentImagePreview]?
+}
+
+struct ContentImagePreview: Codable {
+    var source: ImageData?
+}
+struct ImageData: Codable{
+    var url: String?
+}
 
 

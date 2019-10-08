@@ -10,15 +10,18 @@ import UIKit
 
 class LinkContentCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet var titleLabel: UILabel!
+    
+    @IBOutlet var buttonLabel: UIButton!
+    
+    @IBOutlet var upvoteLabel: UILabel!
+    
+    @IBOutlet var timeLabel: UILabel!
+    
+    func setContent(contentLink: ContentLink) {
+        self.titleLabel.text = contentLink.postTitle
+        buttonLabel.titleLabel?.text = contentLink.link
+        upvoteLabel.text = String(contentLink.upVotecount)
+        timeLabel.text = contentLink.time
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

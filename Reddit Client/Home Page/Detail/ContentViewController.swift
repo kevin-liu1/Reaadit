@@ -36,14 +36,33 @@ class ContentViewController: UITableViewController {
         
         title = currentSub
         
-        if defaults.bool(forKey: "logStatus"){
-            getJson()
-        } else {
-            print("Not Logged In")
+ 
+        
+        
+        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+        let group = DispatchGroup()
+        
+        group.enter()
+        dispatchQueue.async{
+            //tasks here
+            if self.defaults.bool(forKey: "logStatus"){
+                self.getJson()
+             } else {
+                 print("Not Logged In")
+             }
+
+
+            
+            group.leave()
         }
         
-        createContent()
-        createComments()
+        group.notify(queue: .main) {
+            self.createContent()
+            self.createComments()
+            self.tableView.reloadData()
+        }
+        
+
         print("This is access Token: " + (self.accessToken ?? "none") )
         
 
@@ -124,56 +143,63 @@ class ContentViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("Arrived at cellforrowat")
-        switch indexPath.section {
-        case 0:
-            if self.content[0].data.is_self ?? false {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
-                cell.setContent(Content: contentCell!)
-                return cell
-            } else {
-                switch self.content[0].data.post_hint {
-                case "image":
-                    print("Match Image")
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellImage
-                    cell.setContent(content: contentCellImage!)
-                    return cell
-                case "link":
-                    print("match Link")
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath) as! LinkContentCell
-                    
-                    cell.setContent(contentLink: contentCellLink!)
-                    return cell
-                case "rich:video":
-                    print("Match Video")
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
-                    cell.setContent(contentVideo: contentCellVideo!)
-                    return cell
-                case "hosted:video":
-                    print("Match Video")
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
-                    cell.setContent(contentVideo: contentCellVideo!)
-                    return cell
-                default:
-                    print("didn't match any case")
+        
+        if self.content.count > 0 {
+            switch indexPath.section {
+            case 0:
+                if self.content[0].data.is_self ?? false {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
-                    cell.postTitleLabel.text = "No Case"
+                    cell.setContent(Content: contentCell!)
                     return cell
+                } else {
+                    switch self.content[0].data.post_hint {
+                    case "image":
+                        print("Match Image")
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellImage
+                        cell.setContent(content: contentCellImage!)
+                        return cell
+                    case "link":
+                        print("match Link")
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath) as! LinkContentCell
+                        
+                        cell.setContent(contentLink: contentCellLink!)
+                        return cell
+                    case "rich:video":
+                        print("Match Video")
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
+                        cell.setContent(contentVideo: contentCellVideo!)
+                        return cell
+                    case "hosted:video":
+                        print("Match Video")
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
+                        cell.setContent(contentVideo: contentCellVideo!)
+                        return cell
+                    default:
+                        print("didn't match any case")
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
+                        cell.postTitleLabel.text = "No Case"
+                        return cell
+                    }
+                    
+                    //let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellRich
+                    //cell.setContent(content: self.contentCell!)
+                    
                 }
-                
-                //let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellRich
-                //cell.setContent(content: self.contentCell!)
-                
-            }
 
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) as! CommentCell
-            let comment = commentListFinal[indexPath.row]
-            cell.setCommentCell(comment: comment)
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
-            return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) as! CommentCell
+                let comment = commentListFinal[indexPath.row]
+                cell.setCommentCell(comment: comment)
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
+                return cell
+            }
         }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
+        cell.postTitleLabel.text = ""
+        return cell
         
     }
     

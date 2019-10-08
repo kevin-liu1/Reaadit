@@ -444,7 +444,7 @@
 		BE7A818A2343A8DD00C9D490 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VDUMPYJ7FG;
 				INFOPLIST_FILE = "Reddit Client/Info.plist";
@@ -463,7 +463,7 @@
 		BE7A818B2343A8DD00C9D490 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VDUMPYJ7FG;
 				INFOPLIST_FILE = "Reddit Client/Info.plist";

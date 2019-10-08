@@ -555,7 +555,7 @@
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This is a title and I need to fill some text into here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g21-uN-MMa">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a title and I need to fill some text into here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g21-uN-MMa">
                                             <rect key="frame" x="20" y="327" width="374" height="45.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="374" id="LKw-Zy-Mhr"/>
@@ -587,6 +587,7 @@
                                         <constraint firstItem="qVT-CX-45H" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Akv-4w-Ytf" secondAttribute="topMargin" constant="323" id="dAK-a9-fmx"/>
                                         <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="QfO-tk-tI3" secondAttribute="trailing" constant="244" id="dbo-7a-4Dp"/>
                                         <constraint firstItem="E8c-Ty-Ssb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Akv-4w-Ytf" secondAttribute="topMargin" constant="325.5" id="f50-nE-c74"/>
+                                        <constraint firstItem="g21-uN-MMa" firstAttribute="trailing" secondItem="Akv-4w-Ytf" secondAttribute="trailingMargin" id="fgc-29-TB5"/>
                                         <constraint firstItem="qVT-CX-45H" firstAttribute="bottom" secondItem="Akv-4w-Ytf" secondAttribute="bottomMargin" id="hiI-9Z-z6g"/>
                                         <constraint firstItem="dkk-Ar-zEG" firstAttribute="top" secondItem="Akv-4w-Ytf" secondAttribute="top" id="iAs-iL-Qw3"/>
                                         <constraint firstAttribute="bottomMargin" relation="lessThanOrEqual" secondItem="g21-uN-MMa" secondAttribute="bottom" constant="49" id="iRn-xk-zUv"/>
@@ -595,6 +596,7 @@
                                         <constraint firstAttribute="trailing" secondItem="dkk-Ar-zEG" secondAttribute="trailing" id="lPt-xD-DsU"/>
                                         <constraint firstItem="6vG-vs-u9b" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Akv-4w-Ytf" secondAttribute="topMargin" constant="325.5" id="sQ5-si-rUe"/>
                                         <constraint firstItem="E8c-Ty-Ssb" firstAttribute="leading" secondItem="qVT-CX-45H" secondAttribute="trailing" constant="4.5" id="w4T-2D-6DV"/>
+                                        <constraint firstItem="g21-uN-MMa" firstAttribute="leading" secondItem="Akv-4w-Ytf" secondAttribute="leadingMargin" id="xpe-j6-GWP"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="6vG-vs-u9b" secondAttribute="bottom" constant="2.5" id="zQI-Ai-CH3"/>
                                     </constraints>
                                 </tableViewCellContentView>

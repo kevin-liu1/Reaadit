@@ -18,16 +18,34 @@ class PostsViewController: UITableViewController {
     var subreddit: String?
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = subreddit
         let urlString = "https://www.reddit.com/r/" + subreddit!.lowercased() + ".json?limit=50"
-        getPostJson(urlString: urlString)
         
-        self.finishedposts = createCells()
+        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+        let group = DispatchGroup()
+        
+        group.enter()
+        dispatchQueue.async{
+            
+            self.getPostJson(urlString: urlString)
+            self.finishedposts = self.createCells()
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+        
         
     }
+    
+    
+    
     
     func getPostJson(urlString: String){
         if let url = URL(string: urlString) {

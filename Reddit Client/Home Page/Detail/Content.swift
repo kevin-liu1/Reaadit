@@ -39,6 +39,7 @@ struct ContentVideo {
     var upVotecount: Int
     var time: String
     var link: String
+    var videolink: String
 }
 
 
@@ -79,6 +80,9 @@ struct ContentorComment: Codable {
     var preview: Preview?
     var url: String?
     
+    //getVideoContent for Content
+    var secure_media: Embed?
+    
     
     //for both
     var ups: Int?
@@ -87,6 +91,8 @@ struct ContentorComment: Codable {
 }
 
 
+
+//To Get high quality images
 struct Preview: Codable {
     var images: [ContentImagePreview]?
 }
@@ -99,3 +105,15 @@ struct ImageData: Codable{
 }
 
 
+//To get video link
+struct Embed: Codable {
+    var oembed: VideoInfo?
+    var type: String? //tells what type of video it is, gyf or youtube. 
+}
+
+struct VideoInfo: Codable {
+    
+    var thumbnail_url: String?
+    var html: String?
+    
+}

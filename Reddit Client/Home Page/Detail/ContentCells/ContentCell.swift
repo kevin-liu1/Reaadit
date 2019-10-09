@@ -28,21 +28,3 @@ class ContentCellSelf: UITableViewCell {
     
 }
 
-class ContentCellImage: UITableViewCell {
-    
-    @IBOutlet var contentImage: UIImageView!
-    
-    @IBOutlet var postTitleLabel: UILabel!
-    
-    @IBOutlet var upvoteLabel: UILabel!
-    
-    @IBOutlet var timeLabel: UILabel!
-    
-    func setContent(content: ContentImage) {
-        contentImage.sd_setImage(with: URL(string: content.image), placeholderImage: UIImage(named: "icons8-reddit-100"))
-        
-        postTitleLabel.text = content.postTitle
-        upvoteLabel.text = String(content.upVotecount)
-        timeLabel.text = "10"
-    }
-}

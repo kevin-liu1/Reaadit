@@ -49,7 +49,7 @@
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This is a title and I need to fill some text into here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCB-3D-gIg">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a title and I need to fill some text into here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCB-3D-gIg">
                         <rect key="frame" x="20" y="327" width="374" height="45.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="374" id="jVV-4L-NhK"/>
@@ -66,7 +66,7 @@
                         </constraints>
                         <state key="normal" title="Button" image="placeholder"/>
                         <connections>
-                            <action selector="playVideoWith_sender:" destination="zn7-bn-6W4" eventType="touchUpInside" id="2p5-2s-00s"/>
+                            <action selector="playVideoWith_sender:" destination="zn7-bn-6W4" eventType="touchUpInside" id="RVW-89-2pm"/>
                         </connections>
                     </button>
                 </subviews>
@@ -75,8 +75,10 @@
                     <constraint firstItem="wBP-bc-JVk" firstAttribute="leading" secondItem="Q0j-rc-j7p" secondAttribute="leadingMargin" id="8bs-fS-shw"/>
                     <constraint firstAttribute="bottomMargin" secondItem="wBP-bc-JVk" secondAttribute="bottom" constant="2.5" id="9hv-9M-oN9"/>
                     <constraint firstItem="roS-J3-0KG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Q0j-rc-j7p" secondAttribute="topMargin" constant="325.5" id="AUU-kx-g3M"/>
+                    <constraint firstItem="yCB-3D-gIg" firstAttribute="trailing" secondItem="Q0j-rc-j7p" secondAttribute="trailingMargin" id="F8K-Ls-Gc3"/>
                     <constraint firstItem="2tx-oj-RLs" firstAttribute="leading" secondItem="roS-J3-0KG" secondAttribute="trailing" constant="4.5" id="JlG-tY-we3"/>
                     <constraint firstItem="2tx-oj-RLs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Q0j-rc-j7p" secondAttribute="topMargin" constant="323" id="QQQ-hG-KkH"/>
+                    <constraint firstItem="yCB-3D-gIg" firstAttribute="leading" secondItem="Q0j-rc-j7p" secondAttribute="leadingMargin" id="Wxt-i3-aQP"/>
                     <constraint firstItem="7NF-6c-7Dv" firstAttribute="leading" secondItem="wBP-bc-JVk" secondAttribute="trailing" constant="4.5" id="dD6-fS-GaQ"/>
                     <constraint firstItem="19h-hG-cMa" firstAttribute="top" secondItem="Q0j-rc-j7p" secondAttribute="top" id="eBs-D6-tdO"/>
                     <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="2tx-oj-RLs" secondAttribute="trailing" constant="244" id="fSP-6Y-NnJ"/>
@@ -88,15 +90,15 @@
                     <constraint firstItem="7NF-6c-7Dv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Q0j-rc-j7p" secondAttribute="topMargin" constant="323" id="ouF-RR-XvR"/>
                     <constraint firstAttribute="trailing" secondItem="19h-hG-cMa" secondAttribute="trailing" id="q5U-v6-cUw"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="19h-hG-cMa" secondAttribute="bottom" constant="91" id="uMJ-SD-wNK"/>
-                    <constraint firstAttribute="bottomMargin" relation="lessThanOrEqual" secondItem="yCB-3D-gIg" secondAttribute="bottom" constant="49" id="x6X-k8-0LA"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="yCB-3D-gIg" secondAttribute="bottom" constant="26.5" id="ub6-U4-Fdj"/>
                     <constraint firstItem="2tx-oj-RLs" firstAttribute="bottom" secondItem="Q0j-rc-j7p" secondAttribute="bottomMargin" id="ywK-e0-emd"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="imageURL" destination="19h-hG-cMa" id="B8a-0M-Mwg"/>
-                <outlet property="timeLabel" destination="2tx-oj-RLs" id="eOi-jb-w93"/>
-                <outlet property="titleLabel" destination="yCB-3D-gIg" id="Q3J-Mv-bD1"/>
-                <outlet property="upVoteLabel" destination="7NF-6c-7Dv" id="2Cc-Lc-aEV"/>
+                <outlet property="thumbnailImageTemp" destination="19h-hG-cMa" id="XVd-GC-lrt"/>
+                <outlet property="timeLabel" destination="2tx-oj-RLs" id="MMy-ZJ-tQN"/>
+                <outlet property="titleLabel" destination="yCB-3D-gIg" id="taW-Kc-n3M"/>
+                <outlet property="upVoteLabel" destination="7NF-6c-7Dv" id="n9f-55-Ekr"/>
             </connections>
             <point key="canvasLocation" x="79.710144927536234" y="158.70535714285714"/>
         </tableViewCell>

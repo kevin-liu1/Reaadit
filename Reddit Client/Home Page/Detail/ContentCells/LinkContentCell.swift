@@ -11,12 +11,12 @@ import SafariServices
 
 import SafariServices
 
-protocol PlayVideoCellProtocol {
-    func playVideoButtonDidSelect(url: String)
+protocol OpenLinkProtocol {
+    func openLinkinBrowser(url: String)
 }
 
 class LinkContentCell: UITableViewCell {
-    var delegate: PlayVideoCellProtocol!
+    var delegate: OpenLinkProtocol!
     
     @IBOutlet var titleLabel: UILabel!
     
@@ -41,8 +41,8 @@ class LinkContentCell: UITableViewCell {
         
     }
     
-    @IBAction func playVideo(_sender: AnyObject) {
-        self.delegate.playVideoButtonDidSelect(url: self.url ?? "")
+    @IBAction func openLinkInBrowser(_sender: AnyObject) {
+        self.delegate.openLinkinBrowser(url: self.url ?? "")
     }
     
 

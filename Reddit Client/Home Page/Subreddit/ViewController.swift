@@ -149,7 +149,9 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         if section == 1 {
             label.text = "    FAVORITES"
             
-            label.backgroundColor = UIColor.lightGray
+            label.backgroundColor = #colorLiteral(red: 0.3626809125, green: 0.5487725345, blue: 0.796692011, alpha: 1)
+            label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+
             return label
         } else {
             //label.text = " Top Subreddits"
@@ -189,12 +191,15 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         //let name = subredditnames[indexPath.row]
         if defaults.bool(forKey: "logStatus") {
             name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditResultsStr[indexPath.row]
+//            if indexPath.section == 0 {
+//                cell.backgroundColor = #colorLiteral(red: 0.6033415794, green: 0.8330382705, blue: 0.8824878335, alpha: 1)
+//                cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//            }
            
         } else {
             name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditnames[indexPath.row]
             
         }
-        
         
         
         cell.textLabel?.text = name

@@ -10,9 +10,15 @@ import UIKit
 import AVKit
 import SDWebImage
 
-class RichVideoContentCell: UITableViewCell {
-    
+protocol playVideoProtocol {
+    func playVideoOnClick(url: String)
+}
 
+class RichVideoContentCell: UITableViewCell {
+    var delegate: playVideoProtocol!
+
+    
+    
     
     @IBOutlet var titleLabel: UILabel!
     
@@ -22,20 +28,32 @@ class RichVideoContentCell: UITableViewCell {
     
     @IBOutlet var thumbnailImageTemp: UIButton?
     
+    
+    
     var tempImage: UIImageView?
     
-    var videoURL: URL?
+    var videoURL: String?
+    
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
     
     func setContent(contentVideo: ContentVideo) {
         titleLabel.text = contentVideo.postTitle
         upVoteLabel.text = String(contentVideo.upVotecount)
         timeLabel.text = "NA"
         tempImage?.sd_setImage(with: URL(string: contentVideo.link), placeholderImage: UIImage(named: "icons8-reddit-100"))
-        thumbnailImageTemp?.setImage(tempImage?.image?.withRenderingMode(.alwaysOriginal), for: .normal)
         
+        thumbnailImageTemp?.setImage(tempImage?.image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        videoURL = contentVideo.videolink
 //        self.thumbnailImageTemp.imageView?.sd_setImage(with: URL(string: contentVideo.link), placeholderImage: UIImage(named: "icons8-reddit-100"))
         
         
+    }
+    
+    @IBAction func playVideo(_sender: AnyObject) {
+        self.delegate.playVideoOnClick(url: videoURL ?? "")
     }
     
 //    @IBAction func playVideo(_sender: UIButton) {

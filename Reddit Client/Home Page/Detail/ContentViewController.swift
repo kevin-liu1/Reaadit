@@ -9,7 +9,10 @@
 import UIKit
 import Just
 import SafariServices
-class ContentViewController: UITableViewController, PlayVideoCellProtocol {
+import AVKit
+import AVFoundation
+
+class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoProtocol {
     
     var currentSub: String? //passed by prev VC
     var currentTitle: String?
@@ -37,7 +40,15 @@ class ContentViewController: UITableViewController, PlayVideoCellProtocol {
         title = currentSub
         
  
+        tableView.dataSource = self
+        tableView.delegate = self
         
+        let videocell = UINib(nibName: "RichVideoContentCell", bundle: nil)
+        let imagecell = UINib(nibName: "ImageContentCell", bundle: nil)
+        let linkcell = UINib(nibName: "LinkContentCell", bundle: nil)
+        tableView.register(videocell, forCellReuseIdentifier: "RichVideoCell")
+        tableView.register(imagecell, forCellReuseIdentifier: "Picture")
+        tableView.register(linkcell, forCellReuseIdentifier: "LinkCell")
         
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
@@ -70,7 +81,7 @@ class ContentViewController: UITableViewController, PlayVideoCellProtocol {
     
     func getJson() {
         accessToken = defaults.string(forKey: "accessToken")
-        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=60", headers:["Authorization": "bearer \(accessToken ?? "")"])
+        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=25", headers:["Authorization": "bearer \(accessToken ?? "")"])
         
         let decoder = JSONDecoder()
         if let comments = try? decoder.decode([PostKind].self, from: userJson.content!) {
@@ -99,9 +110,9 @@ class ContentViewController: UITableViewController, PlayVideoCellProtocol {
             case "link":
                 self.contentCellLink = ContentLink(postTitle: contentthings.title ?? "No Link", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.url ?? "no url found")
             case "rich:video":
-                self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none")
+                self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none", videolink: contentthings.url ?? "none")
             case "hosted:video":
-                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail!)
+                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail!, videolink: contentthings.url ?? "None")
             default:
                 self.contentCellLink = ContentLink(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!)
             }
@@ -142,7 +153,7 @@ class ContentViewController: UITableViewController, PlayVideoCellProtocol {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Arrived at cellforrowat")
+        //print("Arrived at cellforrowat")
         
         if self.content.count > 0 {
             switch indexPath.section {
@@ -155,7 +166,7 @@ class ContentViewController: UITableViewController, PlayVideoCellProtocol {
                     switch self.content[0].data.post_hint {
                     case "image":
                         print("Match Image")
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellImage
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ImageContentCell
                         cell.setContent(content: contentCellImage!)
                         return cell
                     case "link":
@@ -168,11 +179,14 @@ class ContentViewController: UITableViewController, PlayVideoCellProtocol {
                         print("Match Video")
                         let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
                         cell.setContent(contentVideo: contentCellVideo!)
+                        cell.delegate = self
                         return cell
                     case "hosted:video":
                         print("Match Video")
+                        
                         let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
                         cell.setContent(contentVideo: contentCellVideo!)
+                        cell.delegate = self
                         return cell
                     default:
                         print("didn't match any case")
@@ -204,12 +218,26 @@ class ContentViewController: UITableViewController, PlayVideoCellProtocol {
         
     }
     
-    func playVideoButtonDidSelect(url: String) {
+    func openLinkinBrowser(url: String) {
         let contentthings = self.content[0].data
         let config = SFSafariViewController.Configuration()
-        config.entersReaderIfAvailable = true
+        config.entersReaderIfAvailable = false
         let vc = SFSafariViewController(url: URL(string: contentthings.url!)!, configuration: config)
         self.present(vc, animated: true)
+    }
+    
+    func playVideoOnClick(url: String) {
+        let videoURL = URL(string: url)
+        //let player = AVPlayer(url: videoURL!)
+        
+        let player = AVPlayer(url: URL(string: "https://www.youtube.com/embed/qmJaU2fW8zk")!)
+        let vc = AVPlayerViewController()
+        vc.player = player
+        print(url)
+        self.present(vc, animated: true, completion: {
+            player.play()
+            
+        })
     }
     
 

@@ -356,15 +356,15 @@
                                     <outlet property="upvoteLabel" destination="Fau-EL-H3Z" id="OHl-K0-b33"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkCell" rowHeight="207" id="jI2-re-rzQ" customClass="LinkContentCell" customModule="Reddit_Client" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="629" width="414" height="207"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkCell" id="jI2-re-rzQ" customClass="LinkContentCell" customModule="Reddit_Client" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="629" width="414" height="159.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jI2-re-rzQ" id="QNx-u8-Fwx">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="159.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.circle" catalog="system" highlightedImage="arrow.up.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="r4K-rh-MXf">
-                                            <rect key="frame" x="20" y="178" width="16" height="15.5"/>
+                                            <rect key="frame" x="20" y="130.5" width="16" height="15.5"/>
                                             <color key="tintColor" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="Uod-ni-aIX"/>
@@ -372,7 +372,7 @@
                                             </constraints>
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OMf-Bf-qK5">
-                                            <rect key="frame" x="99.5" y="178" width="16" height="15.5"/>
+                                            <rect key="frame" x="99.5" y="130.5" width="16" height="15.5"/>
                                             <color key="tintColor" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="16" id="TC9-Kh-JIt"/>
@@ -380,7 +380,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="upvotes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DX3-Qk-suY">
-                                            <rect key="frame" x="40.5" y="175" width="54.5" height="21"/>
+                                            <rect key="frame" x="40.5" y="127.5" width="54.5" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="fBv-Rm-laO"/>
                                             </constraints>
@@ -389,7 +389,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVW-vR-chn">
-                                            <rect key="frame" x="120" y="175" width="30" height="21"/>
+                                            <rect key="frame" x="120" y="127.5" width="30" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="8N4-dz-ujW"/>
                                             </constraints>
@@ -397,32 +397,40 @@
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a title and I need to fill some text into here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPT-pX-6oF">
-                                            <rect key="frame" x="20" y="33" width="374" height="59"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a title and I need to fill some text into here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPT-pX-6oF">
+                                            <rect key="frame" x="20" y="11" width="374" height="45.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="374" id="Cbj-4L-VW8"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWO-Yv-0Ds">
-                                            <rect key="frame" x="20" y="137" width="374" height="30"/>
+                                            <rect key="frame" x="20" y="64.5" width="107" height="34.5"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                             <state key="normal" title="Button to link"/>
+                                            <connections>
+                                                <action selector="playVideoWith_sender:" destination="jI2-re-rzQ" eventType="touchUpInside" id="eMf-wb-gok"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="dWO-Yv-0Ds" firstAttribute="leading" secondItem="VPT-pX-6oF" secondAttribute="leading" id="3Ol-9g-dzJ"/>
                                         <constraint firstItem="OMf-Bf-qK5" firstAttribute="leading" secondItem="DX3-Qk-suY" secondAttribute="trailing" constant="4.5" id="3ak-SB-OR3"/>
-                                        <constraint firstItem="DX3-Qk-suY" firstAttribute="top" secondItem="dWO-Yv-0Ds" secondAttribute="bottom" constant="8" id="7gl-El-OCC"/>
+                                        <constraint firstItem="dWO-Yv-0Ds" firstAttribute="top" secondItem="VPT-pX-6oF" secondAttribute="bottom" constant="8" id="9uM-oC-JJt"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="r4K-rh-MXf" secondAttribute="bottom" constant="2.5" id="AJa-ja-2S4"/>
                                         <constraint firstItem="dWO-Yv-0Ds" firstAttribute="leading" secondItem="r4K-rh-MXf" secondAttribute="leading" id="B7k-t7-ekx"/>
+                                        <constraint firstItem="VPT-pX-6oF" firstAttribute="trailing" secondItem="QNx-u8-Fwx" secondAttribute="trailingMargin" id="HNJ-GR-K1f"/>
                                         <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="BVW-vR-chn" secondAttribute="trailing" constant="244" id="KgQ-oL-lhM"/>
                                         <constraint firstItem="DX3-Qk-suY" firstAttribute="bottom" secondItem="QNx-u8-Fwx" secondAttribute="bottomMargin" id="Mcv-qt-ZB3"/>
-                                        <constraint firstItem="dWO-Yv-0Ds" firstAttribute="trailing" secondItem="VPT-pX-6oF" secondAttribute="trailing" id="WVy-rO-h1X"/>
+                                        <constraint firstItem="VPT-pX-6oF" firstAttribute="top" secondItem="QNx-u8-Fwx" secondAttribute="topMargin" id="SQm-6a-OS2"/>
                                         <constraint firstItem="r4K-rh-MXf" firstAttribute="leading" secondItem="QNx-u8-Fwx" secondAttribute="leadingMargin" id="c52-Jl-E39"/>
                                         <constraint firstItem="DX3-Qk-suY" firstAttribute="leading" secondItem="r4K-rh-MXf" secondAttribute="trailing" constant="4.5" id="fRc-tB-oYc"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="OMf-Bf-qK5" secondAttribute="bottom" constant="2.5" id="int-JL-Wql"/>
                                         <constraint firstItem="BVW-vR-chn" firstAttribute="leading" secondItem="OMf-Bf-qK5" secondAttribute="trailing" constant="4.5" id="ukz-84-sDR"/>
-                                        <constraint firstItem="dWO-Yv-0Ds" firstAttribute="trailing" secondItem="QNx-u8-Fwx" secondAttribute="trailingMargin" id="unF-Lq-F9X"/>
-                                        <constraint firstItem="dWO-Yv-0Ds" firstAttribute="top" secondItem="VPT-pX-6oF" secondAttribute="bottom" constant="45" id="vBY-vD-3Nu"/>
+                                        <constraint firstItem="dWO-Yv-0Ds" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="QNx-u8-Fwx" secondAttribute="trailingMargin" id="unF-Lq-F9X"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dWO-Yv-0Ds" secondAttribute="bottom" constant="49.5" id="upZ-qL-iL0"/>
                                         <constraint firstItem="BVW-vR-chn" firstAttribute="bottom" secondItem="QNx-u8-Fwx" secondAttribute="bottomMargin" id="vgM-Me-2Fr"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -434,7 +442,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Comments" id="lmT-qv-mcQ" customClass="CommentCell" customModule="Reddit_Client" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="836" width="414" height="84.5"/>
+                                <rect key="frame" x="0.0" y="788.5" width="414" height="84.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lmT-qv-mcQ" id="6Qk-2X-HMv">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="84.5"/>
@@ -515,7 +523,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RichVideoCell" id="Gyy-fP-gyP" customClass="RichVideoContentCell" customModule="Reddit_Client" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="920.5" width="414" height="410.5"/>
+                                <rect key="frame" x="0.0" y="873" width="414" height="410.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gyy-fP-gyP" id="Akv-4w-Ytf">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="410.5"/>
@@ -677,10 +685,10 @@
             </objects>
             <point key="canvasLocation" x="1061" y="981"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="j6k-Xp-oEJ">
             <objects>
-                <tableViewController id="cJd-bA-iXm" customClass="SearchViewController" customModule="Reddit_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cJd-bA-iXm" customClass="ProfileViewController" customModule="Reddit_Client" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rek-tC-xwX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import SafariServices
+
+import SafariServices
+
+protocol PlayVideoCellProtocol {
+    func playVideoButtonDidSelect(url: String)
+}
 
 class LinkContentCell: UITableViewCell {
-
+    var delegate: PlayVideoCellProtocol!
+    
     @IBOutlet var titleLabel: UILabel!
     
     @IBOutlet var buttonLabel: UIButton!
@@ -18,10 +26,25 @@ class LinkContentCell: UITableViewCell {
     
     @IBOutlet var timeLabel: UILabel!
     
+    var url: String?
+    
     func setContent(contentLink: ContentLink) {
         self.titleLabel.text = contentLink.postTitle
-        buttonLabel.titleLabel?.text = contentLink.link
+        //buttonLabel.titleLabel?.text = contentLink.link
+        buttonLabel.setTitle(contentLink.link, for: .normal)
         upvoteLabel.text = String(contentLink.upVotecount)
         timeLabel.text = contentLink.time
+        
+        print(contentLink.link)
+        self.url = contentLink.link
+        
+        
     }
+    
+    @IBAction func playVideo(_sender: AnyObject) {
+        self.delegate.playVideoButtonDidSelect(url: self.url ?? "")
+    }
+    
+
+    
 }

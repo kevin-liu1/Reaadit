@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController {
+class ProfileViewController: UITableViewController {
     
     //@IBOutlet var refreshview: UIView!
     let defaults = UserDefaults.standard

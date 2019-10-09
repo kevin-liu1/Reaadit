@@ -29,7 +29,7 @@
 		BE7A81822343A8DD00C9D490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE7A81812343A8DD00C9D490 /* Assets.xcassets */; };
 		BE7A81852343A8DD00C9D490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE7A81832343A8DD00C9D490 /* LaunchScreen.storyboard */; };
 		BE7A818D2343C6DD00C9D490 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A818C2343C6DD00C9D490 /* PostsViewController.swift */; };
-		BE7A818F2343DE9A00C9D490 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A818E2343DE9A00C9D490 /* SearchViewController.swift */; };
+		BE7A818F2343DE9A00C9D490 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A818E2343DE9A00C9D490 /* ProfileViewController.swift */; };
 		BE7A819323441F4700C9D490 /* PostCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */; };
 		BED9166223487450002AAE0A /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9166123487450002AAE0A /* Content.swift */; };
 		BED916642349C5D9002AAE0A /* UserDataExtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED916632349C5D9002AAE0A /* UserDataExtract.swift */; };
@@ -61,7 +61,7 @@
 		BE7A81842343A8DD00C9D490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE7A81862343A8DD00C9D490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE7A818C2343C6DD00C9D490 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
-		BE7A818E2343DE9A00C9D490 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		BE7A818E2343DE9A00C9D490 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellTableViewCell.swift; sourceTree = "<group>"; };
 		BED9166123487450002AAE0A /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		BED916632349C5D9002AAE0A /* UserDataExtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataExtract.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		BE72BF172347E5690091B5E7 /* Profile Page */ = {
 			isa = PBXGroup;
 			children = (
-				BE7A818E2343DE9A00C9D490 /* SearchViewController.swift */,
+				BE7A818E2343DE9A00C9D490 /* ProfileViewController.swift */,
 			);
 			path = "Profile Page";
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 				BE7A819323441F4700C9D490 /* PostCellTableViewCell.swift in Sources */,
 				BED9166223487450002AAE0A /* Content.swift in Sources */,
 				BE72BF0D2346FF530091B5E7 /* SubredditDataType.swift in Sources */,
-				BE7A818F2343DE9A00C9D490 /* SearchViewController.swift in Sources */,
+				BE7A818F2343DE9A00C9D490 /* ProfileViewController.swift in Sources */,
 				BE7A818D2343C6DD00C9D490 /* PostsViewController.swift in Sources */,
 				BED9166A234AD328002AAE0A /* UserDataUpdate.swift in Sources */,
 				BE72BF0F23471D5A0091B5E7 /* PostObject.swift in Sources */,

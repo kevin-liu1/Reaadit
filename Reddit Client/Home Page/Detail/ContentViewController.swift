@@ -8,8 +8,8 @@
 
 import UIKit
 import Just
-
-class ContentViewController: UITableViewController {
+import SafariServices
+class ContentViewController: UITableViewController, PlayVideoCellProtocol {
     
     var currentSub: String? //passed by prev VC
     var currentTitle: String?
@@ -97,9 +97,9 @@ class ContentViewController: UITableViewController {
                 print(contentthings.preview?.images?[0].source?.url ?? "No URL")
                 self.contentCellImage = ContentImage(postTitle: contentthings.title ?? "No title", upVotecount: contentthings.ups ?? 0, time: "NA", image: (contentthings.url ?? "No URL"))
             case "link":
-                self.contentCellLink = ContentLink(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!)
+                self.contentCellLink = ContentLink(postTitle: contentthings.title ?? "No Link", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.url ?? "no url found")
             case "rich:video":
-                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail ?? "none")
+                self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none")
             case "hosted:video":
                 self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail!)
             default:
@@ -161,8 +161,8 @@ class ContentViewController: UITableViewController {
                     case "link":
                         print("match Link")
                         let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath) as! LinkContentCell
-                        
                         cell.setContent(contentLink: contentCellLink!)
+                        cell.delegate = self
                         return cell
                     case "rich:video":
                         print("Match Video")
@@ -176,17 +176,16 @@ class ContentViewController: UITableViewController {
                         return cell
                     default:
                         print("didn't match any case")
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
-                        cell.postTitleLabel.text = "No Case"
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath) as! LinkContentCell
+                        cell.setContent(contentLink: contentCellLink!)
+                        cell.delegate = self
                         return cell
                     }
-                    
-                    //let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath) as! ContentCellRich
-                    //cell.setContent(content: self.contentCell!)
                     
                 }
 
             case 1:
+                //comments
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) as! CommentCell
                 let comment = commentListFinal[indexPath.row]
                 cell.setCommentCell(comment: comment)
@@ -197,10 +196,20 @@ class ContentViewController: UITableViewController {
             }
         }
         
+        //loading screen.
         let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
         cell.postTitleLabel.text = ""
+        cell.bodyTextLabel?.text = ""
         return cell
         
+    }
+    
+    func playVideoButtonDidSelect(url: String) {
+        let contentthings = self.content[0].data
+        let config = SFSafariViewController.Configuration()
+        config.entersReaderIfAvailable = true
+        let vc = SFSafariViewController(url: URL(string: contentthings.url!)!, configuration: config)
+        self.present(vc, animated: true)
     }
     
 

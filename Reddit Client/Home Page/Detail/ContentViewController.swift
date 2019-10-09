@@ -112,7 +112,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             case "rich:video":
                 self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none", videolink: contentthings.url ?? "none")
             case "hosted:video":
-                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail!, videolink: contentthings.url ?? "None")
+                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail!, videolink: contentthings.secure_media?.reddit_video?.fallback_url ?? "None")
             default:
                 self.contentCellLink = ContentLink(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!)
             }
@@ -228,16 +228,16 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     
     func playVideoOnClick(url: String) {
         let videoURL = URL(string: url)
-        //let player = AVPlayer(url: videoURL!)
+        let player = AVPlayer(url: videoURL!)
         
-        let player = AVPlayer(url: URL(string: "https://www.youtube.com/embed/qmJaU2fW8zk")!)
+        //let player = AVPlayer(url: URL(string: )!)
         let vc = AVPlayerViewController()
         vc.player = player
         print(url)
         self.present(vc, animated: true, completion: {
             player.play()
-            
-        })
+            }
+        )
     }
     
 

@@ -9,7 +9,6 @@
 import UIKit
 import SafariServices
 
-import SafariServices
 
 protocol OpenLinkProtocol {
     func openLinkinBrowser(url: String)

@@ -8,41 +8,6 @@
 
 import Foundation
 
-// Models for Content
-struct Content {
-    
-    var postTitle: String
-    var upVoteCount: Int
-    var time: String
-    var selftext: String
-    var thumbnail: String
-}
-
-struct ContentImage {
-
-    var postTitle: String
-    var upVotecount: Int
-    var time: String
-    var image: String
-    
-}
-
-struct ContentLink {
-    var postTitle: String
-    var upVotecount: Int
-    var time: String
-    var link: String
-}
-
-struct ContentVideo {
-    var postTitle: String
-    var upVotecount: Int
-    var time: String
-    var link: String
-    var videolink: String
-}
-
-
 
 //Json Codables
 struct PostKind: Codable {
@@ -108,7 +73,9 @@ struct ImageData: Codable{
 //To get video link
 struct Embed: Codable {
     var oembed: VideoInfo?
-    var type: String? //tells what type of video it is, gyf or youtube. 
+    var type: String? //tells what type of video it is, gyf or youtube.
+    
+    var reddit_video: RedditVideoInfo?
 }
 
 struct VideoInfo: Codable {
@@ -116,4 +83,8 @@ struct VideoInfo: Codable {
     var thumbnail_url: String?
     var html: String?
     
+}
+
+struct RedditVideoInfo: Codable {
+    var fallback_url: String
 }

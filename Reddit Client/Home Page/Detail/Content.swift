@@ -44,6 +44,7 @@ struct ContentorComment: Codable {
     var thumbnail: String?
     var preview: Preview?
     var url: String?
+    var domain: String?
     
     //getVideoContent for Content
     var secure_media: Embed?
@@ -86,5 +87,6 @@ struct VideoInfo: Codable {
 }
 
 struct RedditVideoInfo: Codable {
-    var fallback_url: String
+    var fallback_url: String?
+    var hls_url: String?
 }

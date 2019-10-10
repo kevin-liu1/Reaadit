@@ -12,7 +12,10 @@ import SafariServices
 import AVKit
 import AVFoundation
 
+
 class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoProtocol {
+
+    
     
     var currentSub: String? //passed by prev VC
     var currentTitle: String?
@@ -46,9 +49,11 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         let videocell = UINib(nibName: "RichVideoContentCell", bundle: nil)
         let imagecell = UINib(nibName: "ImageContentCell", bundle: nil)
         let linkcell = UINib(nibName: "LinkContentCell", bundle: nil)
+        let youtubeCell = UINib(nibName: "PlayYoutubeCell", bundle: nil)
         tableView.register(videocell, forCellReuseIdentifier: "RichVideoCell")
         tableView.register(imagecell, forCellReuseIdentifier: "Picture")
         tableView.register(linkcell, forCellReuseIdentifier: "LinkCell")
+        tableView.register(youtubeCell, forCellReuseIdentifier: "YoutubeCell")
         
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
@@ -112,8 +117,12 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             case "rich:video":
                 self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none", videolink: contentthings.url ?? "none")
             case "hosted:video":
-                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail!, videolink: contentthings.secure_media?.reddit_video?.fallback_url ?? "None")
+                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail!, videolink: contentthings.secure_media?.reddit_video?.hls_url ?? "None")
             default:
+                
+//                if contentthings.domain == "youtube.com" || contentthings.domain == "youtu.be.com" {
+//                    self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none", videolink: contentthings.url ?? "none")
+//                }
                 self.contentCellLink = ContentLink(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!)
             }
         }
@@ -176,20 +185,39 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
                         cell.delegate = self
                         return cell
                     case "rich:video":
-                        print("Match Video")
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
-                        cell.setContent(contentVideo: contentCellVideo!)
-                        cell.delegate = self
-                        return cell
+                        print("Match rich Video")
+                        
+                        let contenttemp = self.content[0].data.secure_media?.type
+                        
+                        if contenttemp == "youtube.com" {
+                            let cell = tableView.dequeueReusableCell(withIdentifier: "YoutubeCell", for: indexPath) as! PlayYoutubeCell
+                            cell.setVideo(contentVideo: contentCellVideo!)
+                            return cell
+                            
+                        } else {
+                            let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
+                            cell.setContent(contentVideo: contentCellVideo!)
+                            cell.delegate = self
+                            return cell
+                        }
+
+                        
                     case "hosted:video":
-                        print("Match Video")
+                        print("Match host Video")
                         
                         let cell = tableView.dequeueReusableCell(withIdentifier: "RichVideoCell", for: indexPath) as! RichVideoContentCell
                         cell.setContent(contentVideo: contentCellVideo!)
                         cell.delegate = self
+                        
+                        //let cell = tableView.dequeueReusableCell(withIdentifier: "YoutubeCell", for: indexPath) as! PlayYoutubeCell
                         return cell
                     default:
                         print("didn't match any case")
+//                        if self.content[0].data.domain == "youtube.com" || self.content[0].data.domain == "youtu.be.com" {
+//                            let cell = tableView.dequeueReusableCell(withIdentifier: "YoutubeCell", for: indexPath) as! PlayYoutubeCell
+//                           cell.setVideo(contentVideo: contentCellVideo!)
+//                           return cell
+//                        }
                         let cell = tableView.dequeueReusableCell(withIdentifier: "LinkCell", for: indexPath) as! LinkContentCell
                         cell.setContent(contentLink: contentCellLink!)
                         cell.delegate = self
@@ -226,18 +254,25 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         self.present(vc, animated: true)
     }
     
+    
+    
     func playVideoOnClick(url: String) {
+        
+        
         let videoURL = URL(string: url)
         let player = AVPlayer(url: videoURL!)
-        
-        //let player = AVPlayer(url: URL(string: )!)
+
+//        let player = AVPlayer(url: URL(string: "https://www.redditmedia.com/mediaembed/df6l4g")!)
         let vc = AVPlayerViewController()
         vc.player = player
+        
         print(url)
         self.present(vc, animated: true, completion: {
+            
             player.play()
             }
         )
+        
     }
     
 

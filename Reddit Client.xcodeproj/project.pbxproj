@@ -13,15 +13,15 @@
 		BE110743234BBFE400CDDD5E /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE110742234BBFE400CDDD5E /* ContentCell.swift */; };
 		BE110745234C2A6500CDDD5E /* RichVideoContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE110744234C2A6500CDDD5E /* RichVideoContentCell.xib */; };
 		BE110749234C2A9800CDDD5E /* LinkContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE110748234C2A9800CDDD5E /* LinkContentCell.xib */; };
-		BE3089A52345DE0F00E3A2BC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = BE3089A42345DE0F00E3A2BC /* SwiftPackageProductDependency */; };
+		BE3089A52345DE0F00E3A2BC /* Just in Frameworks */ = {isa = PBXBuildFile; productRef = BE3089A42345DE0F00E3A2BC /* Just */; };
 		BE5E9D1423486E2600C78A80 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5E9D1323486E2600C78A80 /* ContentViewController.swift */; };
 		BE612C1523452C8700FD87D4 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = BE612C1423452C8700FD87D4 /* icons */; };
 		BE72BF092346F2DC0091B5E7 /* PostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72BF082346F2DC0091B5E7 /* PostType.swift */; };
 		BE72BF0B2346F65D0091B5E7 /* UserDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72BF0A2346F65D0091B5E7 /* UserDataType.swift */; };
 		BE72BF0D2346FF530091B5E7 /* SubredditDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72BF0C2346FF530091B5E7 /* SubredditDataType.swift */; };
 		BE72BF0F23471D5A0091B5E7 /* PostObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72BF0E23471D5A0091B5E7 /* PostObject.swift */; };
-		BE72BF1223473F740091B5E7 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = BE72BF1123473F740091B5E7 /* SwiftPackageProductDependency */; };
-		BE72BF1423473F740091B5E7 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = BE72BF1323473F740091B5E7 /* SwiftPackageProductDependency */; };
+		BE72BF1223473F740091B5E7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BE72BF1123473F740091B5E7 /* SDWebImage */; };
+		BE72BF1423473F740091B5E7 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE72BF1323473F740091B5E7 /* SDWebImageMapKit */; };
 		BE72BF192347EB800091B5E7 /* UserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE72BF182347EB800091B5E7 /* UserData.plist */; };
 		BE72BF1B2347ECA30091B5E7 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72BF1A2347ECA30091B5E7 /* UserData.swift */; };
 		BE7A817B2343A8DB00C9D490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A817A2343A8DB00C9D490 /* AppDelegate.swift */; };
@@ -32,6 +32,8 @@
 		BE7A818D2343C6DD00C9D490 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A818C2343C6DD00C9D490 /* PostsViewController.swift */; };
 		BE7A818F2343DE9A00C9D490 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A818E2343DE9A00C9D490 /* ProfileViewController.swift */; };
 		BE7A819323441F4700C9D490 /* PostCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */; };
+		BE909589234ECEF700229873 /* PlayYoutubeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE909588234ECEF700229873 /* PlayYoutubeCell.xib */; };
+		BE90958B234ECFBE00229873 /* PlayYoutubeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE90958A234ECFBE00229873 /* PlayYoutubeCell.swift */; };
 		BED9166223487450002AAE0A /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9166123487450002AAE0A /* Content.swift */; };
 		BED91668234AC48F002AAE0A /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED91667234AC48F002AAE0A /* LogIn.swift */; };
 		BED9166A234AD328002AAE0A /* UserDataUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED91669234AD328002AAE0A /* UserDataUpdate.swift */; };
@@ -68,6 +70,8 @@
 		BE7A818C2343C6DD00C9D490 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		BE7A818E2343DE9A00C9D490 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BE7A819223441F4700C9D490 /* PostCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellTableViewCell.swift; sourceTree = "<group>"; };
+		BE909588234ECEF700229873 /* PlayYoutubeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayYoutubeCell.xib; sourceTree = "<group>"; };
+		BE90958A234ECFBE00229873 /* PlayYoutubeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayYoutubeCell.swift; sourceTree = "<group>"; };
 		BED9166123487450002AAE0A /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		BED91667234AC48F002AAE0A /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		BED91669234AD328002AAE0A /* UserDataUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataUpdate.swift; sourceTree = "<group>"; };
@@ -86,9 +90,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE72BF1223473F740091B5E7 /* BuildFile in Frameworks */,
-				BE72BF1423473F740091B5E7 /* BuildFile in Frameworks */,
-				BE3089A52345DE0F00E3A2BC /* BuildFile in Frameworks */,
+				BE72BF1223473F740091B5E7 /* SDWebImage in Frameworks */,
+				BE72BF1423473F740091B5E7 /* SDWebImageMapKit in Frameworks */,
+				BE3089A52345DE0F00E3A2BC /* Just in Frameworks */,
 				14A26FE3C6E851DDBFB13437 /* Pods_Reddit_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,7 +114,6 @@
 				8FAF4821889A2A4E168818DE /* Pods-Reddit Client.debug.xcconfig */,
 				C388F4C366727284DE69AE70 /* Pods-Reddit Client.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -216,6 +219,8 @@
 			children = (
 				BED91675234B235A002AAE0A /* RichVideoContentCell.swift */,
 				BE110744234C2A6500CDDD5E /* RichVideoContentCell.xib */,
+				BE90958A234ECFBE00229873 /* PlayYoutubeCell.swift */,
+				BE909588234ECEF700229873 /* PlayYoutubeCell.xib */,
 				BED91673234B2347002AAE0A /* LinkContentCell.swift */,
 				BE110748234C2A9800CDDD5E /* LinkContentCell.xib */,
 				BEE865C1234E4553008BE15F /* ImageContentCell.swift */,
@@ -237,7 +242,7 @@
 				BE7A81732343A8DB00C9D490 /* Sources */,
 				BE7A81742343A8DB00C9D490 /* Frameworks */,
 				BE7A81752343A8DB00C9D490 /* Resources */,
-				FF010FB0B804A85F166CD59C /* [CP] Embed Pods Frameworks */,
+				7061975429040206B5C91A14 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,9 +250,9 @@
 			);
 			name = "Reddit Client";
 			packageProductDependencies = (
-				BE3089A42345DE0F00E3A2BC /* SwiftPackageProductDependency */,
-				BE72BF1123473F740091B5E7 /* SwiftPackageProductDependency */,
-				BE72BF1323473F740091B5E7 /* SwiftPackageProductDependency */,
+				BE3089A42345DE0F00E3A2BC /* Just */,
+				BE72BF1123473F740091B5E7 /* SDWebImage */,
+				BE72BF1323473F740091B5E7 /* SDWebImageMapKit */,
 			);
 			productName = "Reddit Client";
 			productReference = BE7A81772343A8DB00C9D490 /* Reddit Client.app */;
@@ -278,8 +283,8 @@
 			);
 			mainGroup = BE7A816E2343A8DB00C9D490;
 			packageReferences = (
-				BE3089A32345DE0F00E3A2BC /* RemoteSwiftPackageReference */,
-				BE72BF1023473F740091B5E7 /* RemoteSwiftPackageReference */,
+				BE3089A32345DE0F00E3A2BC /* XCRemoteSwiftPackageReference "Just" */,
+				BE72BF1023473F740091B5E7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = BE7A81782343A8DB00C9D490 /* Products */;
 			projectDirPath = "";
@@ -299,6 +304,7 @@
 				BE612C1523452C8700FD87D4 /* icons in Resources */,
 				BE7A81822343A8DD00C9D490 /* Assets.xcassets in Resources */,
 				BEE865C4234E4553008BE15F /* ImageContentCell.xib in Resources */,
+				BE909589234ECEF700229873 /* PlayYoutubeCell.xib in Resources */,
 				BE72BF192347EB800091B5E7 /* UserData.plist in Resources */,
 				BE110749234C2A9800CDDD5E /* LinkContentCell.xib in Resources */,
 				BE7A81802343A8DB00C9D490 /* Main.storyboard in Resources */,
@@ -309,6 +315,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7061975429040206B5C91A14 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reddit Client/Pods-Reddit Client-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reddit Client/Pods-Reddit Client-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Reddit Client/Pods-Reddit Client-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		72824AADEBC52A8AD5F7EBFE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,23 +354,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FF010FB0B804A85F166CD59C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Reddit Client/Pods-Reddit Client-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Reddit Client/Pods-Reddit Client-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Reddit Client/Pods-Reddit Client-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -368,6 +374,7 @@
 				BE72BF1B2347ECA30091B5E7 /* UserData.swift in Sources */,
 				BE110740234B9D9000CDDD5E /* RefreshLogin.swift in Sources */,
 				BE7A819323441F4700C9D490 /* PostCellTableViewCell.swift in Sources */,
+				BE90958B234ECFBE00229873 /* PlayYoutubeCell.swift in Sources */,
 				BEE865C6234E4F29008BE15F /* ContentType.swift in Sources */,
 				BED9166223487450002AAE0A /* Content.swift in Sources */,
 				BE72BF0D2346FF530091B5E7 /* SubredditDataType.swift in Sources */,
@@ -582,7 +589,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BE3089A32345DE0F00E3A2BC /* RemoteSwiftPackageReference */ = {
+		BE3089A32345DE0F00E3A2BC /* XCRemoteSwiftPackageReference "Just" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dduan/Just.git";
 			requirement = {
@@ -590,7 +597,7 @@
 				minimumVersion = 0.8.0;
 			};
 		};
-		BE72BF1023473F740091B5E7 /* RemoteSwiftPackageReference */ = {
+		BE72BF1023473F740091B5E7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
 			requirement = {
@@ -601,19 +608,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BE3089A42345DE0F00E3A2BC /* SwiftPackageProductDependency */ = {
+		BE3089A42345DE0F00E3A2BC /* Just */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE3089A32345DE0F00E3A2BC /* RemoteSwiftPackageReference */;
+			package = BE3089A32345DE0F00E3A2BC /* XCRemoteSwiftPackageReference "Just" */;
 			productName = Just;
 		};
-		BE72BF1123473F740091B5E7 /* SwiftPackageProductDependency */ = {
+		BE72BF1123473F740091B5E7 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE72BF1023473F740091B5E7 /* RemoteSwiftPackageReference */;
+			package = BE72BF1023473F740091B5E7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
-		BE72BF1323473F740091B5E7 /* SwiftPackageProductDependency */ = {
+		BE72BF1323473F740091B5E7 /* SDWebImageMapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE72BF1023473F740091B5E7 /* RemoteSwiftPackageReference */;
+			package = BE72BF1023473F740091B5E7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */

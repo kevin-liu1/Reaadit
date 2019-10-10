@@ -33,7 +33,7 @@ class ImageContentCell: UITableViewCell {
     
     
     func setContent(content: ContentImage) {
-        contentImage.sd_setImage(with: URL(string: content.image), placeholderImage: UIImage(named: "icons8-reddit-100"))
+        contentImage.sd_setImage(with: URL(string: content.image), placeholderImage: UIImage(named: "Ash-Grey"))
         
         postTitleLabel.text = content.postTitle
         upvoteLabel.text = String(content.upVotecount)

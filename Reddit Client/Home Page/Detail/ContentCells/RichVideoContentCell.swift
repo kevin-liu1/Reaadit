@@ -10,6 +10,7 @@ import UIKit
 import AVKit
 import SDWebImage
 
+
 protocol playVideoProtocol {
     func playVideoOnClick(url: String)
 }
@@ -52,8 +53,11 @@ class RichVideoContentCell: UITableViewCell {
         
     }
     
+    
     @IBAction func playVideo(_sender: AnyObject) {
-        self.delegate.playVideoOnClick(url: videoURL ?? "")
+        self.delegate.playVideoOnClick(url: self.videoURL ?? "")
+
+        
     }
     
 //    @IBAction func playVideo(_sender: UIButton) {

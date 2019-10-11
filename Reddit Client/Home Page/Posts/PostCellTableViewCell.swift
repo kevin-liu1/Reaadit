@@ -30,7 +30,7 @@ class PostCellTableViewCell: UITableViewCell {
         comments.text = String(postObject.comments)
         
         let link = postObject.thumbnailURL.replacingOccurrences(of: "amp;", with: "")
-        thumbnailImage.sd_setImage(with: URL(string: link), placeholderImage: UIImage(named: "Ash-Grey"))
+        thumbnailImage.sd_setImage(with: URL(string: link), placeholderImage: UIImage(named: "icons8-align-center-100"))
         
         thumbnailImage?.contentMode = .scaleAspectFill
         thumbnailImage.layer.cornerRadius = 10

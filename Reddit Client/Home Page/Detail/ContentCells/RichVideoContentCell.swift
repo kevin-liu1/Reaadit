@@ -29,6 +29,7 @@ class RichVideoContentCell: UITableViewCell {
     
     @IBOutlet var thumbnailImageTemp: UIButton?
     
+    @IBOutlet var arthurLabel: UILabel!
     
     
     var tempImage: UIImageView?
@@ -55,7 +56,7 @@ class RichVideoContentCell: UITableViewCell {
         videoURL = contentVideo.videolink
 //        self.thumbnailImageTemp.imageView?.sd_setImage(with: URL(string: contentVideo.link), placeholderImage: UIImage(named: "icons8-reddit-100"))
         
-        
+        arthurLabel.text = contentVideo.author
     }
     
     

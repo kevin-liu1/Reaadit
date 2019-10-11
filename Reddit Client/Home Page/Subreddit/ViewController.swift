@@ -27,7 +27,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     
     let defaults = UserDefaults.standard
     
-    
+    var headers = [Header]()
     
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return self.view.window ?? ASPresentationAnchor()
@@ -46,6 +46,10 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         //loggedstatus = UserDataExtract().loggedInStatus()
         
         //loggedstatus = defaults.bool(forKey: "logStatus")
+        let headercell = UINib(nibName: "HeaderViewCell", bundle: nil)
+        tableView.register(headercell, forCellReuseIdentifier: "HeaderCell")
+        
+        self.headers = [Header(label: "Favorites")]
         
         
         
@@ -148,26 +152,41 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
 
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
+        
+        
         if section == 1 {
-            label.text = "    FAVORITES"
-            
-            label.backgroundColor = #colorLiteral(red: 0.3626809125, green: 0.5487725345, blue: 0.796692011, alpha: 1)
-            label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-
-            return label
+            let headerView = Bundle.main.loadNibNamed("HeaderViewCell", owner: self, options: nil)?.first as! HeaderViewCell
+            headerView.setHeader(header: self.headers[0])
+            return headerView
         } else {
-            //label.text = " Top Subreddits"
-            //label.backgroundColor = UIColor.lightGray
+            let label = UILabel()
+            label.text = "TopSubreddits"
+            label.backgroundColor = #colorLiteral(red: 0.3626809125, green: 0.5487725345, blue: 0.796692011, alpha: 1)
             return nil
         }
+        
+        
+        
+//        let label = UILabel()
+//        if section == 1 {
+//            label.text = "    FAVORITES"
+//
+//            label.backgroundColor = #colorLiteral(red: 0.3626809125, green: 0.5487725345, blue: 0.796692011, alpha: 1)
+//            label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//
+//            return label
+//        } else {
+//            //label.text = " Top Subreddits"
+//            //label.backgroundColor = UIColor.lightGray
+//            return nil
+//        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0
         } else {
-            return 30
+            return 36
         }
     }
     

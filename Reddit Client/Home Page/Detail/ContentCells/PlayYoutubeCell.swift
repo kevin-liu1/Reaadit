@@ -11,15 +11,18 @@ import YoutubePlayer_in_WKWebView
 
 class PlayYoutubeCell: UITableViewCell {
 
+    @IBOutlet var authorLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var upVoteLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var playerView: WKYTPlayerView!
+    
     var videoURL: String?
     var splitUrl: String?
     
     
     func setVideo(contentVideo: ContentVideo) {
+        authorLabel.text = contentVideo.author
         videoURL = contentVideo.videolink
         print(videoURL)
         if videoURL?.contains("youtu.be") ?? false {

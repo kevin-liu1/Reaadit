@@ -11,7 +11,7 @@ import Foundation
 //Models For Content
 
 struct Content {
-    
+    var author: String
     var postTitle: String
     var upVoteCount: Int
     var time: String
@@ -20,7 +20,7 @@ struct Content {
 }
 
 struct ContentImage {
-
+    var author: String
     var postTitle: String
     var upVotecount: Int
     var time: String
@@ -29,6 +29,7 @@ struct ContentImage {
 }
 
 struct ContentLink {
+    var author: String
     var postTitle: String
     var upVotecount: Int
     var time: String
@@ -37,6 +38,7 @@ struct ContentLink {
 }
 
 struct ContentVideo {
+    var author: String
     var postTitle: String
     var upVotecount: Int
     var time: String

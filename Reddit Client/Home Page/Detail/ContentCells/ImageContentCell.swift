@@ -10,18 +10,8 @@ import UIKit
 
 class ImageContentCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    
+    @IBOutlet var authorLabel: UILabel!
     @IBOutlet var contentImage: UIImageView!
     
     @IBOutlet var postTitleLabel: UILabel!
@@ -33,6 +23,7 @@ class ImageContentCell: UITableViewCell {
     
     
     func setContent(content: ContentImage) {
+        authorLabel.text = content.author
         contentImage.sd_setImage(with: URL(string: content.image), placeholderImage: UIImage(named: "Ash-Grey"))
         contentImage.layer.cornerRadius = 7
         

@@ -13,6 +13,7 @@ import MarkdownKit
 
 class ContentCellSelf: UITableViewCell {
 
+    @IBOutlet var authorLabel: UILabel!
     
     @IBOutlet weak var upvoteLabel: UILabel!
     
@@ -26,6 +27,7 @@ class ContentCellSelf: UITableViewCell {
     @IBOutlet var postTitleLabel: UILabel!
     
     func setContent(Content: Content) {
+        authorLabel.text = Content.author
         upvoteLabel.text = String(Content.upVoteCount)
         timeLabel.text = Content.time
         

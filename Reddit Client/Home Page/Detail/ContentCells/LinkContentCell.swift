@@ -18,6 +18,7 @@ protocol OpenLinkProtocol {
 class LinkContentCell: UITableViewCell {
     var delegate: OpenLinkProtocol!
     
+    @IBOutlet var authorLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     
     @IBOutlet var buttonLabel: UIButton!
@@ -31,6 +32,8 @@ class LinkContentCell: UITableViewCell {
     var url: String?
     
     func setContent(contentLink: ContentLink) {
+        authorLabel.text = contentLink.author
+        
         self.titleLabel.text = contentLink.postTitle
         //buttonLabel.titleLabel?.text = contentLink.link
         buttonLabel.setTitle(contentLink.link, for: .normal)
@@ -43,7 +46,7 @@ class LinkContentCell: UITableViewCell {
         buttonLabel.layer.cornerRadius = 5
         print(contentLink.thumbnail)
         let link = contentLink.thumbnail.replacingOccurrences(of: "amp;", with: "")
-        linkImage.sd_setImage(with: URL(string: link), placeholderImage: UIImage(named: "Ash-Grey"))
+        linkImage.sd_setImage(with: URL(string: link), placeholderImage: UIImage(named: "icons8-list-view-80"))
         
         linkImage.layer.cornerRadius = 7
         

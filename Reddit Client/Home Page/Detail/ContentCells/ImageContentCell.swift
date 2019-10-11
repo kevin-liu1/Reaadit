@@ -34,9 +34,11 @@ class ImageContentCell: UITableViewCell {
     
     func setContent(content: ContentImage) {
         contentImage.sd_setImage(with: URL(string: content.image), placeholderImage: UIImage(named: "Ash-Grey"))
+        contentImage.layer.cornerRadius = 7
         
         postTitleLabel.text = content.postTitle
         upvoteLabel.text = String(content.upVotecount)
         timeLabel.text = "10"
+        
     }
 }

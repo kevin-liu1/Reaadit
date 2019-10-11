@@ -16,7 +16,7 @@ class ProfileViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = defaults.string(forKey: "userName")
+        title = defaults.string(forKey: "userName")
     
         
         

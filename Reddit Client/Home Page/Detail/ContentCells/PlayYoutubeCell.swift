@@ -11,7 +11,9 @@ import YoutubePlayer_in_WKWebView
 
 class PlayYoutubeCell: UITableViewCell {
 
-    
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var upVoteLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
     @IBOutlet var playerView: WKYTPlayerView!
     var videoURL: String?
     var splitUrl: String?
@@ -30,6 +32,9 @@ class PlayYoutubeCell: UITableViewCell {
             splitUrl = videoURL?.components(separatedBy: "?v=")[1]
         }
         
+        titleLabel.text = contentVideo.postTitle
+        upVoteLabel.text = String(contentVideo.upVotecount)
+        timeLabel.text = "10"
         
         
         playerView.load(withVideoId: splitUrl ?? "")

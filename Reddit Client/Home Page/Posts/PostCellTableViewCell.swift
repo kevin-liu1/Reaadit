@@ -29,8 +29,8 @@ class PostCellTableViewCell: UITableViewCell {
         upVotes.text = String(postObject.upVotes)
         comments.text = String(postObject.comments)
         
-        
-        thumbnailImage.sd_setImage(with: URL(string: postObject.thumbnailURL), placeholderImage: UIImage(named: "icons8-reddit-100"))
+        let link = postObject.thumbnailURL.replacingOccurrences(of: "amp;", with: "")
+        thumbnailImage.sd_setImage(with: URL(string: link), placeholderImage: UIImage(named: "Ash-Grey"))
         
         thumbnailImage?.contentMode = .scaleAspectFill
         thumbnailImage.layer.cornerRadius = 10

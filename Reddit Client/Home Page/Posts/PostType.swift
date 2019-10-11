@@ -35,5 +35,16 @@ struct Post: Codable {
     let num_comments: Int
     let id: String
     
+    let preview: Preview?
     
+}
+
+struct PreviewPosts: Codable {
+    var images: [PostImagePreview]
+}
+struct PostImagePreview: Codable {
+    var source: ImageDataPost?
+}
+struct ImageDataPost: Codable {
+    var url: String?
 }

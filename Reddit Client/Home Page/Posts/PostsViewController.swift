@@ -26,6 +26,8 @@ class PostsViewController: UITableViewController {
         title = subreddit
         let urlString = "https://www.reddit.com/r/" + subreddit!.lowercased() + ".json?limit=50"
         
+        
+        createSpinnerView()
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
         
@@ -40,10 +42,26 @@ class PostsViewController: UITableViewController {
         group.notify(queue: .main) {
             self.tableView.reloadData()
         }
-        
-        
     }
     
+    
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+    }
     
     
     
@@ -82,7 +100,7 @@ class PostsViewController: UITableViewController {
                 subtitle = post.subreddit
             }
             
-            createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.thumbnail))
+            createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.preview?.images?[0].source?.url ?? ""))
         }
         return createdcells
     }

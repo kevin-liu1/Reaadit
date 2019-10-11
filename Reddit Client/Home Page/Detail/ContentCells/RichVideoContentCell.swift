@@ -51,6 +51,7 @@ class RichVideoContentCell: UITableViewCell {
         let link = contentVideo.link.replacingOccurrences(of: "amp;", with: "")
         
         thumbnailImageTemp?.sd_setBackgroundImage(with: URL(string: link), for: .normal)
+        
         videoURL = contentVideo.videolink
 //        self.thumbnailImageTemp.imageView?.sd_setImage(with: URL(string: contentVideo.link), placeholderImage: UIImage(named: "icons8-reddit-100"))
         

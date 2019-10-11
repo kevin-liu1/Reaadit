@@ -51,7 +51,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSubreddit))
         navigationController?.navigationBar.prefersLargeTitles = false
-        subredditnames += ["Mac", "Apple", "Android", "NBA", "Toronto", "NYC", "ApolloApp", "AskTO"]
+        subredditnames += ["Gifs", "Movies", "Entertainment", "News", "AskReddit", "Technology", "OddlySatisfying"]
         topsubreddit += ["Popular", "All"]
         
         if defaults.bool(forKey: "logStatus") == false {
@@ -67,7 +67,10 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     }
     @objc func logOut(){
         defaults.set(false, forKey: "logStatus")
-    
+        defaults.set("", forKey: "accessToken")
+        defaults.set("", forKey:  "refreshToken")
+        defaults.set("User", forKey: "userName")
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(self.logIn))
         tableView.reloadData()
     }

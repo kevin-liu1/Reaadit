@@ -45,7 +45,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         
         title = currentSub
         
- 
+        createSpinnerView()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -57,6 +57,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         tableView.register(imagecell, forCellReuseIdentifier: "Picture")
         tableView.register(linkcell, forCellReuseIdentifier: "LinkCell")
         tableView.register(youtubeCell, forCellReuseIdentifier: "YoutubeCell")
+        
         
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
@@ -91,6 +92,24 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         print("This is access Token: " + (self.accessToken ?? "none") )
         
 
+    }
+    
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
 
@@ -144,8 +163,6 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             self.content = contents[0].data.children!
             
         } else {
-            RefreshLogin().getAccessToken()
-            getJson()
             print("Error with getting comment json")
             
         }
@@ -169,7 +186,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             case "link":
                 self.contentCellLink = ContentLink(postTitle: contentthings.title ?? "No Link", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.url ?? "no url found", thumbnail: contentthings.preview?.images?[0].source?.url ?? "")
             case "rich:video":
-                self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none", videolink: contentthings.url ?? "none")
+                self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.url ?? "none")
             case "hosted:video":
                 self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.secure_media?.reddit_video?.hls_url ?? "None")
             default:
@@ -200,19 +217,29 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-
-        return 2
+        if self.content.count > 0 {
+            return 2
+        } else{
+            return 0
+        }
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return commentListFinal.count
-        default:
-            return 1
+        
+        if self.content.count > 0 {
+            switch section {
+            case 0:
+                return 1
+            case 1:
+                return commentListFinal.count
+            default:
+                return 1
+            }
+        } else {
+            return 0
         }
+
         
     }
 
@@ -299,6 +326,8 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
         cell.postTitleLabel.text = ""
         cell.bodyTextLabel?.text = ""
+        cell.upvoteLabel.text = nil
+        cell.timeLabel.text = ""
         return cell
         
     }

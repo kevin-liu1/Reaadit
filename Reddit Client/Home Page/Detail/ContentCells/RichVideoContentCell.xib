@@ -50,7 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a title and I need to fill some text into here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCB-3D-gIg">
-                        <rect key="frame" x="20" y="327" width="374" height="45.5"/>
+                        <rect key="frame" x="20" y="322" width="374" height="50.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="374" id="jVV-4L-NhK"/>
                         </constraints>
@@ -59,11 +59,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19h-hG-cMa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="319"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="414" id="GH7-rk-1fg"/>
-                            <constraint firstAttribute="height" constant="319" id="dte-iI-qqr"/>
-                        </constraints>
+                        <rect key="frame" x="20" y="0.0" width="374" height="314"/>
                         <connections>
                             <action selector="playVideoWith_sender:" destination="zn7-bn-6W4" eventType="touchUpInside" id="RVW-89-2pm"/>
                         </connections>
@@ -85,9 +81,9 @@
                     <constraint firstItem="wBP-bc-JVk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Q0j-rc-j7p" secondAttribute="topMargin" constant="325.5" id="h6w-kh-37Y"/>
                     <constraint firstItem="roS-J3-0KG" firstAttribute="leading" secondItem="7NF-6c-7Dv" secondAttribute="trailing" constant="4.5" id="iPb-UN-WZ7"/>
                     <constraint firstAttribute="bottomMargin" secondItem="roS-J3-0KG" secondAttribute="bottom" constant="2.5" id="j7J-cf-6dK"/>
-                    <constraint firstItem="19h-hG-cMa" firstAttribute="leading" secondItem="Q0j-rc-j7p" secondAttribute="leading" id="oUs-BZ-Zrk"/>
+                    <constraint firstItem="19h-hG-cMa" firstAttribute="leading" secondItem="Q0j-rc-j7p" secondAttribute="leading" constant="20" id="oUs-BZ-Zrk"/>
                     <constraint firstItem="7NF-6c-7Dv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Q0j-rc-j7p" secondAttribute="topMargin" constant="323" id="ouF-RR-XvR"/>
-                    <constraint firstAttribute="trailing" secondItem="19h-hG-cMa" secondAttribute="trailing" id="q5U-v6-cUw"/>
+                    <constraint firstAttribute="trailing" secondItem="19h-hG-cMa" secondAttribute="trailing" constant="20" id="q5U-v6-cUw"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="19h-hG-cMa" secondAttribute="bottom" constant="91" id="uMJ-SD-wNK"/>
                     <constraint firstAttribute="bottomMargin" secondItem="yCB-3D-gIg" secondAttribute="bottom" constant="26.5" id="ub6-U4-Fdj"/>
                     <constraint firstItem="2tx-oj-RLs" firstAttribute="bottom" secondItem="Q0j-rc-j7p" secondAttribute="bottomMargin" id="ywK-e0-emd"/>

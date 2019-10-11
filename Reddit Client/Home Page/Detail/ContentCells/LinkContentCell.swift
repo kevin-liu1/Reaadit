@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import SDWebImage
 
 
 protocol OpenLinkProtocol {
@@ -25,6 +26,8 @@ class LinkContentCell: UITableViewCell {
     
     @IBOutlet var timeLabel: UILabel!
     
+    @IBOutlet var linkImage: UIImageView!
+    
     var url: String?
     
     func setContent(contentLink: ContentLink) {
@@ -37,6 +40,12 @@ class LinkContentCell: UITableViewCell {
         print(contentLink.link)
         self.url = contentLink.link
         
+        buttonLabel.layer.cornerRadius = 5
+        print(contentLink.thumbnail)
+        let link = contentLink.thumbnail.replacingOccurrences(of: "amp;", with: "")
+        linkImage.sd_setImage(with: URL(string: link), placeholderImage: UIImage(named: "Ash-Grey"))
+        
+        linkImage.layer.cornerRadius = 7
         
     }
     

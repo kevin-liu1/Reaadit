@@ -44,9 +44,13 @@ class RichVideoContentCell: UITableViewCell {
         titleLabel.text = contentVideo.postTitle
         upVoteLabel.text = String(contentVideo.upVotecount)
         timeLabel.text = "NA"
-        tempImage?.sd_setImage(with: URL(string: contentVideo.link), placeholderImage: UIImage(named: "icons8-reddit-100"))
+        print(contentVideo.link)
+//        tempImage?.sd_setImage(with: URL(string: contentVideo.link), placeholderImage: UIImage(named: "icons8-reddit-100"))
+//        thumbnailImageTemp?.setImage(tempImage?.image?.withRenderingMode(.alwaysOriginal), for: .normal)
         
-        thumbnailImageTemp?.setImage(tempImage?.image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        let link = contentVideo.link.replacingOccurrences(of: "amp;", with: "")
+        
+        thumbnailImageTemp?.sd_setBackgroundImage(with: URL(string: link), for: .normal)
         videoURL = contentVideo.videolink
 //        self.thumbnailImageTemp.imageView?.sd_setImage(with: URL(string: contentVideo.link), placeholderImage: UIImage(named: "icons8-reddit-100"))
         

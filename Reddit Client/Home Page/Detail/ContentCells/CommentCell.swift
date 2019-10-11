@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import MarkdownKit
+import SafariServices
 
-class CommentCell: UITableViewCell {
+protocol linkHandlingProtocol {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
+}
 
-    @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var textBodyLabel: UILabel!
+class CommentCell: UITableViewCell, UITextViewDelegate {
+    var delegate: linkHandlingProtocol!
     
+    @IBOutlet weak var authorLabel: UILabel!
+    
+    
+    @IBOutlet var textBodyLabel: UITextView!
     @IBOutlet weak var upVoteButton: UIButton!
     @IBOutlet weak var upVoteLabel: UILabel!
     
@@ -20,10 +28,15 @@ class CommentCell: UITableViewCell {
     
     func setCommentCell(comment: CommentType) {
         self.authorLabel.text = comment.author
-        self.textBodyLabel.text = comment.textbody
+        
+        let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 15))
+        
+        self.textBodyLabel.attributedText = markdownParser.parse(comment.textbody)
         self.upVoteLabel.text = String(comment.upvotes)
         self.timeLabel.text = "NA"
+        
     }
     
-
+    
+    
 }

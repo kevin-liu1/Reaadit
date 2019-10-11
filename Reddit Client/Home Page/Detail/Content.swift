@@ -18,7 +18,7 @@ struct PostKind: Codable {
 struct CommentData: Codable{
     //var modhash: String
     //var dist: Int
-    var children = [CommentKind]()
+    var children: [CommentKind]?
     
 }
 
@@ -33,10 +33,15 @@ struct ContentorComment: Codable {
     //
     
     //for Comment
+    var name: String? //This is the id name of the original post
+    var parent_id: String? // This is the parent name of the current comment
     var author: String?
     var body: String?
+    //var replies: [Replies1]?
+    
     
     //for Content
+    
     var title: String?
     var is_self: Bool?
     var post_hint: String? // This tells you what kind of post it is.
@@ -54,6 +59,23 @@ struct ContentorComment: Codable {
     var ups: Int?
     
     //var replies: PostKind?
+}
+
+
+struct Replies1: Codable {
+    var kind: String?
+    var data: Replies2?
+    
+}
+
+struct Replies2: Codable {
+    //modhash, dist
+    var children: [Replies3]?
+}
+
+struct Replies3: Codable {
+    var kind: String?
+    var data: [String: ContentorComment]?
 }
 
 

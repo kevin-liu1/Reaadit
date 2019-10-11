@@ -54,17 +54,16 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="374" id="jVV-4L-NhK"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="21"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19h-hG-cMa">
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19h-hG-cMa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="319"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="414" id="GH7-rk-1fg"/>
                             <constraint firstAttribute="height" constant="319" id="dte-iI-qqr"/>
                         </constraints>
-                        <state key="normal" title="Button" image="placeholder"/>
                         <connections>
                             <action selector="playVideoWith_sender:" destination="zn7-bn-6W4" eventType="touchUpInside" id="RVW-89-2pm"/>
                         </connections>
@@ -107,6 +106,5 @@
         <image name="arrow.up.circle" catalog="system" width="64" height="62"/>
         <image name="arrow.up.circle.fill" catalog="system" width="64" height="62"/>
         <image name="clock" catalog="system" width="64" height="62"/>
-        <image name="placeholder" width="80" height="60"/>
     </resources>
 </document>

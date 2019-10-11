@@ -14,3 +14,20 @@ struct CommentType {
     var time: String //keep it as a string for now
     var textbody: String
 }
+
+//we will use a class to store the tree that is the comments
+
+class CommentTree {
+    var author: String?
+    var upvotes: Int?
+    var time: String? //keep it as a string for now
+    var textbody: String?
+    var replies: [CommentTree]?
+    
+    init(author: String, upVotes: Int, time: String, textbody: String) {
+        self.author = author
+        self.upvotes = upVotes
+        self.time = time
+        self.textbody = textbody
+    }
+}

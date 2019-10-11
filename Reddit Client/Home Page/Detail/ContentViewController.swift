@@ -13,7 +13,7 @@ import AVKit
 import AVFoundation
 
 
-class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoProtocol {
+class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoProtocol, linkHandlingProtocol {
 
     
     
@@ -35,7 +35,10 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     
     
     var commentList = [CommentKind]()
+    var commentList3List = [CommentList3]()
     var content = [CommentKind]()
+    
+    var CommentTreeList = [CommentTree]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +68,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
                 self.getJson()
              } else {
                  print("Not Logged In")
+                self.getJsonLoggedOut()
              }
 
 
@@ -73,6 +77,11 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         }
         
         group.notify(queue: .main) {
+//            for comment in self.commentList {
+//                let initialCommentTree = CommentTree(author: comment.data.author ?? "", upVotes: comment.data.ups ?? 0, time: "10", textbody: comment.data.body ?? "No body")
+//                self.createCommentTree(commentTree: initialCommentTree, comment: comment.data)
+//            }
+            
             self.createContent()
             self.createComments()
             self.tableView.reloadData()
@@ -84,22 +93,67 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
 
     }
     
+
+    
+//    func createCommentTree(commentTree: CommentTree, comment: ContentorComment) {
+//        if (comment.replies?.count) != nil {
+//            for kind in comment.replies! {
+//                for kind1 in kind.data.children! {
+//                    commentTree.replies?.append(CommentTree(author: kind1.data.author ?? "none", upVotes: kind1.data.ups ?? 0, time: "10", textbody: kind1.data.body ?? "no body"))
+//                    createCommentTree(commentTree: commentTree, comment: kind1.data)
+//                }
+//            }
+//        }
+//    }
+    
+    
     func getJson() {
         accessToken = defaults.string(forKey: "accessToken")
         let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=25", headers:["Authorization": "bearer \(accessToken ?? "")"])
         
         let decoder = JSONDecoder()
-        if let comments = try? decoder.decode([PostKind].self, from: userJson.content!) {
+        if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
             print("decoded comment json")
-            print(comments[0].data.children)
-            self.commentList = comments[1].data.children
-            self.content = comments[0].data.children
+            print(contents[0].data.children)
+            self.commentList = contents[1].data.children!
+            self.content = contents[0].data.children!
             
         } else {
             RefreshLogin().getAccessToken()
             getJson()
             print("Error with getting comment json")
             
+        }
+        
+        if let comments = try? decoder.decode([CommentList].self, from: userJson.content!) {
+            self.commentList3List = (comments[1].data.children!)
+        } else {
+            print("COULDN'T RETRIEVE COMMENTS")
+        }
+    }
+    
+    func getJsonLoggedOut() {
+        accessToken = defaults.string(forKey: "accessToken")
+        let userJson = Just.get("https://www.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "/limit=25.json")
+        
+        let decoder = JSONDecoder()
+        if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
+            print("decoded comment json")
+            print(contents[0].data.children)
+            self.commentList = contents[1].data.children!
+            self.content = contents[0].data.children!
+            
+        } else {
+            RefreshLogin().getAccessToken()
+            getJson()
+            print("Error with getting comment json")
+            
+        }
+        
+        if let comments = try? decoder.decode([CommentList].self, from: userJson.content!) {
+            self.commentList3List = (comments[1].data.children!)
+        } else {
+            print("COULDN'T RETRIEVE COMMENTS")
         }
     }
 
@@ -113,22 +167,24 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
                 print(contentthings.preview?.images?[0].source?.url ?? "No URL")
                 self.contentCellImage = ContentImage(postTitle: contentthings.title ?? "No title", upVotecount: contentthings.ups ?? 0, time: "NA", image: (contentthings.url ?? "No URL"))
             case "link":
-                self.contentCellLink = ContentLink(postTitle: contentthings.title ?? "No Link", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.url ?? "no url found")
+                self.contentCellLink = ContentLink(postTitle: contentthings.title ?? "No Link", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.url ?? "no url found", thumbnail: contentthings.preview?.images?[0].source?.url ?? "")
             case "rich:video":
                 self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none", videolink: contentthings.url ?? "none")
             case "hosted:video":
-                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.thumbnail!, videolink: contentthings.secure_media?.reddit_video?.hls_url ?? "None")
+                self.contentCellVideo = ContentVideo(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.secure_media?.reddit_video?.hls_url ?? "None")
             default:
                 
 //                if contentthings.domain == "youtube.com" || contentthings.domain == "youtu.be.com" {
 //                    self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none", videolink: contentthings.url ?? "none")
 //                }
-                self.contentCellLink = ContentLink(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!)
+                self.contentCellLink = ContentLink(postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!, thumbnail: contentthings.preview?.images?[0].source?.url ?? "")
             }
         }
         self.contentCell = Content(postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none")
 
     }
+    
+
     
     func createComments() {
         for comment in self.commentList {
@@ -231,6 +287,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) as! CommentCell
                 let comment = commentListFinal[indexPath.row]
                 cell.setCommentCell(comment: comment)
+                cell.delegate = self
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
@@ -275,6 +332,11 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         
     }
     
-
+    //doesn't work yet, trying to open links in SafariviewController
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        let safariViewController = SFSafariViewController(url: URL)
+        present(safariViewController, animated: true, completion: nil)
+        return false
+    }
 
 }

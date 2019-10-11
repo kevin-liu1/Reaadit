@@ -33,6 +33,7 @@ struct ContentLink {
     var upVotecount: Int
     var time: String
     var link: String
+    var thumbnail: String
 }
 
 struct ContentVideo {

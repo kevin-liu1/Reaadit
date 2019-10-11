@@ -33,6 +33,8 @@ class PlayYoutubeCell: UITableViewCell {
         
         
         playerView.load(withVideoId: splitUrl ?? "")
+        
+        
     }
     
     override func awakeFromNib() {

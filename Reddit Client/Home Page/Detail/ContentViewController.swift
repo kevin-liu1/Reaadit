@@ -73,7 +73,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             if self.defaults.bool(forKey: "logStatus"){
                 self.getJson()
              } else {
-                 print("Not Logged In")
+                print("Not Logged In")
                 self.getJsonLoggedOut()
              }
 
@@ -138,7 +138,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         let decoder = JSONDecoder()
         if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
             print("decoded comment json")
-            print(contents[0].data.children)
+            //print(contents[0].data.children)
             self.commentList = contents[1].data.children!
             self.content = contents[0].data.children!
             
@@ -149,11 +149,6 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             
         }
         
-        if let comments = try? decoder.decode([CommentList].self, from: userJson.content!) {
-            self.commentList3List = (comments[1].data.children!)
-        } else {
-            print("COULDN'T RETRIEVE COMMENTS")
-        }
     }
     
     func getJsonLoggedOut() {
@@ -163,7 +158,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         let decoder = JSONDecoder()
         if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
             print("decoded comment json")
-            print(contents[0].data.children)
+            
             self.commentList = contents[1].data.children!
             self.content = contents[0].data.children!
             
@@ -172,13 +167,9 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             
         }
         
-        if let comments = try? decoder.decode([CommentList].self, from: userJson.content!) {
-            self.commentList3List = (comments[1].data.children!)
-        } else {
-            print("COULDN'T RETRIEVE COMMENTS")
-        }
     }
 
+    
     func createContent() {
         let contentthings = self.content[0].data
         if contentthings.is_self! {

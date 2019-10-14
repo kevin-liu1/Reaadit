@@ -40,11 +40,11 @@ class LinkContentCell: UITableViewCell {
         upvoteLabel.text = String(contentLink.upVotecount)
         timeLabel.text = contentLink.time
         
-        print(contentLink.link)
+        //print(contentLink.link)
         self.url = contentLink.link
         
         buttonLabel.layer.cornerRadius = 5
-        print(contentLink.thumbnail)
+        //print(contentLink.thumbnail)
         let link = contentLink.thumbnail.replacingOccurrences(of: "amp;", with: "")
         linkImage.sd_setImage(with: URL(string: link), placeholderImage: UIImage(named: "icons8-list-view-80"))
         

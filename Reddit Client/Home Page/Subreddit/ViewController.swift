@@ -34,7 +34,23 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     }
     
 
-    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if defaults.bool(forKey: "logStatus") {
+            accessToken = defaults.string(forKey: "accessToken")
+            let userJson = Just.get("https://oauth.reddit.com/api/v1/me", headers:["Authorization": "bearer \(accessToken ?? "")"])
+            
+            let decoder = JSONDecoder()
+            if let contents = try? decoder.decode(Profile.self, from: userJson.content!) {
+                print("STILL LOGGED IN")
+                
+            } else {
+                print("ACCESS CODE EXPIRED")
+                Network().getAccessTokenRefresh()
+            }
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -121,7 +137,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     func getAuthTokenWithWebLogin(context: ASWebAuthenticationPresentationContextProviding) {
         dispatchGroup.enter()
         
-        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits,read,save,subscribe,vote,edit")
+        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits,read,save,subscribe,vote,edit,history,submit,subscribe,flair,report")
         let callbackUrlScheme = "myreddit://kevin"
         self.webAuthSession = ASWebAuthenticationSession.init(url: authURL!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
             // handle auth response

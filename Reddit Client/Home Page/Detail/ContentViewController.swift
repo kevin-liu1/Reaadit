@@ -143,8 +143,6 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             self.content = contents[0].data.children!
             
         } else {
-            RefreshLogin().getAccessToken()
-            getJson()
             print("Error with getting comment json")
             
         }

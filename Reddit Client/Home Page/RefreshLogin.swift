@@ -12,7 +12,7 @@ import Just
 class RefreshLogin {
     let defaults = UserDefaults.standard
     
-    func getAccessToken(){
+    func getAccessTokenRefresh(){
         //print(defaults.string(forKey: "refreshToken"))
         let refreshtoken = defaults.string(forKey: "refreshToken")
         let r = Just.post("https://www.reddit.com/api/v1/access_token", data:["grant_type":"refresh_token", "refresh_token": refreshtoken!], auth: ("AOZZ5Fc3a1V3Rg", ""))

@@ -9,11 +9,13 @@
 import UIKit
 import Just
 class ProfileViewController: UITableViewController {
+    let defaults = UserDefaults.standard
     
     var accessToken: String?
     var profileCellFinal: ProfileHolder?
     var profileholder: ProfileHolder? // hold the information for log out
-    let defaults = UserDefaults.standard
+    var profileCommentsHolder = [CommentType]() //hold the comments
+    
 
     
     override func viewDidLoad() {
@@ -22,9 +24,13 @@ class ProfileViewController: UITableViewController {
         
         let profilecell = UINib(nibName: "ProfileCell", bundle: nil)
         tableView.register(profilecell, forCellReuseIdentifier: "Profile Cell")
+        let profilecommentcell = UINib(nibName: "ProfileCommentCell", bundle: nil)
+        tableView.register(profilecommentcell, forCellReuseIdentifier: "ProfileComments")
         
         if defaults.bool(forKey: "logStatus") {
             getProfileJson()
+            profileCommentsHolder = Network().getUserRecentComments() ?? [CommentType]()
+            
         } else {
             profileCellFinal = ProfileHolder(comment_karma: 0, name: "NoUser", link_karma: 0, created_utc: 0, coins: 0, icon_img: "", display_name: "noUser")
         }
@@ -50,7 +56,7 @@ class ProfileViewController: UITableViewController {
         } else {
             print("Can't get profile JSON")
             if defaults.bool(forKey: "logStatus") {
-                RefreshLogin().getAccessToken()
+                RefreshLogin().getAccessTokenRefresh()
                 getProfileJson()
             }
         }
@@ -62,21 +68,46 @@ class ProfileViewController: UITableViewController {
         sender.endRefreshing()
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return profileCommentsHolder.count
+        default:
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Cell", for: indexPath) as! ProfileCell
-        
-        if defaults.bool(forKey: "logStatus") {
-            cell.setUp(profilecell: profileCellFinal!)
-        } else {
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Cell", for: indexPath) as! ProfileCell
+            
+            if defaults.bool(forKey: "logStatus") {
+                cell.setUp(profilecell: profileCellFinal!)
+            } else {
+                let defaultcell = ProfileHolder(comment_karma: 0, name: "NoUser", link_karma: 0, created_utc: 0, coins: 0, icon_img: "", display_name: "noUser")
+                cell.setUp(profilecell: defaultcell)
+            }
+            return cell
+        case 1:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileComments", for: indexPath) as! ProfileCommentCell
+            
+            cell.setContent(profileComment: profileCommentsHolder[indexPath.row])
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Cell", for: indexPath) as! ProfileCell
             let defaultcell = ProfileHolder(comment_karma: 0, name: "NoUser", link_karma: 0, created_utc: 0, coins: 0, icon_img: "", display_name: "noUser")
             cell.setUp(profilecell: defaultcell)
+            return cell
         }
-        
-        return cell
+
     }
 
 }

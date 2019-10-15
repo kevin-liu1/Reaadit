@@ -16,7 +16,18 @@ class ProfileViewController: UITableViewController {
     var profileholder: ProfileHolder? // hold the information for log out
     var profileCommentsHolder = [CommentType]() //hold the comments
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        if defaults.bool(forKey: "logStatus") {
+            getProfileJson()
+            profileCommentsHolder = Network().getUserRecentComments() ?? [CommentType]()
+            tableView.reloadData()
+            
+        } else {
+            profileCellFinal = ProfileHolder(comment_karma: 0, name: "NoUser", link_karma: 0, created_utc: 0, coins: 0, icon_img: "", display_name: "noUser")
+            profileCommentsHolder = [CommentType]()
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +37,14 @@ class ProfileViewController: UITableViewController {
         tableView.register(profilecell, forCellReuseIdentifier: "Profile Cell")
         let profilecommentcell = UINib(nibName: "ProfileCommentCell", bundle: nil)
         tableView.register(profilecommentcell, forCellReuseIdentifier: "ProfileComments")
-        
         if defaults.bool(forKey: "logStatus") {
             getProfileJson()
             profileCommentsHolder = Network().getUserRecentComments() ?? [CommentType]()
             
         } else {
             profileCellFinal = ProfileHolder(comment_karma: 0, name: "NoUser", link_karma: 0, created_utc: 0, coins: 0, icon_img: "", display_name: "noUser")
+            profileCommentsHolder = [CommentType]()
         }
-        
     }
     
     func refreshData() {
@@ -43,6 +53,7 @@ class ProfileViewController: UITableViewController {
             
         } else {
             profileCellFinal = ProfileHolder(comment_karma: 0, name: "NoUser", link_karma: 0, created_utc: 0, coins: 0, icon_img: "", display_name: "noUser")
+            profileCommentsHolder = [CommentType]()
         }
     }
     

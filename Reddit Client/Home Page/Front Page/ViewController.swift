@@ -28,6 +28,9 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     let defaults = UserDefaults.standard
     
     var headers = [Header]()
+    var headerlist = ["", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var sortedDict: [String:[String]] = ["A":[],"B":[],"C":[], "D":[], "E":[], "F":[], "G":[], "H":[], "I":[], "J":[], "K":[], "L":[], "M":[], "N":[], "O":[], "P":[], "Q":[], "R":[], "S":[], "T":[], "U":[], "V":[], "W":[], "X":[], "Y":[], "Z":[]]
+    
     
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return self.view.window ?? ASPresentationAnchor()
@@ -40,10 +43,11 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             accessToken = defaults.string(forKey: "accessToken")
             let userJson = Just.get("https://oauth.reddit.com/api/v1/me", headers:["Authorization": "bearer \(accessToken ?? "")"])
             
+            //testing for refreshcode
             let decoder = JSONDecoder()
             if let contents = try? decoder.decode(Profile.self, from: userJson.content!) {
                 print("STILL LOGGED IN")
-                
+                tableView.reloadData()
             } else {
                 print("ACCESS CODE EXPIRED")
                 Network().getAccessTokenRefresh()
@@ -54,14 +58,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if UserDataExtract().loggedInStatus() == true {
-//            self.loggedstatus = true
-//        }
-//
-        
-        //loggedstatus = UserDataExtract().loggedInStatus()
-        
-        //loggedstatus = defaults.bool(forKey: "logStatus")
+
         let headercell = UINib(nibName: "HeaderViewCell", bundle: nil)
         tableView.register(headercell, forCellReuseIdentifier: "HeaderCell")
         
@@ -74,12 +71,23 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         subredditnames += ["Gifs", "Movies", "Entertainment", "News", "AskReddit", "Technology", "OddlySatisfying"]
         topsubreddit += ["Popular", "All"]
         
-        if defaults.bool(forKey: "logStatus") == false {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(logIn))
-
-        } else {
+        if defaults.bool(forKey: "logStatus") {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
             subredditResultsStr = defaults.object(forKey: "subredditList") as? [String] ?? [String]()
+            for i in 0...subredditResultsStr.count-1 {
+                subredditResultsStr[i] = subredditResultsStr[i].lowercased()
+            }
+            subredditResultsStr = subredditResultsStr.sorted()
+            for (letter, sub) in sortedDict {
+                for subreddit in subredditResultsStr{
+                    if subreddit.lowercased().hasPrefix(letter.lowercased()){
+                        sortedDict[letter]?.append(subreddit)
+                    }
+                }
+            }
+
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(logIn))
         }
         
         title = "Subreddits"
@@ -166,48 +174,49 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if defaults.bool(forKey: "logStatus"){
+            return headerlist.count
+        } else {
+            return 2
+        }
+        
+    }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
+        let headerView = Bundle.main.loadNibNamed("HeaderViewCell", owner: self, options: nil)?.first as! HeaderViewCell
         
-        if section == 1 {
-            let headerView = Bundle.main.loadNibNamed("HeaderViewCell", owner: self, options: nil)?.first as! HeaderViewCell
-            headerView.setHeader(header: self.headers[0])
-            return headerView
+        if defaults.bool(forKey: "logStatus") {
+            let label = Header(label: headerlist[section])
+            headerView.setHeader(header: label)
         } else {
-            let label = UILabel()
-            label.text = "TopSubreddits"
-            label.backgroundColor = #colorLiteral(red: 0.3626809125, green: 0.5487725345, blue: 0.796692011, alpha: 1)
-            return nil
+            if section == 1 {
+                let label = Header(label: "Favorites")
+                headerView.setHeader(header: label)
+            } else {
+                let label = Header(label: "none")
+                headerView.setHeader(header: label)
+            }
+            
         }
-        
-        
-        
-//        let label = UILabel()
-//        if section == 1 {
-//            label.text = "    FAVORITES"
-//
-//            label.backgroundColor = #colorLiteral(red: 0.3626809125, green: 0.5487725345, blue: 0.796692011, alpha: 1)
-//            label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//
-//            return label
-//        } else {
-//            //label.text = " Top Subreddits"
-//            //label.backgroundColor = UIColor.lightGray
-//            return nil
-//        }
+
+        return headerView
+
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 0
         } else {
-            return 36
+            let currentletter = headerlist[section]
+            if sortedDict[currentletter]?.count == 0 {
+                return 0
+            } else {
+                return 36
+            }
+            
         }
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -215,7 +224,9 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             return topsubreddit.count
         }
         else if defaults.bool(forKey: "logStatus") {
-            return subredditResultsStr.count
+            let currentletter = headerlist[section]
+            return sortedDict[currentletter]?.count ?? 0
+            
         }
         else {
              return subredditnames.count
@@ -228,11 +239,14 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         var name: String
         //let name = subredditnames[indexPath.row]
         if defaults.bool(forKey: "logStatus") {
-            name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditResultsStr[indexPath.row]
-//            if indexPath.section == 0 {
-//                cell.backgroundColor = #colorLiteral(red: 0.6033415794, green: 0.8330382705, blue: 0.8824878335, alpha: 1)
-//                cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//            }
+            if indexPath.section == 0 {
+                name = topsubreddit[indexPath.row]
+            } else {
+                let currentletter = headerlist[indexPath.section]
+                name = sortedDict[currentletter]?[indexPath.row] ?? "no value"
+
+                
+            }
            
         } else {
             name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditnames[indexPath.row]
@@ -258,14 +272,14 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        //createSpinnerView()
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayPosts") as? PostsViewController {
             if indexPath.section == 0 {
                 vc.subreddit = topsubreddit[indexPath.row]
                 
             } else if defaults.bool(forKey: "logStatus") {
-                
-                vc.subreddit = subredditResultsStr[indexPath.row]
+                let currentletter = headerlist[indexPath.section]
+                vc.subreddit = sortedDict[currentletter]?[indexPath.row]
             } else {
                 
                 vc.subreddit = subredditnames[indexPath.row]
@@ -275,6 +289,24 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         }
         
         
+    }
+    
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     

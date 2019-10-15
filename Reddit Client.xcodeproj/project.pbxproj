@@ -141,7 +141,7 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		BE3089A62345E6CE00E3A2BC /* Subreddit */ = {
+		BE3089A62345E6CE00E3A2BC /* Front Page */ = {
 			isa = PBXGroup;
 			children = (
 				BE7A817C2343A8DB00C9D490 /* ViewController.swift */,
@@ -151,7 +151,7 @@
 				BE72BF0A2346F65D0091B5E7 /* UserDataType.swift */,
 				BE72BF0C2346FF530091B5E7 /* SubredditDataType.swift */,
 			);
-			path = Subreddit;
+			path = "Front Page";
 			sourceTree = "<group>";
 		};
 		BE3089A72345E6E700E3A2BC /* Posts */ = {
@@ -195,7 +195,7 @@
 				BED91667234AC48F002AAE0A /* LogIn.swift */,
 				BE11073F234B9D9000CDDD5E /* RefreshLogin.swift */,
 				BED91669234AD328002AAE0A /* UserDataUpdate.swift */,
-				BE3089A62345E6CE00E3A2BC /* Subreddit */,
+				BE3089A62345E6CE00E3A2BC /* Front Page */,
 				BE3089A72345E6E700E3A2BC /* Posts */,
 				BE72BF152347D1310091B5E7 /* Detail */,
 				BE7A817E2343A8DB00C9D490 /* Main.storyboard */,

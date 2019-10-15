@@ -32,13 +32,19 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     var sortedDict: [String:[String]] = ["A":[],"B":[],"C":[], "D":[], "E":[], "F":[], "G":[], "H":[], "I":[], "J":[], "K":[], "L":[], "M":[], "N":[], "O":[], "P":[], "Q":[], "R":[], "S":[], "T":[], "U":[], "V":[], "W":[], "X":[], "Y":[], "Z":[]]
     
     
+    @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
+        tableView.reloadData()
+        sender.endRefreshing()
+    }
+
+    
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return self.view.window ?? ASPresentationAnchor()
     }
     
 
     override func viewDidAppear(_ animated: Bool) {
-        
+        tableView.reloadData()
         if defaults.bool(forKey: "logStatus") {
             accessToken = defaults.string(forKey: "accessToken")
             let userJson = Just.get("https://oauth.reddit.com/api/v1/me", headers:["Authorization": "bearer \(accessToken ?? "")"])
@@ -213,7 +219,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             if sortedDict[currentletter]?.count == 0 {
                 return 0
             } else {
-                return 36
+                return 25
             }
             
         }

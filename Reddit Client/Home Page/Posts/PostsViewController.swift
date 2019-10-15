@@ -16,9 +16,12 @@ class PostsViewController: UITableViewController {
     var postsresult = [Posts]()
     var finishedposts = [PostObject]()
     var subreddit: String?
+    let defaults = UserDefaults.standard
     
-    
-    
+    @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
+        tableView.reloadData()
+        sender.endRefreshing()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +29,8 @@ class PostsViewController: UITableViewController {
         title = subreddit
         let urlString = "https://www.reddit.com/r/" + subreddit!.lowercased() + ".json?limit=50"
         
-        
-        //createSpinnerView()
+        tableView.separatorStyle = .none
+        createSpinnerView()
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
         
@@ -40,28 +43,29 @@ class PostsViewController: UITableViewController {
         }
         
         group.notify(queue: .main) {
+            self.tableView.separatorStyle = .singleLine
             self.tableView.reloadData()
         }
     }
     
     
-//    func createSpinnerView() {
-//        let child = SpinnerViewController()
-//
-//        // add the spinner view controller
-//        addChild(child)
-//        child.view.frame = view.frame
-//        view.addSubview(child.view)
-//        child.didMove(toParent: self)
-//
-//        // wait two seconds to simulate some work happening
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-//            // then remove the spinner view controller
-//            child.willMove(toParent: nil)
-//            child.view.removeFromSuperview()
-//            child.removeFromParent()
-//        }
-//    }
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+    }
     
     
     
@@ -124,7 +128,7 @@ class PostsViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        tableView.reloadData()
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayContent") as? ContentViewController {
             vc.contentID = finishedposts[indexPath.row].id
             vc.currentSub = self.subreddit

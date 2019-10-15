@@ -39,6 +39,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="0Xo-IH-wnm"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="P5b-w4-E6i">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshControlActivated:" destination="WNf-f1-oqx" eventType="valueChanged" id="hJo-D3-4Ia"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PX6-Vl-RLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,7 +89,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.circle" catalog="system" highlightedImage="arrow.up.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="KR3-yd-VCC">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KR3-yd-VCC">
                                             <rect key="frame" x="47" y="72.5" width="16" height="19.5"/>
                                             <color key="tintColor" red="0.36268091251970519" green="0.54877253452088559" blue="0.79669201096113995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -99,7 +105,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.right" catalog="system" highlightedImage="bubble.right.fill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUf-xa-wWv">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZUf-xa-wWv">
                                             <rect key="frame" x="89" y="74.5" width="16" height="15.5"/>
                                             <color key="tintColor" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -159,6 +165,12 @@
                             <outlet property="delegate" destination="r7x-fE-nkt" id="RTh-rI-hbY"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="aEC-vi-nyK">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshControlActivated:" destination="r7x-fE-nkt" eventType="valueChanged" id="hkI-eL-p2r"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqQ-2g-xPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -367,6 +379,12 @@
                             <outlet property="delegate" destination="UDg-2G-vGh" id="sP5-Ol-hCI"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="NZC-Pv-iNr">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshControlActivated:" destination="UDg-2G-vGh" eventType="valueChanged" id="MoQ-P2-AmS"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZ8-Ap-5EB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -404,10 +422,10 @@
                         <color key="tintColor" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="0.60334157939999999" green="0.83303827050000001" blue="0.88248783350000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
-                                <color key="value" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBar>
@@ -529,7 +547,6 @@
         <image name="arrow.up.circle" catalog="system" width="64" height="62"/>
         <image name="arrow.up.circle.fill" catalog="system" width="64" height="62"/>
         <image name="bubble.right" catalog="system" width="64" height="54"/>
-        <image name="bubble.right.fill" catalog="system" width="64" height="56"/>
         <image name="clock" catalog="system" width="64" height="62"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>

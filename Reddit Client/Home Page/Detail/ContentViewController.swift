@@ -40,17 +40,28 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     
     var CommentTreeList = [CommentTree]()
     
+    @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
+        tableView.reloadData()
+        sender.endRefreshing()
+    }
+    
     override func loadView() {
         super.loadView()
-        createSpinnerView()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = currentSub
+        var temparray = defaults.object(forKey: "selectedList") as? [String] ?? [String]()
+        print(temparray)
+        temparray.append(contentID!)
+        defaults.set(temparray,forKey: "selectedList")
         
-        //createSpinnerView()
+        createSpinnerView()
+        tableView.separatorStyle = .none
+        tableView.separatorColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -90,6 +101,8 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             
             self.createContent()
             self.createComments()
+            self.tableView.separatorStyle = .singleLine
+            self.tableView.separatorColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             self.tableView.reloadData()
         }
         

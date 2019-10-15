@@ -22,6 +22,8 @@ class ProfileCell: UITableViewCell {
     
     func setUp(profilecell: ProfileHolder) {
         profileImage.sd_setImage(with: URL(string: profilecell.icon_img), placeholderImage: UIImage(named: "Ash-Grey"))
+        profileImage.layer.cornerRadius = 25
+        
         userName.text = profilecell.name
         displayName.text = profilecell.display_name
         postKarma.text = String(profilecell.link_karma)

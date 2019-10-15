@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 class PostCellTableViewCell: UITableViewCell {
-
+    let defaults = UserDefaults.standard
     @IBOutlet weak var postTitle: UILabel!
     @IBOutlet weak var postSubtitle: UILabel!
     @IBOutlet var thumbnailImage: UIImageView!
@@ -23,6 +23,20 @@ class PostCellTableViewCell: UITableViewCell {
     
     func setPost(postObject: PostObject) {
         
+        if (self.defaults.object(forKey: "selectedList") as? [String] ?? [String]()).contains(postObject.id) {
+            postTitle.textColor = .lightGray
+            postSubtitle.textColor = .lightGray
+            upVotes.textColor = .lightGray
+            comments.textColor = .lightGray
+            //backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        } else {
+            postTitle.textColor = .black
+            postSubtitle.textColor = .black
+            upVotes.textColor = .black
+            comments.textColor = .black
+        }
+        
+        
         postTitle.text = postObject.postTitle
         postSubtitle.text = postObject.postSubtitle
         
@@ -34,6 +48,7 @@ class PostCellTableViewCell: UITableViewCell {
         
         thumbnailImage?.contentMode = .scaleAspectFill
         thumbnailImage.layer.cornerRadius = 10
+        
     }
     
 }

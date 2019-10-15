@@ -25,8 +25,7 @@ class LogIn{
         
         let decoder = JSONDecoder()
         if let jsonPosts = try? decoder.decode(AccessToken.self, from: r.content!) {
-            //self.accessToken = jsonPosts.access_token
-            //self.refreshToken = jsonPosts.refresh_token
+
             print(jsonPosts.access_token)
             parseUserJson(accesstoken: jsonPosts.access_token, refreshtoken: jsonPosts.refresh_token)
             //tableView.reloadData()
@@ -34,11 +33,7 @@ class LogIn{
             print("Error with getting accesstoken json")
             
         }
-        
-        //print("This is refresh token:" + (self.refreshToken ?? "no r Token"))
-        //print("This is access token" + (self.accessToken ?? "no access Token"))
-        
-        
+
     }
     
     
@@ -50,7 +45,6 @@ class LogIn{
         if let user = try? decoder.decode(RedditUser.self, from: userJson.content!) {
             
             username = user.name
-            //self.title = "\(self.username ?? "noname") Subreddits"
             print(user.name)
             
             
@@ -67,11 +61,7 @@ class LogIn{
             //filling up SubredditResultsStr
             for i in 1...subs.data.children.count {
                 subredditResultsStr.append(subs.data.children[i-1].data.display_name)
-                
             }
-            
-            
-            
         } else {
             print("Error with getting json")
             
@@ -82,24 +72,12 @@ class LogIn{
         defaults.set(refreshtoken, forKey: "refreshToken")
         defaults.set(subredditResultsStr, forKey: "subredditList")
         
+        let selectedarray = ["placeholder","yes"]
+        defaults.set(selectedarray, forKey: "selectedList") // the list of selected posts
         print("Log in Data Retrieved")
 
         
     }
-    
-    
-//    func saveData(UserData userdata: UserData) {
-//        let encoder = PropertyListEncoder()
-//        encoder.outputFormat = .xml
-//
-//        let paths = Bundle.main.url(forResource: "UserData", withExtension: "plist")
-//
-//        do {
-//            let data = try encoder.encode(userdata)
-//            try data.write(to: paths!)
-//        } catch {
-//            print(error)
-//        }
-//    }
+
     
 }

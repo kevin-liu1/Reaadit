@@ -1,0 +1,24 @@
+PODS:
+  - MarkdownKit (1.5)
+  - Nantes (0.0.8)
+  - YoutubePlayer-in-WKWebView (0.3.3)
+
+DEPENDENCIES:
+  - MarkdownKit
+  - Nantes
+  - YoutubePlayer-in-WKWebView (~> 0.3.0)
+
+SPEC REPOS:
+  trunk:
+    - MarkdownKit
+    - Nantes
+    - YoutubePlayer-in-WKWebView
+
+SPEC CHECKSUMS:
+  MarkdownKit: 379028e9cd3ebf05ccac87205cd9aead446159d4
+  Nantes: 94a2e0c0b8207f12694f4ff6d96bf670adad3e27
+  YoutubePlayer-in-WKWebView: 7694e858c5c3472ed067d6fe34eb9b944845e63c
+
+PODFILE CHECKSUM: 84e0f4593a30516b047bf639058e59701486f4f6
+
+COCOAPODS: 1.8.3

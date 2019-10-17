@@ -23,7 +23,7 @@ Reaadit is an Reddit client that is fast, minimalistic and written completely in
 - Dynamic TableView Cells that adjust for different types of Reddit Posts Youtube Integration
 - UserDefaults
 
-## Modules/Depedencies
+## Modules/Dependencies
 - YoutubePlayer-in-WKWebView
 - JustHTTP
 - SDWebImage

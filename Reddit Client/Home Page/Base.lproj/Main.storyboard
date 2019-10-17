@@ -9,7 +9,7 @@
         <!--View Controller-->
         <scene sceneID="uFb-KC-hZq">
             <objects>
-                <tableViewController id="WNf-f1-oqx" customClass="ViewController" customModule="Reddit_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="WNf-f1-oqx" customClass="ViewController" customModule="Reaadit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nb2-gB-5tR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,6 +40,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="0Xo-IH-wnm"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="P5b-w4-E6i">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refreshControlActivated:" destination="WNf-f1-oqx" eventType="valueChanged" id="hJo-D3-4Ia"/>
@@ -53,13 +54,13 @@
         <!--Posts View Controller-->
         <scene sceneID="4Gy-yO-s8T">
             <objects>
-                <tableViewController storyboardIdentifier="DisplayPosts" id="r7x-fE-nkt" customClass="PostsViewController" customModule="Reddit_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DisplayPosts" id="r7x-fE-nkt" customClass="PostsViewController" customModule="Reaadit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g1d-OE-WWZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Posts" id="C1B-vg-D8M" customClass="PostCellTableViewCell" customModule="Reddit_Client" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Posts" id="C1B-vg-D8M" customClass="PostCellTableViewCell" customModule="Reaadit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="98"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C1B-vg-D8M" id="lUL-db-ndw">
@@ -89,32 +90,30 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KR3-yd-VCC">
-                                            <rect key="frame" x="47" y="72.5" width="16" height="19.5"/>
-                                            <color key="tintColor" red="0.36268091251970519" green="0.54877253452088559" blue="0.79669201096113995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="16" id="kBd-Mg-ZXk"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rU4-ol-Uhh">
-                                            <rect key="frame" x="67.5" y="74" width="17" height="16.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="16.5" id="tG9-GI-dot"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZUf-xa-wWv">
-                                            <rect key="frame" x="89" y="74.5" width="16" height="15.5"/>
+                                            <rect key="frame" x="92.5" y="74.5" width="16" height="15.5"/>
                                             <color key="tintColor" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="16" id="lW0-et-N32"/>
                                                 <constraint firstAttribute="height" constant="16" id="vUB-Gs-wsD"/>
                                             </constraints>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9w-fB-pId">
+                                            <rect key="frame" x="68.5" y="74" width="16" height="16.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16.5" id="qOi-wO-RSG"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
+                                            <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
+                                            <state key="normal" title="UV">
+                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="playVideoWith_sender:" destination="C1B-vg-D8M" eventType="touchUpInside" id="oeC-mB-s3X"/>
+                                            </connections>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87z-dF-Oiv">
-                                            <rect key="frame" x="109.5" y="74" width="19.5" height="16.5"/>
+                                            <rect key="frame" x="111" y="74" width="19.5" height="16.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16.5" id="yIf-nV-tRh"/>
                                             </constraints>
@@ -122,31 +121,39 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btD-zl-paU">
+                                            <rect key="frame" x="50.5" y="74" width="16" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="B1C-Pi-8tP"/>
+                                                <constraint firstAttribute="width" constant="16" id="izP-Ol-5Ji"/>
+                                            </constraints>
+                                            <color key="tintColor" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Button" image="arrow.up.circle" catalog="system"/>
+                                            <connections>
+                                                <action selector="playVideoWith_sender:" destination="C1B-vg-D8M" eventType="touchUpInside" id="8Dy-Y3-JAs"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="rU4-ol-Uhh" secondAttribute="bottom" constant="7.5" id="0kV-No-XVG"/>
                                         <constraint firstAttribute="bottom" secondItem="LzZ-ux-eAo" secondAttribute="bottom" constant="8.5" id="1Qd-s3-x0r"/>
-                                        <constraint firstItem="rU4-ol-Uhh" firstAttribute="leading" secondItem="KR3-yd-VCC" secondAttribute="trailing" constant="4.5" id="4fB-e9-18K"/>
+                                        <constraint firstAttribute="bottom" secondItem="btD-zl-paU" secondAttribute="bottom" constant="8" id="4v5-Dv-Lg0"/>
                                         <constraint firstAttribute="trailing" secondItem="301-cK-02S" secondAttribute="trailing" constant="20" id="6BK-eR-9ZO"/>
                                         <constraint firstItem="Oij-U3-5Qv" firstAttribute="leading" secondItem="LzZ-ux-eAo" secondAttribute="leading" id="9TG-iT-lPr"/>
                                         <constraint firstItem="Oij-U3-5Qv" firstAttribute="top" secondItem="lUL-db-ndw" secondAttribute="topMargin" id="Fjv-wG-ogA"/>
-                                        <constraint firstItem="87z-dF-Oiv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lUL-db-ndw" secondAttribute="top" constant="55" id="HZb-SW-apB"/>
+                                        <constraint firstAttribute="bottom" secondItem="k9w-fB-pId" secondAttribute="bottom" constant="7.5" id="Fma-5E-ae9"/>
                                         <constraint firstAttribute="bottom" secondItem="87z-dF-Oiv" secondAttribute="bottom" constant="7.5" id="Kok-mY-iGX"/>
                                         <constraint firstItem="301-cK-02S" firstAttribute="leading" secondItem="Oij-U3-5Qv" secondAttribute="trailing" constant="14" id="NZO-5N-pKM"/>
                                         <constraint firstItem="301-cK-02S" firstAttribute="top" secondItem="lUL-db-ndw" secondAttribute="top" constant="12.5" id="R41-Pc-izD"/>
-                                        <constraint firstItem="ZUf-xa-wWv" firstAttribute="leading" secondItem="rU4-ol-Uhh" secondAttribute="trailing" constant="4.5" id="SJv-ii-ddl"/>
-                                        <constraint firstItem="ZUf-xa-wWv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lUL-db-ndw" secondAttribute="top" constant="55" id="UZR-BI-2lY"/>
+                                        <constraint firstItem="btD-zl-paU" firstAttribute="leading" secondItem="LzZ-ux-eAo" secondAttribute="trailing" constant="8" id="R6I-zW-oqB"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Oij-U3-5Qv" secondAttribute="bottom" constant="21.5" id="XdL-LA-zdi"/>
-                                        <constraint firstItem="KR3-yd-VCC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lUL-db-ndw" secondAttribute="top" constant="55" id="XwL-DG-4F5"/>
-                                        <constraint firstAttribute="bottom" secondItem="KR3-yd-VCC" secondAttribute="bottom" constant="6" id="YJU-Yk-Vk9"/>
                                         <constraint firstItem="LzZ-ux-eAo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lUL-db-ndw" secondAttribute="top" constant="56" id="a8S-wo-KQL"/>
-                                        <constraint firstItem="rU4-ol-Uhh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lUL-db-ndw" secondAttribute="top" constant="55" id="dJM-yQ-HBX"/>
-                                        <constraint firstItem="87z-dF-Oiv" firstAttribute="leading" secondItem="ZUf-xa-wWv" secondAttribute="trailing" constant="4.5" id="fZK-3P-dht"/>
+                                        <constraint firstItem="87z-dF-Oiv" firstAttribute="leading" secondItem="ZUf-xa-wWv" secondAttribute="trailing" constant="2.5" id="fZK-3P-dht"/>
                                         <constraint firstItem="Oij-U3-5Qv" firstAttribute="leading" secondItem="lUL-db-ndw" secondAttribute="leadingMargin" id="g1O-0S-3Ak"/>
                                         <constraint firstAttribute="bottom" secondItem="ZUf-xa-wWv" secondAttribute="bottom" constant="8" id="iZb-Vp-mvL"/>
                                         <constraint firstItem="301-cK-02S" firstAttribute="leading" relation="lessThanOrEqual" secondItem="87z-dF-Oiv" secondAttribute="trailing" constant="205" id="neK-hL-Buz"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="301-cK-02S" secondAttribute="bottom" constant="6.5" id="o3S-IB-2oG"/>
-                                        <constraint firstItem="KR3-yd-VCC" firstAttribute="leading" secondItem="LzZ-ux-eAo" secondAttribute="trailing" constant="4.5" id="vpX-zo-VFy"/>
+                                        <constraint firstItem="ZUf-xa-wWv" firstAttribute="leading" secondItem="k9w-fB-pId" secondAttribute="trailing" constant="8" id="uor-Cb-aHB"/>
+                                        <constraint firstItem="k9w-fB-pId" firstAttribute="leading" secondItem="btD-zl-paU" secondAttribute="trailing" constant="2" id="vk6-HB-60e"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -155,8 +162,8 @@
                                     <outlet property="postSubtitle" destination="LzZ-ux-eAo" id="Faz-rA-Bcm"/>
                                     <outlet property="postTitle" destination="Oij-U3-5Qv" id="ijC-1W-u15"/>
                                     <outlet property="thumbnailImage" destination="301-cK-02S" id="chU-no-JbE"/>
-                                    <outlet property="upVoteIcon" destination="KR3-yd-VCC" id="Axl-ew-0Q2"/>
-                                    <outlet property="upVotes" destination="rU4-ol-Uhh" id="iR6-o0-3dE"/>
+                                    <outlet property="upVotes" destination="k9w-fB-pId" id="aw3-yT-emP"/>
+                                    <outlet property="voteButtonStatus" destination="btD-zl-paU" id="IiE-l9-lOJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -166,6 +173,7 @@
                         </connections>
                     </tableView>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="aEC-vi-nyK">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refreshControlActivated:" destination="r7x-fE-nkt" eventType="valueChanged" id="hkI-eL-p2r"/>
@@ -179,13 +187,13 @@
         <!--Content View Controller-->
         <scene sceneID="dRj-i0-9LN">
             <objects>
-                <tableViewController storyboardIdentifier="DisplayContent" id="UDg-2G-vGh" customClass="ContentViewController" customModule="Reddit_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DisplayContent" id="UDg-2G-vGh" customClass="ContentViewController" customModule="Reaadit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="25u-Te-O7v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Content" rowHeight="344" id="3U0-0J-HTy" customClass="ContentCellSelf" customModule="Reddit_Client" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Content" rowHeight="344" id="3U0-0J-HTy" customClass="ContentCellSelf" customModule="Reaadit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="344"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3U0-0J-HTy" id="oDM-Bl-4OC">
@@ -289,7 +297,7 @@
                                     <outlet property="upvoteLabel" destination="Zzr-uU-7DK" id="OhU-hr-B9Q"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Comments" id="lmT-qv-mcQ" customClass="CommentCell" customModule="Reddit_Client" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Comments" id="lmT-qv-mcQ" customClass="CommentCell" customModule="Reaadit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="372" width="414" height="230"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lmT-qv-mcQ" id="6Qk-2X-HMv">
@@ -380,6 +388,7 @@
                         </connections>
                     </tableView>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="NZC-Pv-iNr">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refreshControlActivated:" destination="UDg-2G-vGh" eventType="valueChanged" id="MoQ-P2-AmS"/>
@@ -461,7 +470,7 @@
         <!--Profile View Controller-->
         <scene sceneID="j6k-Xp-oEJ">
             <objects>
-                <tableViewController id="cJd-bA-iXm" customClass="ProfileViewController" customModule="Reddit_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cJd-bA-iXm" customClass="ProfileViewController" customModule="Reaadit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rek-tC-xwX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

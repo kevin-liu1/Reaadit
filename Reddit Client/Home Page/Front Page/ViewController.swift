@@ -33,6 +33,18 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     
     
     @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
+        subredditResultsStr = defaults.object(forKey: "subredditList") as? [String] ?? [String]()
+        for i in 0...subredditResultsStr.count-1 {
+            subredditResultsStr[i] = subredditResultsStr[i].lowercased()
+        }
+        subredditResultsStr = subredditResultsStr.sorted()
+        for (letter, sub) in sortedDict {
+            for subreddit in subredditResultsStr{
+                if subreddit.lowercased().hasPrefix(letter.lowercased()){
+                    sortedDict[letter]?.append(subreddit)
+                }
+            }
+        }
         tableView.reloadData()
         sender.endRefreshing()
     }
@@ -53,7 +65,18 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             let decoder = JSONDecoder()
             if let contents = try? decoder.decode(Profile.self, from: userJson.content!) {
                 print("STILL LOGGED IN")
-                tableView.reloadData()
+//                let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+//                let group = DispatchGroup()
+//                group.enter()
+//                dispatchQueue.async{
+//                    Network().getUpVotedList()
+//                    Network().getDownVotedList()
+//                    group.leave()
+//                }
+//                group.notify(queue: .main) {
+//                    self.tableView.reloadData()
+//                }
+
             } else {
                 print("ACCESS CODE EXPIRED")
                 Network().getAccessTokenRefresh()
@@ -63,14 +86,14 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        Network().getUpVotedList()
+//        Network().getDownVotedList()
+        Network().getVoteList()
 
         let headercell = UINib(nibName: "HeaderViewCell", bundle: nil)
         tableView.register(headercell, forCellReuseIdentifier: "HeaderCell")
         
         self.headers = [Header(label: "Favorites")]
-        
-        
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSubreddit))
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -104,6 +127,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         defaults.set("", forKey: "accessToken")
         defaults.set("", forKey:  "refreshToken")
         defaults.set("User", forKey: "userName")
+        defaults.set([String](), forKey: "upVoteList")
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(self.logIn))
         tableView.reloadData()
@@ -215,12 +239,17 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         if section == 0 {
             return 0
         } else {
-            let currentletter = headerlist[section]
-            if sortedDict[currentletter]?.count == 0 {
-                return 0
+            if defaults.bool(forKey: "logStatus") {
+                let currentletter = headerlist[section]
+                if sortedDict[currentletter]?.count == 0 {
+                    return 0
+                } else {
+                    return 25
+                }
             } else {
                 return 25
             }
+
             
         }
     }

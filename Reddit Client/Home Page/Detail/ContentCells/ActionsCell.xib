@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Actions" rowHeight="49" id="KGk-i7-Jjw" customClass="ActionsCell" customModule="Reddit_Client" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhs-eV-frt">
+                        <rect key="frame" x="64" y="8.5" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="s6b-wn-XLg"/>
+                            <constraint firstAttribute="height" constant="32" id="sJO-L1-nhY"/>
+                        </constraints>
+                        <color key="tintColor" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="arrow.up" catalog="system"/>
+                        <connections>
+                            <action selector="upVoteWith_sender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="76P-4r-EU8"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzq-Se-Kec">
+                        <rect key="frame" x="319" y="13" width="19" height="23.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="23.5" id="apu-Ey-U2Z"/>
+                            <constraint firstAttribute="width" constant="19" id="eer-U6-dkn"/>
+                        </constraints>
+                        <color key="tintColor" red="0.43098713290000001" green="0.52464289220000004" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="square.and.arrow.up" catalog="system"/>
+                        <connections>
+                            <action selector="shareWith_sender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1z9-uu-RFl"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GlI-kP-SSP">
+                        <rect key="frame" x="191" y="8" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="9ev-cd-A8d"/>
+                            <constraint firstAttribute="height" constant="32" id="HtJ-sq-CRO"/>
+                        </constraints>
+                        <color key="tintColor" red="0.43098713290000001" green="0.52464289220000004" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="plus.bubble" catalog="system"/>
+                        <connections>
+                            <action selector="commentWith_sender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cRQ-5v-X5d"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLs-PC-c4v">
+                        <rect key="frame" x="256" y="8" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="UuP-PT-lNx"/>
+                            <constraint firstAttribute="width" constant="32" id="WiY-7U-XKX"/>
+                        </constraints>
+                        <color key="tintColor" red="0.43098713290000001" green="0.52464289220000004" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="bookmark" catalog="system"/>
+                    </button>
+                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pka-0y-lcs">
+                        <rect key="frame" x="127" y="8" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="Ain-ov-deE"/>
+                            <constraint firstAttribute="width" constant="32" id="vsS-e4-618"/>
+                        </constraints>
+                        <color key="tintColor" red="0.43098713290000001" green="0.52464289220000004" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="arrow.down" catalog="system"/>
+                        <connections>
+                            <action selector="downVoteWith_sender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5zz-b1-xfc"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dzq-Se-Kec" firstAttribute="leading" secondItem="mLs-PC-c4v" secondAttribute="trailing" constant="31" id="19Y-FL-hA3"/>
+                    <constraint firstItem="GlI-kP-SSP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="23t-oh-eqO"/>
+                    <constraint firstItem="Pka-0y-lcs" firstAttribute="leading" secondItem="fhs-eV-frt" secondAttribute="trailing" constant="31" id="P4N-H6-EoR"/>
+                    <constraint firstItem="fhs-eV-frt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uyf-3D-kpx"/>
+                    <constraint firstAttribute="bottom" secondItem="dzq-Se-Kec" secondAttribute="bottom" constant="12.5" id="YU7-pS-Cav"/>
+                    <constraint firstItem="GlI-kP-SSP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="ZJV-eZ-nzC"/>
+                    <constraint firstAttribute="bottom" secondItem="mLs-PC-c4v" secondAttribute="bottom" constant="9" id="cLf-5O-Avh"/>
+                    <constraint firstItem="Pka-0y-lcs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="nJa-6C-7Xt"/>
+                    <constraint firstItem="mLs-PC-c4v" firstAttribute="leading" secondItem="GlI-kP-SSP" secondAttribute="trailing" constant="33" id="njt-F1-ru6"/>
+                    <constraint firstAttribute="bottom" secondItem="Pka-0y-lcs" secondAttribute="bottom" constant="9" id="o0s-jR-KlY"/>
+                    <constraint firstAttribute="bottom" secondItem="GlI-kP-SSP" secondAttribute="bottom" constant="9" id="pO8-lL-9kO"/>
+                    <constraint firstItem="dzq-Se-Kec" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="qYV-lX-jcR"/>
+                    <constraint firstItem="GlI-kP-SSP" firstAttribute="leading" secondItem="Pka-0y-lcs" secondAttribute="trailing" constant="32" id="t3R-kV-h0l"/>
+                    <constraint firstItem="mLs-PC-c4v" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="w2Q-jd-YDh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="downVoteSettings" destination="Pka-0y-lcs" id="9Da-yB-p7e"/>
+                <outlet property="upVoteSettings" destination="fhs-eV-frt" id="fjt-Lh-icw"/>
+            </connections>
+            <point key="canvasLocation" x="121.73913043478262" y="154.35267857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow.down" catalog="system" width="58" height="64"/>
+        <image name="arrow.up" catalog="system" width="58" height="64"/>
+        <image name="bookmark" catalog="system" width="54" height="64"/>
+        <image name="plus.bubble" catalog="system" width="64" height="54"/>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
+    </resources>
+</document>

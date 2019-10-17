@@ -55,6 +55,8 @@
 		BEE865C3234E4553008BE15F /* ImageContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE865C1234E4553008BE15F /* ImageContentCell.swift */; };
 		BEE865C4234E4553008BE15F /* ImageContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE865C2234E4553008BE15F /* ImageContentCell.xib */; };
 		BEE865C6234E4F29008BE15F /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE865C5234E4F29008BE15F /* ContentType.swift */; };
+		BEEC6C342357CEEB0097B25C /* ActionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC6C322357CEEB0097B25C /* ActionsCell.swift */; };
+		BEEC6C352357CEEB0097B25C /* ActionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEEC6C332357CEEB0097B25C /* ActionsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,7 +74,7 @@
 		BE72BF0E23471D5A0091B5E7 /* PostObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostObject.swift; sourceTree = "<group>"; };
 		BE72BF182347EB800091B5E7 /* UserData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserData.plist; sourceTree = "<group>"; };
 		BE72BF1A2347ECA30091B5E7 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		BE7A81772343A8DB00C9D490 /* Reddit Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE7A81772343A8DB00C9D490 /* Reaadit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reaadit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7A817A2343A8DB00C9D490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE7A817C2343A8DB00C9D490 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BE7A817F2343A8DB00C9D490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +108,8 @@
 		BEE865C1234E4553008BE15F /* ImageContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContentCell.swift; sourceTree = "<group>"; };
 		BEE865C2234E4553008BE15F /* ImageContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageContentCell.xib; sourceTree = "<group>"; };
 		BEE865C5234E4F29008BE15F /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		BEEC6C322357CEEB0097B25C /* ActionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsCell.swift; sourceTree = "<group>"; };
+		BEEC6C332357CEEB0097B25C /* ActionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionsCell.xib; sourceTree = "<group>"; };
 		C388F4C366727284DE69AE70 /* Pods-Reddit Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit Client.release.xcconfig"; path = "Target Support Files/Pods-Reddit Client/Pods-Reddit Client.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,14 +197,14 @@
 			isa = PBXGroup;
 			children = (
 				BED91667234AC48F002AAE0A /* LogIn.swift */,
+				BEDFB1122354F5D1009CA00A /* Network.swift */,
+				BECA7066235037DF00F8F336 /* SpinnerViewController.swift */,
 				BE11073F234B9D9000CDDD5E /* RefreshLogin.swift */,
 				BED91669234AD328002AAE0A /* UserDataUpdate.swift */,
 				BE3089A62345E6CE00E3A2BC /* Front Page */,
 				BE3089A72345E6E700E3A2BC /* Posts */,
 				BE72BF152347D1310091B5E7 /* Detail */,
 				BE7A817E2343A8DB00C9D490 /* Main.storyboard */,
-				BECA7066235037DF00F8F336 /* SpinnerViewController.swift */,
-				BEDFB1122354F5D1009CA00A /* Network.swift */,
 			);
 			path = "Home Page";
 			sourceTree = "<group>";
@@ -229,7 +233,7 @@
 		BE7A81782343A8DB00C9D490 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BE7A81772343A8DB00C9D490 /* Reddit Client.app */,
+				BE7A81772343A8DB00C9D490 /* Reaadit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,6 +254,8 @@
 		BED91677234B2364002AAE0A /* ContentCells */ = {
 			isa = PBXGroup;
 			children = (
+				BEEC6C322357CEEB0097B25C /* ActionsCell.swift */,
+				BEEC6C332357CEEB0097B25C /* ActionsCell.xib */,
 				BED91675234B235A002AAE0A /* RichVideoContentCell.swift */,
 				BE110744234C2A6500CDDD5E /* RichVideoContentCell.xib */,
 				BE90958A234ECFBE00229873 /* PlayYoutubeCell.swift */,
@@ -299,7 +305,7 @@
 				BE72BF1323473F740091B5E7 /* SDWebImageMapKit */,
 			);
 			productName = "Reddit Client";
-			productReference = BE7A81772343A8DB00C9D490 /* Reddit Client.app */;
+			productReference = BE7A81772343A8DB00C9D490 /* Reaadit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -345,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE7A81852343A8DD00C9D490 /* LaunchScreen.storyboard in Resources */,
+				BEEC6C352357CEEB0097B25C /* ActionsCell.xib in Resources */,
 				BE612C1523452C8700FD87D4 /* icons in Resources */,
 				BE7A81822343A8DD00C9D490 /* Assets.xcassets in Resources */,
 				BEE865C4234E4553008BE15F /* ImageContentCell.xib in Resources */,
@@ -440,6 +447,7 @@
 				BED91674234B2347002AAE0A /* LinkContentCell.swift in Sources */,
 				BEDFB10D235184E3009CA00A /* ProfileCell.swift in Sources */,
 				BED91668234AC48F002AAE0A /* LogIn.swift in Sources */,
+				BEEC6C342357CEEB0097B25C /* ActionsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +593,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8FAF4821889A2A4E168818DE /* Pods-Reddit Client.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VDUMPYJ7FG;
 				INFOPLIST_FILE = "Reddit Client/Info.plist";
@@ -595,7 +603,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinliu.Reddit-Client";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Reaadit;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -605,7 +613,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C388F4C366727284DE69AE70 /* Pods-Reddit Client.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VDUMPYJ7FG;
 				INFOPLIST_FILE = "Reddit Client/Info.plist";
@@ -615,7 +623,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinliu.Reddit-Client";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Reaadit;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

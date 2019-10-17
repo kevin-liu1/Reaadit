@@ -52,12 +52,12 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("THIS IS CONTENT ID" + (contentID ?? "None"))
         title = currentSub
         var temparray = defaults.object(forKey: "selectedList") as? [String] ?? [String]()
         print(temparray)
         temparray.append(contentID!)
-        defaults.set(temparray,forKey: "selectedList")
+        defaults.set(Array(Set(temparray)),forKey: "selectedList")
         
         createSpinnerView()
         tableView.separatorStyle = .none
@@ -69,10 +69,14 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         let imagecell = UINib(nibName: "ImageContentCell", bundle: nil)
         let linkcell = UINib(nibName: "LinkContentCell", bundle: nil)
         let youtubeCell = UINib(nibName: "PlayYoutubeCell", bundle: nil)
+        let actionscell = UINib(nibName: "ActionsCell", bundle: nil)
         tableView.register(videocell, forCellReuseIdentifier: "RichVideoCell")
         tableView.register(imagecell, forCellReuseIdentifier: "Picture")
         tableView.register(linkcell, forCellReuseIdentifier: "LinkCell")
         tableView.register(youtubeCell, forCellReuseIdentifier: "YoutubeCell")
+        tableView.register(actionscell, forCellReuseIdentifier: "Actions")
+        
+        
         
         
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
@@ -82,7 +86,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         dispatchQueue.async{
             //tasks here
             if self.defaults.bool(forKey: "logStatus"){
-                self.getJson()
+                self.getContentJson()
              } else {
                 print("Not Logged In")
                 self.getJsonLoggedOut()
@@ -122,7 +126,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         child.didMove(toParent: self)
 
         // wait two seconds to simulate some work happening
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.25) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
             // then remove the spinner view controller
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
@@ -144,23 +148,32 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
 //    }
     
     
-    func getJson() {
+    func getContentJson() {
         accessToken = defaults.string(forKey: "accessToken")
-        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=25", headers:["Authorization": "bearer \(accessToken ?? "")"])
-        
+        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=20", headers:["Authorization": "bearer \(accessToken ?? "")"])
         let decoder = JSONDecoder()
         if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
             print("decoded comment json")
             //print(contents[0].data.children)
             self.commentList = contents[1].data.children!
             self.content = contents[0].data.children!
-            
         } else {
             print("Error with getting comment json")
-            
         }
-        
     }
+    
+//    func getCommentsJson() {
+//        accessToken = defaults.string(forKey: "accessToken")
+//        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=40", headers:["Authorization": "bearer \(accessToken ?? "")"])
+//        let decoder = JSONDecoder()
+//        if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
+//            print("decoded comment json")
+//            self.commentList = contents[1].data.children!
+//            //self.content = contents[0].data.children!
+//        } else {
+//            print("Error with getting comment json")
+//        }
+//    }
     
     func getJsonLoggedOut() {
         accessToken = defaults.string(forKey: "accessToken")
@@ -169,7 +182,6 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         let decoder = JSONDecoder()
         if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
             print("decoded comment json")
-            
             self.commentList = contents[1].data.children!
             self.content = contents[0].data.children!
             
@@ -225,7 +237,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         if self.content.count > 0 {
-            return 2
+            return 3
         } else{
             return 0
         }
@@ -239,6 +251,8 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             case 0:
                 return 1
             case 1:
+                return 1
+            case 2:
                 return commentListFinal.count
             default:
                 return 1
@@ -317,12 +331,17 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
                 }
 
             case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Actions", for: indexPath) as! ActionsCell
+                cell.setContent(ID: self.contentID ?? "None")
+                return cell
+            case 2:
                 //comments
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) as! CommentCell
                 let comment = commentListFinal[indexPath.row]
                 cell.setCommentCell(comment: comment)
                 cell.delegate = self
                 return cell
+                
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
                 return cell

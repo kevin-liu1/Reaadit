@@ -75,6 +75,11 @@ class LogIn{
         let selectedarray = ["placeholder","yes"]
         defaults.set(selectedarray, forKey: "selectedList") // the list of selected posts
         print("Log in Data Retrieved")
+        
+        let upvoteArray = [String]()
+        self.defaults.set(upvoteArray, forKey: "upVoteList")
+        
+        Network().getUpVotedList()
 
         
     }

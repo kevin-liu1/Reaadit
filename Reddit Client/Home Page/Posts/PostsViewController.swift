@@ -8,14 +8,14 @@
 
 import UIKit
 import SDWebImage
-
+import Just
 
 class PostsViewController: UITableViewController {
-
     
     var postsresult = [Posts]()
     var finishedposts = [PostObject]()
     var subreddit: String?
+    var afterParam: String?
     let defaults = UserDefaults.standard
     
     @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
@@ -23,20 +23,22 @@ class PostsViewController: UITableViewController {
         sender.endRefreshing()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = subreddit
-        let urlString = "https://www.reddit.com/r/" + subreddit!.lowercased() + ".json?limit=50"
+        let urlString = "https://www.reddit.com/r/" + subreddit!.lowercased() + ".json?limit=20"
         
         tableView.separatorStyle = .none
         createSpinnerView()
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
-        
         group.enter()
         dispatchQueue.async{
-            
             self.getPostJson(urlString: urlString)
             self.finishedposts = self.createCells()
             group.leave()
@@ -51,16 +53,17 @@ class PostsViewController: UITableViewController {
     
     func createSpinnerView() {
         let child = SpinnerViewController()
-
         // add the spinner view controller
         addChild(child)
         child.view.frame = view.frame
         view.addSubview(child.view)
         child.didMove(toParent: self)
-
+        
         // wait two seconds to simulate some work happening
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.40) {
             // then remove the spinner view controller
+//            Network().getUpVotedList()
+//            Network().getDownVotedList()
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
@@ -79,9 +82,10 @@ class PostsViewController: UITableViewController {
     
     func parse(json: Data){
         let decoder = JSONDecoder()
-       
         if let jsonPosts = try? decoder.decode(Wraps.self, from: json) {
             postsresult = jsonPosts.data.children
+            afterParam = jsonPosts.data.after
+            print("This is after param: " + (afterParam ?? "None"))
         } else {
             print("Error with getting json")
             return
@@ -91,24 +95,45 @@ class PostsViewController: UITableViewController {
     func createCells() -> [PostObject] {
         let cellnumber = self.postsresult.count
         var createdcells = [PostObject]()
-        
-        for i in 1...cellnumber {
-            let singlepost = postsresult[i-1]
-            let post = singlepost.data
-            
-            //checking subtitle condition
-            var subtitle: String
-            if self.subreddit == "Popular" || self.subreddit == "All" {
-                subtitle = post.author
-            } else {
-                subtitle = post.subreddit
+        if cellnumber > 0 {
+            for i in 1...cellnumber {
+                let singlepost = postsresult[i-1]
+                let post = singlepost.data
+                
+                //checking subtitle condition
+                var subtitle: String
+                if self.subreddit == "Popular" || self.subreddit == "All" {
+                    subtitle = post.author
+                } else {
+                    subtitle = post.subreddit
+                }
+                createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.preview?.images?[0].source?.url ?? ""))
             }
-            
-            createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.preview?.images?[0].source?.url ?? ""))
         }
+
         return createdcells
     }
     
+    func getMorePosts() {
+        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+        let group = DispatchGroup()
+        group.enter()
+        dispatchQueue.async{
+            let postJson = Just.get("https://www.reddit.com/r/" + self.subreddit! + ".json?limit=35&after=" + self.afterParam!)
+            let decoder = JSONDecoder()
+            if let contents = try? decoder.decode(Wraps.self, from: postJson.content!) {
+                self.afterParam = contents.data.after
+                self.postsresult.append(contentsOf: contents.data.children)
+                self.finishedposts = self.createCells()
+            } else {
+                print("Can't get more posts")
+            }
+            group.leave()
+        }
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+    }
     
     
     // MARK: - Table view data source
@@ -121,12 +146,17 @@ class PostsViewController: UITableViewController {
         let post = finishedposts[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Posts", for: indexPath) as! PostCellTableViewCell
         cell.setPost(postObject: post)
-        
         return cell
     }
-    
 
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = finishedposts.count - 15
+        if indexPath.row == lastElement {
+            self.getMorePosts()
+        }
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadData()
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayContent") as? ContentViewController {

@@ -16,6 +16,7 @@ struct Wraps: Codable {
 struct Wrap: Codable {
     let dist: Int
     let children: [Posts]
+    let after: String
 }
 
 struct Posts: Codable {

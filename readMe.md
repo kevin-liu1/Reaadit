@@ -3,6 +3,11 @@
   Reaadit for Reddit<br>
 </h1>
 
-A Reddit Client Written in Swift
+<p align="center">A Reddit Client Written in Swift</p>
+<p align="center">Written by Kevin Liu</p>
+<br>
+<br>
+
+
 
 relies on JustHTTP Dependecies

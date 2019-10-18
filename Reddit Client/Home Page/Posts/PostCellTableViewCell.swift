@@ -23,7 +23,7 @@ class PostCellTableViewCell: UITableViewCell {
     var postID: String?
     var direction = 0
     @IBOutlet var voteButtonStatus: UIButton!
-    @IBAction func playVideo(_sender: AnyObject) {
+    @IBAction func clickUpVote(_sender: AnyObject) {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
         if !(self.defaults.object(forKey: "upVoteList") as? [String] ?? [String]()).contains("t3_" + postID!) {
@@ -36,8 +36,20 @@ class PostCellTableViewCell: UITableViewCell {
             self.defaults.set(Array(Set(tempset)), forKey: "upVoteList")
             upVotes.setTitle(String((Int(upVotes.titleLabel?.text ?? "0")!) + 1), for: .normal)
             Network().Vote(id: "t3_" + self.postID!, direction: 1)
+            voteButtonStatus.setImage(UIImage(named: "arrow.up.circle"), for: .normal)
             voteButtonStatus.tintColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
             upVotes.titleLabel?.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        } else if (self.defaults.object(forKey: "downVoteList") as? [String] ?? [String]()).contains("t3_" + postID!) {
+            var tempset = defaults.object(forKey: "downVoteList") as? [String] ?? [String]()
+            if let a = tempset.firstIndex(of: "t3_" + postID!) {
+                tempset.remove(at: a)
+            }
+            upVotes.setTitle(String((Int(upVotes.titleLabel?.text ?? "0")!) + 1), for: .normal)
+            self.defaults.set(Array(Set(tempset)), forKey: "downVoteList")
+            voteButtonStatus.setImage(UIImage(named: "arrow.up.circle"), for: .normal)
+            Network().Vote(id: "t3_" + self.postID!, direction: 0)
+            voteButtonStatus.tintColor = #colorLiteral(red: 0.4309871329, green: 0.5246428922, blue: 0.796692011, alpha: 1)
+            
         } else {
             var tempset = defaults.object(forKey: "upVoteList") as? [String] ?? [String]()
             if let a = tempset.firstIndex(of: "t3_" + postID!) {
@@ -56,6 +68,9 @@ class PostCellTableViewCell: UITableViewCell {
         self.postID = postObject.id
         if (self.defaults.object(forKey: "upVoteList") as? [String] ?? [String]()).contains("t3_" + postID!) {
             voteButtonStatus.tintColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        } else if (self.defaults.object(forKey: "downVoteList") as? [String] ?? [String]()).contains("t3_" + postID!) {
+            voteButtonStatus.tintColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            voteButtonStatus.setImage(UIImage(named: "arrow.down.circle"), for: .normal)
         } else {
             voteButtonStatus.tintColor = #colorLiteral(red: 0.4309871329, green: 0.5246428922, blue: 0.796692011, alpha: 1)
         }

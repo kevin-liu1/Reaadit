@@ -58,6 +58,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
         if defaults.bool(forKey: "logStatus") {
+            //self.subredditResultsStr = self.defaults.object(forKey: "subredditList") as? [String] ?? [String]()
             accessToken = defaults.string(forKey: "accessToken")
             let userJson = Just.get("https://oauth.reddit.com/api/v1/me", headers:["Authorization": "bearer \(accessToken ?? "")"])
             
@@ -65,17 +66,11 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             let decoder = JSONDecoder()
             if let contents = try? decoder.decode(Profile.self, from: userJson.content!) {
                 print("STILL LOGGED IN")
-//                let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
-//                let group = DispatchGroup()
-//                group.enter()
-//                dispatchQueue.async{
-//                    Network().getUpVotedList()
-//                    Network().getDownVotedList()
-//                    group.leave()
-//                }
-//                group.notify(queue: .main) {
-//                    self.tableView.reloadData()
-//                }
+                let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+                dispatchQueue.async{
+                    Network().getVoteList()
+                }
+
 
             } else {
                 print("ACCESS CODE EXPIRED")
@@ -101,7 +96,6 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         topsubreddit += ["Popular", "All"]
         
         if defaults.bool(forKey: "logStatus") {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
             subredditResultsStr = defaults.object(forKey: "subredditList") as? [String] ?? [String]()
             for i in 0...subredditResultsStr.count-1 {
                 subredditResultsStr[i] = subredditResultsStr[i].lowercased()
@@ -115,39 +109,12 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
                 }
             }
 
-        } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(logIn))
         }
         
         title = "Subreddits"
         
     }
-    @objc func logOut(){
-        defaults.set(false, forKey: "logStatus")
-        defaults.set("", forKey: "accessToken")
-        defaults.set("", forKey:  "refreshToken")
-        defaults.set("User", forKey: "userName")
-        defaults.set([String](), forKey: "upVoteList")
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(self.logIn))
-        tableView.reloadData()
-    }
-    
-    @objc func logIn(){
-        getAuthTokenWithWebLogin(context: self)
-        
-        dispatchGroup.notify(queue: .main){
-            print("Dispatch Group Reached")
-            
-            self.defaults.set(true, forKey: "logStatus")
-            self.subredditResultsStr = self.defaults.object(forKey: "subredditList") as? [String] ?? [String]()
-            
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
-            self.tableView.reloadData()
-            
-         }
-    }
-    
+
     func userInfoSetup(ForUser user: RedditUser) {
         self.title = "\(user.name) Subreddits"
         self.navigationItem.rightBarButtonItem = nil
@@ -171,35 +138,6 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         
         present(ac, animated: true)
     }
-    
-    func getAuthTokenWithWebLogin(context: ASWebAuthenticationPresentationContextProviding) {
-        dispatchGroup.enter()
-        
-        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits,read,save,subscribe,vote,edit,history,submit,subscribe,flair,report")
-        let callbackUrlScheme = "myreddit://kevin"
-        self.webAuthSession = ASWebAuthenticationSession.init(url: authURL!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
-            // handle auth response
-            guard error == nil, let successURL = callBack else {
-                return
-            }
-            print("no error so far" )
-            let oauthToken = NSURLComponents(string: (successURL.absoluteString))?.queryItems?.filter({$0.name == "code"}).first
-
-            // Do what you now that you've got the token, or use the callBack URL
-            print(oauthToken?.value ?? "No OAuth Token")
-            self.accessCode = oauthToken?.value
-            
-            LogIn().getAccessToken(oauthToken?.value ?? "Error")
-            
-            self.dispatchGroup.leave()
-            
-        })
-        self.webAuthSession?.presentationContextProvider = context
-        // Kick it off
-        self.webAuthSession?.start()
-        
-    }
-    
     
     
     // MARK: - Table view data source
@@ -261,7 +199,6 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         else if defaults.bool(forKey: "logStatus") {
             let currentletter = headerlist[section]
             return sortedDict[currentletter]?.count ?? 0
-            
         }
         else {
              return subredditnames.count
@@ -279,21 +216,12 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             } else {
                 let currentletter = headerlist[indexPath.section]
                 name = sortedDict[currentletter]?[indexPath.row] ?? "no value"
-
-                
             }
-           
         } else {
             name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditnames[indexPath.row]
-            
         }
-        
-        
         cell.textLabel?.text = name
         cell.selectionStyle = .default
-
-        
-        
         return cell
     }
     
@@ -311,19 +239,14 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayPosts") as? PostsViewController {
             if indexPath.section == 0 {
                 vc.subreddit = topsubreddit[indexPath.row]
-                
             } else if defaults.bool(forKey: "logStatus") {
                 let currentletter = headerlist[indexPath.section]
                 vc.subreddit = sortedDict[currentletter]?[indexPath.row]
             } else {
-                
                 vc.subreddit = subredditnames[indexPath.row]
             }
-            
             navigationController?.pushViewController(vc, animated: true)
         }
-        
-        
     }
     
     func createSpinnerView() {

@@ -19,12 +19,23 @@ class PostsViewController: UITableViewController {
     let defaults = UserDefaults.standard
     
     @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
-        tableView.reloadData()
-        sender.endRefreshing()
+        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+        let group = DispatchGroup()
+        group.enter()
+        dispatchQueue.async{
+            Network().getVoteList()
+            group.leave()
+        }
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+            sender.endRefreshing()
+        }
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -62,8 +73,6 @@ class PostsViewController: UITableViewController {
         // wait two seconds to simulate some work happening
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.40) {
             // then remove the spinner view controller
-//            Network().getUpVotedList()
-//            Network().getDownVotedList()
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
@@ -103,9 +112,9 @@ class PostsViewController: UITableViewController {
                 //checking subtitle condition
                 var subtitle: String
                 if self.subreddit == "Popular" || self.subreddit == "All" {
-                    subtitle = post.author
-                } else {
                     subtitle = post.subreddit
+                } else {
+                    subtitle = post.author
                 }
                 createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.preview?.images?[0].source?.url ?? ""))
             }

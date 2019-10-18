@@ -69,22 +69,38 @@ class Network {
         let upVoteJson = Just.get("https://oauth.reddit.com/user/" + defaults.string(forKey: "userName")! + "/upvoted", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
         let decoder = JSONDecoder()
         if let jsonPosts = try? decoder.decode(UpVoteList.self, from: upVoteJson.content!) {
-            var array = [String]()
+            var array = defaults.object(forKey: "upVoteList") as? [String] ?? [String]()
             for i in jsonPosts.data.children {
                 array.append(i.data.name)
             }
-            defaults.set(array, forKey: "upVoteList")
+            defaults.set(Array(Set(array)), forKey: "upVoteList")
             print("Got UpVote List!!!")
             //print(defaults.object(forKey: "upVoteList") as? [String] ?? [String]())
         }
         
     }
     
+    func getDownVotedList() {
+        
+        accessToken = defaults.string(forKey: "accessToken")
+        let downVoteJson = Just.get("https://oauth.reddit.com/user/" + defaults.string(forKey: "userName")! + "/downvoted", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+        let decoder = JSONDecoder()
+        if let jsonPosts = try? decoder.decode(UpVoteList.self, from: downVoteJson.content!) {
+            var array = defaults.object(forKey: "downVoteList") as? [String] ?? [String]()
+            for i in jsonPosts.data.children {
+                array.append(i.data.name)
+            }
+            defaults.set(Array(Set(array)), forKey: "downVoteList")
+            print("Got DownVote List!!!")
+            //print(defaults.object(forKey: "downVoteList") as? [String] ?? [String]())
+        }
+    }
+    
     func getVoteList() {
         //upvotes
         print("Start Vote List Loading")
         accessToken = defaults.string(forKey: "accessToken")
-        let upVoteJson = Just.get("https://oauth.reddit.com/user/" + defaults.string(forKey: "userName")! + "/upvoted", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+        let upVoteJson = Just.get("https://oauth.reddit.com/user/" + defaults.string(forKey: "userName")! + "/upvoted", params: ["limit": 50], headers: ["Authorization": "bearer " + accessToken!])
         let decoder = JSONDecoder()
         if let jsonPosts = try? decoder.decode(UpVoteList.self, from: upVoteJson.content!) {
             var array = [String]()
@@ -97,7 +113,7 @@ class Network {
         
         
         //downvotes
-        let downVoteJson = Just.get("https://oauth.reddit.com/user/" + defaults.string(forKey: "userName")! + "/downvoted", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+        let downVoteJson = Just.get("https://oauth.reddit.com/user/" + defaults.string(forKey: "userName")! + "/downvoted", params: ["limit": 25], headers: ["Authorization": "bearer " + accessToken!])
         
         if let jsonPosts = try? decoder.decode(UpVoteList.self, from: downVoteJson.content!) {
             var array = [String]()
@@ -111,25 +127,38 @@ class Network {
         print("Got All Vote List Stuff")
         
     }
-    func updateVoteList() {
-        
-    }
     
-    func getDownVotedList() {
-        
+    func updateVoteList() {
+        //update UpVotes
         accessToken = defaults.string(forKey: "accessToken")
-        let downVoteJson = Just.get("https://oauth.reddit.com/user/" + defaults.string(forKey: "userName")! + "/downvoted", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+        let upVoteJson = Just.get("https://oauth.reddit.com/user/" + defaults.string(forKey: "userName")! + "/upvoted", params: ["limit": 10], headers: ["Authorization": "bearer " + accessToken!])
         let decoder = JSONDecoder()
-        if let jsonPosts = try? decoder.decode(UpVoteList.self, from: downVoteJson.content!) {
+        if let jsonPosts = try? decoder.decode(UpVoteList.self, from: upVoteJson.content!) {
+            //var array = defaults.object(forKey: "upVoteList") as? [String] ?? [String]()
             var array = [String]()
             for i in jsonPosts.data.children {
                 array.append(i.data.name)
             }
-            defaults.set(array, forKey: "downVoteList")
+            defaults.set(Array(Set(array)), forKey: "upVoteList")
+            print("Got UpVote List!!!")
+            //print(defaults.object(forKey: "upVoteList") as? [String] ?? [String]())
+        }
+        
+        //update Downvotes
+        let downVoteJson = Just.get("https://oauth.reddit.com/user/" + defaults.string(forKey: "userName")! + "/downvoted", params: ["limit": 10], headers: ["Authorization": "bearer " + accessToken!])
+        if let jsonPosts = try? decoder.decode(UpVoteList.self, from: downVoteJson.content!) {
+            //var array = defaults.object(forKey: "downVoteList") as? [String] ?? [String]()
+            var array = [String]()
+            for i in jsonPosts.data.children {
+                array.append(i.data.name)
+            }
+            defaults.set(Array(Set(array)), forKey: "downVoteList")
             print("Got DownVote List!!!")
             //print(defaults.object(forKey: "downVoteList") as? [String] ?? [String]())
         }
     }
+    
+
     
     struct UpVoteList: Codable {
         var kind: String

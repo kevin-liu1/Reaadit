@@ -196,27 +196,27 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     func createContent() {
         let contentthings = self.content[0].data
         if contentthings.is_self! {
-            self.contentCell = Content(author: contentthings.author ?? "", postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none")
+            self.contentCell = Content(author: contentthings.author ?? "", postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none", timeposted: contentthings.created_utc ?? 0)
         } else {
             switch contentthings.post_hint {
             case "image":
                 print(contentthings.preview?.images?[0].source?.url ?? "No URL")
-                self.contentCellImage = ContentImage(author: contentthings.author ?? "", postTitle: contentthings.title ?? "No title", upVotecount: contentthings.ups ?? 0, time: "NA", image: (contentthings.url ?? "No URL"))
+                self.contentCellImage = ContentImage(author: contentthings.author ?? "", postTitle: contentthings.title ?? "No title", upVotecount: contentthings.ups ?? 0, image: (contentthings.url ?? "No URL"), timeposted: contentthings.created_utc ?? 0)
             case "link":
-                self.contentCellLink = ContentLink(author: contentthings.author ?? "", postTitle: contentthings.title ?? "No Link", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.url ?? "no url found", thumbnail: contentthings.preview?.images?[0].source?.url ?? "")
+                self.contentCellLink = ContentLink(author: contentthings.author ?? "", postTitle: contentthings.title ?? "No Link", upVotecount: contentthings.ups ?? 0, link: contentthings.url ?? "no url found", thumbnail: contentthings.preview?.images?[0].source?.url ?? "", timeposted: contentthings.created_utc ?? 0)
             case "rich:video":
-                self.contentCellVideo = ContentVideo(author: contentthings.author ?? "", postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.url ?? "none")
+                self.contentCellVideo = ContentVideo(author: contentthings.author ?? "", postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: contentthings.created_utc ?? 0, link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.url ?? "none")
             case "hosted:video":
-                self.contentCellVideo = ContentVideo(author: contentthings.author ?? "", postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.secure_media?.reddit_video?.hls_url ?? "None")
+                self.contentCellVideo = ContentVideo(author: contentthings.author ?? "", postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: contentthings.created_utc ?? 0, link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.secure_media?.reddit_video?.hls_url ?? "None")
             default:
                 
 //                if contentthings.domain == "youtube.com" || contentthings.domain == "youtu.be.com" {
 //                    self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none", videolink: contentthings.url ?? "none")
 //                }
-                self.contentCellLink = ContentLink(author: contentthings.author ?? "", postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!, thumbnail: contentthings.preview?.images?[0].source?.url ?? "")
+                self.contentCellLink = ContentLink(author: contentthings.author ?? "", postTitle: contentthings.title!, upVotecount: contentthings.ups!, link: contentthings.url!, thumbnail: contentthings.preview?.images?[0].source?.url ?? "", timeposted: contentthings.created_utc ?? 0)
             }
         }
-        self.contentCell = Content(author: contentthings.author ?? "", postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none")
+        self.contentCell = Content(author: contentthings.author ?? "", postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none", timeposted: contentthings.created_utc ?? 0)
 
     }
     

@@ -27,9 +27,10 @@ class ContentCellSelf: UITableViewCell {
     @IBOutlet var postTitleLabel: UILabel!
     
     func setContent(Content: Content) {
+        
         authorLabel.text = Content.author
         upvoteLabel.text = String(Content.upVoteCount)
-        timeLabel.text = Content.time
+        timeLabel.text = Network().soMuchTimeAgo(postedDate: Content.timeposted)
         
         let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 15))
         

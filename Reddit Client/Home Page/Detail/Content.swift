@@ -50,6 +50,8 @@ struct ContentorComment: Codable {
     var preview: Preview?
     var url: String?
     var domain: String?
+    var likes: Bool?
+    var created_utc: Int?
     
     //getVideoContent for Content
     var secure_media: Embed?

@@ -37,7 +37,7 @@ class PostsViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //self.tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -81,7 +81,16 @@ class PostsViewController: UITableViewController {
     
     func getPostData(){
         let accessToken = defaults.string(forKey: "accessToken")
-        let postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+        var postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+        if defaults.bool(forKey: "logStatus") {
+            if self.subreddit == "Home" {
+                postJson = Just.get("https://oauth.reddit.com", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+            }
+        } else {
+            postJson = Just.get("https://www.reddit.com/r/" + (self.subreddit ?? "") + ".json", params: ["limit": 20])
+        }
+
+        
         let decoder =  JSONDecoder()
         if let jsonPosts = try? decoder.decode(Wraps.self, from: postJson.content ?? Data()) {
             print("Got Json Data!!")
@@ -102,7 +111,7 @@ class PostsViewController: UITableViewController {
                 
                 //checking subtitle condition
                 var subtitle: String
-                if self.subreddit == "Popular" || self.subreddit == "All" {
+                if self.subreddit == "Popular" || self.subreddit == "All" || self.subreddit == "Home" {
                     subtitle = post.subreddit
                 } else {
                     subtitle = post.author
@@ -116,8 +125,8 @@ class PostsViewController: UITableViewController {
                         postlikes = "false"
                     }
                 }
-                
-                createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.preview?.images?[0].source?.url ?? "", likes: postlikes))
+                defaults.set(postlikes, forKey: post.id)
+                createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.preview?.images?[0].source?.url ?? "", likes: postlikes, subreddit: post.subreddit))
             }
         }
 
@@ -131,7 +140,17 @@ class PostsViewController: UITableViewController {
         dispatchQueue.async{
             //let postJson = Just.get("https://www.reddit.com/r/" + self.subreddit! + ".json?limit=35&after=" + self.afterParam!)
             let accessToken = self.defaults.string(forKey: "accessToken")
-            let postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 35, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
+            //let postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 35, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
+            
+            var postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 35, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
+            if self.defaults.bool(forKey: "logStatus") {
+                if self.subreddit == "Home" {
+                    postJson = Just.get("https://oauth.reddit.com", params: ["limit": 35, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
+                }
+            } else {
+                postJson = Just.get("https://www.reddit.com/r/" + self.subreddit! + ".json?limit=35&after=" + self.afterParam!)
+            }
+
             let decoder = JSONDecoder()
             if let contents = try? decoder.decode(Wraps.self, from: postJson.content!) {
                 self.afterParam = contents.data.after
@@ -172,8 +191,14 @@ class PostsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadData()
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayContent") as? ContentViewController {
+            
             vc.contentID = finishedposts[indexPath.row].id
-            vc.currentSub = self.subreddit
+            if self.subreddit == "Home" {
+                vc.currentSub = finishedposts[indexPath.row].subreddit
+            } else {
+                vc.currentSub = self.subreddit
+            }
+           
             vc.currentTitle = finishedposts[indexPath.row].postTitle
             vc.upVotes = finishedposts[indexPath.row].upVotes
             navigationController?.pushViewController(vc, animated: true)

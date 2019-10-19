@@ -23,11 +23,13 @@ class CommentTree {
     var time: String? //keep it as a string for now
     var textbody: String?
     var replies: [CommentTree]?
+    var likes: String?
     
-    init(author: String, upVotes: Int, time: String, textbody: String) {
+    init(author: String, upVotes: Int, time: String, textbody: String, likes: String) {
         self.author = author
         self.upvotes = upVotes
         self.time = time
         self.textbody = textbody
+        self.likes = likes
     }
 }

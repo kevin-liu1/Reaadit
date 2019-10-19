@@ -56,9 +56,10 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     
 
     override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+        topsubreddit = ["Popular", "All"]
         if defaults.bool(forKey: "logStatus") {
             //self.subredditResultsStr = self.defaults.object(forKey: "subredditList") as? [String] ?? [String]()
+            topsubreddit = ["Home", "Popular", "All"]
             accessToken = defaults.string(forKey: "accessToken")
             let userJson = Just.get("https://oauth.reddit.com/api/v1/me", headers:["Authorization": "bearer \(accessToken ?? "")"])
             
@@ -75,6 +76,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
                 Network().getAccessTokenRefresh()
             }
         }
+        tableView.reloadData()
         
     }
     override func viewDidLoad() {
@@ -91,9 +93,11 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSubreddit))
         navigationController?.navigationBar.prefersLargeTitles = false
         subredditnames += ["Gifs", "Movies", "Entertainment", "News", "AskReddit", "Technology", "OddlySatisfying"]
-        topsubreddit += ["Popular", "All"]
+        topsubreddit = ["Popular", "All"]
         
         if defaults.bool(forKey: "logStatus") {
+            Network().getVoteList()
+            topsubreddit = ["Home", "Popular", "All"]
             subredditResultsStr = defaults.object(forKey: "subredditList") as? [String] ?? [String]()
             for i in 0...subredditResultsStr.count-1 {
                 subredditResultsStr[i] = subredditResultsStr[i].lowercased()

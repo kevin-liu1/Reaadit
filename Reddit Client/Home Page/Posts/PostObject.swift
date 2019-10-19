@@ -17,11 +17,12 @@ class PostObject {
     var comments: Int
     var id: String
     var likes: String
+    var subreddit: String
     
     var thumbnailURL: String
 
     
-    init(postTitle: String, postSubtitle: String, upVotes: Int, comments: Int, id: String, thumbnailURL: String, likes: String) {
+    init(postTitle: String, postSubtitle: String, upVotes: Int, comments: Int, id: String, thumbnailURL: String, likes: String, subreddit: String) {
         self.postTitle = postTitle
         self.postSubtitle = postSubtitle
 
@@ -30,5 +31,7 @@ class PostObject {
         self.id = id
         self.thumbnailURL = thumbnailURL
         self.likes = likes
+        self.subreddit = subreddit
+        
     }
 }

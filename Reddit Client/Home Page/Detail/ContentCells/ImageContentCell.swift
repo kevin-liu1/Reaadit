@@ -29,7 +29,8 @@ class ImageContentCell: UITableViewCell {
         
         postTitleLabel.text = content.postTitle
         upvoteLabel.text = String(content.upVotecount)
-        timeLabel.text = "10"
+        
+        timeLabel.text = Network().soMuchTimeAgo(postedDate: content.timeposted)
         
     }
 }

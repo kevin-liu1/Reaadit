@@ -17,14 +17,15 @@ struct Content {
     var time: String
     var selftext: String
     var thumbnail: String
+    var timeposted: Int
 }
 
 struct ContentImage {
     var author: String
     var postTitle: String
     var upVotecount: Int
-    var time: String
     var image: String
+    var timeposted: Int
     
 }
 
@@ -32,16 +33,16 @@ struct ContentLink {
     var author: String
     var postTitle: String
     var upVotecount: Int
-    var time: String
     var link: String
     var thumbnail: String
+    var timeposted: Int
 }
 
 struct ContentVideo {
     var author: String
     var postTitle: String
     var upVotecount: Int
-    var time: String
+    var time: Int
     var link: String
     var videolink: String
 }

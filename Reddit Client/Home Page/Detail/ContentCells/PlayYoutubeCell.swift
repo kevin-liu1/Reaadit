@@ -37,8 +37,8 @@ class PlayYoutubeCell: UITableViewCell {
         
         titleLabel.text = contentVideo.postTitle
         upVoteLabel.text = String(contentVideo.upVotecount)
-        timeLabel.text = "10"
         
+        timeLabel.text = Network().soMuchTimeAgo(postedDate: contentVideo.time)
         
         playerView.load(withVideoId: splitUrl ?? "")
         

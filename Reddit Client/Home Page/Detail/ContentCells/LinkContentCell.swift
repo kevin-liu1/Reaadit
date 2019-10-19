@@ -38,7 +38,7 @@ class LinkContentCell: UITableViewCell {
         //buttonLabel.titleLabel?.text = contentLink.link
         buttonLabel.setTitle(contentLink.link, for: .normal)
         upvoteLabel.text = String(contentLink.upVotecount)
-        timeLabel.text = contentLink.time
+        timeLabel.text = Network().soMuchTimeAgo(postedDate: contentLink.timeposted)
         
         //print(contentLink.link)
         self.url = contentLink.link

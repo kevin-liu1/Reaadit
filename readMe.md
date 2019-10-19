@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="Docs/reddit-final-shadow.png" width="136" alt="icon"><br>
+  <img src="Docs/reaadit-final-shadow.png" width="136" alt="icon"><br>
   Reaadit for Reddit<br>
 </h1>
 

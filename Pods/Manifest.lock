@@ -1,24 +1,40 @@
 PODS:
   - MarkdownKit (1.5)
   - Nantes (0.0.8)
+  - SwiftyComments (0.2.0):
+    - SwipeCellKit
+  - SwipeCellKit (2.7.1)
   - YoutubePlayer-in-WKWebView (0.3.3)
 
 DEPENDENCIES:
   - MarkdownKit
   - Nantes
+  - SwiftyComments (from `https://github.com/tsucres/SwiftyComments.git`)
   - YoutubePlayer-in-WKWebView (~> 0.3.0)
 
 SPEC REPOS:
   trunk:
     - MarkdownKit
     - Nantes
+    - SwipeCellKit
     - YoutubePlayer-in-WKWebView
+
+EXTERNAL SOURCES:
+  SwiftyComments:
+    :git: https://github.com/tsucres/SwiftyComments.git
+
+CHECKOUT OPTIONS:
+  SwiftyComments:
+    :commit: 3c90b56327db9d30bbedf9b329acec4e5367c9ca
+    :git: https://github.com/tsucres/SwiftyComments.git
 
 SPEC CHECKSUMS:
   MarkdownKit: 379028e9cd3ebf05ccac87205cd9aead446159d4
   Nantes: 94a2e0c0b8207f12694f4ff6d96bf670adad3e27
+  SwiftyComments: 0c57adf8cd817e63d759a6641e6225ef33da87bf
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   YoutubePlayer-in-WKWebView: 7694e858c5c3472ed067d6fe34eb9b944845e63c
 
-PODFILE CHECKSUM: 84e0f4593a30516b047bf639058e59701486f4f6
+PODFILE CHECKSUM: c20ec31fd1332581bda89a645a0bffa506e8170c
 
 COCOAPODS: 1.8.3

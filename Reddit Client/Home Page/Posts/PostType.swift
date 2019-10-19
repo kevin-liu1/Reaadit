@@ -35,7 +35,7 @@ struct Post: Codable {
     let permalink: String
     let num_comments: Int
     let id: String
-    
+    let likes: Bool?
     let preview: Preview?
     
 }

@@ -23,7 +23,9 @@ class PostsViewController: UITableViewController {
         let group = DispatchGroup()
         group.enter()
         dispatchQueue.async{
-            Network().getVoteList()
+            self.getPostData()
+            self.finishedposts = self.createCells()
+            //Network().getVoteList()
             group.leave()
         }
         group.notify(queue: .main) {
@@ -35,22 +37,19 @@ class PostsViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = subreddit
-        let urlString = "https://www.reddit.com/r/" + subreddit!.lowercased() + ".json?limit=20"
-        
         tableView.separatorStyle = .none
         createSpinnerView()
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
         group.enter()
         dispatchQueue.async{
-            self.getPostJson(urlString: urlString)
+            self.getPostData()
             self.finishedposts = self.createCells()
             group.leave()
         }
@@ -80,24 +79,16 @@ class PostsViewController: UITableViewController {
     }
     
     
-    
-    func getPostJson(urlString: String){
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                parse(json: data)
-            }
-        }
-    }
-    
-    func parse(json: Data){
-        let decoder = JSONDecoder()
-        if let jsonPosts = try? decoder.decode(Wraps.self, from: json) {
-            postsresult = jsonPosts.data.children
-            afterParam = jsonPosts.data.after
-            print("This is after param: " + (afterParam ?? "None"))
+    func getPostData(){
+        let accessToken = defaults.string(forKey: "accessToken")
+        let postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+        let decoder =  JSONDecoder()
+        if let jsonPosts = try? decoder.decode(Wraps.self, from: postJson.content ?? Data()) {
+            print("Got Json Data!!")
+            self.postsresult = jsonPosts.data.children
+            self.afterParam = jsonPosts.data.after
         } else {
-            print("Error with getting json")
-            return
+            print("Error with getting posts JSON, Maybe check the null value")
         }
     }
     
@@ -116,7 +107,17 @@ class PostsViewController: UITableViewController {
                 } else {
                     subtitle = post.author
                 }
-                createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.preview?.images?[0].source?.url ?? ""))
+                //check post like condition
+                var postlikes = "nil"
+                if post.likes != nil {
+                    if post.likes == true {
+                        postlikes = "true"
+                    } else if post.likes == false {
+                        postlikes = "false"
+                    }
+                }
+                
+                createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.preview?.images?[0].source?.url ?? "", likes: postlikes))
             }
         }
 
@@ -128,7 +129,9 @@ class PostsViewController: UITableViewController {
         let group = DispatchGroup()
         group.enter()
         dispatchQueue.async{
-            let postJson = Just.get("https://www.reddit.com/r/" + self.subreddit! + ".json?limit=35&after=" + self.afterParam!)
+            //let postJson = Just.get("https://www.reddit.com/r/" + self.subreddit! + ".json?limit=35&after=" + self.afterParam!)
+            let accessToken = self.defaults.string(forKey: "accessToken")
+            let postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 35, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
             let decoder = JSONDecoder()
             if let contents = try? decoder.decode(Wraps.self, from: postJson.content!) {
                 self.afterParam = contents.data.after
@@ -160,7 +163,7 @@ class PostsViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastElement = finishedposts.count - 15
+        let lastElement = finishedposts.count - 10
         if indexPath.row == lastElement {
             self.getMorePosts()
         }

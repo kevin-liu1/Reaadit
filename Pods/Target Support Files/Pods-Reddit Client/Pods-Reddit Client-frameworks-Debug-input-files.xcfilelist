@@ -1,4 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Reddit Client/Pods-Reddit Client-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/MarkdownKit/MarkdownKit.framework
 ${BUILT_PRODUCTS_DIR}/Nantes/Nantes.framework
+${BUILT_PRODUCTS_DIR}/SwiftyComments/SwiftyComments.framework
+${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework
 ${BUILT_PRODUCTS_DIR}/YoutubePlayer-in-WKWebView/YoutubePlayer_in_WKWebView.framework

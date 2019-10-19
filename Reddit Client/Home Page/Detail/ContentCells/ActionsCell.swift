@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol shareProtocol{
+    func sharePostOnClick()
+}
+
 class ActionsCell: UITableViewCell {
     let defaults = UserDefaults.standard
+    var delegate: shareProtocol!
     
     @IBAction func upVote(_sender: AnyObject) {
+        
         print("up vote button clicked")
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
@@ -64,7 +70,7 @@ class ActionsCell: UITableViewCell {
            
             downVoteSettings.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             downVoteSettings.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
-            var tempset = defaults.object(forKey: "downVoteList") as? [String] ?? [String]()
+            var tempset = defaults.object(forKey: "downVoteLi3st") as? [String] ?? [String]()
             tempset.append(contentID ?? "")
             self.defaults.set(Array(Set(tempset)), forKey: "downVoteList")
             Network().Vote(id: (contentID ?? "None"), direction: -1)
@@ -89,7 +95,9 @@ class ActionsCell: UITableViewCell {
     }
     
     @IBAction func share(_sender: AnyObject) {
-        
+        print("up vote button clicked")
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        self.delegate.sharePostOnClick()
     }
     
 
@@ -103,17 +111,32 @@ class ActionsCell: UITableViewCell {
 
         upVoteSettings.layer.cornerRadius = 5
         downVoteSettings.layer.cornerRadius = 5
-        if (self.defaults.object(forKey: "upVoteList") as? [String] ?? [String]()).contains("t3_" + ID) {
+        
+        if defaults.string(forKey: contentID!) == "true" {
             upVoteSettings.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             upVoteSettings.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
-        } else if (self.defaults.object(forKey: "downVoteList") as? [String] ?? [String]()).contains(contentID!){
+        } else if defaults.string(forKey: contentID!) == "false" {
             downVoteSettings.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             downVoteSettings.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
         } else {
             upVoteSettings.tintColor = #colorLiteral(red: 0.4309871329, green: 0.5246428922, blue: 0.796692011, alpha: 1)
             upVoteSettings.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
+        
+        
+//        if (self.defaults.object(forKey: "upVoteList") as? [String] ?? [String]()).contains("t3_" + ID) {
+//            upVoteSettings.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//            upVoteSettings.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+//        } else if (self.defaults.object(forKey: "downVoteList") as? [String] ?? [String]()).contains(contentID!){
+//            downVoteSettings.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//            downVoteSettings.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+//        } else {
+//            upVoteSettings.tintColor = #colorLiteral(red: 0.4309871329, green: 0.5246428922, blue: 0.796692011, alpha: 1)
+//            upVoteSettings.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        }
     }
+    
+    
     
     
 }

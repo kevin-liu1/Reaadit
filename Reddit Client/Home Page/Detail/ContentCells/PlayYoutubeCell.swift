@@ -25,7 +25,7 @@ class PlayYoutubeCell: UITableViewCell {
         authorLabel.text = contentVideo.author
         videoURL = contentVideo.videolink
         print(videoURL)
-        if videoURL?.contains("youtu.be") ?? false {
+        if videoURL?.contains("youtu.be/") ?? false || videoURL?.contains("youtu.be.com") ?? false {
             splitUrl = videoURL?.components(separatedBy: "youtu.be/")[1]
         } else if videoURL?.contains("share") ?? false {
             let firstsplit = videoURL?.components(separatedBy: "?v=")

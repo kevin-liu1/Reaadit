@@ -9,5 +9,6 @@ target 'Reddit Client' do
 	pod "YoutubePlayer-in-WKWebView", "~> 0.3.0"
 	pod 'Nantes'
 	pod "MarkdownKit"
+	pod 'SwiftyComments', :git => 'https://github.com/tsucres/SwiftyComments.git'
 	
 end

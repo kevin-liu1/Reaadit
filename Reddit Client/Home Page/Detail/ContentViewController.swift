@@ -13,7 +13,7 @@ import AVKit
 import AVFoundation
 
 
-class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoProtocol, linkHandlingProtocol {
+class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoProtocol, linkHandlingProtocol, shareProtocol {
 
     
     
@@ -333,6 +333,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Actions", for: indexPath) as! ActionsCell
                 cell.setContent(ID: self.contentID ?? "None")
+                cell.delegate = self
                 return cell
             case 2:
                 //comments
@@ -392,6 +393,37 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         let safariViewController = SFSafariViewController(url: URL)
         present(safariViewController, animated: true, completion: nil)
         return false
+    }
+    
+    func sharePostOnClick() {
+        let contentthings = self.content[0].data
+        var shareItems = [Any]()
+        if contentthings.is_self! {
+            shareItems = [URL(string: contentthings.url ?? "None")]
+//            self.contentCell = Content(author: contentthings.author ?? "", postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none")
+        } else {
+            switch contentthings.post_hint {
+            case "image":
+                shareItems = [URL(string: contentthings.url ?? "None")]
+//                print(contentthings.preview?.images?[0].source?.url ?? "No URL")
+//                self.contentCellImage = ContentImage(author: contentthings.author ?? "", postTitle: contentthings.title ?? "No title", upVotecount: contentthings.ups ?? 0, time: "NA", image: (contentthings.url ?? "No URL"))
+            case "link":
+                shareItems = [URL(string: contentthings.url ?? "None")]
+//                self.contentCellLink = ContentLink(author: contentthings.author ?? "", postTitle: contentthings.title ?? "No Link", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.url ?? "no url found", thumbnail: contentthings.preview?.images?[0].source?.url ?? "")
+            case "rich:video":
+                shareItems = [URL(string: contentthings.url ?? "None")]
+//                self.contentCellVideo = ContentVideo(author: contentthings.author ?? "", postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.url ?? "none")
+            case "hosted:video":
+                shareItems = [URL(string: contentthings.secure_media?.reddit_video?.hls_url ?? "None")]
+//                self.contentCellVideo = ContentVideo(author: contentthings.author ?? "", postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.secure_media?.reddit_video?.hls_url ?? "None")
+            default:
+                shareItems = [URL(string: contentthings.url ?? "None")]
+//                self.contentCellLink = ContentLink(author: contentthings.author ?? "", postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: "NA", link: contentthings.url!, thumbnail: contentthings.preview?.images?[0].source?.url ?? "")
+            }
+        }
+        
+        let vc = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        present(vc, animated: true)
     }
 
 }

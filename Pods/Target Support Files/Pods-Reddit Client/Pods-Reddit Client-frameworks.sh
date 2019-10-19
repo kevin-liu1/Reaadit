@@ -163,11 +163,15 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MarkdownKit/MarkdownKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Nantes/Nantes.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyComments/SwiftyComments.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YoutubePlayer-in-WKWebView/YoutubePlayer_in_WKWebView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MarkdownKit/MarkdownKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Nantes/Nantes.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyComments/SwiftyComments.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YoutubePlayer-in-WKWebView/YoutubePlayer_in_WKWebView.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

@@ -68,10 +68,8 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
                 print("STILL LOGGED IN")
                 let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
                 dispatchQueue.async{
-                    Network().getVoteList()
+                    //Network().getVoteList()
                 }
-
-
             } else {
                 print("ACCESS CODE EXPIRED")
                 Network().getAccessTokenRefresh()
@@ -83,7 +81,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         super.viewDidLoad()
 //        Network().getUpVotedList()
 //        Network().getDownVotedList()
-        Network().getVoteList()
+        //Network().getVoteList()
 
         let headercell = UINib(nibName: "HeaderViewCell", bundle: nil)
         tableView.register(headercell, forCellReuseIdentifier: "HeaderCell")

@@ -7,78 +7,134 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05F80682CF4CF3C2F9992BAA480AC1E1 /* Nantes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA64D0D96371EC279CA83E79D1D8C048 /* Nantes-dummy.m */; };
-		0A81F3617E94F8C3AD01492FD5404E37 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB78D7F3735C65700324C81358A7F67 /* Link.swift */; };
-		0A9D6B3E6F2FF7B39B1D8270F77B58A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		117E7B675AAE008716DD599EDD51983E /* MarkdownCode+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE874E5C02DFE9CE24BD32F60CCDCEB /* MarkdownCode+UIKit.swift */; };
-		15EFCE43E15CD5D68D02047250B3A2F5 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21859F984E0424B68898E6B850E6AFCF /* Accessibility.swift */; };
-		17ABA852CC37B13668125348E0FF8102 /* Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C8F337DB7B53A546F20A92121FE993 /* Sizing.swift */; };
-		17B9870B83DAF952BD18718907A0EF1F /* MarkdownCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBF428B635768C8E7B4A6DA115FC91 /* MarkdownCode.swift */; };
-		194D99639BBC2F006154B6081C1329EC /* Pods-Reddit Client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F7006051295B1942138DD40E3E4B5ED /* Pods-Reddit Client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1BBC582FCEA1B2926269F3CCE3F1D923 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		207A58D60963D2CB58D93B908DDFCA45 /* MarkdownItalic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07471AEC26EBF9681DA92246DB98237 /* MarkdownItalic.swift */; };
-		20AD36B94013B0EA678A156A9A86DA26 /* MarkdownEscaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA6B0668CF5C54C44D8DBA017CBF3AB /* MarkdownEscaping.swift */; };
-		25C0D604F66F654E391D27665E52FB4D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		335B475D4C15885B3C689CD19C421FB1 /* Nantes-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 625C2287FAC21812938EA5B5C80AFDA9 /* Nantes-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		34CF61A26BBFA2D3C8CCDC5E4FC6B905 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB58704494314E3E98B23CE47527AF1 /* Typealias.swift */; };
-		362D2C5A9AFC9D8306C4223BE2257E32 /* MarkdownBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BBCA16127633A4E0C532151C5313C /* MarkdownBold.swift */; };
-		38673D77B95C49C31115345140101F14 /* MarkdownAutomaticLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E557126459F8C7A82BA0059AEAF48 /* MarkdownAutomaticLink.swift */; };
-		39B0F10269497B08D37AA8BF314C7DCC /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9F7B2FA77B3850FB859452027B1B4D /* MarkdownParser.swift */; };
-		42B27E2CBB3767573061CE3561A9C954 /* MarkdownElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B6F6909ACF635ED2DAFBFCF1DC090 /* MarkdownElement.swift */; };
-		43ECF1F36395AB4242565DEB659EF61F /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4369541A75101EF7AE8F9ECDE9E144D /* NSAttributedString.swift */; };
-		478DD26C86CDBA8F274557160E766F3B /* LabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A84E1326BECB7E95BDC85D64C51AE /* LabelDelegate.swift */; };
-		4BBBDD52873061AC9A8355C11FCA5B44 /* YoutubePlayer-in-WKWebView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AA23E4EA2C57F803273BC84BA9DF44 /* YoutubePlayer-in-WKWebView-dummy.m */; };
-		4CC2DF78E5589B3472D38234D0BB8400 /* MarkdownHeader+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F730D1EF918F1BD8D8C11DCF8D73AE3 /* MarkdownHeader+UIKit.swift */; };
-		51821BA1A4D7015FD9E73CE4D1236A5D /* Scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41618B94F520F3A4108AFB08F8085914 /* Scaling.swift */; };
-		51D19748239735A311AA9E3C4C0C4780 /* String+UTF16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA8542D4EE9610604984BCD0F44300 /* String+UTF16.swift */; };
-		587BFA30226EB515F45ED01820A358AF /* MarkdownLink+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FB6320156A7AA5943A16C4543DFF43 /* MarkdownLink+UIKit.swift */; };
-		5CB6030A3F794CE59E05ABBA71813CDD /* MarkdownCodeEscaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A0482CD40B4A19765B58DDCE1CA5A /* MarkdownCodeEscaping.swift */; };
-		6E1CE940F16EB17E4ABEB091B6E23208 /* MarkdownKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 10972D83C14EE9EA8E19F2F36FAA6A5D /* MarkdownKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		702A99F9AE42D9805F19E76359BDDDDD /* MarkdownHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FD8078503BEE2D9744453C4F225328 /* MarkdownHeader.swift */; };
-		7DFC743B2A9A4E4B6B79C7F004711E21 /* MarkdownList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A503474E0998652817BE9E1DCB8367 /* MarkdownList.swift */; };
-		7E4867B70895E67849F1BADA110338B5 /* MarkdownLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6368B0F824788546C8CA7449C3045F76 /* MarkdownLink.swift */; };
-		7F3ACABCBC04B59462E3179C500B767C /* NantesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B648C774A15CAB57A6BB0988B5E3A6B3 /* NantesLabel.swift */; };
-		803A943F40E9733AC61489FB25186CF9 /* YoutubePlayer-in-WKWebView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FB548D0B32B35D5E084EED2123BCB9 /* YoutubePlayer-in-WKWebView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		83D1C139CF324A1DB9109A0127134284 /* MarkdownQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1F426C25CDEA20E6E632EA09471FE7 /* MarkdownQuote.swift */; };
-		8814B22A4400EA913A99525039573DCD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
-		893221008EDE5F18EAD1291217A61276 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		8C2CAE51443423AA379998DDF2C026F0 /* MarkdownCommonElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3FBA062FE08309DB89D02E55FBA43 /* MarkdownCommonElement.swift */; };
-		92F11E3C5F44674E34DD797AD4560D77 /* MarkdownKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8917A2508ADF497F8A23271815755AB1 /* MarkdownKit-dummy.m */; };
-		9AD84D555FE3F3C4519344CBBAB1D565 /* WKYTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D26BD6F1D8D541D4D1C22708C84D27B2 /* WKYTPlayerView.m */; };
-		AE02BFA3EC5C85C8F67BA7C3DD0CA281 /* NSAttributedStringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743D03265A3931B7802B3D04BA43AADC /* NSAttributedStringKey.swift */; };
-		B3F88DA615DDD2E1402D111B4E943AAC /* Pods-Reddit Client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F5845D4473F9D4F67F2090911BDE3 /* Pods-Reddit Client-dummy.m */; };
-		B40B1CF702D3D9B0AE75C8F10FEA5CC8 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3746B61FBDE7EE3CF90579F6E1902A /* Drawing.swift */; };
-		BA0A8769E65C88689EE85E3CFA097728 /* NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9397D535CF3C073436D782FD1C8F3D10 /* NSRange.swift */; };
-		BAE4E7D112EC17C973483BA2602FF805 /* MarkdownParser+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC8F37B031AD95D3F25E58637576FC /* MarkdownParser+UIKit.swift */; };
-		BCFB236C369C2810D02055B87C0D997B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
-		C2522AC2ED3EC271C5195C8F3612D91A /* Truncation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B260747CB6D2B56C4B149782C12501F /* Truncation.swift */; };
-		C26B4138B1ECC18E597D5F09FBB931C2 /* MarkdownUnescaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34948C0984D7BE61E6713065EAA7F460 /* MarkdownUnescaping.swift */; };
-		C55185B88E0ED0022750898E1C4898B7 /* Nantes.h in Headers */ = {isa = PBXBuildFile; fileRef = 127F8D39094112C92F746C73DFC058A8 /* Nantes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CCF11406FC25C84082E70B3DE2871690 /* WKYTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 83512F8FEE0B65B0B0400459B64D50C7 /* WKYTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1CDF0B91488D91D90AB7C3294A3661B /* MarkdownLinkElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60067F7DA98792F39F18384F2A50E2FE /* MarkdownLinkElement.swift */; };
-		D334D5A0AA88F6DEE11C8667AAE43596 /* WKYTPlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1A0A0F5074091FD3E3782C38465F4F6 /* WKYTPlayerView.bundle */; };
-		D8E9E2ADDBEDAE408C6850E01CE303C9 /* MarkdownLevelElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82507E62E97B756945275D2EB368CD4C /* MarkdownLevelElement.swift */; };
-		DDC27E240CA8BAA3670788C6EE0A5F2D /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA150C533F4B31FFCCBFFBB0B9E541FA /* Actions.swift */; };
-		F2FA5F9889D98448FD25C664662237AF /* MarkdownStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEC4AED3E0A48F431FB23BA8F4E26C9 /* MarkdownStyle.swift */; };
-		F92B35BD038C6E256A27EB44E0384CE4 /* UIFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441F118529B6DF9031BB835DD8B3DF65 /* UIFont+Traits.swift */; };
+		058FEE901A243931F18A69AB6777B2EB /* SwipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689AA4951ACADD077B29A5224C3AE85B /* SwipeTableViewCell.swift */; };
+		05F80682CF4CF3C2F9992BAA480AC1E1 /* Nantes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A200FC38A3E2B030641D3993D27135A /* Nantes-dummy.m */; };
+		0A81F3617E94F8C3AD01492FD5404E37 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB93D75873129E748300FC155E89D6FF /* Link.swift */; };
+		0C83754387A526BC2571DF2513E955FE /* SwiftyComments-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6217074DEABB2CB3E559873E542EBC6C /* SwiftyComments-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		117E7B675AAE008716DD599EDD51983E /* MarkdownCode+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDD6186DC0412CCC49F70F703D58B46 /* MarkdownCode+UIKit.swift */; };
+		11B07718D70560C93728E470343ABBCF /* SwipeCollectionViewCell+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B904D8D66DFACB638C59472C864769A /* SwipeCollectionViewCell+Display.swift */; };
+		15EFCE43E15CD5D68D02047250B3A2F5 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ABA5D2707461B776398B77EBD83458 /* Accessibility.swift */; };
+		17ABA852CC37B13668125348E0FF8102 /* Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6CBA704D910F6DC2FD15A3869351D /* Sizing.swift */; };
+		17B9870B83DAF952BD18718907A0EF1F /* MarkdownCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806204871D55A8AC50782C0251DF187C /* MarkdownCode.swift */; };
+		1BBC582FCEA1B2926269F3CCE3F1D923 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99670225670ECF30F00480E74A1A2FC2 /* Foundation.framework */; };
+		207A58D60963D2CB58D93B908DDFCA45 /* MarkdownItalic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E65B4EC70F86B2BB7D3D0EB8D99591A /* MarkdownItalic.swift */; };
+		20AD36B94013B0EA678A156A9A86DA26 /* MarkdownEscaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ABD4E98F45D1FADD4F90F751EB21F5 /* MarkdownEscaping.swift */; };
+		23621363525583E6992948E1362A4064 /* SwipeAccessibilityCustomAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43317E3421A44CC6D554980C54A7C0 /* SwipeAccessibilityCustomAction.swift */; };
+		23A13D4A755867322B0E4458270960C9 /* SwipeActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C1A48672C641D1B3105D2BB6771A42 /* SwipeActionsView.swift */; };
+		25C0D604F66F654E391D27665E52FB4D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99670225670ECF30F00480E74A1A2FC2 /* Foundation.framework */; };
+		27C2ACFD2CE8983572300E00EFB7F9A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99670225670ECF30F00480E74A1A2FC2 /* Foundation.framework */; };
+		2BDD8B79B810EBA33681856F8496D590 /* SwipeTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AF30FD142B7432AAB71C5E8756485B /* SwipeTableViewCellDelegate.swift */; };
+		2FF2BBCFAAC5AA3607034893A3B1C2FB /* SwipeTableViewCell+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88D2A372D9E96877871185B41AD5D6 /* SwipeTableViewCell+Display.swift */; };
+		335B475D4C15885B3C689CD19C421FB1 /* Nantes-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C8C80AD6A1C34FA3BB940D0CC96D6F3 /* Nantes-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34CF61A26BBFA2D3C8CCDC5E4FC6B905 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = B725DBE33DB061510E00C06C6285B1DA /* Typealias.swift */; };
+		362D2C5A9AFC9D8306C4223BE2257E32 /* MarkdownBold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8746815B50FE5E5B7C4377E741F881 /* MarkdownBold.swift */; };
+		38673D77B95C49C31115345140101F14 /* MarkdownAutomaticLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4081BD5E86A8670E9B9D0912421D2 /* MarkdownAutomaticLink.swift */; };
+		39B0F10269497B08D37AA8BF314C7DCC /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70195C2546E56F1988A83CF64C78037F /* MarkdownParser.swift */; };
+		3DFF088B03CB8FEB12E8D1CD6D678AEA /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F15C1C4E699B4C620F510F3A119EFBE /* SwipeAction.swift */; };
+		42B27E2CBB3767573061CE3561A9C954 /* MarkdownElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B9AE9E3AFEB3BDD03227FABE9F4300 /* MarkdownElement.swift */; };
+		43E7052E51B3A4520FF585D439566FF5 /* CommentsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A81D14FFFC67842C56C77E776AB4595 /* CommentsViewDelegate.swift */; };
+		43ECF1F36395AB4242565DEB659EF61F /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC1AA050A1BB9EC431AB7DAA765330 /* NSAttributedString.swift */; };
+		4677540B6BC24981B2A717DE23815C0C /* Pods-Reddit Client-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F5845D4473F9D4F67F2090911BDE3 /* Pods-Reddit Client-dummy.m */; };
+		478DD26C86CDBA8F274557160E766F3B /* LabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606AF4BBFC66597913F0E19E13BA0898 /* LabelDelegate.swift */; };
+		4BBBDD52873061AC9A8355C11FCA5B44 /* YoutubePlayer-in-WKWebView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F50317B83400E56752283585D06BA16D /* YoutubePlayer-in-WKWebView-dummy.m */; };
+		4CC2DF78E5589B3472D38234D0BB8400 /* MarkdownHeader+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6333B4CF30B62430671E1849A4CD0955 /* MarkdownHeader+UIKit.swift */; };
+		51821BA1A4D7015FD9E73CE4D1236A5D /* Scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A986F21F965D7DCD9E9B3A5E36BC4DB8 /* Scaling.swift */; };
+		51D19748239735A311AA9E3C4C0C4780 /* String+UTF16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEF850769E034E02F5AC2530FFD8E93 /* String+UTF16.swift */; };
+		55E0B01293DE10F96F4C4D0D6D778FCC /* SwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5B8B5DDEF0B61864FB59C48CE3C79D /* SwipeController.swift */; };
+		57E9DE3687476C8089C6B992DA21C892 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB64303128E7EED9BDFC34A1F0A100E7 /* Media.xcassets */; };
+		587BFA30226EB515F45ED01820A358AF /* MarkdownLink+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2257AA49BF11164CDDEBD197DFC0973E /* MarkdownLink+UIKit.swift */; };
+		5BEB7D8D59C74940D4EC0698904EB58D /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FF049AC388EC8CF23C3FD6B6DF790F /* CommentsViewController.swift */; };
+		5CB6030A3F794CE59E05ABBA71813CDD /* MarkdownCodeEscaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D54B3B02C88AD86D6DFD17BE5BAFD7 /* MarkdownCodeEscaping.swift */; };
+		60BE8C8C766E6AEE036EAB9056A90239 /* SwipeFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A730D0E12B3FF75457C7C08C7020DC /* SwipeFeedback.swift */; };
+		679FD206DBDB37B698BF4ED2A7F22B35 /* SwipeCellKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 67AAC55058F9E4EDE939509EE92CAC17 /* SwipeCellKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E1CE940F16EB17E4ABEB091B6E23208 /* MarkdownKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F157590652412368807E24B32C7DEE95 /* MarkdownKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		702A99F9AE42D9805F19E76359BDDDDD /* MarkdownHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783CC36C819D565DB95805A293896516 /* MarkdownHeader.swift */; };
+		7DFC743B2A9A4E4B6B79C7F004711E21 /* MarkdownList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDA0EDB16629A4ACBD30F3C47B4151 /* MarkdownList.swift */; };
+		7E4867B70895E67849F1BADA110338B5 /* MarkdownLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C87736FFA7AB73EC0502942A76DAE6E /* MarkdownLink.swift */; };
+		7F3ACABCBC04B59462E3179C500B767C /* NantesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABE427E6AAA6C3D272243C94CCB22D5 /* NantesLabel.swift */; };
+		803A943F40E9733AC61489FB25186CF9 /* YoutubePlayer-in-WKWebView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CCB49B049348D2BA9381699BB3D0865 /* YoutubePlayer-in-WKWebView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		80F33BCD2571A29234420F9D7270DC29 /* SwipeExpansionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768785224F8FD97F3F346D9E60E3D8E6 /* SwipeExpansionStyle.swift */; };
+		83D1C139CF324A1DB9109A0127134284 /* MarkdownQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F34D9DE320C076318A41096049D51 /* MarkdownQuote.swift */; };
+		87EA2C830987E52F69E5B97DF1C61AA1 /* SwipeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5318C86A7F1D522E216286ADDC18DE /* SwipeAnimator.swift */; };
+		8814B22A4400EA913A99525039573DCD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD496BB980198192161DE311E089F5E4 /* UIKit.framework */; };
+		893221008EDE5F18EAD1291217A61276 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99670225670ECF30F00480E74A1A2FC2 /* Foundation.framework */; };
+		8A8877D09B887FC4262ED133277D0BBB /* SwipeTransitionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8A63ADB8AE29FB1C4AB536D551CD /* SwipeTransitionLayout.swift */; };
+		8C2CAE51443423AA379998DDF2C026F0 /* MarkdownCommonElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A563A07C8FEC818B9C855D802523ED /* MarkdownCommonElement.swift */; };
+		92F11E3C5F44674E34DD797AD4560D77 /* MarkdownKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7463158A5812869F8553C2706A46A65 /* MarkdownKit-dummy.m */; };
+		9791DA9D5652A400B752CE7448F0E6BE /* SwipeTableViewCell+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018E08B72CAF3588B8F2408FE8361650 /* SwipeTableViewCell+Accessibility.swift */; };
+		98ECBBC7DD9E18F4AC4B0272A1055552 /* SwipeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271A012EA36BE1C70FBCF40E55C7336 /* SwipeOptions.swift */; };
+		997625FE2E8E97892899D8DC60F173B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99670225670ECF30F00480E74A1A2FC2 /* Foundation.framework */; };
+		9AD84D555FE3F3C4519344CBBAB1D565 /* WKYTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE31CE694020D562AD201686E077257 /* WKYTPlayerView.m */; };
+		A720DD182C496770C70AD523450CF1BD /* SwipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04306D9E463C2FD5E2CEB3F721888B36 /* SwipeCollectionViewCell.swift */; };
+		AE02BFA3EC5C85C8F67BA7C3DD0CA281 /* NSAttributedStringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130B9180F9F7D4DAB2B2F6F04E268562 /* NSAttributedStringKey.swift */; };
+		B40B1CF702D3D9B0AE75C8F10FEA5CC8 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C610D475B2A224143149C139C1E6A0 /* Drawing.swift */; };
+		B6A794C12E7E0FCE5BF0F35315FBCB99 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD496BB980198192161DE311E089F5E4 /* UIKit.framework */; };
+		BA0A8769E65C88689EE85E3CFA097728 /* NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE09360E40953BAE586E5FF5095A778 /* NSRange.swift */; };
+		BAE4E7D112EC17C973483BA2602FF805 /* MarkdownParser+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178D546743149B47E62A0DA8CF99085 /* MarkdownParser+UIKit.swift */; };
+		BBD32164F0A072BF519E0BFC3EC36CC5 /* SwipeActionTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0900A0B0B3BD4B419F34825529CAAE /* SwipeActionTransitioning.swift */; };
+		BCFB236C369C2810D02055B87C0D997B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD496BB980198192161DE311E089F5E4 /* UIKit.framework */; };
+		C0C93CD90BA7DD8E7D377AE472C75C07 /* AbstractComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B07F8507718F21F6374ECAF64FCF12 /* AbstractComment.swift */; };
+		C2522AC2ED3EC271C5195C8F3612D91A /* Truncation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549D721D1FC69756CE668AA81A555B70 /* Truncation.swift */; };
+		C26B4138B1ECC18E597D5F09FBB931C2 /* MarkdownUnescaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129824A7B0C120ABA99DEB6393586B55 /* MarkdownUnescaping.swift */; };
+		C55185B88E0ED0022750898E1C4898B7 /* Nantes.h in Headers */ = {isa = PBXBuildFile; fileRef = B4D26A034420C541EC8C2425C51B3FD0 /* Nantes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCF11406FC25C84082E70B3DE2871690 /* WKYTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 32C7A81493B7A6CC45D91F25F7758D86 /* WKYTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0119F97E7D2D5550028B3C5AA2BCE3A /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE783B2654123B2B0698655053F0736 /* CommentCell.swift */; };
+		D0E7EFE2DA7DA01CB2536E267CF4796E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99670225670ECF30F00480E74A1A2FC2 /* Foundation.framework */; };
+		D1CDF0B91488D91D90AB7C3294A3661B /* MarkdownLinkElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4700E9CDC38FB97ED18C9AC86ED87 /* MarkdownLinkElement.swift */; };
+		D334D5A0AA88F6DEE11C8667AAE43596 /* WKYTPlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4839A273925CDF66112A5BF7A60AE8A6 /* WKYTPlayerView.bundle */; };
+		D3C50BB4CEA7760E6DE0458D3F9D10E5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC2A74991D4CB66408A14609BF66301 /* Extensions.swift */; };
+		D8E9E2ADDBEDAE408C6850E01CE303C9 /* MarkdownLevelElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B801040F2703A202A50569C3D22DA4 /* MarkdownLevelElement.swift */; };
+		D9295A7A78B970E2EBD6361219168F27 /* SwiftyComments-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 01183131D31944976550B8724FC22BEF /* SwiftyComments-dummy.m */; };
+		DACCC5B82DC15B008F810194AB4B15CE /* SwipeExpanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8D3C9518EA4767EC075A5D057D889 /* SwipeExpanding.swift */; };
+		DB96509C71BD018B01A66BE6E1A640E8 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9ED0833B6E8E78D24C8A3036328E36 /* SwipeCellKit.framework */; };
+		DDC27E240CA8BAA3670788C6EE0A5F2D /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2392002C09ABA690722BFCCE63DDAD /* Actions.swift */; };
+		DE733A5B7FE04F58E11E5B773DB70F14 /* SwipeCollectionViewCell+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F163C9869DE1AA66CD7EFA2B871C80 /* SwipeCollectionViewCell+Accessibility.swift */; };
+		E3B1AF03AE95DEE4A44532726AD0F1A3 /* SwipeCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CDE61C5AB986198995D3D15CF1EAA4 /* SwipeCollectionViewCellDelegate.swift */; };
+		E67F2BFAC0F366F29DE5484431195E33 /* SwipeCellKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C023871BE461D96C3C041387A7F032 /* SwipeCellKit-dummy.m */; };
+		F2FA5F9889D98448FD25C664662237AF /* MarkdownStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9953707AA8AC18C44B0A33A7F8F14 /* MarkdownStyle.swift */; };
+		F92B35BD038C6E256A27EB44E0384CE4 /* UIFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE75BC05BDB90F509A59FA8D62F1273 /* UIFont+Traits.swift */; };
+		FA5DC39448AC41E3ADDBB9FBE3AA7406 /* Pods-Reddit Client-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F7006051295B1942138DD40E3E4B5ED /* Pods-Reddit Client-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAB637FF8C0B5512A1BCFE04F4FBCB72 /* Swipeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54075608CBE0D0AF663716784D355A /* Swipeable.swift */; };
+		FDD22035ED563B590D399C93737187B3 /* SwipeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C610F2FC4441BCABF6FECDCE4F547945 /* SwipeActionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		84879759B7F825F58A3DB52DA8B18393 /* PBXContainerItemProxy */ = {
+		3883BE7A9F7F4C76967826F63BA3C055 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9B8CED42548FBCD698879F50FDF51154;
-			remoteInfo = MarkdownKit;
+			remoteGlobalIDString = 1DE44C23B82E6671E9E1541D06DE0E87;
+			remoteInfo = SwipeCellKit;
 		};
-		978100A81F2E060C96D04687B8F5F529 /* PBXContainerItemProxy */ = {
+		4643F6D914E487397C358B2B402B039B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DABE3AD6EBA3822D4F04FBC550E7158D;
 			remoteInfo = "YoutubePlayer-in-WKWebView";
 		};
-		B5FD3097C8FC59A45D00E3D0F08BF636 /* PBXContainerItemProxy */ = {
+		62839DA34F09310B1E912D6C2945A697 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B8CED42548FBCD698879F50FDF51154;
+			remoteInfo = MarkdownKit;
+		};
+		79F2E1BBB2991FAA0568F646A7B84024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1DE44C23B82E6671E9E1541D06DE0E87;
+			remoteInfo = SwipeCellKit;
+		};
+		7A1D1DA1512B032957B5765A97EF8958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F41F00997EA307B0D0FF7A42BB682FD;
+			remoteInfo = SwiftyComments;
+		};
+		921C4330BBC95AED305D32C1A1DF01DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -88,80 +144,122 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05AA23E4EA2C57F803273BC84BA9DF44 /* YoutubePlayer-in-WKWebView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YoutubePlayer-in-WKWebView-dummy.m"; sourceTree = "<group>"; };
-		10972D83C14EE9EA8E19F2F36FAA6A5D /* MarkdownKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownKit-umbrella.h"; sourceTree = "<group>"; };
-		10A503474E0998652817BE9E1DCB8367 /* MarkdownList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownList.swift; path = MarkdownKit/Sources/Common/Elements/List/MarkdownList.swift; sourceTree = "<group>"; };
-		127F8D39094112C92F746C73DFC058A8 /* Nantes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nantes.h; path = Source/Classes/Nantes.h; sourceTree = "<group>"; };
-		133F6A048FA3B032CAB9890818CC00B9 /* YoutubePlayer-in-WKWebView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-prefix.pch"; sourceTree = "<group>"; };
+		01183131D31944976550B8724FC22BEF /* SwiftyComments-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyComments-dummy.m"; sourceTree = "<group>"; };
+		018E08B72CAF3588B8F2408FE8361650 /* SwipeTableViewCell+Accessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeTableViewCell+Accessibility.swift"; path = "Source/SwipeTableViewCell+Accessibility.swift"; sourceTree = "<group>"; };
+		03B801040F2703A202A50569C3D22DA4 /* MarkdownLevelElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownLevelElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownLevelElement.swift; sourceTree = "<group>"; };
+		04306D9E463C2FD5E2CEB3F721888B36 /* SwipeCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeCollectionViewCell.swift; path = Source/SwipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		08BC078B50404810A74727E9A3A53A35 /* MarkdownKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownKit-prefix.pch"; sourceTree = "<group>"; };
+		08C023871BE461D96C3C041387A7F032 /* SwipeCellKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwipeCellKit-dummy.m"; sourceTree = "<group>"; };
+		0A81D14FFFC67842C56C77E776AB4595 /* CommentsViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CommentsViewDelegate.swift; path = SwiftyComments/Classes/CommentsViewDelegate.swift; sourceTree = "<group>"; };
+		0D88D2A372D9E96877871185B41AD5D6 /* SwipeTableViewCell+Display.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeTableViewCell+Display.swift"; path = "Source/SwipeTableViewCell+Display.swift"; sourceTree = "<group>"; };
+		0DA6CBA704D910F6DC2FD15A3869351D /* Sizing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sizing.swift; path = Source/Classes/Sizing/Sizing.swift; sourceTree = "<group>"; };
+		0EC9953707AA8AC18C44B0A33A7F8F14 /* MarkdownStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownStyle.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownStyle.swift; sourceTree = "<group>"; };
+		129824A7B0C120ABA99DEB6393586B55 /* MarkdownUnescaping.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownUnescaping.swift; path = MarkdownKit/Sources/Common/Elements/Escaping/MarkdownUnescaping.swift; sourceTree = "<group>"; };
+		130B9180F9F7D4DAB2B2F6F04E268562 /* NSAttributedStringKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSAttributedStringKey.swift; path = Source/Classes/Categories/NSAttributedStringKey.swift; sourceTree = "<group>"; };
+		17B9AE9E3AFEB3BDD03227FABE9F4300 /* MarkdownElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownElement.swift; sourceTree = "<group>"; };
 		1838C438028CE5DBD6FB87262C5BA199 /* Pods-Reddit Client-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Reddit Client-acknowledgements.plist"; sourceTree = "<group>"; };
-		1C9F7B2FA77B3850FB859452027B1B4D /* MarkdownParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownParser.swift; path = MarkdownKit/Sources/Common/MarkdownParser.swift; sourceTree = "<group>"; };
-		1CB78D7F3735C65700324C81358A7F67 /* Link.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Link.swift; path = Source/Classes/ActionHandling/Link.swift; sourceTree = "<group>"; };
+		18F163C9869DE1AA66CD7EFA2B871C80 /* SwipeCollectionViewCell+Accessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeCollectionViewCell+Accessibility.swift"; path = "Source/SwipeCollectionViewCell+Accessibility.swift"; sourceTree = "<group>"; };
+		1BE75BC05BDB90F509A59FA8D62F1273 /* UIFont+Traits.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+Traits.swift"; path = "MarkdownKit/Sources/UIKit/Extensions/UIFont+Traits.swift"; sourceTree = "<group>"; };
+		1C87736FFA7AB73EC0502942A76DAE6E /* MarkdownLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownLink.swift; path = MarkdownKit/Sources/Common/Elements/Link/MarkdownLink.swift; sourceTree = "<group>"; };
 		1D4979009ED0878948E446C0094405C6 /* Pods-Reddit Client-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Reddit Client-acknowledgements.markdown"; sourceTree = "<group>"; };
-		21859F984E0424B68898E6B850E6AFCF /* Accessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Accessibility.swift; path = Source/Classes/Accessibility/Accessibility.swift; sourceTree = "<group>"; };
-		2344C7E0E26870ACC4E406F9C7CF16E1 /* MarkdownKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownKit-prefix.pch"; sourceTree = "<group>"; };
+		20AF30FD142B7432AAB71C5E8756485B /* SwipeTableViewCellDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeTableViewCellDelegate.swift; path = Source/SwipeTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		2257AA49BF11164CDDEBD197DFC0973E /* MarkdownLink+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MarkdownLink+UIKit.swift"; path = "MarkdownKit/Sources/UIKit/Elements/Link/MarkdownLink+UIKit.swift"; sourceTree = "<group>"; };
+		24A563A07C8FEC818B9C855D802523ED /* MarkdownCommonElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownCommonElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownCommonElement.swift; sourceTree = "<group>"; };
+		25C610D475B2A224143149C139C1E6A0 /* Drawing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = Source/Classes/Drawing/Drawing.swift; sourceTree = "<group>"; };
 		29A0093B9A5D2F097893410CFE7EAB28 /* MarkdownKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarkdownKit.framework; path = MarkdownKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BDC8F37B031AD95D3F25E58637576FC /* MarkdownParser+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MarkdownParser+UIKit.swift"; path = "MarkdownKit/Sources/UIKit/MarkdownParser+UIKit.swift"; sourceTree = "<group>"; };
-		30F78D3E73BBA819A1830EE537E6A090 /* MarkdownKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarkdownKit.xcconfig; sourceTree = "<group>"; };
-		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		34948C0984D7BE61E6713065EAA7F460 /* MarkdownUnescaping.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownUnescaping.swift; path = MarkdownKit/Sources/Common/Elements/Escaping/MarkdownUnescaping.swift; sourceTree = "<group>"; };
-		380D0743F088D948453A8E66DD53DEC3 /* Nantes-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Nantes-Info.plist"; sourceTree = "<group>"; };
-		41618B94F520F3A4108AFB08F8085914 /* Scaling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Scaling.swift; path = Source/Classes/Drawing/Scaling.swift; sourceTree = "<group>"; };
-		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		441F118529B6DF9031BB835DD8B3DF65 /* UIFont+Traits.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+Traits.swift"; path = "MarkdownKit/Sources/UIKit/Extensions/UIFont+Traits.swift"; sourceTree = "<group>"; };
+		2A200FC38A3E2B030641D3993D27135A /* Nantes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nantes-dummy.m"; sourceTree = "<group>"; };
+		2B4A687673A008E3D72BB513B0C4B97C /* MarkdownKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MarkdownKit-Info.plist"; sourceTree = "<group>"; };
+		2BEF850769E034E02F5AC2530FFD8E93 /* String+UTF16.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+UTF16.swift"; path = "MarkdownKit/Sources/Common/Extensions/String+UTF16.swift"; sourceTree = "<group>"; };
+		2DA07219C56F93ADE81B53DB8EF95C57 /* SwipeCellKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwipeCellKit.modulemap; sourceTree = "<group>"; };
+		2EE4700E9CDC38FB97ED18C9AC86ED87 /* MarkdownLinkElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownLinkElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownLinkElement.swift; sourceTree = "<group>"; };
+		2FE8D3C9518EA4767EC075A5D057D889 /* SwipeExpanding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeExpanding.swift; path = Source/SwipeExpanding.swift; sourceTree = "<group>"; };
+		3178D546743149B47E62A0DA8CF99085 /* MarkdownParser+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MarkdownParser+UIKit.swift"; path = "MarkdownKit/Sources/UIKit/MarkdownParser+UIKit.swift"; sourceTree = "<group>"; };
+		32C7A81493B7A6CC45D91F25F7758D86 /* WKYTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WKYTPlayerView.h; path = WKYTPlayerView/WKYTPlayerView.h; sourceTree = "<group>"; };
+		3F15C1C4E699B4C620F510F3A119EFBE /* SwipeAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeAction.swift; path = Source/SwipeAction.swift; sourceTree = "<group>"; };
+		3F54075608CBE0D0AF663716784D355A /* Swipeable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Swipeable.swift; path = Source/Swipeable.swift; sourceTree = "<group>"; };
+		45A730D0E12B3FF75457C7C08C7020DC /* SwipeFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeFeedback.swift; path = Source/SwipeFeedback.swift; sourceTree = "<group>"; };
+		45CF8A63ADB8AE29FB1C4AB536D551CD /* SwipeTransitionLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeTransitionLayout.swift; path = Source/SwipeTransitionLayout.swift; sourceTree = "<group>"; };
+		46E992C8B5FDEB5B084C464B9F44C08D /* SwiftyComments.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyComments.modulemap; sourceTree = "<group>"; };
+		4839A273925CDF66112A5BF7A60AE8A6 /* WKYTPlayerView.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WKYTPlayerView.bundle; path = WKYTPlayerView/WKYTPlayerView.bundle; sourceTree = "<group>"; };
 		491B67D101CE84C73B082C63BDDA7ADE /* Pods-Reddit Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Reddit Client.debug.xcconfig"; sourceTree = "<group>"; };
+		4B904D8D66DFACB638C59472C864769A /* SwipeCollectionViewCell+Display.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "SwipeCollectionViewCell+Display.swift"; path = "Source/SwipeCollectionViewCell+Display.swift"; sourceTree = "<group>"; };
+		4C8C80AD6A1C34FA3BB940D0CC96D6F3 /* Nantes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nantes-umbrella.h"; sourceTree = "<group>"; };
 		5024B1CDF5B8EE09155228691CF92CA8 /* Pods-Reddit Client.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Reddit Client.modulemap"; sourceTree = "<group>"; };
-		56FB6320156A7AA5943A16C4543DFF43 /* MarkdownLink+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MarkdownLink+UIKit.swift"; path = "MarkdownKit/Sources/UIKit/Elements/Link/MarkdownLink+UIKit.swift"; sourceTree = "<group>"; };
-		59DA8542D4EE9610604984BCD0F44300 /* String+UTF16.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+UTF16.swift"; path = "MarkdownKit/Sources/Common/Extensions/String+UTF16.swift"; sourceTree = "<group>"; };
-		5B1A84E1326BECB7E95BDC85D64C51AE /* LabelDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LabelDelegate.swift; path = Source/Classes/Delegate/LabelDelegate.swift; sourceTree = "<group>"; };
-		60067F7DA98792F39F18384F2A50E2FE /* MarkdownLinkElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownLinkElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownLinkElement.swift; sourceTree = "<group>"; };
-		625C2287FAC21812938EA5B5C80AFDA9 /* Nantes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nantes-umbrella.h"; sourceTree = "<group>"; };
-		62BBF428B635768C8E7B4A6DA115FC91 /* MarkdownCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownCode.swift; path = MarkdownKit/Sources/Common/Elements/Code/MarkdownCode.swift; sourceTree = "<group>"; };
-		6368B0F824788546C8CA7449C3045F76 /* MarkdownLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownLink.swift; path = MarkdownKit/Sources/Common/Elements/Link/MarkdownLink.swift; sourceTree = "<group>"; };
-		63FD8078503BEE2D9744453C4F225328 /* MarkdownHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownHeader.swift; path = MarkdownKit/Sources/Common/Elements/Header/MarkdownHeader.swift; sourceTree = "<group>"; };
-		6B3746B61FBDE7EE3CF90579F6E1902A /* Drawing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = Source/Classes/Drawing/Drawing.swift; sourceTree = "<group>"; };
+		549D721D1FC69756CE668AA81A555B70 /* Truncation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Truncation.swift; path = Source/Classes/Drawing/Truncation.swift; sourceTree = "<group>"; };
+		585884E70EE6C679F2567BD7A8A26FE1 /* Nantes.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nantes.xcconfig; sourceTree = "<group>"; };
+		606AF4BBFC66597913F0E19E13BA0898 /* LabelDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LabelDelegate.swift; path = Source/Classes/Delegate/LabelDelegate.swift; sourceTree = "<group>"; };
+		6217074DEABB2CB3E559873E542EBC6C /* SwiftyComments-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyComments-umbrella.h"; sourceTree = "<group>"; };
+		6333B4CF30B62430671E1849A4CD0955 /* MarkdownHeader+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MarkdownHeader+UIKit.swift"; path = "MarkdownKit/Sources/UIKit/Elements/Header/MarkdownHeader+UIKit.swift"; sourceTree = "<group>"; };
+		67AAC55058F9E4EDE939509EE92CAC17 /* SwipeCellKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeCellKit-umbrella.h"; sourceTree = "<group>"; };
+		689AA4951ACADD077B29A5224C3AE85B /* SwipeTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeTableViewCell.swift; path = Source/SwipeTableViewCell.swift; sourceTree = "<group>"; };
+		69ABA5D2707461B776398B77EBD83458 /* Accessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Accessibility.swift; path = Source/Classes/Accessibility/Accessibility.swift; sourceTree = "<group>"; };
+		6ABE427E6AAA6C3D272243C94CCB22D5 /* NantesLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NantesLabel.swift; path = Source/Classes/NantesLabel.swift; sourceTree = "<group>"; };
+		6AC2A74991D4CB66408A14609BF66301 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Source/Extensions.swift; sourceTree = "<group>"; };
+		6CCB49B049348D2BA9381699BB3D0865 /* YoutubePlayer-in-WKWebView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-umbrella.h"; sourceTree = "<group>"; };
+		6CDD6186DC0412CCC49F70F703D58B46 /* MarkdownCode+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MarkdownCode+UIKit.swift"; path = "MarkdownKit/Sources/UIKit/Elements/Code/MarkdownCode+UIKit.swift"; sourceTree = "<group>"; };
+		6D43317E3421A44CC6D554980C54A7C0 /* SwipeAccessibilityCustomAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeAccessibilityCustomAction.swift; path = Source/SwipeAccessibilityCustomAction.swift; sourceTree = "<group>"; };
+		6F2392002C09ABA690722BFCCE63DDAD /* Actions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Actions.swift; path = Source/Classes/ActionHandling/Actions.swift; sourceTree = "<group>"; };
 		6F7006051295B1942138DD40E3E4B5ED /* Pods-Reddit Client-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Reddit Client-umbrella.h"; sourceTree = "<group>"; };
-		6F730D1EF918F1BD8D8C11DCF8D73AE3 /* MarkdownHeader+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MarkdownHeader+UIKit.swift"; path = "MarkdownKit/Sources/UIKit/Elements/Header/MarkdownHeader+UIKit.swift"; sourceTree = "<group>"; };
-		743D03265A3931B7802B3D04BA43AADC /* NSAttributedStringKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSAttributedStringKey.swift; path = Source/Classes/Categories/NSAttributedStringKey.swift; sourceTree = "<group>"; };
+		6FDE61FD739CA4C19D895524A2330CD1 /* YoutubePlayer-in-WKWebView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "YoutubePlayer-in-WKWebView-Info.plist"; sourceTree = "<group>"; };
+		70195C2546E56F1988A83CF64C78037F /* MarkdownParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownParser.swift; path = MarkdownKit/Sources/Common/MarkdownParser.swift; sourceTree = "<group>"; };
 		748BCBE18369BE984180BA83B2EDC912 /* Pods-Reddit Client-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Reddit Client-Info.plist"; sourceTree = "<group>"; };
-		75295841AA83F865D158294A298C03D1 /* YoutubePlayer-in-WKWebView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "YoutubePlayer-in-WKWebView.modulemap"; sourceTree = "<group>"; };
-		7B260747CB6D2B56C4B149782C12501F /* Truncation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Truncation.swift; path = Source/Classes/Drawing/Truncation.swift; sourceTree = "<group>"; };
-		7FE874E5C02DFE9CE24BD32F60CCDCEB /* MarkdownCode+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MarkdownCode+UIKit.swift"; path = "MarkdownKit/Sources/UIKit/Elements/Code/MarkdownCode+UIKit.swift"; sourceTree = "<group>"; };
+		766E9106C68EA82CC0B18BBB78213B4C /* SwipeCellKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwipeCellKit-Info.plist"; sourceTree = "<group>"; };
+		768785224F8FD97F3F346D9E60E3D8E6 /* SwipeExpansionStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeExpansionStyle.swift; path = Source/SwipeExpansionStyle.swift; sourceTree = "<group>"; };
+		783CC36C819D565DB95805A293896516 /* MarkdownHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownHeader.swift; path = MarkdownKit/Sources/Common/Elements/Header/MarkdownHeader.swift; sourceTree = "<group>"; };
+		796D427D57A4412E466A7AE28441A9B1 /* SwipeCellKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeCellKit-prefix.pch"; sourceTree = "<group>"; };
+		7ABDA0EDB16629A4ACBD30F3C47B4151 /* MarkdownList.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownList.swift; path = MarkdownKit/Sources/Common/Elements/List/MarkdownList.swift; sourceTree = "<group>"; };
+		7B5B8B5DDEF0B61864FB59C48CE3C79D /* SwipeController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeController.swift; path = Source/SwipeController.swift; sourceTree = "<group>"; };
+		7C2F34D9DE320C076318A41096049D51 /* MarkdownQuote.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownQuote.swift; path = MarkdownKit/Sources/Common/Elements/Quote/MarkdownQuote.swift; sourceTree = "<group>"; };
+		7C8746815B50FE5E5B7C4377E741F881 /* MarkdownBold.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownBold.swift; path = MarkdownKit/Sources/Common/Elements/Bold/MarkdownBold.swift; sourceTree = "<group>"; };
+		7E65B4EC70F86B2BB7D3D0EB8D99591A /* MarkdownItalic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownItalic.swift; path = MarkdownKit/Sources/Common/Elements/Italic/MarkdownItalic.swift; sourceTree = "<group>"; };
+		806204871D55A8AC50782C0251DF187C /* MarkdownCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownCode.swift; path = MarkdownKit/Sources/Common/Elements/Code/MarkdownCode.swift; sourceTree = "<group>"; };
 		8109A307CA3506B4A29EEA9F0459BA2E /* Pods-Reddit Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Reddit Client.release.xcconfig"; sourceTree = "<group>"; };
-		82507E62E97B756945275D2EB368CD4C /* MarkdownLevelElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownLevelElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownLevelElement.swift; sourceTree = "<group>"; };
-		83512F8FEE0B65B0B0400459B64D50C7 /* WKYTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WKYTPlayerView.h; path = WKYTPlayerView/WKYTPlayerView.h; sourceTree = "<group>"; };
+		81E0CD491EB1EE3E6B62E9AFF08CAC0A /* SwipeCellKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeCellKit.xcconfig; sourceTree = "<group>"; };
+		82ABD4E98F45D1FADD4F90F751EB21F5 /* MarkdownEscaping.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownEscaping.swift; path = MarkdownKit/Sources/Common/Elements/Escaping/MarkdownEscaping.swift; sourceTree = "<group>"; };
 		848856A54F0F25BEE627AC1C51DF1C61 /* Pods-Reddit Client-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Reddit Client-frameworks.sh"; sourceTree = "<group>"; };
-		8917A2508ADF497F8A23271815755AB1 /* MarkdownKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarkdownKit-dummy.m"; sourceTree = "<group>"; };
-		8B8A0482CD40B4A19765B58DDCE1CA5A /* MarkdownCodeEscaping.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownCodeEscaping.swift; path = MarkdownKit/Sources/Common/Elements/Escaping/MarkdownCodeEscaping.swift; sourceTree = "<group>"; };
-		911E557126459F8C7A82BA0059AEAF48 /* MarkdownAutomaticLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownAutomaticLink.swift; path = MarkdownKit/Sources/Common/Elements/Link/MarkdownAutomaticLink.swift; sourceTree = "<group>"; };
-		9397D535CF3C073436D782FD1C8F3D10 /* NSRange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSRange.swift; path = Source/Classes/Categories/NSRange.swift; sourceTree = "<group>"; };
+		86D8061D769D6DFAA78629E196CD5156 /* MarkdownKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MarkdownKit.modulemap; sourceTree = "<group>"; };
+		8E5318C86A7F1D522E216286ADDC18DE /* SwipeAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeAnimator.swift; path = Source/SwipeAnimator.swift; sourceTree = "<group>"; };
+		8E9ED0833B6E8E78D24C8A3036328E36 /* SwipeCellKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwipeCellKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EE09360E40953BAE586E5FF5095A778 /* NSRange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSRange.swift; path = Source/Classes/Categories/NSRange.swift; sourceTree = "<group>"; };
+		91FF049AC388EC8CF23C3FD6B6DF790F /* CommentsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CommentsViewController.swift; path = SwiftyComments/Classes/CommentsViewController.swift; sourceTree = "<group>"; };
+		93295AAD0A09C9F74B84827CB2E9828C /* YoutubePlayer-in-WKWebView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-prefix.pch"; sourceTree = "<group>"; };
+		9687BB0D485CD5C97CAC57BD10A14ABA /* SwiftyComments-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyComments-prefix.pch"; sourceTree = "<group>"; };
+		9796BB0172A9CE8A2777B9FDAE2ED64F /* Nantes-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Nantes-Info.plist"; sourceTree = "<group>"; };
+		99670225670ECF30F00480E74A1A2FC2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		99FE880B86DC1DAEC8E487C5CAAEE58E /* YoutubePlayer-in-WKWebView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "YoutubePlayer-in-WKWebView.modulemap"; sourceTree = "<group>"; };
+		9D443E759FE97A6C0CA5A3B5E4142EBA /* SwipeCellKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwipeCellKit.framework; path = SwipeCellKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9DFC97FA5CC926B95E7BB5A60B6B9CF5 /* MarkdownKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MarkdownKit.modulemap; sourceTree = "<group>"; };
-		A07471AEC26EBF9681DA92246DB98237 /* MarkdownItalic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownItalic.swift; path = MarkdownKit/Sources/Common/Elements/Italic/MarkdownItalic.swift; sourceTree = "<group>"; };
 		A19C1C0F1EDFEBA26D82265C9A69DF6F /* Nantes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Nantes.framework; path = Nantes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1A0A0F5074091FD3E3782C38465F4F6 /* WKYTPlayerView.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WKYTPlayerView.bundle; path = WKYTPlayerView/WKYTPlayerView.bundle; sourceTree = "<group>"; };
-		A4369541A75101EF7AE8F9ECDE9E144D /* NSAttributedString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSAttributedString.swift; path = Source/Classes/Categories/NSAttributedString.swift; sourceTree = "<group>"; };
-		B0D89F329D54E83F3728998C37109557 /* YoutubePlayer-in-WKWebView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "YoutubePlayer-in-WKWebView-Info.plist"; sourceTree = "<group>"; };
-		B2FB548D0B32B35D5E084EED2123BCB9 /* YoutubePlayer-in-WKWebView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YoutubePlayer-in-WKWebView-umbrella.h"; sourceTree = "<group>"; };
+		A39A3129A2B36CE1DDC9FD88D3F9101F /* SwiftyComments-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyComments-Info.plist"; sourceTree = "<group>"; };
+		A3B07F8507718F21F6374ECAF64FCF12 /* AbstractComment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AbstractComment.swift; path = SwiftyComments/Classes/AbstractComment.swift; sourceTree = "<group>"; };
+		A45B34C51B4FD251D97B7F0895EA8103 /* Nantes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Nantes.modulemap; sourceTree = "<group>"; };
+		A986F21F965D7DCD9E9B3A5E36BC4DB8 /* Scaling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Scaling.swift; path = Source/Classes/Drawing/Scaling.swift; sourceTree = "<group>"; };
+		AAE31CE694020D562AD201686E077257 /* WKYTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WKYTPlayerView.m; path = WKYTPlayerView/WKYTPlayerView.m; sourceTree = "<group>"; };
+		AD496BB980198192161DE311E089F5E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		AEFC1AA050A1BB9EC431AB7DAA765330 /* NSAttributedString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSAttributedString.swift; path = Source/Classes/Categories/NSAttributedString.swift; sourceTree = "<group>"; };
+		B00F5B67706F81E2C42EBA8E2BE78975 /* MarkdownKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarkdownKit.xcconfig; sourceTree = "<group>"; };
+		B4D26A034420C541EC8C2425C51B3FD0 /* Nantes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nantes.h; path = Source/Classes/Nantes.h; sourceTree = "<group>"; };
 		B5FAD647F832789341C4A400610A0F07 /* Pods_Reddit_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Reddit_Client.framework; path = "Pods-Reddit Client.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B648C774A15CAB57A6BB0988B5E3A6B3 /* NantesLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NantesLabel.swift; path = Source/Classes/NantesLabel.swift; sourceTree = "<group>"; };
-		BA150C533F4B31FFCCBFFBB0B9E541FA /* Actions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Actions.swift; path = Source/Classes/ActionHandling/Actions.swift; sourceTree = "<group>"; };
-		BA64D0D96371EC279CA83E79D1D8C048 /* Nantes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nantes-dummy.m"; sourceTree = "<group>"; };
-		BAFB61CBCD939C8192B399E783E3268B /* Nantes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Nantes.modulemap; sourceTree = "<group>"; };
-		BC1F426C25CDEA20E6E632EA09471FE7 /* MarkdownQuote.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownQuote.swift; path = MarkdownKit/Sources/Common/Elements/Quote/MarkdownQuote.swift; sourceTree = "<group>"; };
-		BCA6B0668CF5C54C44D8DBA017CBF3AB /* MarkdownEscaping.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownEscaping.swift; path = MarkdownKit/Sources/Common/Elements/Escaping/MarkdownEscaping.swift; sourceTree = "<group>"; };
-		BDB58704494314E3E98B23CE47527AF1 /* Typealias.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealias.swift; path = MarkdownKit/Sources/UIKit/Typealias.swift; sourceTree = "<group>"; };
-		CF48FEA72EB80559DC96A848B7725300 /* Nantes-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nantes-prefix.pch"; sourceTree = "<group>"; };
-		D26BD6F1D8D541D4D1C22708C84D27B2 /* WKYTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WKYTPlayerView.m; path = WKYTPlayerView/WKYTPlayerView.m; sourceTree = "<group>"; };
-		D38B6F6909ACF635ED2DAFBFCF1DC090 /* MarkdownElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownElement.swift; sourceTree = "<group>"; };
-		D4C8F337DB7B53A546F20A92121FE993 /* Sizing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sizing.swift; path = Source/Classes/Sizing/Sizing.swift; sourceTree = "<group>"; };
-		D71510C1808A02060E33221EB8E68FA8 /* Nantes.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nantes.xcconfig; sourceTree = "<group>"; };
-		DC9FAC1242870E461C2622B0594C2C99 /* MarkdownKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MarkdownKit-Info.plist"; sourceTree = "<group>"; };
+		B725DBE33DB061510E00C06C6285B1DA /* Typealias.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealias.swift; path = MarkdownKit/Sources/UIKit/Typealias.swift; sourceTree = "<group>"; };
+		BB0900A0B0B3BD4B419F34825529CAAE /* SwipeActionTransitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActionTransitioning.swift; path = Source/SwipeActionTransitioning.swift; sourceTree = "<group>"; };
+		C271A012EA36BE1C70FBCF40E55C7336 /* SwipeOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeOptions.swift; path = Source/SwipeOptions.swift; sourceTree = "<group>"; };
+		C42398DCB5B1CA540B690710CF53D0F4 /* YoutubePlayer-in-WKWebView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "YoutubePlayer-in-WKWebView.xcconfig"; sourceTree = "<group>"; };
+		C610F2FC4441BCABF6FECDCE4F547945 /* SwipeActionButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActionButton.swift; path = Source/SwipeActionButton.swift; sourceTree = "<group>"; };
+		C7463158A5812869F8553C2706A46A65 /* MarkdownKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarkdownKit-dummy.m"; sourceTree = "<group>"; };
+		C8CDE61C5AB986198995D3D15CF1EAA4 /* SwipeCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeCollectionViewCellDelegate.swift; path = Source/SwipeCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
+		CA9CB583A4372DAE404BE3EA40933214 /* SwiftyComments.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyComments.xcconfig; sourceTree = "<group>"; };
+		CAB4081BD5E86A8670E9B9D0912421D2 /* MarkdownAutomaticLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownAutomaticLink.swift; path = MarkdownKit/Sources/Common/Elements/Link/MarkdownAutomaticLink.swift; sourceTree = "<group>"; };
+		D5D54B3B02C88AD86D6DFD17BE5BAFD7 /* MarkdownCodeEscaping.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownCodeEscaping.swift; path = MarkdownKit/Sources/Common/Elements/Escaping/MarkdownCodeEscaping.swift; sourceTree = "<group>"; };
+		DAE783B2654123B2B0698655053F0736 /* CommentCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CommentCell.swift; path = SwiftyComments/Classes/CommentCell.swift; sourceTree = "<group>"; };
 		DE0FAB1DA724AB86C0E299518F5E580A /* YoutubePlayer_in_WKWebView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YoutubePlayer_in_WKWebView.framework; path = "YoutubePlayer-in-WKWebView.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5F3FBA062FE08309DB89D02E55FBA43 /* MarkdownCommonElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownCommonElement.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownCommonElement.swift; sourceTree = "<group>"; };
-		F79BBCA16127633A4E0C532151C5313C /* MarkdownBold.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownBold.swift; path = MarkdownKit/Sources/Common/Elements/Bold/MarkdownBold.swift; sourceTree = "<group>"; };
-		F7E2C7F9FA3D803957ADD3701028AB1F /* YoutubePlayer-in-WKWebView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "YoutubePlayer-in-WKWebView.xcconfig"; sourceTree = "<group>"; };
+		E9C1A48672C641D1B3105D2BB6771A42 /* SwipeActionsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeActionsView.swift; path = Source/SwipeActionsView.swift; sourceTree = "<group>"; };
+		EB64303128E7EED9BDFC34A1F0A100E7 /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = SwiftyComments/Assets/Media.xcassets; sourceTree = "<group>"; };
+		EB93D75873129E748300FC155E89D6FF /* Link.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Link.swift; path = Source/Classes/ActionHandling/Link.swift; sourceTree = "<group>"; };
+		F157590652412368807E24B32C7DEE95 /* MarkdownKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownKit-umbrella.h"; sourceTree = "<group>"; };
+		F39A923DDFB43F80866034F239552F4F /* SwiftyComments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyComments.framework; path = SwiftyComments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F50317B83400E56752283585D06BA16D /* YoutubePlayer-in-WKWebView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YoutubePlayer-in-WKWebView-dummy.m"; sourceTree = "<group>"; };
 		F90F5845D4473F9D4F67F2090911BDE3 /* Pods-Reddit Client-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Reddit Client-dummy.m"; sourceTree = "<group>"; };
-		FBEC4AED3E0A48F431FB23BA8F4E26C9 /* MarkdownStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownStyle.swift; path = MarkdownKit/Sources/Common/Protocols/MarkdownStyle.swift; sourceTree = "<group>"; };
+		F9C29EF2D3EB426809271AAB55E9EF00 /* Nantes-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nantes-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,19 +272,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73E40E0D21192C2CA2A54A99850581AA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0A9D6B3E6F2FF7B39B1D8270F77B58A9 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		83B31952B9520750E964E0A44C07C4B5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1BBC582FCEA1B2926269F3CCE3F1D923 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84BAA90D6A1E5C65C24CF125C0BABCBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27C2ACFD2CE8983572300E00EFB7F9A3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9425CCBEFAECF3B23D785247A6F174F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0E7EFE2DA7DA01CB2536E267CF4796E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B32603A4653380A4C04E195F9340B75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				997625FE2E8E97892899D8DC60F173B9 /* Foundation.framework in Frameworks */,
+				DB96509C71BD018B01A66BE6E1A640E8 /* SwipeCellKit.framework in Frameworks */,
+				B6A794C12E7E0FCE5BF0F35315FBCB99 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,67 +318,178 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10AD8F6275043D7C35FBBDD9A8FB221E /* Products */ = {
+		053614F8E78C825BA6E7CD3AD4CAB2C8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				29A0093B9A5D2F097893410CFE7EAB28 /* MarkdownKit.framework */,
-				A19C1C0F1EDFEBA26D82265C9A69DF6F /* Nantes.framework */,
-				B5FAD647F832789341C4A400610A0F07 /* Pods_Reddit_Client.framework */,
-				DE0FAB1DA724AB86C0E299518F5E580A /* YoutubePlayer_in_WKWebView.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E2983683FD097A93297E2F5D4E382B36 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2478BACE783B009B2E04E70BE362BE9E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				A1A0A0F5074091FD3E3782C38465F4F6 /* WKYTPlayerView.bundle */,
+				EB64303128E7EED9BDFC34A1F0A100E7 /* Media.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		32D7D2C0C79ED51321807AFFE4472E4E /* Support Files */ = {
+		0C44340F0E69AFCA16821BDBD5135436 /* Nantes */ = {
 			isa = PBXGroup;
 			children = (
-				75295841AA83F865D158294A298C03D1 /* YoutubePlayer-in-WKWebView.modulemap */,
-				F7E2C7F9FA3D803957ADD3701028AB1F /* YoutubePlayer-in-WKWebView.xcconfig */,
-				05AA23E4EA2C57F803273BC84BA9DF44 /* YoutubePlayer-in-WKWebView-dummy.m */,
-				B0D89F329D54E83F3728998C37109557 /* YoutubePlayer-in-WKWebView-Info.plist */,
-				133F6A048FA3B032CAB9890818CC00B9 /* YoutubePlayer-in-WKWebView-prefix.pch */,
-				B2FB548D0B32B35D5E084EED2123BCB9 /* YoutubePlayer-in-WKWebView-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/YoutubePlayer-in-WKWebView";
-			sourceTree = "<group>";
-		};
-		6F7C0958C1C7A11A1FAEB2BC7421557B /* Nantes */ = {
-			isa = PBXGroup;
-			children = (
-				21859F984E0424B68898E6B850E6AFCF /* Accessibility.swift */,
-				BA150C533F4B31FFCCBFFBB0B9E541FA /* Actions.swift */,
-				6B3746B61FBDE7EE3CF90579F6E1902A /* Drawing.swift */,
-				5B1A84E1326BECB7E95BDC85D64C51AE /* LabelDelegate.swift */,
-				1CB78D7F3735C65700324C81358A7F67 /* Link.swift */,
-				127F8D39094112C92F746C73DFC058A8 /* Nantes.h */,
-				B648C774A15CAB57A6BB0988B5E3A6B3 /* NantesLabel.swift */,
-				A4369541A75101EF7AE8F9ECDE9E144D /* NSAttributedString.swift */,
-				743D03265A3931B7802B3D04BA43AADC /* NSAttributedStringKey.swift */,
-				9397D535CF3C073436D782FD1C8F3D10 /* NSRange.swift */,
-				41618B94F520F3A4108AFB08F8085914 /* Scaling.swift */,
-				D4C8F337DB7B53A546F20A92121FE993 /* Sizing.swift */,
-				7B260747CB6D2B56C4B149782C12501F /* Truncation.swift */,
-				D0181E62AAA1C64E2E6AC5D7612487A6 /* Support Files */,
+				69ABA5D2707461B776398B77EBD83458 /* Accessibility.swift */,
+				6F2392002C09ABA690722BFCCE63DDAD /* Actions.swift */,
+				25C610D475B2A224143149C139C1E6A0 /* Drawing.swift */,
+				606AF4BBFC66597913F0E19E13BA0898 /* LabelDelegate.swift */,
+				EB93D75873129E748300FC155E89D6FF /* Link.swift */,
+				B4D26A034420C541EC8C2425C51B3FD0 /* Nantes.h */,
+				6ABE427E6AAA6C3D272243C94CCB22D5 /* NantesLabel.swift */,
+				AEFC1AA050A1BB9EC431AB7DAA765330 /* NSAttributedString.swift */,
+				130B9180F9F7D4DAB2B2F6F04E268562 /* NSAttributedStringKey.swift */,
+				8EE09360E40953BAE586E5FF5095A778 /* NSRange.swift */,
+				A986F21F965D7DCD9E9B3A5E36BC4DB8 /* Scaling.swift */,
+				0DA6CBA704D910F6DC2FD15A3869351D /* Sizing.swift */,
+				549D721D1FC69756CE668AA81A555B70 /* Truncation.swift */,
+				995A5E5354BA4080425EAAAA8EF862C7 /* Support Files */,
 			);
 			name = Nantes;
 			path = Nantes;
+			sourceTree = "<group>";
+		};
+		2E21546A1FCFB929950CF8DC7B8498DE /* SwipeCellKit */ = {
+			isa = PBXGroup;
+			children = (
+				6AC2A74991D4CB66408A14609BF66301 /* Extensions.swift */,
+				3F54075608CBE0D0AF663716784D355A /* Swipeable.swift */,
+				6D43317E3421A44CC6D554980C54A7C0 /* SwipeAccessibilityCustomAction.swift */,
+				3F15C1C4E699B4C620F510F3A119EFBE /* SwipeAction.swift */,
+				C610F2FC4441BCABF6FECDCE4F547945 /* SwipeActionButton.swift */,
+				E9C1A48672C641D1B3105D2BB6771A42 /* SwipeActionsView.swift */,
+				BB0900A0B0B3BD4B419F34825529CAAE /* SwipeActionTransitioning.swift */,
+				8E5318C86A7F1D522E216286ADDC18DE /* SwipeAnimator.swift */,
+				04306D9E463C2FD5E2CEB3F721888B36 /* SwipeCollectionViewCell.swift */,
+				18F163C9869DE1AA66CD7EFA2B871C80 /* SwipeCollectionViewCell+Accessibility.swift */,
+				4B904D8D66DFACB638C59472C864769A /* SwipeCollectionViewCell+Display.swift */,
+				C8CDE61C5AB986198995D3D15CF1EAA4 /* SwipeCollectionViewCellDelegate.swift */,
+				7B5B8B5DDEF0B61864FB59C48CE3C79D /* SwipeController.swift */,
+				2FE8D3C9518EA4767EC075A5D057D889 /* SwipeExpanding.swift */,
+				768785224F8FD97F3F346D9E60E3D8E6 /* SwipeExpansionStyle.swift */,
+				45A730D0E12B3FF75457C7C08C7020DC /* SwipeFeedback.swift */,
+				C271A012EA36BE1C70FBCF40E55C7336 /* SwipeOptions.swift */,
+				689AA4951ACADD077B29A5224C3AE85B /* SwipeTableViewCell.swift */,
+				018E08B72CAF3588B8F2408FE8361650 /* SwipeTableViewCell+Accessibility.swift */,
+				0D88D2A372D9E96877871185B41AD5D6 /* SwipeTableViewCell+Display.swift */,
+				20AF30FD142B7432AAB71C5E8756485B /* SwipeTableViewCellDelegate.swift */,
+				45CF8A63ADB8AE29FB1C4AB536D551CD /* SwipeTransitionLayout.swift */,
+				BE66606E4FF173AA3D9608FA7F0FF823 /* Support Files */,
+			);
+			name = SwipeCellKit;
+			path = SwipeCellKit;
+			sourceTree = "<group>";
+		};
+		38F74403FDB5A8FEE04DF57E58A876F8 /* MarkdownKit */ = {
+			isa = PBXGroup;
+			children = (
+				CAB4081BD5E86A8670E9B9D0912421D2 /* MarkdownAutomaticLink.swift */,
+				7C8746815B50FE5E5B7C4377E741F881 /* MarkdownBold.swift */,
+				806204871D55A8AC50782C0251DF187C /* MarkdownCode.swift */,
+				6CDD6186DC0412CCC49F70F703D58B46 /* MarkdownCode+UIKit.swift */,
+				D5D54B3B02C88AD86D6DFD17BE5BAFD7 /* MarkdownCodeEscaping.swift */,
+				24A563A07C8FEC818B9C855D802523ED /* MarkdownCommonElement.swift */,
+				17B9AE9E3AFEB3BDD03227FABE9F4300 /* MarkdownElement.swift */,
+				82ABD4E98F45D1FADD4F90F751EB21F5 /* MarkdownEscaping.swift */,
+				783CC36C819D565DB95805A293896516 /* MarkdownHeader.swift */,
+				6333B4CF30B62430671E1849A4CD0955 /* MarkdownHeader+UIKit.swift */,
+				7E65B4EC70F86B2BB7D3D0EB8D99591A /* MarkdownItalic.swift */,
+				03B801040F2703A202A50569C3D22DA4 /* MarkdownLevelElement.swift */,
+				1C87736FFA7AB73EC0502942A76DAE6E /* MarkdownLink.swift */,
+				2257AA49BF11164CDDEBD197DFC0973E /* MarkdownLink+UIKit.swift */,
+				2EE4700E9CDC38FB97ED18C9AC86ED87 /* MarkdownLinkElement.swift */,
+				7ABDA0EDB16629A4ACBD30F3C47B4151 /* MarkdownList.swift */,
+				70195C2546E56F1988A83CF64C78037F /* MarkdownParser.swift */,
+				3178D546743149B47E62A0DA8CF99085 /* MarkdownParser+UIKit.swift */,
+				7C2F34D9DE320C076318A41096049D51 /* MarkdownQuote.swift */,
+				0EC9953707AA8AC18C44B0A33A7F8F14 /* MarkdownStyle.swift */,
+				129824A7B0C120ABA99DEB6393586B55 /* MarkdownUnescaping.swift */,
+				2BEF850769E034E02F5AC2530FFD8E93 /* String+UTF16.swift */,
+				B725DBE33DB061510E00C06C6285B1DA /* Typealias.swift */,
+				1BE75BC05BDB90F509A59FA8D62F1273 /* UIFont+Traits.swift */,
+				6D637FA72BD472F212D1FD39FCF43919 /* Support Files */,
+			);
+			name = MarkdownKit;
+			path = MarkdownKit;
+			sourceTree = "<group>";
+		};
+		3ADE55D3D31EB94B9069AFF7C529CE2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E9ED0833B6E8E78D24C8A3036328E36 /* SwipeCellKit.framework */,
+				3E70996D011B50165F01D49F644C2938 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E70996D011B50165F01D49F644C2938 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				99670225670ECF30F00480E74A1A2FC2 /* Foundation.framework */,
+				AD496BB980198192161DE311E089F5E4 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		48CEAB63C345B3C0273449D1DC64E2E0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4839A273925CDF66112A5BF7A60AE8A6 /* WKYTPlayerView.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		637DB85314ACD5490B8C98CE1977F2B5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				46E992C8B5FDEB5B084C464B9F44C08D /* SwiftyComments.modulemap */,
+				CA9CB583A4372DAE404BE3EA40933214 /* SwiftyComments.xcconfig */,
+				01183131D31944976550B8724FC22BEF /* SwiftyComments-dummy.m */,
+				A39A3129A2B36CE1DDC9FD88D3F9101F /* SwiftyComments-Info.plist */,
+				9687BB0D485CD5C97CAC57BD10A14ABA /* SwiftyComments-prefix.pch */,
+				6217074DEABB2CB3E559873E542EBC6C /* SwiftyComments-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyComments";
+			sourceTree = "<group>";
+		};
+		6D637FA72BD472F212D1FD39FCF43919 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				86D8061D769D6DFAA78629E196CD5156 /* MarkdownKit.modulemap */,
+				B00F5B67706F81E2C42EBA8E2BE78975 /* MarkdownKit.xcconfig */,
+				C7463158A5812869F8553C2706A46A65 /* MarkdownKit-dummy.m */,
+				2B4A687673A008E3D72BB513B0C4B97C /* MarkdownKit-Info.plist */,
+				08BC078B50404810A74727E9A3A53A35 /* MarkdownKit-prefix.pch */,
+				F157590652412368807E24B32C7DEE95 /* MarkdownKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MarkdownKit";
+			sourceTree = "<group>";
+		};
+		774CF055D6FD8EC49BBD4DF884E9E06C /* YoutubePlayer-in-WKWebView */ = {
+			isa = PBXGroup;
+			children = (
+				32C7A81493B7A6CC45D91F25F7758D86 /* WKYTPlayerView.h */,
+				AAE31CE694020D562AD201686E077257 /* WKYTPlayerView.m */,
+				48CEAB63C345B3C0273449D1DC64E2E0 /* Resources */,
+				7E9B78D2F4D7FC189CD511905C050C58 /* Support Files */,
+			);
+			name = "YoutubePlayer-in-WKWebView";
+			path = "YoutubePlayer-in-WKWebView";
+			sourceTree = "<group>";
+		};
+		7E9B78D2F4D7FC189CD511905C050C58 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				99FE880B86DC1DAEC8E487C5CAAEE58E /* YoutubePlayer-in-WKWebView.modulemap */,
+				C42398DCB5B1CA540B690710CF53D0F4 /* YoutubePlayer-in-WKWebView.xcconfig */,
+				F50317B83400E56752283585D06BA16D /* YoutubePlayer-in-WKWebView-dummy.m */,
+				6FDE61FD739CA4C19D895524A2330CD1 /* YoutubePlayer-in-WKWebView-Info.plist */,
+				93295AAD0A09C9F74B84827CB2E9828C /* YoutubePlayer-in-WKWebView-prefix.pch */,
+				6CCB49B049348D2BA9381699BB3D0865 /* YoutubePlayer-in-WKWebView-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/YoutubePlayer-in-WKWebView";
 			sourceTree = "<group>";
 		};
 		82AAF073119EE93929609462BED1ED8E /* Targets Support Files */ = {
@@ -290,107 +517,82 @@
 			path = "Target Support Files/Pods-Reddit Client";
 			sourceTree = "<group>";
 		};
-		A3535337FE0DC2B81290B0C1066D5974 /* YoutubePlayer-in-WKWebView */ = {
+		96493DD4F89A1942C266A49A7F2C4C63 /* SwiftyComments */ = {
 			isa = PBXGroup;
 			children = (
-				83512F8FEE0B65B0B0400459B64D50C7 /* WKYTPlayerView.h */,
-				D26BD6F1D8D541D4D1C22708C84D27B2 /* WKYTPlayerView.m */,
-				2478BACE783B009B2E04E70BE362BE9E /* Resources */,
-				32D7D2C0C79ED51321807AFFE4472E4E /* Support Files */,
+				A3B07F8507718F21F6374ECAF64FCF12 /* AbstractComment.swift */,
+				DAE783B2654123B2B0698655053F0736 /* CommentCell.swift */,
+				91FF049AC388EC8CF23C3FD6B6DF790F /* CommentsViewController.swift */,
+				0A81D14FFFC67842C56C77E776AB4595 /* CommentsViewDelegate.swift */,
+				053614F8E78C825BA6E7CD3AD4CAB2C8 /* Resources */,
+				637DB85314ACD5490B8C98CE1977F2B5 /* Support Files */,
 			);
-			name = "YoutubePlayer-in-WKWebView";
-			path = "YoutubePlayer-in-WKWebView";
+			name = SwiftyComments;
+			path = SwiftyComments;
 			sourceTree = "<group>";
 		};
-		C617CAD54DD9CC98685AC4357805166E /* MarkdownKit */ = {
+		995A5E5354BA4080425EAAAA8EF862C7 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				911E557126459F8C7A82BA0059AEAF48 /* MarkdownAutomaticLink.swift */,
-				F79BBCA16127633A4E0C532151C5313C /* MarkdownBold.swift */,
-				62BBF428B635768C8E7B4A6DA115FC91 /* MarkdownCode.swift */,
-				7FE874E5C02DFE9CE24BD32F60CCDCEB /* MarkdownCode+UIKit.swift */,
-				8B8A0482CD40B4A19765B58DDCE1CA5A /* MarkdownCodeEscaping.swift */,
-				F5F3FBA062FE08309DB89D02E55FBA43 /* MarkdownCommonElement.swift */,
-				D38B6F6909ACF635ED2DAFBFCF1DC090 /* MarkdownElement.swift */,
-				BCA6B0668CF5C54C44D8DBA017CBF3AB /* MarkdownEscaping.swift */,
-				63FD8078503BEE2D9744453C4F225328 /* MarkdownHeader.swift */,
-				6F730D1EF918F1BD8D8C11DCF8D73AE3 /* MarkdownHeader+UIKit.swift */,
-				A07471AEC26EBF9681DA92246DB98237 /* MarkdownItalic.swift */,
-				82507E62E97B756945275D2EB368CD4C /* MarkdownLevelElement.swift */,
-				6368B0F824788546C8CA7449C3045F76 /* MarkdownLink.swift */,
-				56FB6320156A7AA5943A16C4543DFF43 /* MarkdownLink+UIKit.swift */,
-				60067F7DA98792F39F18384F2A50E2FE /* MarkdownLinkElement.swift */,
-				10A503474E0998652817BE9E1DCB8367 /* MarkdownList.swift */,
-				1C9F7B2FA77B3850FB859452027B1B4D /* MarkdownParser.swift */,
-				2BDC8F37B031AD95D3F25E58637576FC /* MarkdownParser+UIKit.swift */,
-				BC1F426C25CDEA20E6E632EA09471FE7 /* MarkdownQuote.swift */,
-				FBEC4AED3E0A48F431FB23BA8F4E26C9 /* MarkdownStyle.swift */,
-				34948C0984D7BE61E6713065EAA7F460 /* MarkdownUnescaping.swift */,
-				59DA8542D4EE9610604984BCD0F44300 /* String+UTF16.swift */,
-				BDB58704494314E3E98B23CE47527AF1 /* Typealias.swift */,
-				441F118529B6DF9031BB835DD8B3DF65 /* UIFont+Traits.swift */,
-				CD449F3419F0ED0813E44AFF6B1868E7 /* Support Files */,
-			);
-			name = MarkdownKit;
-			path = MarkdownKit;
-			sourceTree = "<group>";
-		};
-		CD449F3419F0ED0813E44AFF6B1868E7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9DFC97FA5CC926B95E7BB5A60B6B9CF5 /* MarkdownKit.modulemap */,
-				30F78D3E73BBA819A1830EE537E6A090 /* MarkdownKit.xcconfig */,
-				8917A2508ADF497F8A23271815755AB1 /* MarkdownKit-dummy.m */,
-				DC9FAC1242870E461C2622B0594C2C99 /* MarkdownKit-Info.plist */,
-				2344C7E0E26870ACC4E406F9C7CF16E1 /* MarkdownKit-prefix.pch */,
-				10972D83C14EE9EA8E19F2F36FAA6A5D /* MarkdownKit-umbrella.h */,
+				A45B34C51B4FD251D97B7F0895EA8103 /* Nantes.modulemap */,
+				585884E70EE6C679F2567BD7A8A26FE1 /* Nantes.xcconfig */,
+				2A200FC38A3E2B030641D3993D27135A /* Nantes-dummy.m */,
+				9796BB0172A9CE8A2777B9FDAE2ED64F /* Nantes-Info.plist */,
+				F9C29EF2D3EB426809271AAB55E9EF00 /* Nantes-prefix.pch */,
+				4C8C80AD6A1C34FA3BB940D0CC96D6F3 /* Nantes-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/MarkdownKit";
+			path = "../Target Support Files/Nantes";
+			sourceTree = "<group>";
+		};
+		BE66606E4FF173AA3D9608FA7F0FF823 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DA07219C56F93ADE81B53DB8EF95C57 /* SwipeCellKit.modulemap */,
+				81E0CD491EB1EE3E6B62E9AFF08CAC0A /* SwipeCellKit.xcconfig */,
+				08C023871BE461D96C3C041387A7F032 /* SwipeCellKit-dummy.m */,
+				766E9106C68EA82CC0B18BBB78213B4C /* SwipeCellKit-Info.plist */,
+				796D427D57A4412E466A7AE28441A9B1 /* SwipeCellKit-prefix.pch */,
+				67AAC55058F9E4EDE939509EE92CAC17 /* SwipeCellKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwipeCellKit";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				D8EA20CB9D590BCE479D6249754246ED /* Pods */,
-				10AD8F6275043D7C35FBBDD9A8FB221E /* Products */,
+				3ADE55D3D31EB94B9069AFF7C529CE2E /* Frameworks */,
+				E5C7700F643DF0368657359AC1A5A8F3 /* Pods */,
+				EEC636CD74B6D0141D4FC304BDA186C1 /* Products */,
 				82AAF073119EE93929609462BED1ED8E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D0181E62AAA1C64E2E6AC5D7612487A6 /* Support Files */ = {
+		E5C7700F643DF0368657359AC1A5A8F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BAFB61CBCD939C8192B399E783E3268B /* Nantes.modulemap */,
-				D71510C1808A02060E33221EB8E68FA8 /* Nantes.xcconfig */,
-				BA64D0D96371EC279CA83E79D1D8C048 /* Nantes-dummy.m */,
-				380D0743F088D948453A8E66DD53DEC3 /* Nantes-Info.plist */,
-				CF48FEA72EB80559DC96A848B7725300 /* Nantes-prefix.pch */,
-				625C2287FAC21812938EA5B5C80AFDA9 /* Nantes-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Nantes";
-			sourceTree = "<group>";
-		};
-		D8EA20CB9D590BCE479D6249754246ED /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C617CAD54DD9CC98685AC4357805166E /* MarkdownKit */,
-				6F7C0958C1C7A11A1FAEB2BC7421557B /* Nantes */,
-				A3535337FE0DC2B81290B0C1066D5974 /* YoutubePlayer-in-WKWebView */,
+				38F74403FDB5A8FEE04DF57E58A876F8 /* MarkdownKit */,
+				0C44340F0E69AFCA16821BDBD5135436 /* Nantes */,
+				96493DD4F89A1942C266A49A7F2C4C63 /* SwiftyComments */,
+				2E21546A1FCFB929950CF8DC7B8498DE /* SwipeCellKit */,
+				774CF055D6FD8EC49BBD4DF884E9E06C /* YoutubePlayer-in-WKWebView */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E2983683FD097A93297E2F5D4E382B36 /* iOS */ = {
+		EEC636CD74B6D0141D4FC304BDA186C1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */,
-				312B988EF117AE4DE76A268D970131FE /* UIKit.framework */,
+				29A0093B9A5D2F097893410CFE7EAB28 /* MarkdownKit.framework */,
+				A19C1C0F1EDFEBA26D82265C9A69DF6F /* Nantes.framework */,
+				B5FAD647F832789341C4A400610A0F07 /* Pods_Reddit_Client.framework */,
+				F39A923DDFB43F80866034F239552F4F /* SwiftyComments.framework */,
+				9D443E759FE97A6C0CA5A3B5E4142EBA /* SwipeCellKit.framework */,
+				DE0FAB1DA724AB86C0E299518F5E580A /* YoutubePlayer_in_WKWebView.framework */,
 			);
-			name = iOS;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,17 +624,52 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6ED95EDC4EEAC3448BCB49B283483901 /* Headers */ = {
+		8DAD344CC94F3DA50E56CAD02D169E0F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				194D99639BBC2F006154B6081C1329EC /* Pods-Reddit Client-umbrella.h in Headers */,
+				679FD206DBDB37B698BF4ED2A7F22B35 /* SwipeCellKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8AB9398AFF7F3B09EC9545867405018 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA5DC39448AC41E3ADDBB9FBE3AA7406 /* Pods-Reddit Client-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4D9F07910AB5BDC5B071F8188F29BEB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C83754387A526BC2571DF2513E955FE /* SwiftyComments-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0F41F00997EA307B0D0FF7A42BB682FD /* SwiftyComments */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A060BA4A869392248B8B6C358E3602EE /* Build configuration list for PBXNativeTarget "SwiftyComments" */;
+			buildPhases = (
+				F4D9F07910AB5BDC5B071F8188F29BEB /* Headers */,
+				97BFE49F45585F6D6CA1095FED946EA1 /* Sources */,
+				9B32603A4653380A4C04E195F9340B75 /* Frameworks */,
+				6B56F129FBB3569BB214AA82C5A1DD61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31D110787448D1ED6D91A565C5989C42 /* PBXTargetDependency */,
+			);
+			name = SwiftyComments;
+			productName = SwiftyComments;
+			productReference = F39A923DDFB43F80866034F239552F4F /* SwiftyComments.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		1D01439707AAD5A1BECD7F5958C15F0A /* Nantes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51DC1822E14A56D358B2A22BBB88FB51 /* Build configuration list for PBXNativeTarget "Nantes" */;
@@ -451,21 +688,41 @@
 			productReference = A19C1C0F1EDFEBA26D82265C9A69DF6F /* Nantes.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		78521E6314B0C384F775DA21FFBE1E5F /* Pods-Reddit Client */ = {
+		1DE44C23B82E6671E9E1541D06DE0E87 /* SwipeCellKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5E0CAA09EBF62EC8E657B2372F93D8DF /* Build configuration list for PBXNativeTarget "Pods-Reddit Client" */;
+			buildConfigurationList = 5241AFB754FC07D2FE2D0662B73D28D3 /* Build configuration list for PBXNativeTarget "SwipeCellKit" */;
 			buildPhases = (
-				6ED95EDC4EEAC3448BCB49B283483901 /* Headers */,
-				AA48D38D9C8AF320EA8E11B69B47BFF0 /* Sources */,
-				73E40E0D21192C2CA2A54A99850581AA /* Frameworks */,
-				494291417A8115F4B568C315996E6477 /* Resources */,
+				8DAD344CC94F3DA50E56CAD02D169E0F /* Headers */,
+				6EB3738CFBDA68EB2E3B0982B2FEEF22 /* Sources */,
+				9425CCBEFAECF3B23D785247A6F174F0 /* Frameworks */,
+				56779D3D4AE87C2480FCE03CEFB8D5DA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				10EC2405FC766857631D02BC4B34870B /* PBXTargetDependency */,
-				FD6F0DC77AB7E3E0935EDE68E0828FAA /* PBXTargetDependency */,
-				7911B319A26D163400835F4C07D283E7 /* PBXTargetDependency */,
+			);
+			name = SwipeCellKit;
+			productName = SwipeCellKit;
+			productReference = 9D443E759FE97A6C0CA5A3B5E4142EBA /* SwipeCellKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		78521E6314B0C384F775DA21FFBE1E5F /* Pods-Reddit Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C1F5AB869658BB803DDDF98330357C5 /* Build configuration list for PBXNativeTarget "Pods-Reddit Client" */;
+			buildPhases = (
+				E8AB9398AFF7F3B09EC9545867405018 /* Headers */,
+				32773F66BADEA18742C933F76CC5CBCC /* Sources */,
+				84BAA90D6A1E5C65C24CF125C0BABCBC /* Frameworks */,
+				578E42B646FC36C3CCD44303C9C861A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A6E3CADCA73328FB5598178DC6E986F /* PBXTargetDependency */,
+				2DAB8B3EB91C6815C99F74B2851A8F31 /* PBXTargetDependency */,
+				80355C4E2B823FD56BE2494D1A55B070 /* PBXTargetDependency */,
+				86DCC56B6250A3F43BC4E419E1397E45 /* PBXTargetDependency */,
+				2BC788131AE9792EE2E9D5EE8175E9EC /* PBXTargetDependency */,
 			);
 			name = "Pods-Reddit Client";
 			productName = "Pods-Reddit Client";
@@ -525,20 +782,29 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 10AD8F6275043D7C35FBBDD9A8FB221E /* Products */;
+			productRefGroup = EEC636CD74B6D0141D4FC304BDA186C1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				9B8CED42548FBCD698879F50FDF51154 /* MarkdownKit */,
 				1D01439707AAD5A1BECD7F5958C15F0A /* Nantes */,
 				78521E6314B0C384F775DA21FFBE1E5F /* Pods-Reddit Client */,
+				0F41F00997EA307B0D0FF7A42BB682FD /* SwiftyComments */,
+				1DE44C23B82E6671E9E1541D06DE0E87 /* SwipeCellKit */,
 				DABE3AD6EBA3822D4F04FBC550E7158D /* YoutubePlayer-in-WKWebView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		494291417A8115F4B568C315996E6477 /* Resources */ = {
+		56779D3D4AE87C2480FCE03CEFB8D5DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		578E42B646FC36C3CCD44303C9C861A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -549,6 +815,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B56F129FBB3569BB214AA82C5A1DD61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57E9DE3687476C8089C6B992DA21C892 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,11 +864,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA48D38D9C8AF320EA8E11B69B47BFF0 /* Sources */ = {
+		32773F66BADEA18742C933F76CC5CBCC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3F88DA615DDD2E1402D111B4E943AAC /* Pods-Reddit Client-dummy.m in Sources */,
+				4677540B6BC24981B2A717DE23815C0C /* Pods-Reddit Client-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EB3738CFBDA68EB2E3B0982B2FEEF22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3C50BB4CEA7760E6DE0458D3F9D10E5 /* Extensions.swift in Sources */,
+				FAB637FF8C0B5512A1BCFE04F4FBCB72 /* Swipeable.swift in Sources */,
+				23621363525583E6992948E1362A4064 /* SwipeAccessibilityCustomAction.swift in Sources */,
+				3DFF088B03CB8FEB12E8D1CD6D678AEA /* SwipeAction.swift in Sources */,
+				FDD22035ED563B590D399C93737187B3 /* SwipeActionButton.swift in Sources */,
+				23A13D4A755867322B0E4458270960C9 /* SwipeActionsView.swift in Sources */,
+				BBD32164F0A072BF519E0BFC3EC36CC5 /* SwipeActionTransitioning.swift in Sources */,
+				87EA2C830987E52F69E5B97DF1C61AA1 /* SwipeAnimator.swift in Sources */,
+				E67F2BFAC0F366F29DE5484431195E33 /* SwipeCellKit-dummy.m in Sources */,
+				DE733A5B7FE04F58E11E5B773DB70F14 /* SwipeCollectionViewCell+Accessibility.swift in Sources */,
+				11B07718D70560C93728E470343ABBCF /* SwipeCollectionViewCell+Display.swift in Sources */,
+				A720DD182C496770C70AD523450CF1BD /* SwipeCollectionViewCell.swift in Sources */,
+				E3B1AF03AE95DEE4A44532726AD0F1A3 /* SwipeCollectionViewCellDelegate.swift in Sources */,
+				55E0B01293DE10F96F4C4D0D6D778FCC /* SwipeController.swift in Sources */,
+				DACCC5B82DC15B008F810194AB4B15CE /* SwipeExpanding.swift in Sources */,
+				80F33BCD2571A29234420F9D7270DC29 /* SwipeExpansionStyle.swift in Sources */,
+				60BE8C8C766E6AEE036EAB9056A90239 /* SwipeFeedback.swift in Sources */,
+				98ECBBC7DD9E18F4AC4B0272A1055552 /* SwipeOptions.swift in Sources */,
+				9791DA9D5652A400B752CE7448F0E6BE /* SwipeTableViewCell+Accessibility.swift in Sources */,
+				2FF2BBCFAAC5AA3607034893A3B1C2FB /* SwipeTableViewCell+Display.swift in Sources */,
+				058FEE901A243931F18A69AB6777B2EB /* SwipeTableViewCell.swift in Sources */,
+				2BDD8B79B810EBA33681856F8496D590 /* SwipeTableViewCellDelegate.swift in Sources */,
+				8A8877D09B887FC4262ED133277D0BBB /* SwipeTransitionLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97BFE49F45585F6D6CA1095FED946EA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0C93CD90BA7DD8E7D377AE472C75C07 /* AbstractComment.swift in Sources */,
+				D0119F97E7D2D5550028B3C5AA2BCE3A /* CommentCell.swift in Sources */,
+				5BEB7D8D59C74940D4EC0698904EB58D /* CommentsViewController.swift in Sources */,
+				43E7052E51B3A4520FF585D439566FF5 /* CommentsViewDelegate.swift in Sources */,
+				D9295A7A78B970E2EBD6361219168F27 /* SwiftyComments-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,23 +958,41 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		10EC2405FC766857631D02BC4B34870B /* PBXTargetDependency */ = {
+		1A6E3CADCA73328FB5598178DC6E986F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MarkdownKit;
 			target = 9B8CED42548FBCD698879F50FDF51154 /* MarkdownKit */;
-			targetProxy = 84879759B7F825F58A3DB52DA8B18393 /* PBXContainerItemProxy */;
+			targetProxy = 62839DA34F09310B1E912D6C2945A697 /* PBXContainerItemProxy */;
 		};
-		7911B319A26D163400835F4C07D283E7 /* PBXTargetDependency */ = {
+		2BC788131AE9792EE2E9D5EE8175E9EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "YoutubePlayer-in-WKWebView";
 			target = DABE3AD6EBA3822D4F04FBC550E7158D /* YoutubePlayer-in-WKWebView */;
-			targetProxy = 978100A81F2E060C96D04687B8F5F529 /* PBXContainerItemProxy */;
+			targetProxy = 4643F6D914E487397C358B2B402B039B /* PBXContainerItemProxy */;
 		};
-		FD6F0DC77AB7E3E0935EDE68E0828FAA /* PBXTargetDependency */ = {
+		2DAB8B3EB91C6815C99F74B2851A8F31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Nantes;
 			target = 1D01439707AAD5A1BECD7F5958C15F0A /* Nantes */;
-			targetProxy = B5FD3097C8FC59A45D00E3D0F08BF636 /* PBXContainerItemProxy */;
+			targetProxy = 921C4330BBC95AED305D32C1A1DF01DB /* PBXContainerItemProxy */;
+		};
+		31D110787448D1ED6D91A565C5989C42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwipeCellKit;
+			target = 1DE44C23B82E6671E9E1541D06DE0E87 /* SwipeCellKit */;
+			targetProxy = 79F2E1BBB2991FAA0568F646A7B84024 /* PBXContainerItemProxy */;
+		};
+		80355C4E2B823FD56BE2494D1A55B070 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyComments;
+			target = 0F41F00997EA307B0D0FF7A42BB682FD /* SwiftyComments */;
+			targetProxy = 7A1D1DA1512B032957B5765A97EF8958 /* PBXContainerItemProxy */;
+		};
+		86DCC56B6250A3F43BC4E419E1397E45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwipeCellKit;
+			target = 1DE44C23B82E6671E9E1541D06DE0E87 /* SwipeCellKit */;
+			targetProxy = 3883BE7A9F7F4C76967826F63BA3C055 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -723,7 +1057,114 @@
 			};
 			name = Release;
 		};
-		4A05BF708C7525528F293F3028E1CC38 /* Debug */ = {
+		20508BBCAADAF9F0DB5C1932FC1873F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA9CB583A4372DAE404BE3EA40933214 /* SwiftyComments.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyComments/SwiftyComments-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyComments/SwiftyComments-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyComments/SwiftyComments.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyComments;
+				PRODUCT_NAME = SwiftyComments;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3748E04C3A8314DEC19F74D7297060DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81E0CD491EB1EE3E6B62E9AFF08CAC0A /* SwipeCellKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeCellKit/SwipeCellKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit.modulemap";
+				PRODUCT_MODULE_NAME = SwipeCellKit;
+				PRODUCT_NAME = SwipeCellKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9667672CF5CDC706B3DD18089B9C77C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B00F5B67706F81E2C42EBA8E2BE78975 /* MarkdownKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MarkdownKit/MarkdownKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MarkdownKit/MarkdownKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/MarkdownKit/MarkdownKit.modulemap";
+				PRODUCT_MODULE_NAME = MarkdownKit;
+				PRODUCT_NAME = MarkdownKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9AA7F90A36FB5359A5111E8884FEB842 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 491B67D101CE84C73B082C63BDDA7ADE /* Pods-Reddit Client.debug.xcconfig */;
 			buildSettings = {
@@ -761,84 +1202,9 @@
 			};
 			name = Debug;
 		};
-		6D30D0A5ADB3DD7FB006ADA1EBFBE483 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8109A307CA3506B4A29EEA9F0459BA2E /* Pods-Reddit Client.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Reddit Client/Pods-Reddit Client-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Reddit Client/Pods-Reddit Client.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9667672CF5CDC706B3DD18089B9C77C8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30F78D3E73BBA819A1830EE537E6A090 /* MarkdownKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MarkdownKit/MarkdownKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MarkdownKit/MarkdownKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/MarkdownKit/MarkdownKit.modulemap";
-				PRODUCT_MODULE_NAME = MarkdownKit;
-				PRODUCT_NAME = MarkdownKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		BF1DD77CAB0920BF71588631C3E707FF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D71510C1808A02060E33221EB8E68FA8 /* Nantes.xcconfig */;
+			baseConfigurationReference = 585884E70EE6C679F2567BD7A8A26FE1 /* Nantes.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -873,7 +1239,7 @@
 		};
 		C283CCE0FDEDC41C8F0F0FB568F14500 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7E2C7F9FA3D803957ADD3701028AB1F /* YoutubePlayer-in-WKWebView.xcconfig */;
+			baseConfigurationReference = C42398DCB5B1CA540B690710CF53D0F4 /* YoutubePlayer-in-WKWebView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -908,7 +1274,7 @@
 		};
 		C388FB829F42D2C5EDBFE005872CC531 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7E2C7F9FA3D803957ADD3701028AB1F /* YoutubePlayer-in-WKWebView.xcconfig */;
+			baseConfigurationReference = C42398DCB5B1CA540B690710CF53D0F4 /* YoutubePlayer-in-WKWebView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -942,9 +1308,45 @@
 			};
 			name = Release;
 		};
+		C50A820FA8A98BEE053059F8B12FF2A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA9CB583A4372DAE404BE3EA40933214 /* SwiftyComments.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyComments/SwiftyComments-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyComments/SwiftyComments-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyComments/SwiftyComments.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyComments;
+				PRODUCT_NAME = SwiftyComments;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		C621FE95F2BC46055F8E5387F81B55D4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D71510C1808A02060E33221EB8E68FA8 /* Nantes.xcconfig */;
+			baseConfigurationReference = 585884E70EE6C679F2567BD7A8A26FE1 /* Nantes.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -980,7 +1382,7 @@
 		};
 		E99C3689DFDB90B0CAF7C142FA9B12A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30F78D3E73BBA819A1830EE537E6A090 /* MarkdownKit.xcconfig */;
+			baseConfigurationReference = B00F5B67706F81E2C42EBA8E2BE78975 /* MarkdownKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1077,6 +1479,80 @@
 			};
 			name = Debug;
 		};
+		F02BDB0BED7188BD957A046CB7CF6A64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81E0CD491EB1EE3E6B62E9AFF08CAC0A /* SwipeCellKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeCellKit/SwipeCellKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwipeCellKit/SwipeCellKit.modulemap";
+				PRODUCT_MODULE_NAME = SwipeCellKit;
+				PRODUCT_NAME = SwipeCellKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FCF3C4E7FE5004DA84F9F67C52FA42F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8109A307CA3506B4A29EEA9F0459BA2E /* Pods-Reddit Client.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Reddit Client/Pods-Reddit Client-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Reddit Client/Pods-Reddit Client.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1098,6 +1574,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4C1F5AB869658BB803DDDF98330357C5 /* Build configuration list for PBXNativeTarget "Pods-Reddit Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AA7F90A36FB5359A5111E8884FEB842 /* Debug */,
+				FCF3C4E7FE5004DA84F9F67C52FA42F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		51DC1822E14A56D358B2A22BBB88FB51 /* Build configuration list for PBXNativeTarget "Nantes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1107,11 +1592,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5E0CAA09EBF62EC8E657B2372F93D8DF /* Build configuration list for PBXNativeTarget "Pods-Reddit Client" */ = {
+		5241AFB754FC07D2FE2D0662B73D28D3 /* Build configuration list for PBXNativeTarget "SwipeCellKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4A05BF708C7525528F293F3028E1CC38 /* Debug */,
-				6D30D0A5ADB3DD7FB006ADA1EBFBE483 /* Release */,
+				F02BDB0BED7188BD957A046CB7CF6A64 /* Debug */,
+				3748E04C3A8314DEC19F74D7297060DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1121,6 +1606,15 @@
 			buildConfigurations = (
 				E99C3689DFDB90B0CAF7C142FA9B12A1 /* Debug */,
 				9667672CF5CDC706B3DD18089B9C77C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A060BA4A869392248B8B6C358E3602EE /* Build configuration list for PBXNativeTarget "SwiftyComments" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20508BBCAADAF9F0DB5C1932FC1873F3 /* Debug */,
+				C50A820FA8A98BEE053059F8B12FF2A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

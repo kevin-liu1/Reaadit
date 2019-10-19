@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Actions" rowHeight="49" id="KGk-i7-Jjw" customClass="ActionsCell" customModule="Reddit_Client" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Actions" rowHeight="49" id="KGk-i7-Jjw" customClass="ActionsCell" customModule="Reaadit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -29,7 +29,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzq-Se-Kec">
-                        <rect key="frame" x="319" y="13" width="19" height="23.5"/>
+                        <rect key="frame" x="319" y="12" width="19" height="23.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="23.5" id="apu-Ey-U2Z"/>
                             <constraint firstAttribute="width" constant="19" id="eer-U6-dkn"/>
@@ -79,14 +79,14 @@
                     <constraint firstItem="GlI-kP-SSP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="23t-oh-eqO"/>
                     <constraint firstItem="Pka-0y-lcs" firstAttribute="leading" secondItem="fhs-eV-frt" secondAttribute="trailing" constant="31" id="P4N-H6-EoR"/>
                     <constraint firstItem="fhs-eV-frt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uyf-3D-kpx"/>
-                    <constraint firstAttribute="bottom" secondItem="dzq-Se-Kec" secondAttribute="bottom" constant="12.5" id="YU7-pS-Cav"/>
+                    <constraint firstAttribute="bottom" secondItem="dzq-Se-Kec" secondAttribute="bottom" constant="13.5" id="YU7-pS-Cav"/>
                     <constraint firstItem="GlI-kP-SSP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="ZJV-eZ-nzC"/>
                     <constraint firstAttribute="bottom" secondItem="mLs-PC-c4v" secondAttribute="bottom" constant="9" id="cLf-5O-Avh"/>
                     <constraint firstItem="Pka-0y-lcs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="nJa-6C-7Xt"/>
                     <constraint firstItem="mLs-PC-c4v" firstAttribute="leading" secondItem="GlI-kP-SSP" secondAttribute="trailing" constant="33" id="njt-F1-ru6"/>
                     <constraint firstAttribute="bottom" secondItem="Pka-0y-lcs" secondAttribute="bottom" constant="9" id="o0s-jR-KlY"/>
                     <constraint firstAttribute="bottom" secondItem="GlI-kP-SSP" secondAttribute="bottom" constant="9" id="pO8-lL-9kO"/>
-                    <constraint firstItem="dzq-Se-Kec" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="qYV-lX-jcR"/>
+                    <constraint firstItem="dzq-Se-Kec" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="qYV-lX-jcR"/>
                     <constraint firstItem="GlI-kP-SSP" firstAttribute="leading" secondItem="Pka-0y-lcs" secondAttribute="trailing" constant="32" id="t3R-kV-h0l"/>
                     <constraint firstItem="mLs-PC-c4v" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="w2Q-jd-YDh"/>
                 </constraints>

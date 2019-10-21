@@ -9,8 +9,6 @@
 <p align="center">
   <img src="Docs/ReaaditPreviews.png" width="800" alt="icon"><br>
 </p>
-<br>
-<p align="center">A Reddit Client Written in Swift by Kevin Liu</p>
 
 <br>
 <br>

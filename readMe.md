@@ -4,7 +4,7 @@
   
 </h1>
 <p align="center">
-  <img src="Docs/ReaaditPreviews.png" width="136" alt="icon"><br>
+  <img src="Docs/ReaaditPreviews.png" width="400" alt="icon"><br>
 </p>
 <br>
 <p align="center">A Reddit Client Written in Swift by Kevin Liu</p>

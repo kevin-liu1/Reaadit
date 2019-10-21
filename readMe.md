@@ -1,9 +1,12 @@
 <h1 align="center">
   <img src="Docs/reaadit-final-shadow.png" width="136" alt="icon"><br>
   Reaadit for Reddit<br>
-  <img src="Docs/Reaadit\ Previews.png" width="136" alt="icon"><br>
+  
 </h1>
-
+<p align="center">
+  <img src="Docs/Reaadit\ Previews.png" width="136"><br>
+</p>
+<br>
 <p align="center">A Reddit Client Written in Swift by Kevin Liu</p>
 
 <br>

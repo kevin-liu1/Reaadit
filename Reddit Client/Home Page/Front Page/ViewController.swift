@@ -31,22 +31,40 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     var headerlist = ["", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     var sortedDict: [String:[String]] = ["A":[],"B":[],"C":[], "D":[], "E":[], "F":[], "G":[], "H":[], "I":[], "J":[], "K":[], "L":[], "M":[], "N":[], "O":[], "P":[], "Q":[], "R":[], "S":[], "T":[], "U":[], "V":[], "W":[], "X":[], "Y":[], "Z":[]]
     
-    
     @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
-        subredditResultsStr = defaults.object(forKey: "subredditList") as? [String] ?? [String]()
-        for i in 0...subredditResultsStr.count-1 {
-            subredditResultsStr[i] = subredditResultsStr[i].lowercased()
-        }
-        subredditResultsStr = subredditResultsStr.sorted()
-        for (letter, sub) in sortedDict {
-            for subreddit in subredditResultsStr{
-                if subreddit.lowercased().hasPrefix(letter.lowercased()){
-                    sortedDict[letter]?.append(subreddit)
+        if defaults.bool(forKey: "logStatus") {
+            let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+            let group = DispatchGroup()
+            group.enter()
+            dispatchQueue.async{
+                self.subredditResultsStr = self.defaults.object(forKey: "subredditList") as? [String] ?? [String]()
+                for i in 0...self.subredditResultsStr.count-1 {
+                    self.subredditResultsStr[i] = self.subredditResultsStr[i].lowercased()
                 }
+                self.subredditResultsStr = self.subredditResultsStr.sorted()
+                for (letter, sub) in self.sortedDict {
+                    for subreddit in self.subredditResultsStr{
+                        if subreddit.lowercased().hasPrefix(letter.lowercased()){
+                            self.sortedDict[letter]?.append(subreddit)
+                        }
+                    }
+                }
+                group.leave()
             }
+            
+            group.notify(queue: .main) {
+                self.tableView.reloadData()
+                sender.endRefreshing()
+            }
+        } else {
+            topsubreddit = ["Popular", "All"]
+            subredditnames += ["Gifs", "Movies", "Entertainment", "News", "AskReddit", "Technology", "OddlySatisfying"]
+            sender.endRefreshing()
         }
-        tableView.reloadData()
-        sender.endRefreshing()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
     }
 
     
@@ -81,9 +99,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Network().getUpVotedList()
-//        Network().getDownVotedList()
-        //Network().getVoteList()
+        self.setNeedsStatusBarAppearanceUpdate()
 
         let headercell = UINib(nibName: "HeaderViewCell", bundle: nil)
         tableView.register(headercell, forCellReuseIdentifier: "HeaderCell")
@@ -96,7 +112,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         topsubreddit = ["Popular", "All"]
         
         if defaults.bool(forKey: "logStatus") {
-            Network().getVoteList()
+            Network().getVoteList() // elongate loading screen
             topsubreddit = ["Home", "Popular", "All"]
             subredditResultsStr = defaults.object(forKey: "subredditList") as? [String] ?? [String]()
             for i in 0...subredditResultsStr.count-1 {
@@ -129,7 +145,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         let submitAction = UIAlertAction(title: "Add", style: .default) { [weak self, weak ac] _ in
             guard let answer = ac?.textFields?[0].text else { return }
-            if answer != ""{
+            if answer != "" {
                 self?.subredditnames.insert(answer, at: (self?.subredditnames.count)!)
                 let indexPath = IndexPath(row: (self?.subredditnames.count)! - 1, section: 1)
                 self?.tableView.insertRows(at: [indexPath], with: .automatic)

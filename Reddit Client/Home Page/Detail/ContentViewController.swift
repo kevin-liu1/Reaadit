@@ -45,9 +45,8 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         sender.endRefreshing()
     }
     
-    override func loadView() {
-        super.loadView()
-        
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {
@@ -225,7 +224,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     func createComments() {
         for comment in self.commentList {
             let com = comment.data
-            let commentcell = CommentType(author: com.author ?? "No Author", upvotes: com.ups ?? -1, time: "10 Minutes", textbody: com.body ?? "Empty Body")
+            let commentcell = CommentType(author: com.author ?? "No Author", upvotes: com.ups ?? -1, time: com.created_utc ?? 0, textbody: com.body ?? "Empty Body")
             commentListFinal.append(commentcell)
             
         }

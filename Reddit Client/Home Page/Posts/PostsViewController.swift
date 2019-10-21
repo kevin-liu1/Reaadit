@@ -18,6 +18,10 @@ class PostsViewController: UITableViewController {
     var afterParam: String?
     let defaults = UserDefaults.standard
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()

@@ -81,7 +81,7 @@ class PostCellTableViewCell: UITableViewCell {
         else {
             postTitle.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             postSubtitle.textColor = .black
-            upVotes.tintColor = .black
+            upVotes.setTitleColor(.black, for: .normal)
             comments.textColor = .black
         }
         

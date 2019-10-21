@@ -77,7 +77,7 @@ struct Replies2: Codable {
 
 struct Replies3: Codable {
     var kind: String?
-    var data: [String: ContentorComment]?
+    var data: ContentorComment?
 }
 
 

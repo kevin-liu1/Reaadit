@@ -78,11 +78,5 @@ class LogIn{
         
         let upvoteArray = [String]()
         self.defaults.set(upvoteArray, forKey: "upVoteList")
-        
-        Network().getVoteList()
-
-        
     }
-
-    
 }

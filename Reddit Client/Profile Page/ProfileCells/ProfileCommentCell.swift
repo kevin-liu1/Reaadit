@@ -22,7 +22,7 @@ class ProfileCommentCell: UITableViewCell {
         self.authorLabel.text = profileComment.author
         let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 15))
         self.upVoteLabel.text = String(profileComment.upvotes)
-        self.timeLabel.text = "NA"
+        self.timeLabel.text = Network().soMuchTimeAgo(postedDate: profileComment.time)
         self.commentBody.attributedText = markdownParser.parse(profileComment.textbody)
     }
 }

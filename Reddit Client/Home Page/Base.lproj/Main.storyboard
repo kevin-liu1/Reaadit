@@ -156,6 +156,7 @@
                                         <constraint firstItem="k9w-fB-pId" firstAttribute="leading" secondItem="btD-zl-paU" secondAttribute="trailing" constant="2" id="vk6-HB-60e"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <connections>
                                     <outlet property="comments" destination="87z-dF-Oiv" id="Gr1-Ol-XnQ"/>
                                     <outlet property="commentsIcon" destination="ZUf-xa-wWv" id="myU-d9-6BX"/>
@@ -402,7 +403,7 @@
         <!--Home-->
         <scene sceneID="bwI-5g-lyi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HMc-Vn-zBs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HMc-Vn-zBs" customClass="LightContentNavController" customModule="Reaadit" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="V15-Y5-9cc">
                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
@@ -410,6 +411,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LMh-V6-7Mm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.096206463869999995" green="0.39598771929999999" blue="0.71988427639999997" alpha="0.79555457746478875" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -431,7 +437,7 @@
                         <color key="tintColor" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="0.36268091250000001" green="0.54877253449999996" blue="0.79669201099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.096206463869999995" green="0.39598771929999999" blue="0.71988427639999997" alpha="0.79555457750000003" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
                                 <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -501,7 +507,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9j2-zl-N0b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="979"/>
+            <point key="canvasLocation" x="1971" y="980"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="QwT-pb-0uj">
@@ -530,7 +536,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLl-hT-xcl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="1724"/>
+            <point key="canvasLocation" x="1971" y="1724"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HCn-ft-09b">

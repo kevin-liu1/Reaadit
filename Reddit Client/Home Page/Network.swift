@@ -24,7 +24,7 @@ class Network {
             var commentcelllist = [CommentType]()
             for comment in contents.data.children! {
                 let com = comment.data
-                commentcelllist.append(CommentType(author: com.author ?? "NoAuthor", upvotes: com.ups ?? 0, time: "10", textbody: com.body ?? "NoBody"))
+                commentcelllist.append(CommentType(author: com.author ?? "NoAuthor", upvotes: com.ups ?? 0, time: com.created_utc ?? 0, textbody: com.body ?? "NoBody"))
             }
             return commentcelllist
         } else {

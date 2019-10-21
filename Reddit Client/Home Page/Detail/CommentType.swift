@@ -11,7 +11,7 @@ import Foundation
 struct CommentType {
     var author: String
     var upvotes: Int
-    var time: String //keep it as a string for now
+    var time: Int
     var textbody: String
 }
 

@@ -28,7 +28,8 @@ class CommentCell: UITableViewCell, UITextViewDelegate {
         let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 15))
         self.textBodyLabel.attributedText = markdownParser.parse(comment.textbody)
         self.upVoteLabel.text = String(comment.upvotes)
-        self.timeLabel.text = "NA"
+        self.timeLabel.text = Network().soMuchTimeAgo(postedDate: comment.time)
+        
     }
 }
 

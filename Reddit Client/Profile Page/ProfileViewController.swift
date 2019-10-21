@@ -29,11 +29,13 @@ class ProfileViewController: UITableViewController, ASWebAuthenticationPresentat
         if defaults.bool(forKey: "logStatus") {
             getProfileJson()
             profileCommentsHolder = Network().getUserRecentComments() ?? [CommentType]()
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(self.logOut))
             tableView.reloadData()
             
         } else {
             profileCellFinal = ProfileHolder(comment_karma: 0, name: "NoUser", link_karma: 0, created_utc: 0, coins: 0, icon_img: "", display_name: "noUser")
             profileCommentsHolder = [CommentType]()
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(self.logIn))
             tableView.reloadData()
         }
     }
@@ -83,7 +85,8 @@ class ProfileViewController: UITableViewController, ASWebAuthenticationPresentat
         defaults.set("", forKey:  "refreshToken")
         defaults.set("User", forKey: "userName")
         defaults.set([String](), forKey: "upVoteList")
-        
+        defaults.set([String](), forKey: "subredditList")
+        defaults.set([String](), forKey: "selectedList")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .plain, target: self, action: #selector(self.logIn))
         tableView.reloadData()
     }

@@ -11,11 +11,10 @@ import Just
 import SafariServices
 import AVKit
 import AVFoundation
-
+import SwiftyJSON
+import SwiftyComments
 
 class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoProtocol, linkHandlingProtocol, shareProtocol {
-
-    
     
     var currentSub: String? //passed by prev VC
     var currentTitle: String?
@@ -39,11 +38,13 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     var content = [CommentKind]()
     
     var CommentTreeList = [CommentTree]()
+    var generatedComments = [AttributedTextComment]()
     
     @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
         tableView.reloadData()
         sender.endRefreshing()
     }
+
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -75,8 +76,13 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         tableView.register(youtubeCell, forCellReuseIdentifier: "YoutubeCell")
         tableView.register(actionscell, forCellReuseIdentifier: "Actions")
         
-        
-        
+        //tableView.register(RealCommentCell.self, forCellReus)
+//        tableView.register(RedditCommentCell.self, forCellReuseIdentifier: commentCellId)
+//        self.swipeToHide = true
+//        self.swipeActionAppearance.swipeActionColor = RedditConstants.flashyColor
+//        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID!, params: ["limit": 10, "depth": 10], headers:["Authorization": "bearer \(accessToken ?? "")"])
+//        self.generatedComments = GenerateComments.generate(json: userJson.content ?? Data()).comments
+//        currentlyDisplayed = self.generatedComments
         
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
@@ -149,7 +155,8 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     
     func getContentJson() {
         accessToken = defaults.string(forKey: "accessToken")
-        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=20", headers:["Authorization": "bearer \(accessToken ?? "")"])
+        print(contentID)
+        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID!, params: ["limit": 5, "depth": 3], headers:["Authorization": "bearer \(accessToken ?? "")"])
         let decoder = JSONDecoder()
         if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
             print("decoded comment json")
@@ -157,23 +164,24 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             self.commentList = contents[1].data.children!
             self.content = contents[0].data.children!
         } else {
-            print("Error with getting comment json")
+            print("Error with getting REALLLL comment json")
         }
-    }
-    
-//    func getCommentsJson() {
-//        accessToken = defaults.string(forKey: "accessToken")
-//        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "?limit=40", headers:["Authorization": "bearer \(accessToken ?? "")"])
-//        let decoder = JSONDecoder()
-//        if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
-//            print("decoded comment json")
-//            self.commentList = contents[1].data.children!
-//            //self.content = contents[0].data.children!
-//        } else {
-//            print("Error with getting comment json")
+        
+        let json = JSON(userJson.content ?? Data())
+        print("findme")
+        var num = 0
+//        for (index, subJson):(String, JSON) in json[1]["data"]["children"][1]["data"]["replies"]["data"]["children"] {
+//            print(subJson)
 //        }
-//    }
-    
+        //print(json[1]["data"]["children"][1]["data"]["replies"][0])
+        //print(json[1]["data"]["children"][0]["data"]["replies"])
+        self.generatedComments = GenerateComments.generate(json: userJson.content ?? Data()).comments
+        
+        //print(generateComments.comments[1].)
+        
+        
+    }
+
     func getJsonLoggedOut() {
         accessToken = defaults.string(forKey: "accessToken")
         let userJson = Just.get("https://www.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID! + "/limit=25.json")
@@ -208,10 +216,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             case "hosted:video":
                 self.contentCellVideo = ContentVideo(author: contentthings.author ?? "", postTitle: contentthings.title!, upVotecount: contentthings.ups!, time: contentthings.created_utc ?? 0, link: contentthings.preview?.images?[0].source?.url ?? "", videolink: contentthings.secure_media?.reddit_video?.hls_url ?? "None")
             default:
-                
-//                if contentthings.domain == "youtube.com" || contentthings.domain == "youtu.be.com" {
-//                    self.contentCellVideo = ContentVideo(postTitle: contentthings.title ?? "No Video Title", upVotecount: contentthings.ups ?? 0, time: "NA", link: contentthings.thumbnail ?? "none", videolink: contentthings.url ?? "none")
-//                }
+
                 self.contentCellLink = ContentLink(author: contentthings.author ?? "", postTitle: contentthings.title!, upVotecount: contentthings.ups!, link: contentthings.url!, thumbnail: contentthings.preview?.images?[0].source?.url ?? "", timeposted: contentthings.created_utc ?? 0)
             }
         }
@@ -336,11 +341,12 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
                 return cell
             case 2:
                 //comments
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) as! CommentCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Comments", for: indexPath) as! CommentCell1
                 let comment = commentListFinal[indexPath.row]
                 cell.setCommentCell(comment: comment)
                 cell.delegate = self
                 return cell
+
                 
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as! ContentCellSelf
@@ -357,7 +363,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         return cell
         
     }
-    
+
     func openLinkinBrowser(url: String) {
         let contentthings = self.content[0].data
         let config = SFSafariViewController.Configuration()

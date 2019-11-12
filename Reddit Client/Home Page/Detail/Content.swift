@@ -63,12 +63,40 @@ struct ContentorComment: Codable {
     //var replies: PostKind?
 }
 
-
-struct Replies1: Codable {
-    var kind: String?
-    var data: Replies2?
+enum Replies1: CustomStringConvertible {
+    case string(String)
+    case array(Replies2)
     
+    var description: String {
+        switch self {
+        case let .string(string): return string
+        case let .array(array): return "\(array)"
+        }
+    }
 }
+
+extension Replies1: Codable {
+    func encode(to encoder: Encoder) throws {
+        
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let string = try? container.decode(String.self) {
+            self = .string(string)
+        } else {
+            self = .array(try container.decode(Replies2.self))
+        }
+    }
+}
+
+
+
+//struct Replies1: Codable {
+//    var kind: String?
+//    var data: Replies2?
+//
+//}
 
 struct Replies2: Codable {
     //modhash, dist
@@ -79,6 +107,8 @@ struct Replies3: Codable {
     var kind: String?
     var data: ContentorComment?
 }
+
+
 
 
 

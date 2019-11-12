@@ -48,12 +48,84 @@ class PostsViewController: UITableViewController {
         super.viewDidLoad()
         title = subreddit
         tableView.separatorStyle = .none
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(sortPostsAC))
+        
         createSpinnerView()
+        initializeData()
+
+    }
+    
+    @objc func sortPostsAC() {
+
+        let ac = UIAlertController(title: "Sort Posts", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Best", style: .default) { [weak self] _ in
+            self?.sortPostData(sort: "best")
+        })
+        ac.addAction(UIAlertAction(title: "Rising", style: .default) { [weak self] _ in
+            self?.sortPostData(sort: "rising")
+        })
+        
+        ac.addAction(UIAlertAction(title: "New", style: .default){ [weak self] _ in
+            self?.sortPostData(sort: "new")
+        })
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alertAction: UIAlertAction!) in
+            ac.dismiss(animated: true, completion: nil)
+            })
+        )
+        
+        present(ac, animated: true)
+        
+    }
+    
+    func sortPostData(sort: String) {
+        let accessToken = defaults.string(forKey: "accessToken")
+        
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
         group.enter()
         dispatchQueue.async{
-            self.getPostData()
+            
+            var postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/best", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+            
+            switch sort {
+            case "best":
+                postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/best", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+            case "rising":
+                postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/rising", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+            case "new":
+                postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/new", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+
+            default:
+                postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/best", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+            }
+            
+            let decoder =  JSONDecoder()
+            if let jsonPosts = try? decoder.decode(Wraps.self, from: postJson.content ?? Data()) {
+                print("Got \(sort) Json Data!!")
+                self.postsresult = jsonPosts.data.children
+                self.afterParam = jsonPosts.data.after
+            } else {
+                print("Error with getting posts JSON, Maybe check the null value")
+                return
+            }
+            self.finishedposts = self.createCells()
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            self.tableView.separatorStyle = .singleLine
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    func initializeData() {
+        let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+        let group = DispatchGroup()
+        group.enter()
+        dispatchQueue.async{
+            self.sortPostData(sort: "best")
             self.finishedposts = self.createCells()
             group.leave()
         }
@@ -102,6 +174,7 @@ class PostsViewController: UITableViewController {
             self.afterParam = jsonPosts.data.after
         } else {
             print("Error with getting posts JSON, Maybe check the null value")
+            return
         }
     }
     
@@ -195,18 +268,30 @@ class PostsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadData()
         if let vc = storyboard?.instantiateViewController(withIdentifier: "DisplayContent") as? ContentViewController {
-            
+
             vc.contentID = finishedposts[indexPath.row].id
             if self.subreddit == "Home" {
                 vc.currentSub = finishedposts[indexPath.row].subreddit
             } else {
                 vc.currentSub = self.subreddit
             }
-           
+
             vc.currentTitle = finishedposts[indexPath.row].postTitle
             vc.upVotes = finishedposts[indexPath.row].upVotes
             navigationController?.pushViewController(vc, animated: true)
         }
+        
+//        let vc = RedditCommentsViewController()
+//        vc.contentID = finishedposts[indexPath.row].id
+//        if self.subreddit == "Home" {
+//            vc.currentSub = finishedposts[indexPath.row].subreddit
+//        } else {
+//            vc.currentSub = self.subreddit
+//        }
+//
+//        vc.currentTitle = finishedposts[indexPath.row].postTitle
+//
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     

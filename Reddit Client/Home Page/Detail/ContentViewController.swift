@@ -76,13 +76,8 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
         tableView.register(youtubeCell, forCellReuseIdentifier: "YoutubeCell")
         tableView.register(actionscell, forCellReuseIdentifier: "Actions")
         
-        //tableView.register(RealCommentCell.self, forCellReus)
-//        tableView.register(RedditCommentCell.self, forCellReuseIdentifier: commentCellId)
-//        self.swipeToHide = true
-//        self.swipeActionAppearance.swipeActionColor = RedditConstants.flashyColor
-//        let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID!, params: ["limit": 10, "depth": 10], headers:["Authorization": "bearer \(accessToken ?? "")"])
-//        self.generatedComments = GenerateComments.generate(json: userJson.content ?? Data()).comments
-//        currentlyDisplayed = self.generatedComments
+        let clickimagename = Notification.Name("clickImage")
+        NotificationCenter.default.addObserver(self, selector: #selector(openImageViewer), name: clickimagename, object: nil)
         
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
@@ -121,6 +116,16 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
 
     }
     
+    @objc func openImageViewer(_ notification: NSNotification) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "PictureViewer") as? PictureViewerVCViewController {
+            vc.image = notification.object as? String
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        
+    }
+    
     func createSpinnerView() {
         let child = SpinnerViewController()
 
@@ -155,7 +160,7 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
     
     func getContentJson() {
         accessToken = defaults.string(forKey: "accessToken")
-        print(contentID)
+        print(contentID ?? "Nothing")
         let userJson = Just.get("https://oauth.reddit.com/r/" + (self.currentSub!).lowercased() + "/comments/" + contentID!, params: ["limit": 5, "depth": 3], headers:["Authorization": "bearer \(accessToken ?? "")"])
         let decoder = JSONDecoder()
         if let contents = try? decoder.decode([PostKind].self, from: userJson.content!) {
@@ -167,9 +172,6 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
             print("Error with getting REALLLL comment json")
         }
         
-        let json = JSON(userJson.content ?? Data())
-        print("findme")
-        var num = 0
 //        for (index, subJson):(String, JSON) in json[1]["data"]["children"][1]["data"]["replies"]["data"]["children"] {
 //            print(subJson)
 //        }

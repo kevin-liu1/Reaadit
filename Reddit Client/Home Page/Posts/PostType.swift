@@ -25,16 +25,16 @@ struct Posts: Codable {
 }
 
 struct Post: Codable {
-    let title: String
-    let subreddit: String
-    let author: String
-    let selftext: String
-    let url: String
-    let thumbnail: String
-    let ups: Int
-    let permalink: String
-    let num_comments: Int
-    let id: String
+    let title: String?
+    let subreddit: String?
+    let author: String?
+    let selftext: String?
+    let url: String?
+    let thumbnail: String?
+    let ups: Int?
+    let permalink: String?
+    let num_comments: Int?
+    let id: String?
     let likes: Bool?
     let preview: Preview?
     
@@ -48,4 +48,36 @@ struct PostImagePreview: Codable {
 }
 struct ImageDataPost: Codable {
     var url: String?
+}
+
+
+struct search: Codable {
+    var kind: String
+    var data: search1
+}
+
+struct search1: Codable{
+    var after: String
+    var dis: Int
+    var children: [search2]
+}
+
+struct search2: Codable {
+    var kind: String
+    var data: search3
+}
+
+struct search3: Codable {
+    let title: String
+    let subreddit: String
+    let author: String
+    let selftext: String
+    let url: String
+    let thumbnail: String
+    let ups: Int
+    let permalink: String
+    let num_comments: Int
+    let id: String
+    let likes: Bool?
+    let preview: Preview?
 }

@@ -20,6 +20,7 @@ class SpinnerViewController: UIViewController {
 
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
+
         view.addSubview(spinner)
         
 

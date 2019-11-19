@@ -20,17 +20,28 @@ class ImageContentCell: UITableViewCell {
     @IBOutlet var upvoteLabel: UILabel!
     
     @IBOutlet var timeLabel: UILabel!
+
+    var imagename: String?
     
     
     func setContent(content: ContentImage) {
         authorLabel.text = content.author
-        contentImage.sd_setImage(with: URL(string: content.image), placeholderImage: UIImage(named: "Ash-Grey"))
+        self.imagename = content.image
+        contentImage.sd_setImage(with: URL(string: imagename ?? ""), placeholderImage: UIImage(named: "Ash-Grey"))
         contentImage.layer.cornerRadius = 7
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapImage))
+        contentImage.isUserInteractionEnabled = true
+        contentImage.addGestureRecognizer(tapGesture)
         
         postTitleLabel.text = content.postTitle
         upvoteLabel.text = String(content.upVotecount)
         
         timeLabel.text = Network().soMuchTimeAgo(postedDate: content.timeposted)
         
+    }
+    
+    @objc func tapImage() {
+        let clickimagename = Notification.Name("clickImage")
+        NotificationCenter.default.post(name: clickimagename, object: imagename ?? "")
     }
 }

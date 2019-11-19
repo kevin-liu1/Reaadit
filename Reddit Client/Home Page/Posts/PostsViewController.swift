@@ -17,6 +17,9 @@ class PostsViewController: UITableViewController {
     var subreddit: String?
     var afterParam: String?
     let defaults = UserDefaults.standard
+    var sortstyle = "best"
+    
+    var searchstring: String?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -27,7 +30,7 @@ class PostsViewController: UITableViewController {
         let group = DispatchGroup()
         group.enter()
         dispatchQueue.async{
-            self.getPostData()
+            self.sortPostData(sort: self.sortstyle)
             self.finishedposts = self.createCells()
             //Network().getVoteList()
             group.leave()
@@ -47,35 +50,47 @@ class PostsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = subreddit
-        tableView.separatorStyle = .none
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(sortPostsAC))
         
-        createSpinnerView()
+        if !(self.subreddit == "Search") {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow.up.arrow.down.circle"), style: .plain, target: self, action: #selector(sortPostsAC))
+        }
         initializeData()
 
     }
     
     @objc func sortPostsAC() {
-
+        let image = UIImage(named: "checkmark")
         let ac = UIAlertController(title: "Sort Posts", message: nil, preferredStyle: .actionSheet)
-        ac.addAction(UIAlertAction(title: "Best", style: .default) { [weak self] _ in
-            self?.sortPostData(sort: "best")
-        })
-        ac.addAction(UIAlertAction(title: "Rising", style: .default) { [weak self] _ in
-            self?.sortPostData(sort: "rising")
-        })
         
-        ac.addAction(UIAlertAction(title: "New", style: .default){ [weak self] _ in
+        let best = UIAlertAction(title: "Best", style: .default) { [weak self] _ in
+            self?.sortPostData(sort: "best")
+        }
+        let rising = UIAlertAction(title: "Rising", style: .default){ [weak self] _ in
+            self?.sortPostData(sort: "rising")
+        }
+        let new = UIAlertAction(title: "New", style: .default){ [weak self] _ in
             self?.sortPostData(sort: "new")
-        })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {
-            (alertAction: UIAlertAction!) in
-            ac.dismiss(animated: true, completion: nil)
-            })
-        )
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        switch sortstyle {
+        case "best":
+            best.setValue(image, forKey: "image")
+        case "rising":
+            rising.setValue(image, forKey: "image")
+        case "new":
+            new.setValue(image, forKey: "image")
+        default:
+            best.setValue(image, forKey: "image")
+        }
+        
+        
+        ac.addAction(best)
+        ac.addAction(rising)
+        ac.addAction(new)
+        ac.addAction(cancel)
         
         present(ac, animated: true)
-        
     }
     
     func sortPostData(sort: String) {
@@ -86,20 +101,49 @@ class PostsViewController: UITableViewController {
         group.enter()
         dispatchQueue.async{
             
-            var postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/best", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+            var postJson = HTTPResult(data: Data(), response: nil, error: nil, task: nil)
+            
+            
             
             switch sort {
             case "best":
-                postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/best", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+                
+                if self.subreddit == "Home" {
+                    postJson = Just.get("https://oauth.reddit.com/", params: ["limit": 15], headers: ["Authorization": "bearer " + accessToken!])
+                } else if self.subreddit == "Search" {
+                    print("REACHED")
+                    DispatchQueue.main.async {
+                        self.title = "Search: " + (self.searchstring ?? "")
+                    }
+                    postJson = Just.get("https://oauth.reddit.com/search/?", params: ["q": self.searchstring ?? "", "limit": 15], headers: ["Authorization": "bearer " + accessToken!])
+                }
+                
+                else{
+                    postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/best", params: ["limit": 15], headers: ["Authorization": "bearer " + accessToken!])
+                }
+                self.sortstyle = "best"
             case "rising":
-                postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/rising", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+                if self.subreddit == "Home" {
+                    postJson = Just.get("https://oauth.reddit.com/rising", params: ["limit": 15], headers: ["Authorization": "bearer " + accessToken!])
+                } else {
+                    postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/rising", params: ["limit": 15], headers: ["Authorization": "bearer " + accessToken!])
+                }
+                
+                self.sortstyle = "rising"
             case "new":
-                postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/new", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+                if self.subreddit == "Home" {
+                    postJson = Just.get("https://oauth.reddit.com/new", params: ["limit": 15], headers: ["Authorization": "bearer " + accessToken!])
+                } else {
+                    postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/new", params: ["limit": 15], headers: ["Authorization": "bearer " + accessToken!])
+                }
+                
+                self.sortstyle = "new"
 
             default:
-                postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/best", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
+                postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none") + "/best", params: ["limit": 15], headers: ["Authorization": "bearer " + accessToken!])
             }
-            
+
+        
             let decoder =  JSONDecoder()
             if let jsonPosts = try? decoder.decode(Wraps.self, from: postJson.content ?? Data()) {
                 print("Got \(sort) Json Data!!")
@@ -114,6 +158,7 @@ class PostsViewController: UITableViewController {
         }
         
         group.notify(queue: .main) {
+            
             self.tableView.separatorStyle = .singleLine
             self.tableView.reloadData()
         }
@@ -121,6 +166,9 @@ class PostsViewController: UITableViewController {
     }
     
     func initializeData() {
+        self.tableView.separatorStyle = .none
+        createSpinnerView()
+        
         let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
         let group = DispatchGroup()
         group.enter()
@@ -146,35 +194,11 @@ class PostsViewController: UITableViewController {
         child.didMove(toParent: self)
         
         // wait two seconds to simulate some work happening
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.40) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
             // then remove the spinner view controller
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
-        }
-    }
-    
-    
-    func getPostData(){
-        let accessToken = defaults.string(forKey: "accessToken")
-        var postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
-        if defaults.bool(forKey: "logStatus") {
-            if self.subreddit == "Home" {
-                postJson = Just.get("https://oauth.reddit.com", params: ["limit": 20], headers: ["Authorization": "bearer " + accessToken!])
-            }
-        } else {
-            postJson = Just.get("https://www.reddit.com/r/" + (self.subreddit ?? "") + ".json", params: ["limit": 20])
-        }
-
-        
-        let decoder =  JSONDecoder()
-        if let jsonPosts = try? decoder.decode(Wraps.self, from: postJson.content ?? Data()) {
-            print("Got Json Data!!")
-            self.postsresult = jsonPosts.data.children
-            self.afterParam = jsonPosts.data.after
-        } else {
-            print("Error with getting posts JSON, Maybe check the null value")
-            return
         }
     }
     
@@ -183,15 +207,18 @@ class PostsViewController: UITableViewController {
         var createdcells = [PostObject]()
         if cellnumber > 0 {
             for i in 1...cellnumber {
+                if postsresult.count < 1 {
+                    return [PostObject]()
+                }
                 let singlepost = postsresult[i-1]
                 let post = singlepost.data
                 
                 //checking subtitle condition
                 var subtitle: String
                 if self.subreddit == "Popular" || self.subreddit == "All" || self.subreddit == "Home" {
-                    subtitle = post.subreddit
+                    subtitle = post.subreddit ?? ""
                 } else {
-                    subtitle = post.author
+                    subtitle = post.author ?? ""
                 }
                 //check post like condition
                 var postlikes = "nil"
@@ -202,8 +229,8 @@ class PostsViewController: UITableViewController {
                         postlikes = "false"
                     }
                 }
-                defaults.set(postlikes, forKey: post.id)
-                createdcells.append(PostObject(postTitle: post.title, postSubtitle: subtitle, upVotes: post.ups, comments: post.num_comments, id: post.id, thumbnailURL: post.preview?.images?[0].source?.url ?? "", likes: postlikes, subreddit: post.subreddit))
+                defaults.set(postlikes, forKey: post.id ?? "")
+                createdcells.append(PostObject(postTitle: post.title ?? "", postSubtitle: subtitle ?? "", upVotes: post.ups ?? 0, comments: post.num_comments ?? 0, id: post.id ?? "", thumbnailURL: post.preview?.images?[0].source?.url ?? "", likes: postlikes ?? "0", subreddit: post.subreddit ?? ""))
             }
         }
 
@@ -219,10 +246,13 @@ class PostsViewController: UITableViewController {
             let accessToken = self.defaults.string(forKey: "accessToken")
             //let postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 35, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
             
-            var postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 35, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
+            var postJson = Just.get("https://oauth.reddit.com/r/" + (self.subreddit ?? "none"), params: ["limit": 25, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
             if self.defaults.bool(forKey: "logStatus") {
                 if self.subreddit == "Home" {
-                    postJson = Just.get("https://oauth.reddit.com", params: ["limit": 35, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
+                    postJson = Just.get("https://oauth.reddit.com", params: ["limit": 25, "after": self.afterParam ?? ""], headers: ["Authorization": "bearer " + accessToken!])
+                }
+                if self.subreddit == "Search" {
+                    postJson = Just.get("https://oauth.reddit.com/search/?", params: ["q": self.searchstring ?? "", "after": self.afterParam ?? "", "limit": 15], headers: ["Authorization": "bearer " + accessToken!])
                 }
             } else {
                 postJson = Just.get("https://www.reddit.com/r/" + self.subreddit! + ".json?limit=35&after=" + self.afterParam!)
@@ -247,7 +277,7 @@ class PostsViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postsresult.count
+        return finishedposts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -272,6 +302,8 @@ class PostsViewController: UITableViewController {
             vc.contentID = finishedposts[indexPath.row].id
             if self.subreddit == "Home" {
                 vc.currentSub = finishedposts[indexPath.row].subreddit
+            } else if self.subreddit == "Search" {
+                vc.currentSub = finishedposts[indexPath.row].subreddit.lowercased()
             } else {
                 vc.currentSub = self.subreddit
             }

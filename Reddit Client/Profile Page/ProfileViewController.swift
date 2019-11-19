@@ -55,7 +55,17 @@ class ProfileViewController: UITableViewController, ASWebAuthenticationPresentat
         let profilecommentcell = UINib(nibName: "ProfileCommentCell", bundle: nil)
         tableView.register(profilecommentcell, forCellReuseIdentifier: "ProfileComments")
         if defaults.bool(forKey: "logStatus") {
-            getProfileJson()
+            let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
+            let group = DispatchGroup()
+            group.enter()
+            dispatchQueue.async{
+                self.getProfileJson()
+                group.leave()
+            }
+            group.notify(queue: .main) {
+                self.tableView.reloadData()
+            }
+            
             profileCommentsHolder = Network().getUserRecentComments() ?? [CommentType]()
             
         } else {
@@ -177,7 +187,14 @@ class ProfileViewController: UITableViewController, ASWebAuthenticationPresentat
             let cell = tableView.dequeueReusableCell(withIdentifier: "Profile Cell", for: indexPath) as! ProfileCell
             
             if defaults.bool(forKey: "logStatus") {
-                cell.setUp(profilecell: profileCellFinal!)
+                if let profilecell = profileCellFinal {
+                    cell.setUp(profilecell: profilecell)
+                    cell.layer.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                } else {
+                    print("No Profile Cell made")
+                    return cell
+                }
+                
             } else {
                 let defaultcell = ProfileHolder(comment_karma: 0, name: "NoUser", link_karma: 0, created_utc: 0, coins: 0, icon_img: "", display_name: "noUser")
                 cell.setUp(profilecell: defaultcell)

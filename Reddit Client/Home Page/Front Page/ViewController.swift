@@ -33,6 +33,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     
     @IBAction func refreshControlActivated(_ sender: UIRefreshControl) {
         if defaults.bool(forKey: "logStatus") {
+            sender.tintColor = .clear
             let dispatchQueue = DispatchQueue(label: "QueueIdentification", qos: .background)
             let group = DispatchGroup()
             group.enter()
@@ -64,7 +65,7 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-          return .lightContent
+        return .lightContent
     }
 
     
@@ -81,6 +82,8 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
             accessToken = defaults.string(forKey: "accessToken")
             let userJson = Just.get("https://oauth.reddit.com/api/v1/me", headers:["Authorization": "bearer \(accessToken ?? "")"])
             
+            
+            
             //testing for refreshcode
             let decoder = JSONDecoder()
             if let contents = try? decoder.decode(Profile.self, from: userJson.content!) {
@@ -94,6 +97,8 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
                 Network().getAccessTokenRefresh()
             }
         }
+        
+       
         tableView.reloadData()
         
     }
@@ -129,6 +134,15 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
 
         }
         
+        //changes the color of the status bar to match
+        let color = #colorLiteral(red: 0.1527230442, green: 0.3966148496, blue: 0.7221766114, alpha: 1)
+        navigationController?.navigationBar.isTranslucent = false
+        if let window = UIApplication.shared.windows.first as UIWindow? {
+            window.backgroundColor = color
+        }
+        
+        loadSearchBar()
+        definesPresentationContext = true
         title = "Subreddits"
         
     }
@@ -226,14 +240,34 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        var name: String
+        var name = ""
         //let name = subredditnames[indexPath.row]
         if defaults.bool(forKey: "logStatus") {
             if indexPath.section == 0 {
                 name = topsubreddit[indexPath.row]
-            } else {
+                switch indexPath.row{
+                case 0:
+                    cell.imageView?.image = UIImage(systemName: "house.fill")
+                    cell.imageView?.tintColor = #colorLiteral(red: 0.09620646387, green: 0.3959877193, blue: 0.7198842764, alpha: 1)
+//                    cell.imageView?.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+//                    cell.imageView?.layer.cornerRadius = (cell.imageView?.frame.height ?? 1) / 2
+//                    cell.imageView?.layer.borderWidth = 1
+//                    cell.imageView?.layer.masksToBounds = true
+                case 1:
+                    cell.imageView?.image = UIImage(systemName: "star.fill")
+                    cell.imageView?.tintColor = #colorLiteral(red: 0.2174773812, green: 0.6176541448, blue: 0.9167817235, alpha: 1)
+                case 2:
+                    cell.imageView?.image = UIImage(systemName: "smiley.fill")
+                    cell.imageView?.tintColor = #colorLiteral(red: 0.6033415794, green: 0.8330382705, blue: 0.8824878335, alpha: 1)
+                default:
+                    cell.imageView?.image = UIImage(systemName: "")
+                }
+                
+            } else if indexPath.section > 0 {
                 let currentletter = headerlist[indexPath.section]
                 name = sortedDict[currentletter]?[indexPath.row] ?? "no value"
+                cell.imageView?.image = UIImage(systemName: "")
+                
             }
         } else {
             name = indexPath.section == 0 ? topsubreddit[indexPath.row] : subredditnames[indexPath.row]
@@ -290,3 +324,43 @@ class ViewController: UITableViewController, ASWebAuthenticationPresentationCont
 }
 
 
+extension ViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        var list = [String]()
+        for i in self.subredditnames {
+            if i.contains(text) {
+                list.append(i)
+            }
+        }
+        self.subredditnames = list
+        
+        self.tableView.reloadData()
+    }
+    
+    func loadSearchBar() {
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.searchBar.delegate = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search Subreddits"
+        search.searchBar.barStyle = .default
+        
+        if let textfield = search.searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            textfield.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            
+            if let leftView = textfield.leftView as? UIImageView {
+                leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
+                leftView.tintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            }
+        }
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.1527230442, green: 0.3966148496, blue: 0.7221766114, alpha: 1)
+        
+        navigationItem.searchController = search
+        
+        definesPresentationContext = true
+    }
+    
+    
+}

@@ -22,6 +22,8 @@ class ProfileCell: UITableViewCell {
     
     @IBOutlet var profileCardView: UIView!
     
+    @IBOutlet var cardView: UIView!
+    
     func setUp(profilecell: ProfileHolder) {
         profileImage.image = UIImage(named: "profileicon")
 //        profileImage.sd_setImage(with: URL(string: profilecell.icon_img), placeholderImage: UIImage(named: "profileicon"))
@@ -35,6 +37,14 @@ class ProfileCell: UITableViewCell {
         self.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
         self.layer.cornerRadius = 10
         
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.5
+        cardView.layer.shadowOffset = .zero
+        cardView.layer.shadowRadius = 4
+        
+        cardView.layer.shadowPath = UIBezierPath(rect: cardView.bounds).cgPath
+        cardView.layer.shouldRasterize = true
+        cardView.layer.rasterizationScale = UIScreen.main.scale
     }
     
 //    override func layoutSubviews() {

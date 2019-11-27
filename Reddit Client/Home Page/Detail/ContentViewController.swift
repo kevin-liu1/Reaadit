@@ -203,6 +203,9 @@ class ContentViewController: UITableViewController, OpenLinkProtocol, playVideoP
 
     
     func createContent() {
+        if self.content.count  < 1 {
+            return
+        }
         let contentthings = self.content[0].data
         if contentthings.is_self! {
             self.contentCell = Content(author: contentthings.author ?? "", postTitle: currentTitle ?? "", upVoteCount: self.upVotes ?? 10, time: "10 Minutes", selftext: contentthings.selftext ?? "", thumbnail: contentthings.thumbnail ?? "none", timeposted: contentthings.created_utc ?? 0)

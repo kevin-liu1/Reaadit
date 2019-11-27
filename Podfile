@@ -10,5 +10,5 @@ target 'Reddit Client' do
 	pod 'Nantes'
 	pod "MarkdownKit"
 	pod 'SwiftyComments', :git => 'https://github.com/tsucres/SwiftyComments.git'
-	
+	pod 'YoutubeDirectLinkExtractor'
 end

@@ -104,7 +104,7 @@ class ProfileViewController: UITableViewController, ASWebAuthenticationPresentat
     func getAuthTokenWithWebLogin(context: ASWebAuthenticationPresentationContextProviding) {
         dispatchGroup.enter()
         
-        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits,read,save,subscribe,vote,edit,history,submit,subscribe,flair,report")
+        let authURL = URL(string: "https://www.reddit.com/api/v1/authorize.compact?client_id=AOZZ5Fc3a1V3Rg&response_type=code&state=authorizationcode&redirect_uri=myreddit://kevin&duration=permanent&scope=identity,mysubreddits,read,save,subscribe,vote,edit,history,submit,subscribe,flair,report,privatemessages")
         let callbackUrlScheme = "myreddit://kevin"
         self.webAuthSession = ASWebAuthenticationSession.init(url: authURL!, callbackURLScheme: callbackUrlScheme, completionHandler: { (callBack:URL?, error:Error?) in
             // handle auth response
@@ -189,7 +189,7 @@ class ProfileViewController: UITableViewController, ASWebAuthenticationPresentat
             if defaults.bool(forKey: "logStatus") {
                 if let profilecell = profileCellFinal {
                     cell.setUp(profilecell: profilecell)
-                    cell.layer.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                    cell.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 } else {
                     print("No Profile Cell made")
                     return cell

@@ -50,11 +50,15 @@ class PostsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = subreddit
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         if !(self.subreddit == "Search") {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow.up.arrow.down.circle"), style: .plain, target: self, action: #selector(sortPostsAC))
         }
         initializeData()
+        //navigationController?.navigationBar.backgroundColor = .red
+
+        loadSearchBar()
 
     }
     
@@ -159,7 +163,7 @@ class PostsViewController: UITableViewController {
         
         group.notify(queue: .main) {
             
-            self.tableView.separatorStyle = .singleLine
+            //self.tableView.separatorStyle = .singleLine
             self.tableView.reloadData()
         }
         
@@ -179,7 +183,7 @@ class PostsViewController: UITableViewController {
         }
         
         group.notify(queue: .main) {
-            self.tableView.separatorStyle = .singleLine
+            //self.tableView.separatorStyle = .singleLine
             self.tableView.reloadData()
         }
     }
@@ -282,7 +286,8 @@ class PostsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = finishedposts[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Posts", for: indexPath) as! PostCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ShadowPosts", for: indexPath) as! ShadowTableViewCell
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "Posts", for: indexPath) as! PostCellTableViewCell
         cell.setPost(postObject: post)
         return cell
     }
@@ -328,4 +333,37 @@ class PostsViewController: UITableViewController {
     
     
 
+}
+
+extension PostsViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        var list = [String]()
+        
+        self.tableView.reloadData()
+    }
+    
+    func loadSearchBar() {
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.searchBar.delegate = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search Subreddits"
+        search.searchBar.barStyle = .default
+        
+        if let textfield = search.searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            textfield.textColor = UIColor.darkGray
+            
+            if let leftView = textfield.leftView as? UIImageView {
+                leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
+                leftView.tintColor = UIColor.white
+            }
+        }
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.1527230442, green: 0.3966148496, blue: 0.7221766114, alpha: 1)
+        
+        navigationItem.searchController = search
+        
+        definesPresentationContext = true
+    }
 }
